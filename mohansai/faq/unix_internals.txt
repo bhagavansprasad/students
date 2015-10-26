@@ -1,0 +1,313 @@
+I. File Management
+------------------
+1- What is Super block (SB)?
+	
+A. 	The super block contains information about the entire disk. The I-node list a list of inodes, 
+	and the data blocks contains the actual data in the form of directories and files. Now let us 
+	dissect each block one by one.
+	
+	Size of the file system
+	Number of free blocks on the system
+	A list of free blocks
+	Index to next free block on the list
+	Size of the inode list
+	Number of free the inodes
+	A list of free inodes
+	Index to next free inode on the list
+	Lock fields for free block and free inode lists
+	Flag to indicate modification of super block
+
+2- What are the entries in SB?
+A. 	The super block contains an array of free disk block numbers, one of which points to 
+	the next entry in the list. That entry in turn will be a data block, which contains an 
+	array of some other free blocks and a next pointer. When process requests for a block, 
+	it searches the free block list returns the available disk block from the array of free 
+	blocks in the super block. If the super block contains only one entry which is a pointer
+	to a data block, which contains a list of other free blocks, all the entries from that 
+	block will be copied to the super block free list and returns that block to the process. 
+	Freeing of a block is reverse process of allocation. If the list of free blocks in super 
+	block has enough space for the entry then, this block address will be marked in the list. 
+	If the list is full, all the entries from the super block will be copied to the freed block 
+	and mark an entry for this block in the super block. Now the list in super block contains only this entry.
+
+	Index indexes to the next free disk block in the free disk block list.
+	
+	figure
+	
+	The super block also contains an array to represent free inodes. The size of this array need 
+	not be the actual number of free inodes. During assignment of an inode to a new file, the kernel 
+	searches the free inode list. If one free inode is found, that one is returned. If the free inode 
+	list is empty, then it searches the inode list for free inodes. Each inode will contain a type field,
+	which if 0, means the inode is free. It then fills the free inode list of super block as much as it
+	can, with number of free inodes from inode list. It then returns one of these ones. It then remembers
+	the highest inode number. Next time it has to scan the inode list for free ones, it starts from
+	this remembered one. Hence it doesn't have to scan already scanned ones. This improves the efficiency.
+	While freeing an inode, if the free list in super block has space enough, the freed one is put there.
+	If there is not enough space, and the freed inode number is less than the remembered inode, then
+	the remembered inode is updated with the freed inode. If the freed inode number is greater 
+	than the remembered one, then it doesn't have to update, because it will be scanned from 
+	the remembered node and the freed one will be covered later.
+
+	Index indexes to the next free inode in the free disk block list.
+
+	figure
+
+	During all these allocations, in a multi-tasking environment, there is a chance of the inodes getting 
+	corrupted. Like if one process was trying to allocate an inode and was preempted by the scheduler, 
+	and a second process does the same for same inode, it will be a critical problem. Hence lock flags
+	are introduced. While accessing inodes, that inode will be locked. One more flag to indicate that 
+	the super block has been modified, is present in the super block.
+
+	The I-node list (which server the purpose as FAT+ directory entries in DOS) is a list of inodes,
+	which contains the following entries.
+
+
+3- How many "types of files" exits? and give example for each type?
+
+A.	1. Regular file:(-):contains data in either text format or binary format
+	2. Directory file:(d):contains entries of files
+	3. FIFO file:(f):2 communicate betn 2 processes running on same system
+	4. Block special file:(b):name given 2 special blocks ofhard disk
+	5. Sybolic file:(l):its a link or pointer to already existing file
+	6. Socket file:(s):2 communicate betn 2 processes running on different system in a network
+	7. Character special file:(c):handles only characted formatted data
+		eg.stdin, stdout, stderr
+
+4- Where can we find free data blocks list?
+A.	the data block list is found in suberblock
+
+5- Why the "Flag that indicates super block is modified" is required?
+	
+A	If there is any modifications is done in the super block regarding the
+	folloing  
+	
+	Size of the file system
+	Number of free blocks on the system
+	A list of free blocks
+	Index to next free block on the list
+	Size of the inode list
+	Number of free the inodes
+	A list of free inodes
+	Index to next free inode on the list
+	Lock fields for free block and free inode lists
+	Flag to indicate modification of super block
+
+	then the flag is set
+	
+	modification of superblock in incore is needed for the kernal because for
+	every modification or update of incore super block is required to be copyed
+	in to the disk
+	
+6- Why lock fields are required in SB?
+
+A.	The super block also contains an array to represent free inodes. The size of this array need not be 
+	the actual number of free inodes. During assignment of an inode to a new file, the kernel searches 
+	the free inode list. If one free inode is found, that one is returned. If the free inode list is empty, 
+	then it searches the inode list for free inodes. Each inode will contain a type field, which if 0, 
+	means the inode is free. It then fills the free inode list of super block as much as it can, with 
+	number of free inodes from inode list. It then returns one of these ones. It then remembers the highest
+	inode number. Next time it has to scan the inode list for free ones, it starts from this remembered 
+	one. Hence it doesn't have to scan already scanned ones. This improves the efficiency. While freeing 
+	an inode, if the free list in super block has space enough, the freed one is put there. If there is
+	not enough space, and the freed inode number is less than the remembered inode, then the remembered 
+	inode is updated with the freed inode. If the freed inode number is greater than the remembered one,
+	then it doesn't have to update, because it will be scanned from the remembered node and the freed one will 
+	be covered later.
+	
+	Index indexes to the next free inode in the free disk block list.
+	
+	During all these allocations, in a multi-tasking environment, there is a chance of the inodes getting 
+	corrupted. Like if one process was trying to allocate an inode and was preempted by the scheduler, 
+	and a second process does the same for same inode, it will be a critical problem. Hence lock flags 
+	are introduced. While accessing inodes, that inode will be locked. One more flag to indicate that 
+	the super block has been modified, is present in the super block.
+
+7- What is an inode?
+
+A.	An inode is an entry in a disk table that contains information about a file such as its owner,
+	size, and last access date. The inode is changed when the file is first created and also later if 
+	the owner, group, or permissions are changed.
+
+  
+8- What are the entries in inode?
+
+A.	Owner:-Owner indicates who owns the file(s) corresponding to this inode.
+	
+	Type:-Type indicates whether inode represents a file, a directory, a FIFO, a character device 
+		  or a block device. If the type value is 0 then the inode is free. 
+	
+	Last modified time
+	Last accessed time
+	Last inode modified time
+	
+	Access Permissions:-Each file will be having nine access permissions for read, write and execute, 
+	for the owner, group and others in rwx rwx rwx format.
+	
+	No of links to the file:-In Unix we can create links to some files or directories. So we need
+	to have a count of how many links are pointing to the same inode, so that if we delete one of 
+	the links the actual data is not gone. 
+	
+	Size of the file:-Size of the file represents the actual size of the file.
+	
+	Data blocks owned 
+
+9- What is difference bitween "Access time" Vs "Modified time" Vs "inode access time"
+	
+	atime - access time; the time a file or directory data was accessed
+	ex:-time of last access (ls -lu).
+
+	mtime - modification time; the last time a file or directory data was modified
+	ex:-time of last modification (ls -l),
+
+	
+	ctime - inode time; the last time inode status was modified
+	ex:-: time of last status change (ls -lc)
+
+10 What is the difference between disk-inode and incore-inode?
+
+A.	The inode is a data structure that describes everything about a file other than their name.
+	When a file is opened then the kernel copies the inode into memory. As the file changes, the
+	in-core inode is updated usually more often than the on-disk copy.
+
+	disk-inode
+
+	- file owner identifier
+	- file type
+	- file access permissions
+	- file access times (created, last accessed, last modified)
+	- number of links to the file
+	- table of contents for the disk address of data in a file
+	- file size
+	
+	in-core copy of the inode contains
+	
+	The  incore copy of inode contains the following fields in addition to the
+	
+	-fields of disk inode
+	-status of the in-core inode
+	- logical device number of file system
+	- inode number
+	- pointers to other in-core inodes
+	- reference count
+
+
+11- What is use of "Is modified" field is required in inode?
+12- What is "file mount point" field is required in inode?
+13 What is the use of "Refference count" in inode?
+14- What is in-core inode?
+
+15- What happens when new file getting created?
+16- How does the inode gets allocated to any process?
+17- How does the data-blocks gets allocated to any process?
+18- What happens when the file is getting deleted?
+19- What happens when the inode is getting freed?
+20- What is remember inode?
+21- What are the "Table of Contents" in inode?
+22- How does the path is converted to inode?  
+23- Write down the algoritham to open system call?
+24- If two process opens the same file, how many entries are created in "user file
+  descriptop table", "File table" and in inode table?
+25- If the two processes open a file for reading, while reading, where does the
+  both file pointers are pointing to?
+26- What is dup system call?
+27- What is dup2 system call?
+28- What is dup3 system call?
+29- What is link file?
+30- Does the link file also has the inode?
+31- What is the size of the inode?
+32- What is the size of the datablock?
+33- How many datablocks are required to store 10 bytes of data in a file?
+  experiment in the system.
+34- What are the implications if the datablock size too huge and too less?
+35- How to print the inode number of any file?
+36- What is the use of execution permission for a directory?
+37- What are the permission fields?
+38- What is the use of
+39- How to change only inode content without changing the file content?
+40- Creating a new file requireds write permission in a directory?
+  Y/N
+41- Creating an existing file requires write permission  on the file?
+  Y/N
+42- Unlinking a file requires write permission in the directory, not on the file?
+  Y/N
+43- What is boot block?
+
+II. Process Management
+----------------------
+- What are the states of a process?
+- What is the use of u-area?
+- What is the use of two fields in "Signal field" Vs "array of singal handlers" 
+- What is the relation bitween Process table Vs uArea Vs PerProcess Region table
+  (Pregion) Vs region Table Vs Main memory
+- What are the different types of regions for each process?
+- What is Zombie process?
+- When does orphan process gets created?
+- What is interrupt latency?
+- What is the use of "Event descripton" in the process table
+- Where does the "Present working directory" information stored?
+- What are the "limit fields" in u-area
+- What are the memory pages?
+- What could be size of the page in any system?
+- How does Virtual address to Physical address mapping can happen?
+- What is the context switch?
+- What is really happens when the Scheduler switches from executing process to
+  another process?
+- Does the context switch happens when kernel serves the inturrupts?
+- What is the difference bitween "Page" and "Page Tables"
+- How many process gets created when we do fork() for 2 times?
+- How many reagions gets created when we call fork() for 2 times?
+- What is the virtual address?
+- What is the use(s) of the virtual addresses?
+- What really happens when we try to access the memory which is not part of the
+  current address space?
+- What really happens when we cross array boundaries and start writing the data?
+- What is the user stack and system stack?
+- What is the command to see the states of the process?
+- How simulate all process states in a system?
+- At what stage the siganls are handled?
+- What is the use of the wait system call?
+- How to avoid processes going to Orphan state?
+- How does parent know about the child termination?
+- How dows we know process terminated normally or ab-normally?
+- What is preemption?
+- What is user or kernel mode execution?
+- What is difference bitween kernel mode execution?
+- What is event descriptor?
+- Is interrupt again a new process?
+II. I/O Managment
+-----------------
+IV. Memory Management
+---------------------
+V. Inter Process Communication
+-------------------------------
+- Why IPC required and what is the main purpose?
+- Write an example program to demonstrate the requiremnt of IPC?
+- Is global varible is shared across child and parent process?
+- What is "copy on write bit" in the process table?
+- What are all different kinds of IPCs we have?
+- Describe "Named PIPE" Vs "Un Named PIPE"
+- Justify the statement "By default PIPE is full duplex"
+- If pipe is "Full Duplex" is it sufficient one pipe bitween two process?
+- Describe PIPE Vs Message-Queues
+- Describe Message-Queue Vs Shared memory
+- Describe PIPE Vs Message Queue Vs Siganls?
+- How does parent know that chaild got finished his execution
+- How do we know the process got exited gracefully or ab-normally?
+- Cane we build client server communication using Message queues?
+- Describe Binary Vs Mutext semaphores?
+- Describe Binar Vs Counting semaphores?
+- What is Priority inversion?
+- What IPC is most widely used? 
+- Where exactly IPC datastructures are stored?
+- What is process memory area?
+- What is deadlock?
+- What is difference bitween process Synchronization Vs Mutual Execlusion
+
+VI. General
+-----------
+- What is the difference bitween "system call" and "system defined function
+  call"
+- List "buffered calls" Vs "Non buffered calls"
+- What is Internal and External fragmentation? Give me examples
+- What is blocking/non-blocking calls?
+

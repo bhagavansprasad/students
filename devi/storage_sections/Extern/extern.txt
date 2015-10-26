@@ -1,0 +1,5 @@
+keyword-extern
+used with all data types like int, char, float, double, array, pointer,
+	structure,function etc...
+default initial value for integral type var is 0 otherwise null.
+it is default storage class for global var as well all functions.

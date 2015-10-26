@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include"fcntl.h"
+main()
+{
+int len=10;
+char buff[500]
+int fd=open("g.txt",O_RDONLY)
+int retval=read[fd,buff,len)
+if(retval>0)
+{
+printf("%s",buff);
+}
+close(fd);
+}
+

@@ -1,0 +1,41 @@
+
+Request:
+
+POST /upnp/control/cds HTTP/1.1
+HOST: 192.168.1.34:49152
+CONTENT-LENGTH: 439
+CONTENT-TYPE: text/xml; charset="utf-8"
+SOAPACTION: "urn:schemas-upnp-org:service:ContentDirectory:1#Browse"
+USER-AGENT: Linux/2.6.32-38-generic-pae, UPnP/1.0, Portable SDK for UPnP devices/1.6.6
+
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<s:Body><u:Browse xmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1">
+<ObjectID>216</ObjectID>
+<BrowseFlag>BrowseDirectChildren</BrowseFlag>
+<Filter>*</Filter>
+<StartingIndex>0</StartingIndex>
+<RequestedCount>0</RequestedCount>
+<SortCriteria></SortCriteria>
+</u:Browse>
+</s:Body>
+</s:Envelope>
+
+Response:
+
+HTTP/1.1 200 OK
+CONTENT-LENGTH: 1110
+CONTENT-TYPE: text/xml; charset=UTF-8
+DATE: Mon, 07 Jan 2013 15:48:16 GMT
+EXT:
+SERVER: Linux/2.6.32-21-generic-pae, UPnP/1.0, MediaTomb/0.12.0
+
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body>
+<u:BrowseResponse xmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1">
+<Result>&lt;DIDL-Lite xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot; xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot;&gt;&lt;item id=&quot;217&quot; parentID=&quot;216&quot; restricted=&quot;1&quot;&gt;&lt;dc:title&gt;lifeisbeautiful.mp4&lt;/dc:title&gt;&lt;upnp:class&gt;object.item.videoItem&lt;/upnp:class&gt;&lt;res protocolInfo=&quot;http-get:*:video/mp4:*&quot; size=&quot;769757678&quot; duration=&quot;02:48:57.5&quot; bitrate=&quot;607&quot; resolution=&quot;624x272&quot; sampleFrequency=&quot;44100&quot; nrAudioChannels=&quot;1&quot;&gt;http://192.168.1.34:49152/content/media/object_id/217/res_id/0/ext/file.mp4&lt;/res&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;</Result>
+<NumberReturned>1</NumberReturned>
+<TotalMatches>1</TotalMatches>
+<UpdateID>26</UpdateID>
+</u:BrowseResponse>
+</s:Body> </s:Envelope>

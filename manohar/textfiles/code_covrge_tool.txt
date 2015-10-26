@@ -1,0 +1,30 @@
+splint:
+		sudo apt-get install splint  --->install
+
+		splint main.c ovc.c ovd.c define.h ----->running with warnings
+
+splint -warnposix -predboolint -exportlocal -retvalother -bufferoverflowhigh
+-shadow -usedef -initallelements +charint -compdef -retvalint +matchanyintegral
+main.c ovc.c ovd.c define.h --------------------->running with out warnings
+
+use---->by using this u can ignore the all warnings
+
+valgrind:
+		sudo apt-get install valgrind  --->install
+
+		
+		use---->by using this we can find memory leaks.
+gcov: 
+		gcc -fprofile-arcs -ftest-coverage readfile.c 
+
+		gcov readfile.c
+
+		g readfile.c.gcov
+
+####--->used code
+remaining ---->unused code
+
+
+use---->by using this tool which of the part is executed and which  of the of
+the part never executed we can find.
+		

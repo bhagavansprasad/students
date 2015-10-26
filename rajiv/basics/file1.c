@@ -1,0 +1,9 @@
+#include <stdio.h>
+main()
+{
+ char buffer[100];
+ open("text.txt",r);
+ read("fd",buffer,10);
+ printf("%s",buffer);
+ close(text.txt);
+} 

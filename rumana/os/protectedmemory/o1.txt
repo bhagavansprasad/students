@@ -1,0 +1,3 @@
+2363231 -rw-rw-r-- 1 bhagavan bhagavan 52 Oct  6 10:47 a.txt
+2363234 -rw-rw-r-- 1 bhagavan bhagavan 21 Oct  6 10:48 c.txt
+2363237 -rw-rw-r-- 1 bhagavan bhagavan 30 Oct  6 10:49 e.txt

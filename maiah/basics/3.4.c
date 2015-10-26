@@ -1,0 +1,19 @@
+#include<stdio.h>
+main()
+{
+	int i,n=13,sum=0,c;
+	for(n=2;n<=13;n++)
+	{
+	for(i=2;i<=n;i++)
+	{
+		c=n%i;
+		if(c==0)
+		break;
+	}
+	if(n==i)
+	{
+		sum=sum+n;
+	}
+	}
+printf("%d",sum);
+}

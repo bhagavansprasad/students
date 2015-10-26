@@ -1,0 +1,3 @@
+2363244 -rw-rw-r-- 1 bhagavan bhagavan 41 Oct  6 11:06 b.txt
+2363247 lrwxrwxrwx 1 bhagavan bhagavan  5 Oct  6 11:07 d.txt -> c.txt
+2363237 -rw-rw-r-- 2 bhagavan bhagavan 30 Oct  6 11:09 f.txt

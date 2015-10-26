@@ -1,0 +1,35 @@
+#include<stdio.h>
+main()
+{
+	int n=5,i,j,c=8,k,l;
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=i;j++)
+		{
+			printf("%d",j);
+		}
+		c--;
+		for(k=1;k<=c;k++)
+		{
+			printf(" ");
+		}
+		if(i==5)
+		{
+			i--;
+			for(l=i;l>0;l--)
+			{
+				printf("%d",l);
+			}
+			i++;
+		}
+		else
+		{
+			for(l=i;l>0;l--)
+			{
+				printf("%d",l);
+			}
+		}
+		printf("\n");
+		c--;
+	}
+}

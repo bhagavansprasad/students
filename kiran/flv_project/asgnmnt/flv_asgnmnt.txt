@@ -1,0 +1,76 @@
+V1. Building student DB, and parsing
+===================================
+- This assignment consist of two kinds of activities (Modules).  
+
+	1. Building DB
+	2. Parsing DB
+
+- Both modules shares the 'student' structure.
+Structure of student record
+typedef struct student
+{
+	char name[124];
+	int age;
+	int class;
+}
+
+1. Building DB
+--------------
+This module creates a DB file with student(s) records
+- Open a student.db file in text mode
+- Write few students records into it
+- After filling each record, write entire sturucture to db i.e. 132 bytes
+
+Example. 
+strcpy(stu.name, "Saketh Ram");
+stu.age = 10;
+stu.class = 5;
+write(fd, &stu, sizeof(student));
+
+2. Parsing DB
+--------------
+This module is responsible to read the student information for DB file and prints
+- Need parse entire DB file and print all the records of the student information
+
+V2. Building student DB with multiple versions, and parsing
+==========================================================
+- This assignment consist of two kinds of activities (Modules).  
+
+	1. Building DB
+	2. Parsing DB
+
+1.Building DB
+-------------
+- Open a student.db file in text mode
+- The first 4 bytes of the file tells you the version of the file.
+- If the version number is 1, then the file contains the same information as
+  above
+- If the version number is 2, then the file contains the student record as bello
+
+	typedef struct student
+	{
+		char name[124];
+		char grade;
+		int marks;
+		int age;
+		int class;
+	};
+
+- Information about format is
+
+  * 4 Bytes - version of the file
+
+- Write few students records into it
+- After filling each record, write entire sturucture to db 
+  * If the version is 2, DB file contains student records like bellow
+    128 Bytes - Name
+	1 Byte    - grade, 65 - A, 66 - B, 67 - C
+	4 Bytes   - marks
+	4 Bytes	  - Age
+	4 Bytes	  - Class
+
+Parsing DB
+----------
+- Parser module should read atleast 4 bytes from file inorder to understand the
+  version and format of the DB.
+- Read and print each student information based on version number 

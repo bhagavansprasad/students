@@ -1,0 +1,4 @@
+this progrm is used for 
+testing the line count prgrm
+so for that only i write this progrm
+

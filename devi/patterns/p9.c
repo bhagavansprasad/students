@@ -1,0 +1,60 @@
+#include <stdio.h>
+main()
+{
+char ch='A',c;
+int i,j,n=3,t,count=1;
+t=n;
+for(i=1;i<=(n+(n-1));i++)
+{
+c=ch;
+if(i<=n)
+{
+for(j=t;j>=1;j--)
+{
+printf("%c",c);
+c++;
+}
+c--;
+if(i>1)
+{
+for(j=count;j>=1;j--)
+printf(" ");
+count=count+2;
+}
+if(i<2)
+{
+for(j=n-1;j>=1;j--)
+{
+c--;
+printf("%c",c);
+}
+}
+else
+{
+for(j=t;j>=1;j--)
+{
+printf("%c",c);
+c--;
+}
+}
+t--;
+//count=count+2;
+}
+else
+{
+for(j=i-2;j>=1;j--)
+{
+printf("%c",c);
+c++;
+}
+for(j=count-4;j>=1;j--)
+printf(" ");
+for(j=i-2;j>=1;j--)
+{
+c--;
+printf("%c",c);
+}
+}
+printf("\n");
+}
+}

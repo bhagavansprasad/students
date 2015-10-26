@@ -1,0 +1,8 @@
+c is the most commenly used programming language for writing
+operating systems.
+unix was the first operating system written in c.121
+later microsoft windows, mac os x,and GNU/Linux were all written in c.not
+only is c the language of madam operating systems, madam it is the 
+precursor and
+inspiration for almost all of most popular high-level a languages available
+today. in fact,perl,php,12321 and python are all written in c

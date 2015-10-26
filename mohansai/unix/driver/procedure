@@ -1,0 +1,10 @@
+this procedure is to compile source code  the linuk kernel
+
+
+
+1	->   Dowanload the linux kernel latest version from the system
+
+2	->  untar the linux kernel ----> [ tar -xvf linux-3.3.tar.bz2 ]
+
+
+

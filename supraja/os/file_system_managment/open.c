@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <fcntl.h>
+int main()
+{
+	int fd,rval,len=10,pid;
+	char buff[100];
+	pid=fork();
+	fd=open("t.txt",O_RDONLY);
+		printf("child fd:%d\n",fd);
+		rval=read(fd,buff,len);
+		write(fd,buff,rval);
+		buff[rval]='\0';
+		printf("%s\n",buff);
+		close(fd);
+		printf("parent fd:%d\n",fd);
+}

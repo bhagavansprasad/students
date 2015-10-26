@@ -1,0 +1,251 @@
+------------------------------xxxxxxxxxxxxxxxxxxxxxxx-----------------------------
+create a file in  directory samp.c
+ex:- code
+
+
+/*
+#include "stdio.h"
+
+int my_var = 0xabcd1234;
+
+int first_function(void)
+{
+	printf("-->%s - my_var :%x\r\n", __FUNCTION__, my_var);
+
+	return 0;
+}
+
+main()
+{
+	printf("-->%s - my_var  :%x\r\n", __FUNCTION__, my_var);
+	
+	first_function();
+}*/
+
+
+and compile the file gcc samp.c and we get the a.out
+
+--------------------------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--------------------------------
+
+objdumpmips -h vxWorks > v.h --> to list headers
+objdumpmips -t vxWorks > t.h --> to list all symbols in elf file
+objdumpmips -d vxWorks > t.h --> to decessemble
+objdumpmips -D vxWorks > D.s --> to decessemble-all
+
+
+
+----------------------------*******************************--------------------------
+
+when u compile the file with objdump   command [ objdump -h a.out]
+
+we will get these code
+
+in these we need to take the .data section content in line no 24  
+
+ 24 .data         00000014  0000000000601010  0000000000601010  00001010  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+
+these is  the content:- we need to take 
+
+ Segment_address    0000000000601010  
+ Segment_offset	   00001010  
+
+
+
+a.out:     file format elf64-x86-64
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+  0 .interp       0000001c  0000000000400238  0000000000400238  00000238  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .note.ABI-tag 00000020  0000000000400254  0000000000400254  00000254  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .note.gnu.build-id 00000024  0000000000400274  0000000000400274  00000274  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .hash         00000024  0000000000400298  0000000000400298  00000298  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .gnu.hash     0000001c  00000000004002c0  00000000004002c0  000002c0  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  5 .dynsym       00000060  00000000004002e0  00000000004002e0  000002e0  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  6 .dynstr       0000003f  0000000000400340  0000000000400340  00000340  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  7 .gnu.version  00000008  0000000000400380  0000000000400380  00000380  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  8 .gnu.version_r 00000020  0000000000400388  0000000000400388  00000388  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  9 .rela.dyn     00000018  00000000004003a8  00000000004003a8  000003a8  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 10 .rela.plt     00000030  00000000004003c0  00000000004003c0  000003c0  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 11 .init         00000018  00000000004003f0  00000000004003f0  000003f0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 12 .plt          00000030  0000000000400408  0000000000400408  00000408  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 13 .text         00000218  0000000000400440  0000000000400440  00000440  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 14 .fini         0000000e  0000000000400658  0000000000400658  00000658  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 15 .rodata       00000043  0000000000400668  0000000000400668  00000668  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 16 .eh_frame_hdr 0000002c  00000000004006ac  00000000004006ac  000006ac  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 17 .eh_frame     0000009c  00000000004006d8  00000000004006d8  000006d8  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 18 .ctors        00000010  0000000000600e18  0000000000600e18  00000e18  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+ 19 .dtors        00000010  0000000000600e28  0000000000600e28  00000e28  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+ 20 .jcr          00000008  0000000000600e38  0000000000600e38  00000e38  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+ 21 .dynamic      000001a0  0000000000600e40  0000000000600e40  00000e40  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+ 22 .got          00000008  0000000000600fe0  0000000000600fe0  00000fe0  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+ 23 .got.plt      00000028  0000000000600fe8  0000000000600fe8  00000fe8  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+ 24 .data         00000014  0000000000601010  0000000000601010  00001010  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+ 25 .bss          00000010  0000000000601028  0000000000601028  00001024  2**3
+                  ALLOC
+ 26 .comment      00000023  0000000000000000  0000000000000000  00001024  2**0
+                  CONTENTS, READONLY
+  
+---------------------****************-----------------------------------
+
+objdump -t a.out
+ 
+ when u compile the file with objdump   command [ objdump -t a.out]
+
+we will get these code
+
+in these we need to take the variable name [ my_var ]  which is declared as globally 
+----------
+0000000000601020 g     O .data	0000000000000004              my_var
+-----------
+these is  the content:- we need to take 
+
+Variable_addres =  0000000000601020
+
+
+
+a.out:     file format elf64-x86-64
+
+SYMBOL TABLE:
+0000000000400238 l    d  .interp	0000000000000000              .interp
+0000000000400254 l    d  .note.ABI-tag	0000000000000000              .note.ABI-tag
+0000000000400274 l    d  .note.gnu.build-id	0000000000000000              .note.gnu.build-id
+0000000000400298 l    d  .hash	0000000000000000              .hash
+00000000004002c0 l    d  .gnu.hash	0000000000000000              .gnu.hash
+00000000004002e0 l    d  .dynsym	0000000000000000              .dynsym
+0000000000400340 l    d  .dynstr	0000000000000000              .dynstr
+0000000000400380 l    d  .gnu.version	0000000000000000              .gnu.version
+0000000000400388 l    d  .gnu.version_r	0000000000000000              .gnu.version_r
+00000000004003a8 l    d  .rela.dyn	0000000000000000              .rela.dyn
+00000000004003c0 l    d  .rela.plt	0000000000000000              .rela.plt
+00000000004003f0 l    d  .init	0000000000000000              .init
+0000000000400408 l    d  .plt	0000000000000000              .plt
+0000000000400440 l    d  .text	0000000000000000              .text
+0000000000400658 l    d  .fini	0000000000000000              .fini
+0000000000400668 l    d  .rodata	0000000000000000              .rodata
+00000000004006ac l    d  .eh_frame_hdr	0000000000000000              .eh_frame_hdr
+00000000004006d8 l    d  .eh_frame	0000000000000000              .eh_frame
+0000000000600e18 l    d  .ctors	0000000000000000              .ctors
+0000000000600e28 l    d  .dtors	0000000000000000              .dtors
+0000000000600e38 l    d  .jcr	0000000000000000              .jcr
+0000000000600e40 l    d  .dynamic	0000000000000000              .dynamic
+0000000000600fe0 l    d  .got	0000000000000000              .got
+0000000000600fe8 l    d  .got.plt	0000000000000000              .got.plt
+0000000000601010 l    d  .data	0000000000000000              .data
+0000000000601028 l    d  .bss	0000000000000000              .bss
+0000000000000000 l    d  .comment	0000000000000000              .comment
+000000000040046c l     F .text	0000000000000000              call_gmon_start
+0000000000000000 l    df *ABS*	0000000000000000              crtstuff.c
+0000000000600e18 l     O .ctors	0000000000000000              __CTOR_LIST__
+0000000000600e28 l     O .dtors	0000000000000000              __DTOR_LIST__
+0000000000600e38 l     O .jcr	0000000000000000              __JCR_LIST__
+0000000000400490 l     F .text	0000000000000000              __do_global_dtors_aux
+0000000000601028 l     O .bss	0000000000000001              completed.7382
+0000000000601030 l     O .bss	0000000000000008              dtor_idx.7384
+0000000000400500 l     F .text	0000000000000000              frame_dummy
+0000000000000000 l    df *ABS*	0000000000000000              crtstuff.c
+0000000000600e20 l     O .ctors	0000000000000000              __CTOR_END__
+0000000000400770 l     O .eh_frame	0000000000000000              __FRAME_END__
+0000000000600e38 l     O .jcr	0000000000000000              __JCR_END__
+0000000000400620 l     F .text	0000000000000000              __do_global_ctors_aux
+0000000000000000 l    df *ABS*	0000000000000000              t1.c
+000000000040069c l     O .rodata	000000000000000f              __FUNCTION__.2047
+0000000000400697 l     O .rodata	0000000000000005              __FUNCTION__.2053
+0000000000600fe8 l     O .got.plt	0000000000000000              .hidden _GLOBAL_OFFSET_TABLE_
+0000000000600e14 l       .ctors	0000000000000000              .hidden __init_array_end
+0000000000600e14 l       .ctors	0000000000000000              .hidden __init_array_start
+0000000000600e40 l     O .dynamic	0000000000000000              .hidden _DYNAMIC
+0000000000601010  w      .data	0000000000000000              data_start
+0000000000000000       F *UND*	0000000000000000              printf@@GLIBC_2.2.5
+0000000000400580 g     F .text	0000000000000002              __libc_csu_fini
+0000000000400440 g     F .text	0000000000000000              _start
+0000000000601020 g     O .data	0000000000000004              my_var
+0000000000000000  w      *UND*	0000000000000000              __gmon_start__
+0000000000000000  w      *UND*	0000000000000000              _Jv_RegisterClasses
+0000000000400658 g     F .fini	0000000000000000              _fini
+0000000000000000       F *UND*	0000000000000000              __libc_start_main@@GLIBC_2.2.5
+0000000000400668 g     O .rodata	0000000000000004              _IO_stdin_used
+0000000000601010 g       .data	0000000000000000              __data_start
+0000000000601018 g     O .data	0000000000000000              .hidden __dso_handle
+0000000000600e30 g     O .dtors	0000000000000000              .hidden __DTOR_END__
+0000000000400590 g     F .text	0000000000000089              __libc_csu_init
+0000000000601024 g       *ABS*	0000000000000000              __bss_start
+0000000000400524 g     F .text	0000000000000028              first_function
+0000000000601038 g       *ABS*	0000000000000000              _end
+0000000000601024 g       *ABS*	0000000000000000              _edata
+000000000040054c g     F .text	0000000000000028              main
+00000000004003f0 g     F .init	0000000000000000              _init
+
+
+---------------------------******************-----------------
+and we need to apply formula for these 
+
+(Variable_addres - Segment_address) + (Segment_offset)
+------------------------------------------------------------
+
+open calce in terminal 
+command
+kcalc&
+
+_____________________________******************-_____________________________
+
+and set to hexadecimal and  apply formula
+
+
+(Variable_addres - Segment_address) + (Segment_offset)
+
+ (0000000000601020 - 0000000000601010) + ( 00001010 )= 1020 we will get the value
+
+___________________________**********************_____________________________
+
+open the file like theis g a.out and change it to  hexadecimal  [ :%!xxd ] the
+file will change to hexadecimal file in the above line 1020 in that the code
+will be like these  5012 CDAB instead of  this we will change the code like this
+1234 4567  now if we print the ./a.out u will get the output  12344567 now
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

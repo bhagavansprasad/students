@@ -1,0 +1,22 @@
+Links
+
+Explains about SASL Authentication procedure
+	http://wiki.xmpp.org/web/SASLandDIGEST-MD5
+
+How to handle SASL authentication
+	http://deusty.blogspot.in/2007/09/example-please.html
+
+
+
+ekg notes
+./plugins/jabber/jabber_handlers.c +572 -->JABBER_HANDLER
+./plugins/jabber/digest.c +397 --> jabber_challange_digest
+
+SQLite3 commands
+----------------
+# sqlite3 /usr/local/var/jabberd/db/sqlite.db
+Sql> .tables //To print all tables in the db
+sql> .header on //To display the header names
+sql> select * from table_name;
+sql> delete from table_name where username="tarun";
+

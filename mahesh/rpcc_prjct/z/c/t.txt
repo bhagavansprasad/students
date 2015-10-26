@@ -1,0 +1,19 @@
+total 116
+-rw-r--r-- 1 bhagavan bhagavan  1242 2014-10-27 16:06 afop.c
+-rw-r--r-- 1 bhagavan bhagavan   161 2014-10-27 16:06 afop_defs.h
+-rw-r--r-- 1 bhagavan bhagavan  7552 2014-10-28 09:04 afop.o
+-rw-r--r-- 1 bhagavan bhagavan   981 2014-10-27 16:06 client.c
+-rw-r--r-- 1 bhagavan bhagavan  6072 2014-10-28 09:04 client.o
+drwxr-xr-x 2 bhagavan bhagavan  4096 2014-10-28 09:04 CVS
+-rw-r--r-- 1 bhagavan bhagavan   439 2014-10-27 16:06 Makefile
+-rwxr-xr-x 1 bhagavan bhagavan 22205 2014-10-28 09:08 rpcc
+-rw-r--r-- 1 bhagavan bhagavan  1532 2014-10-27 17:37 rpcc.c
+-rw-r--r-- 1 bhagavan bhagavan   172 2014-10-27 16:06 rpcc.h
+-rw-r--r-- 1 bhagavan bhagavan  8696 2014-10-28 09:04 rpcc.o
+-rw-r--r-- 1 bhagavan bhagavan   358 2014-10-28 09:06 rpcc_send_req.c
+-rw-r--r-- 1 bhagavan bhagavan    38 2014-10-27 16:06 rpcc_send_req.h
+-rw-r--r-- 1 bhagavan bhagavan  5224 2014-10-28 09:08 rpcc_send_req.o
+-rw-r--r-- 1 bhagavan bhagavan   445 2014-10-27 17:37 struct.h
+-rwxr-xr-x 1 bhagavan bhagavan  1149 2014-10-28 09:08 tcpclient.c
+-rw-r--r-- 1 bhagavan bhagavan  8400 2014-10-28 09:08 tcpclient.o
+-rw-r--r-- 1 bhagavan bhagavan     0 2014-10-28 09:17 t.txt

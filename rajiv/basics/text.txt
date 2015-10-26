@@ -1,0 +1,117 @@
+this is rajeev learner of c under it stream yet to learn more came here in the
+sense that i can do a lot here.I feel hard with files,structures,linked list and a few 
+more i feel so that i can do better on these with logical thinking n hard work
+ana solving more programs based on these programs .
+
+  File handling in C ican be broadly categorized into   two types:
+  -High level Files(standard files or stream oriented files)
+  -low level files(system oriented files)
+  High level files handling is managed by library functions while low level file
+  handling is managed by system calls.
+  High level file handling is ease to manage and hides details from the
+  programmer.
+  Header file stdio.h is used in the program to make use of I/O functions.
+
+  Buffer is an area in memory bwhere the data is temporarily stored before being
+  written to the file .when we open a file a buffer is automatically associated
+  with the file pointer.whatever data we send to the file is not immediately
+  written to the file.First it is sent to the buffer and when the buffer is
+  full, its contents are written to the file.When the file is closed all the
+  contents of the buffer are aotomatically written to the file even if the
+  buffer is not full.This is called Flushing the buffer,we can explicitly flush
+  the buffer by a function fflush().
+
+  There can be three types of buffer:
+  1.Fully Buffered
+  2.Line buffered
+  3.Unbuffered
+
+  -Fully   buffered streams,the data is transferred only when the buffer is full.
+  -Line Buffered streams the data is transferred either when the buffer is full or
+   when a new line character is written to the buffer.
+  -Unbuffered streamsdata is transferred as quickly as possible.
+
+  When a file is opened,a fully buffered stream is attached to it.
+
+  syntax for opening a file is:
+   File *fopen(const char *filename,const char *mode);
+  syntax for closing a file is:
+   int fclose(FILE *fptr);
+  syntax's  for file operations:
+  int fputc(int c,FILE *fptr);
+  int fgetc(FILE *fptr);
+  int *fputs(const char *str,FILE *fptr);
+  int *fgets(char *str,int n,FILE *fptr);
+  size_t fwrite(const void *ptr,size_t size,size_t n,FILE *fptr);
+  size_t fread(void *ptr,size_t size,size_t n,FILE *fptr);
+
+  C supports these functions for random access file processing:
+  -fseek()
+  -ftell()
+  -rewind()
+  -fsetpos()
+  -fgetpos()
+
+  --fseek():This function is usd for setting the file position indicator at the
+   specified byte.Any read or write operation on the file will be done at the
+   new position.
+   declaration:int fseek(FILE *fp,long displacement,int origin);
+   -fp is a pointer 
+   -displacement denotes number of bytes which are skipped backward(if negative)
+    or forward(if p[ositive) from the position specified in the third
+    arguement.This arguement is specified in long integer so that it is possible
+    to move in large files.
+
+  --ftell():This function returns the current position of the fie position
+  indicator.The value is counted from the beginning of the file.
+
+  -declaration:long ftell(FILE *fptr);
+
+  --rewind():This function is used to move the file position indicator to the
+  beginning of the file.The function rewind() is useful when we open a file for
+  update.
+
+  -declaration:void rewind(FILE *fptr);
+
+  fsetpos() and fgetpos() are like fseek() and ftell() but they can be used for
+  huge files,while fseek() and ftell() can use effects limited to the range of
+  long int.
+
+
+  So far we have used the retuen value of the functon to detect end of the
+  filewhile reading.For example fgetc(),getc(),fprintf() return EOF and fgets()
+  returns NULL on end of file.BUt these functions return same value both on
+  end of file and on error.So if a function stops reading we can't make out
+  whether the end of the file was reached or an error was encountered.we ccan
+  check separetely these two conditions with the help of ferror() and feof().
+
+
+   declaration: int feof(FILE *fptr)
+    
+	The macro feof() is used to check the end of the file condition .It returns
+	a non-zero value if end of file has been reachd otherwise returns zero.
+
+  declaration: int ferror(FILE "*fptr);
+
+   tThe macro ferror() is used for checking an error occured during read or
+   write operations on a file.It returns a nonzero value if an error occurs i.e.
+   if the error indicator for that file is set,otherwise it returns zero.
+
+   --clearerr():
+
+   void clearerr()(FILE *fptr);
+
+   This function is used to set the end of the and error indicators to zero.
+
+   --perror():
+
+   void perror(const char *str);
+
+   This function is used to display the message supplied by the user along with
+   the error message generated in the system.It prints the arguement str and a
+   colon ,then the message related to the current value of errno ana then a new
+   line.errno is a global variable of type int declared in file errno.hand is
+   set to a particular value when an error occurs.
+
+
+

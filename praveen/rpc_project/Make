@@ -1,0 +1,6 @@
+a.out:fop.o fop1.o
+	gcc fop.o fop1.o
+fop.o:fop.c
+	gcc fop.c-c
+fop1.o:fop1.c
+	gcc fop1.c-c

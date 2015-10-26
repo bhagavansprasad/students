@@ -1,0 +1,79 @@
+
+=====> what is link between storage classes and storage section?
+
+storage classes are :auto, static,extern,register
+storage sections are:stack,heap,bss,data,text
+
+auto var are stored in stack and in bss all the unintialised global ,static
+local ,static global and in data  all the intialised global ,static
+local ,static global and in text strings ,function names 
+
+
+=====> malloc give the address and by using this we can call free() how that function
+       know size of malloc ?
+malloc maintains the header it consists the information about malloc what is
+the size of malloc
+
+
+
+=====> how to find the middle node of the linklist
+
+
+
+=====> is there any function having in heap memory ? how types of memory s having in
+       our system ?
+
+malloc and calloc and realloc ,there are two types of memory are there in our
+system which are static and dynamic memory
+
+
+=====> what is the output of below program
+		#include <stdio.h>
+		main()
+		{
+		char *p = NULL;
+		printf("%d\n",*p);
+		}
+
+		ans: segmentation fault
+
+=====> what is the output of below program
+		#include <stdio.h>
+		main()
+		{
+			int a = 5 ,b = 6;
+			int retval = 0;
+			retval = fun();
+			printf("%d\n",retval);
+		}
+		int fun()
+		{
+		printf("%d\n",a);
+		printf("%d\n",b);
+		return 0;
+		}
+		
+		ans: error a and b not declared
+
+=====> how you can find memory leak?
+
+if we allocate memory using malloc() after completion execution free() will call
+but we can't assign value "0" to that pointer at that still the pointer is
+pointing that location only this is called memoryleak
+
+
+=====> if you freeing the memory forceblly if the is runing what happens?
+
+i can change the time snap in that case
+
+=====> how can you find buffer overflow?
+
+i maintain both head and tail it contains very very unique string after
+completion i check this string if the string is changed then the buffer overflow
+is occured
+
+
+
+=====> 
+
+

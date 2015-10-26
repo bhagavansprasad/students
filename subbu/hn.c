@@ -1,0 +1,27 @@
+#include<stdio.h>
+main()
+{
+	int a=40,b=30,c=20;
+	if(a<b)
+	{
+		if(b<c)
+		{
+			printf("%d\n",c);
+		}
+		else
+		{
+			printf("%d\n",b);
+		}
+	}	
+		else
+		{
+			if(c>a)
+			{
+				printf("%d\n",c);
+			}
+			else
+			{
+				printf("a:%d\n",a);
+			}	
+		}
+}	

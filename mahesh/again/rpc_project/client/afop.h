@@ -1,0 +1,10 @@
+int aopen(char*, int ,int );
+int aread(int, char * , int );
+int awrite(int, char * , int );
+int alseek(int, off_t , int );
+int aclose(int);
+int aget_first();
+int aget_prev(int);
+int aget_next(int);
+int aget_last();
+int aget_fact(int, int, int);

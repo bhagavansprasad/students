@@ -1,0 +1,28 @@
+1.Try a program by using statements close(0),close(1),close(2) then what is the
+  o/p  of that program?
+
+2.First open 7 different files ...after close 4 th file...now again open another
+new file then what is the new fd?
+
+3.First open 7 different files ...after close 4 th file...now use dup(7)
+statement then what is the new fd?
+
+4.Open a same "a.c" file in two different processes (p1,p2) then what is the
+fd's of two processes & what about the file pointers?
+
+5.Use a open() statement before fork() then what about the file pointer
+positions & fd's also (whether it is same or different)?
+
+6.Open a 7 different files in two individual processes then what are the file
+discriptors?
+
+7.How to print or move a program output into/in a file?
+ hint:use close(1) and dup() statements?
+
+8.Find max number of fd's (files we can open in a process)?
+
+9.Find max number of fd's (files we can open in different process)?
+ hint:use a sleep() statement in one of the process
+
+10.Find max number of fd's (system wide limits)?
+ hint:use /proc/pid/limits  and cat limits commands 

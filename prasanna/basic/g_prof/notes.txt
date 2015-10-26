@@ -1,0 +1,28 @@
+** Step-1 : Profiling enabled while compilation
+
+	gcc -Wall -pg test_gprof.c new_test_gprof.c -o test_gprof
+
+** Step-2 : Execute the code
+		do ls
+			test_gprof  test_gprof.c  test_gprof_new.c
+
+		./test_gprof 
+
+		 Inside main()
+
+		 Inside func1 
+
+		 Inside new_func1()
+
+		 Inside func2 
+
+		once again do ls
+		
+			gmon.out  test_gprof  test_gprof.c  test_gprof_new.c
+
+***Step-3 : Run the gprof tool
+		
+			gprof test_gprof gmon.out > analysis.txt
+
+** after we have to look into the analysis.txt  it gives the profiling information about
+	the program

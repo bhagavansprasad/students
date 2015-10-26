@@ -1,0 +1,9 @@
+total 36
+-rwxr-xr-x 1 bhagavan bhagavan 7599 2014-08-18 12:47 a.out
+drwxr-xr-x 2 bhagavan bhagavan 4096 2014-08-18 09:35 CVS
+-rwxr-xr-x 1 bhagavan bhagavan 7599 2014-08-18 12:53 rcp
+-rw-r--r-- 1 bhagavan bhagavan  798 2014-08-18 12:52 rcp.c
+-rw-r--r-- 1 bhagavan bhagavan  488 2014-08-18 12:40 rcp_calls.c
+-rw-r--r-- 1 bhagavan bhagavan  213 2014-08-18 12:51 rpc.h
+-rw-r--r-- 1 bhagavan bhagavan    0 2014-08-18 12:53 x.txt
+-rw-r--r-- 1 bhagavan bhagavan  424 2014-08-18 12:48 y.txt

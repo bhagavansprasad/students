@@ -1,0 +1,192 @@
+ /* Assignments to be taken before compilation stages starts */
+"----------------students to do before class----------------"
+- What abbreviation of gcc?
+- How to compile a '.c' file?  What is the name of default output file?
+- List differences between compilation stages given below?
+  Preprocessing, Compilation, Assembly, Linking and Loading
+- What are the flags that are used to stop at different stages of compilation?
+- What is the use of flags '-Wall' and '-Werror' at compilation stage?
+  ex: gcc a.c -Wall -Werror
+- What is flag that is used to compile the program for debugging?
+- What does it mean a program in 'Compilation time' and 'Run time', what is the difference ?
+- List list of error that gets genarated at different stages of compilation with
+  exmaple.
+- Why "#include" is required in a program ?
+- What is the difference between '#include <stdio.h>' and '#include "stdio.h"'
+- At what stage of compilation the macros are handled?
+- How to compile a program which consists more than one '.c' file?
+
+
+Preprocessing stage
+-------------------
+List all observations after compiling below code
+
+u1.c
+----
+#define USER_PROG	/* Create two files u1.c (With out this line) 
+					   and u2.c (with this line) */
+#define MAX 5
+main()
+{
+	for(i = 0; i < MAX; i++)
+	{
+#ifdef USER_PROG	
+		printf("i value is %d", i);	/* this instruction is under conditional
+									   compilation*/
+#endif
+	}
+}
+		
+//TODO: change the file names to u1.c u2.c
+Command:
+gcc -E u1.c //prints the output to shell 
+gcc -E u2.c //prints the output to shell 
+ 
+gcc -E u1.c -o u1.i //prints the output to file u1.i 
+gcc -E u2.c -o u2.i //prints the output to file u2.i 
+
+gcc -E u1.c -o u1.i 
+gvim -d u1.c u1.i //see the difference between user1.c and user1.i
+
+gcc -E u2.c -o u2.i 
+gvim -d u2.c u2.i //see the difference between user1.c and user1.i
+		
+NOTE: Now #include <stdio.h> file and repeate whole activity once again and list
+observations
+
+Compilation Stage
+-----------------
+- The human readable code is now compiled by a compiler and converts it to
+  assembly level code.
+- Hereafter we cannot see any of the C keywords or instruction set that we have
+  used in the .c file.  The total program is converted to Assembly level code.
+
+List the observations after compiling below code
+
+t1.c
+----------
+#define USER_PROG	//* Create two files t1.c (With out this line) 
+					   and t2.c (with this line) */
+#define MAX 5
+main()	
+{
+	for(i = 0; i < MAX; i++)
+	{
+#ifdef USER_PROG	
+		Print(i)	/* this instruction is under conditional compilation*/
+#endif
+	}
+}
+
+print.c
+---------
+Print(int i)
+{
+	printf("i value is  %d",i);
+}
+
+Command: 
+	gcc -S (t1.c/t1.i) -o t1.s
+	gcc -S (t2.c/t2.i) -o t2.s
+
+	gcc -S print.c -o print.s
+Assembly level Stage
+--------------------
+- The third stage of compilation is done by assembler which converts the
+  assembly level code to machine level code.
+- Here after the code becomes unreadable. The source code gets converted into
+  binary values of 0's and 1's.
+
+List the observations after compiling below code
+	
+a.c
+---------
+#define USER_PROG	///* Create two files a1.c (With out this line) 
+					   and a2.c (with this line) */
+#define MAX 5
+main()	
+{
+	for(i = 0; i < MAX; i++)
+	{
+#ifdef USER_PROG	
+		Print(i)	/* this instruction is under conditional compilation*/
+#endif
+	}
+}
+
+print.c
+--------
+Print(int i)
+{
+	printf("i value is  %d",i);
+}
+	
+Command: 
+gcc -c <a1.c/a1.i/a2.s> -o a1.o
+gcc -c <a2.c/a2.i/a.s> -o  a2.o
+
+gcc -c print.s -o print.o
+
+NOTE: For this stage the source may be .c or .i or .s files. you can also include .h file and check the output file.
+
+Linking
+-------
+- This the final stage of compilation. It takes one or more object files or/and libraries as input and combines them to produce a single (usually executable) file. 
+- In doing so, it resolves references to external symbols.
+	
+command:
+	gcc a1.o/a2.o print.o
+	
+
+Loading
+-------
+Loading is defined as getting the executable file that is generated in earlier stages to virtual memory for execution,
+
+$ ./a.out
+
+compilation flags that are passed to gcc command for specific purpose:
+gcc -E	-->to stop the compilation at preprocessing stage.
+	-S	-->to stop the compilation at compilation stage or to generate assembly level code
+	-C  -->to stop the compilation before linking or to generate object files
+	-o 	-->renaming the output file.
+	-Wall -Werror --> to treat warnings as errors.
+	-g 	-->for generating debugging mode executable.
+
+Compilation Error:
+	--> An error occurred during compilation of a project/source code is known as compilation error.
+	--> Make note of every error and the solution for that error so that in future it will take less time to 
+		identify the errors and helps you in solving it faster.
+	--> Identify the error and analyze from which stage of compilation it is ?
+
+Runtime Error:
+	--> An error that occurs during the execution is probably known as Runtime Error
+	--> This will come mostly due to illegal memory accessing. (Segmentation Fault)
+
+Debugging Concepts:
+	-->	Debugging is very very important for any one to understand the existing code flow.
+	--> Checking one scenario In a huge project dealing with thousands of files will be very tough to 
+		go through the entire code, at that point of time we have to know what are the files, functions 
+		that has to be analysed for that scenario.
+	-->	In real time, writing a line of code for desired behaviour in a existing project, firstly one 
+		has to analyse the code that executes for that behaviour, so that developer can merge his changes 
+		exactly at the desired location.
+	--> Step by step execution is possible using GNU debugger, for achieving this the compilation has to be 
+		with "-g" flag
+	ex: gcc -g a.c
+	
+	--> The output file file should be executed with gdb command so that it will enter into debugging mode.
+	ex: gdb a.out
+
+	--> after entering into debugging mode user can set break points for
+		functions and line numbers. a break point is place where normal execution gets stopped and step by 
+		step execution starts.
+	ex: break main 
+		break func
+		break 25 /*line number (applicable for only one file)*/
+
+	--> user can run the program by using run command in debugging mode so that execution of the output file 
+		starts.
+
+MACRO:
+	Macros are used to make a sequence of computing instructions available to the programmer as a single 
+	program statement, making the programming task less tedious and less error-prone.

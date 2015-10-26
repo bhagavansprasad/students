@@ -1,0 +1,32 @@
+#include<stdio.h>
+main()
+{
+	int count=3,k,i,j,n=69;
+	for(i=65;i<=n;i++)
+	{
+		count--;
+		for(k=1;k<=count;k++)
+		{
+			printf(" ");
+		}
+		for(j=65;j<=i;j++)
+		{
+			printf("%c",j);
+		}
+		printf("\n");
+		if(i==n)
+		{
+			i-=4;
+			n-=2;
+			if(count>=0)
+			{
+				count+=2;
+			}
+		}
+		i++;
+		if(n<65)
+		{
+			break;
+		}
+	}
+}

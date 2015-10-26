@@ -1,0 +1,94 @@
+
+				first round interview questions in huawai
+				-------------------------------------------
+what are different storage sections or storage segments?
+
+write a program for deletion of a node from double linkedlist ,base address of the node
+given, header is availble globally?
+
+what is the output of the following program?
+int *foo()
+{
+
+int a = 10;
+
+return &a;
+
+}
+
+main()
+{
+int *ptr;
+
+ptr = foo();
+
+printf("*ptr=%d\r\n",*ptr);
+}
+
+Explain about memory management module?
+
+Tell me how many types of sorting algorithms are availble ?, and which one is
+the best ?
+
+Explain about any one of the searching algorithm ?
+
+what are different types of storage classes are available explain each one ?
+
+what is the sizeof structure and union ?
+
+How the linked lists stored in memory whether contigeously or not ?
+
+what is the difference between array and linkedlist?
+
+
+				second round interview questions in huawai
+
+Explain about OVDC project?
+  Cross questions on ovdc
+           1)what is jiffes?
+	   2)which ipc used for sending pid,jiffes?
+	   3)How will u calculate the cpu occupancy?
+
+What is the output of the following program
+int *ptr;
+ptr = malloc(10);
+you will get some address like 2004
+if you increase ptr++;
+How many bytes it will increase ?
+
+How many types of the IPC mechanisms are available explain each one detailly?
+
+What is the output of the following program?
+#define MUL(x*y) x*y
+int main()
+{
+
+int a=5;
+int b=6;
+
+MUL(a+2, b+5);
+
+}
+How will you correct the above preprocessing statement to get correct value?
+
+what is stack and queue?
+
+what is thread and  process?
+
+what are differences between threads and processes?
+
+What is rtos,difference betweem Rtos and Gpos ?
+
+How will you create a thread in Rtos and what are all the arguments for thread
+create?
+
+where globally static intialised and uninitilised variables stored?
+
+
+where locally static intialised and uninitilised variables stored?
+
+what is socket?
+
+what is the purpose of accept systemcall?
+
+

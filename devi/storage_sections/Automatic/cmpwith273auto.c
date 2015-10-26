@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main()
+{
+int a = 10;
+int b;
+printf("------>a :%d\r\n", a);
+printf("------>b :%d\r\n", b);
+return 0;
+}

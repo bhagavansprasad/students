@@ -1,0 +1,289 @@
+
+C -> S 
+192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<?xml version='1.0' ?>
+
+C -> S 
+192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<stream:stream to='auranetworks.in' 
+    xmlns='jabber:client' 
+    xmlns:stream='http://etherx.jabber.org/streams' 
+    version='1.0'>
+
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response:
+	<?xml version='1.0'?>
+	<stream:stream xmlns:stream='http://etherx.jabber.org/streams' 
+	xmlns='jabber:client' 
+	from='auranetworks.in' 
+	version='1.0' 
+	id='vr02oq09s69o6fs51gbcbnmvol65jaef1ehq4i0x' 
+	xmlns:ack='http://www.xmpp.org/extensions/xep-0198.html#ns'>
+
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<stream:features xmlns:stream='http://etherx.jabber.org/streams'>
+	        <address xmlns='http://affinix.com/jabber/address'>
+	         192.168.1.34
+            </address>
+	        <mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'>
+	                    <mechanism>
+			         PLAIN
+			    </mechanism>
+	                    <mechanism>
+			         DIGEST-MD5
+			    </mechanism>
+	        </mechanisms>
+	        <auth xmlns='http://jabber.org/features/iq-auth'/>
+	        <register xmlns='http://jabber.org/features/iq-register'/>
+	 </stream:features>
+
+C -> S 
+192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' 
+	      mechanism='DIGEST-MD5'>
+	      dXNlcm5hbWU9InRhcnVuIixyZWFsbT0iYXVyYW5ldHdvcmtzLmluIi
+	      xub25jZT0iOEVZTEVEa3oyZjJIdEtkaXBJdHZRdz09Iixjbm
+	      9uY2U9IjVoOSt6d1l4MFBKOVl1MlhwdmhWZ2hRV
+ 	      lhzTXd2L1piZmtaQ1p6eU40VDQ9IixuYz0wMDAwMDAwMixxb3A9YXV0aCxtYXhidWY9ND
+ 	      A5NixkaWdlc3QtdXJpPSJ4bXBwL2F1cmFuZXR3b3Jrcy5pbiIscmVzc
+	      G9uc2U9YjMyMTg5Y2NmOGRkOTM0MTJmZDRkMzViOWYyMjQyMzg=</auth>
+
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<challenge xmlns='urn:ietf:params:xml:ns:xmpp-sasl'>
+                   cmVhbG09ImF1cmFuZXR3b3Jrcy5pbiIsIG5vbmNlPSJCL0s3dE1lYUZhTmJXc
+                   DlPTUZMTWxnPT0iLCBxb3A9ImF1dGgiLCBjaGFyc2V0PX
+	           V0Zi04LCBhbGdvcml0aG09bWQ1LXNlc3M=</challenge>
+
+C -> S 
+192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<response xmlns='urn:ietf:params:xml:ns:xmpp-sasl'>
+                  dXNlcm5hbWU9InRhcnVuIixyZWFsbT0iYXVyYW5ldHdvcmtzLmluIixub25j
+                  ZT0iQi9LN3RNZWFGYU5iV3A5T01GTE1sZz09Iixjbm9uY2U9Ik40VVFtcm
+                  M1VWl1NGt0amZVSzBYZElVVjNSWElFMjdkWFJBbGNiV2cwdFU9IixuYz0wMDAwMDAw
+                  MSxxb3A9YXV0aCxtYXhidWY9NDA5NixkaWdlc3QtdXJpPSJ4bXBwL2F1cmFuZXR3b3Jrcy5pbiIscmVzc
+	          G9uc2U9MWM1ODBhOWI4NWY2NjQ2YjcwY2Y0YzY3ODQ1MWY5MjUsY2hhcnNldD11dGYtOA==</response>
+
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<challenge xmlns='urn:ietf:params:xml:ns:xmpp-sasl'>
+                   cnNwYXV0aD1iYjNjY2FlNGE0NTdjMzdjNTk2MWJmOTAzZjU3NTkzZQ==</challenge>	
+
+C -> S	192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<response xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/>
+
+S -> C 192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<success xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/>
+
+C -> S 192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<stream:stream to='auranetworks.in' 
+                xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' 
+	version='1.0'>
+
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<?xml version='1.0'?>
+	      <stream:stream xmlns:stream='http://etherx.jabber.org/streams' 
+	              xmlns='jabber:client' from='auranetworks.in' version='1.0' 
+	              id='palwqd1ruc350q1pb7uvi8aknsasabpzlavbox2j' 
+	              xmlns:ack='http://www.xmpp.org/extensions/xep-0198.html#ns'> 
+
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<stream:features xmlns:stream='http://etherx.jabber.org/streams'>
+                <ack:ack/>
+	        <bind xmlns='urn:ietf:params:xml:ns:xmpp-bind'>
+	              <required/>
+	        </bind>
+               	<unbind xmlns='urn:ietf:params:xml:ns:xmpp-bind'/>
+	                <session xmlns='urn:ietf:params:xml:ns:xmpp-session'/>
+	                <ver xmlns='urn:xmpp:features:rosterver'/>
+	</stream:features>	
+
+C -> S 
+192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<iq type='set' id='purplecfb778c5'>
+	    <bind xmlns='urn:ietf:params:xml:ns:xmpp-bind'>
+	          <resource>
+	              home
+	          </resource>
+	    </bind>
+	</iq>
+
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<iq xmlns='jabber:client' 
+	    id='purplecfb778c5' 
+            type='result'>
+            <bind xmlns='urn:ietf:params:xml:ns:xmpp-bind'>
+		  <jid>
+	            tarun@auranetworks.in/home
+		  </jid>
+	    </bind>
+	 </iq>
+
+C -> S
+192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<iq type='set' id='purplecfb778c6'>
+            <session xmlns='urn:ietf:params:xml:ns:xmpp-session'/>
+	</iq>
+
+C -> S 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<iq xmlns='jabber:client' id='purplecfb778c6' type='result'/>
+
+C -> S 
+192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<iq type='get' 
+	    id='purplecfb778c7' 
+            to='auranetworks.in'>
+	    <query xmlns='http://jabber.org/protocol/disco#items'/>
+	</iq>
+
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<iq xmlns='jabber:client' 
+               id='purplecfb778c7' 
+               from='auranetworks.in' 
+	       to='tarun@auranetworks.in/home'
+	       type='result'>
+	       <query xmlns='http://jabber.org/protocol/disco#items'/>
+	</iq>
+
+C -> S
+192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<iq type='get' 
+              id='purplecfb778c8' 
+              to='auranetworks.in'>
+	      <query xmlns='http://jabber.org/protocol/disco#info'/>
+	</iq>
+									  
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<iq xmlns='jabber:client' 
+	       id='purplecfb778c8' 
+               from='auranetworks.in' 
+	       to='tarun@auranetworks.in/home' 
+               type='result'>
+	       <query xmlns='http://jabber.org/protocol/disco#info'>
+           <identity name='Jabber IM server' type='im' category='server'/>
+           <feature var='jabber:iq:private'/>
+	   <feature var='presence'/>
+           <feature var='jabber:iq:time'/>
+           <feature var='jabber:iq:agents'/>
+	   <feature var='urn:xmpp:ping'/>
+           <feature var='http://jabber.org/protocol/disco#info'/>
+           <feature var='http://jabber.org/protocol/disco#items'/>
+           <feature var='http://jabber.org/protocol/vacation'/>
+           <feature var='urn:xmpp:time'/>
+           <feature var='urn:xmpp:blocking'/>
+           <feature var='vcard-temp'/>
+           <feature var='jabber:iq:version'/>
+           <feature var='message'/>
+	   <feature var='msgoffline'/>
+           <feature var='jabber:iq:privacy'/>
+           <feature var='http://jabber.org/protocol/amp'/>
+           <feature var='jabber:iq:roster'/>
+           <feature var='iq'/>
+           <feature var='jabber:iq:last'/>
+           <x xmlns='jabber:x:data' type='result'>
+           <field type='hidden' var='FORM_TYPE'>
+                  <value>
+		      urn:xmpp:dataforms:softwareinfo
+		  </value>
+	   </field>
+           <field var='software'>
+	          <value>
+		     jabberd
+		  </value>
+	  </field>
+          <field var='software_version'>
+	         <value>
+		    2.2.16
+		 </value>
+          </field>
+          <field var='os'>
+	         <value>
+		     Linux
+		 </value>
+	  </field>
+	  <field var='os_version'>
+	         <value>
+		    x86_64
+		 </value>
+	  </field>
+         </x>
+        </query>
+     </iq>
+
+C -> S 
+192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<iq type='get' 
+	      id='purplecfb778c9'>
+	      <vCard xmlns='vcard-temp'/>
+	</iq>
+
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<iq xmlns='jabber:client' 
+	       id='purplecfb778c9' 
+	       type='result'>
+	       <vCard xmlns='vcard-temp'/>
+	</iq>							
+
+C -> S 
+192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<iq type='get' 
+	      id='purplecfb778ca'>
+	      <query xmlns='jabber:iq:roster'/>
+	</iq>
+	<iq type='get' 
+	      id='purplecfb778cb'>
+	      <blocklist xmlns='urn:xmpp:blocking'/>
+	</iq>
+	<iq type='get' 
+	      id='purplecfb778cc' to='proxy.eu.jabber.org'>
+	      <query xmlns='http://jabber.org/protocol/bytestreams'/>
+	</iq>
+
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<iq xmlns='jabber:client' 
+	       id='purplecfb778ca' 
+	       type='result'>
+	     <query xmlns='jabber:iq:roster'>
+	        <item name='ravi' subscription='none' jid='ravi@auranetworks.in'>
+	              <group>
+        		  students
+        	      </group>
+		</item>
+	        <item name='bhagavan' 
+	              ask='subscribe' 
+	              subscription='none' 
+	              jid='bhagavan@auranetworks.in'>
+                      <group>
+	     	          students
+	       	      </group>
+	        </item>
+	       </query>
+	  </iq>
+
+C -> S 
+192.168.1.34	192.168.1.30	Jabber/XML	Request: 
+	<presence>
+	   <priority>1</priority>
+           <c xmlns='http://jabber.org/protocol/caps' node='http://pidgin.im/' 
+           hash='sha-1' ver='lV6i//bt2U8Rm0REcX8h4F3Nk3M=' ext='voice-v1 camera-v1 video-v1'/>
+	       <x xmlns='vcard-temp:x:update'>
+		  <photo/>
+	       </x>
+	 </presence>
+
+S -> C 
+192.168.1.30	192.168.1.34	Jabber/XML	Response: 
+	<iq xmlns='jabber:client' id='purplecfb778cb' 
+            type='result'>
+	    <blocklist xmlns='urn:xmpp:blocking'/>
+	</iq>
+

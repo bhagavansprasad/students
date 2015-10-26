@@ -1,0 +1,301 @@
+
+
+Which among the following are TRUE?
+
+I. User has to explicitly define the numeric values of enumerations.
+II. User has a control over the size of enumeration variables.
+III. Enumerations cannot take negative values.
+IV. Enumerations can have an effect local to the block if desired.
+
+
+
+
+
+What will be the output of the following program?
+
+struct emp
+{
+     int length;
+     char* name;
+};
+int main()
+{
+     char *vName = "Joseph";
+     struct emp *eVar = (struct emp*)malloc(sizeof(struct emp));
+     eVar->length = strlen(vName);
+     eVar->name = (char*)malloc(eVar->length+1);
+     strcpy(eVar->name, vName);
+     printf("%d %s\n", eVar->length, eVar->name);
+     free(eVar->name);
+     free(eVar);
+     return 0;
+}
+
+union Unit 
+{
+      char character;
+      int ascii;
+};
+void main()
+{
+       union Unit eUnit[2]={{65},{'a'}};
+       clrscr();
+       printf("%c %c", eUnit[0], eUnit[1]);
+       getch();
+}
+
+
+main()
+{ 
+  int Red=2;
+  printf("%d ""%s",Red,Red==1?"TRUE":"FALSE");
+}
+
+
+#include<stdio.h>
+void Test(int i)
+{
+    printf( "int ");
+}
+void Test(int &i)
+{
+    printf( "int &");
+}
+
+void main()
+{
+    int x=10;
+    Test(x);
+}
+
+
+int main()
+{
+  while(printf("a"))
+  {
+    printf("b");  
+  }
+  return 0;
+}
+
+#include<stdio.h>
+# define a 10 
+int main() 
+{ 
+  printf("%d..",a); 
+  foo(); 
+  printf("%d",a); 
+  return 0;
+} 
+void foo() 
+{ 
+  #undef a 
+  #define a 50 
+}
+
+int main()
+{
+     int i=1;
+     for( ; i < 5; i++);
+        printf("%d ", i);
+     return 0;
+}
+
+
+
+
+What will tempStr contain after execution of the following program assuming that file.txt contains "abcdefg"?
+
+int main()
+{
+  char tmpStr[80];
+  FILE* fp = NULL;   
+  fp = fopen("file.txt","rb");
+  fseek(fp, 4, SEEK_SET);
+  fgets(tmpStr, sizeof(tmpStr), fp);
+  return 0;
+}
+
+
+efg followed by junk characters
+
+efg
+
+NULL
+
+abcdefg
+
+int main()
+{
+  char arr[10]; arr[0] = 'h';
+  arr[0] = 'e'; arr[0] = 'l';
+  arr[0] = 'l'; arr[0] = 'o';
+  arr[0] = '\0'; 
+  printf("%d", sizeof(arr)); 
+  return 0;
+}
+
+
+6
+
+10
+
+5
+
+Compiler error
+
+#include<stdio.h>
+int array[] = {1,22,33,4,55,66};
+void main()
+{
+    printf("%d",(sizeof(array) / sizeof(array[0])));
+}
+
+4
+
+1
+
+2
+
+6
+
+
+
+
+What will be the output of the following program assuming file.txt contains "how are you"?
+
+int main()
+{ 
+  char ch; FILE* fp;
+  fp = fopen("file.txt","r");
+  while((ch=getc(fp)) != NULL)
+    printf("%c", ch); 
+  fclose(fp);
+}
+
+
+
+Does not print anything and stays in while loop
+
+how are you
+
+'how are you' followed by infinite loop
+
+Compiler error
+
+
+
+
+What will be the output of the following program?
+
+char* myFunction (char *ptr)
+{
+   ptr += 3;
+   return (ptr);
+}
+int main()
+{
+   char *x, *y;
+   x = "HELLO";
+   y = myFunction (x);
+   printf ("y = %s \n", y);
+   return 0;
+}
+
+y = LLO
+
+y = ELLO
+
+y = HELLO
+
+y=LO
+
+
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("file.txt", "wb");
+  fwrite("hello world",sizeof("hello world"), 1,fp); 
+  return 0;
+}
+
+file.txt will contain hello world
+
+file.txt will contain some junk characters
+
+Compiler error
+
+file.txt will be empty
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void main() 
+{
+    int apple,orange; 
+    int ctr = 0; 
+    int Fruits[2][3]; 
+    for (apple =0; apple <3; apple ++)
+    for (orange =0; orange <2; orange ++) 
+    { 
+          Fruits [apple][ orange] = ctr; 
+          ++ctr; 
+    }
+    printf("%d", ctr);
+}
+
+5
+
+2
+
+3
+
+	6
+
+
+
+
+What will be the output of the following program?
+
+int main()
+{
+     printf("%%%%\n");
+     return 0;
+}
+
+
+
+Compiler error
+
+Runtime error
+
+%%%%
+
+	%%
+
+
+
+
+What will be the output of the following program?
+
+void func(int *str)
+{
+  printf("%s",str);
+}
+int main()
+{
+  char str[]="hello world";
+  func(str+1);
+  return 0;
+}
+
+hello world
+
+Compiler error
+
+Runtime error
+
+	ello world
+
+
+

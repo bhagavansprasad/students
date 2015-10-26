@@ -1,0 +1,30 @@
+#include<stdio.h>
+main()
+{
+	int i,j,c=-1,n=5,k,l;
+	for(i=n;i>=1;i--)
+	{
+		for(j=1;j<=i;j++)
+		{
+			printf("%d",j);
+		}
+		c++;
+		if(i<n)
+		{
+			for(k=1;k<=c;k++)
+			{
+				printf(" ");
+			}
+			printf("%d",i);
+		}
+		for(l=(i-1);l>0;l--)
+		{
+			printf("%d",l);
+		}
+		printf("\n");
+		if(i<n)
+		{
+			c++;
+		}
+	}
+}

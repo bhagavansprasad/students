@@ -1,0 +1,205 @@
+Script started on Wed 12 Nov 2014 10:15:47 AM IST
+]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ 
+]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ 
+]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ 
+]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ ./runvalid 
+
+These results represent actual drive validation experiments
+
+QUANTUM_QM39100TD-SW (rms should be about 0.378)
+rms = 0.377952
+
+SEAGATE_ST32171W (rms should be about 0.349)
+rms = 0.347570
+
+SEAGATE_ST34501N (rms should be about 0.318)
+rms = 0.317972
+
+SEAGATE_ST39102LW (rms should be about 0.107)
+rms = 0.106906
+
+IBM_DNES-309170W (rms should be about 0.135)
+rms = 0.135884
+
+QUANTUM_TORNADO (rms should be about 0.268)
+rms = 0.267721
+
+HP_C2247_validate (rms should be about 0.090)
+rms = 0.089931
+
+HP_C3323_validate (rms should be about 0.306)
+rms = 0.305653
+
+HP_C2490_validate (rms should be about 0.254)
+rms = 0.253762
+
+DEC_RZ26_validate (rms should be about 0.340)
+*** warning: ignoring hpl parameters for non-hpl seek type.
+rms = 0.340367
+
+The remaining tests exercise other DiskSim components
+
+Open synthetic workload (avg. resp. should be about 10.9ms)
+IOdriver Response time average: 	10.937386
+
+Closed synthetic workload (avg. resp. should be about 87.6ms)
+IOdriver Response time average: 	87.819135
+
+Mixed synthetic workload (avg. resp. should be about 22.08ms)
+IOdriver Response time average: 	22.086628
+
+RAID 5 at device driver (avg. resp. should be about 22.8ms)
+IOdriver Response time average: 	22.861326
+
+Set of disk arrays at device driver (avg. resp. should be about 34.3ms)
+Overall I/O System Response time average: 	34.272035
+
+Memory cache at controller (avg. resp. should be about 24.6ms)
+IOdriver Response time average: 	24.651367
+
+Cache device managed at controller (avg. resp. should be about 28.9ms)
+IOdriver Response time average: 	28.939379
+
+Simpledisk instead of original model (avg. resp. should be about 13.5ms)
+IOdriver Response time average: 	13.711596
+3 different disks
+(avg. resps. should be about 10.937)
+^[OMIOdriver Response time average: 	10.937386
+3 disks on separate controllers
+(avg. resps. should be about 10.937)
+
+
+
+IOdriver Response time average: 	10.937386
+
+Note: this validates HP trace input, *not* the corresponding traced disk
+HP srt trace input (avg. resp should be about 48.8ms)
+IOdriver Response time average: 	48.786646
+
+ASCII input (avg. resp should be about 13.8ms)
+IOdriver Response time average: 	13.766948
+
+syssim: externally-controlled DiskSim (avg. resp should be about 8.9ms)
+response time: n=1000 average=8.894719 std. deviation=2.116511
+IOdriver Response time average: 	8.894719
+
+]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ 
+]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ 
+]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ 
+]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ 
+]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ 
+]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ 
+]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ ll
+total 23160
+-rw-r--r-- 1 bhagavan bhagavan  287747 2014-11-12 10:16 3disks2.outv
+-rw-r--r-- 1 bhagavan bhagavan    7839 2003-01-21 01:59 3disks2.parv
+-rw-r--r-- 1 bhagavan bhagavan  287746 2014-11-12 10:16 3disks.outv
+-rw-r--r-- 1 bhagavan bhagavan    7839 2003-01-21 01:59 3disks.parv
+-rw-r--r-- 1 bhagavan bhagavan 2495268 2003-01-09 01:19 ajw.1week.srt
+-rw-r--r-- 1 bhagavan bhagavan 1406443 2014-11-12 10:16 ascii.outv
+-rw-r--r-- 1 bhagavan bhagavan   12070 2003-01-09 01:19 ascii.parv
+-rw-r--r-- 1 bhagavan bhagavan 2901245 2003-01-09 01:19 ascii.trace
+-rw-r--r-- 1 bhagavan bhagavan    2803 2003-01-09 01:19 atlas10k.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan   13085 2003-05-01 01:34 atlas10k.model
+-rw-r--r-- 1 bhagavan bhagavan  283030 2014-11-12 10:16 atlas10k.outtrace
+-rw-r--r-- 1 bhagavan bhagavan  262535 2014-11-12 10:16 atlas10k.outv
+-rw-r--r-- 1 bhagavan bhagavan    8253 2003-05-01 01:34 atlas10k.parv
+-rw-r--r-- 1 bhagavan bhagavan    1893 2003-01-09 01:19 atlas10k.seek
+-rw-r--r-- 1 bhagavan bhagavan  470000 2003-01-09 01:19 atlas10k.trace
+-rw-r--r-- 1 bhagavan bhagavan    2884 2003-01-09 01:19 atlas_III.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan    6260 2003-01-09 01:19 atlas_III.model
+-rw-r--r-- 1 bhagavan bhagavan  262426 2014-11-12 10:15 atlas_III.outv
+-rw-r--r-- 1 bhagavan bhagavan    8102 2003-01-11 03:17 atlas_III.parv
+-rw-r--r-- 1 bhagavan bhagavan    1629 2003-01-09 01:19 atlas_III.seek
+-rw-r--r-- 1 bhagavan bhagavan  470000 2003-01-09 01:19 atlas_III.trace
+-rw-r--r-- 1 bhagavan bhagavan    2877 2003-01-09 01:19 barracuda.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan    6475 2003-01-09 01:19 barracuda.model
+-rw-r--r-- 1 bhagavan bhagavan  262426 2014-11-12 10:15 barracuda.outv
+-rw-r--r-- 1 bhagavan bhagavan    7713 2003-01-11 03:17 barracuda.parv
+-rw-r--r-- 1 bhagavan bhagavan    1198 2003-01-09 01:19 barracuda.seek
+-rw-r--r-- 1 bhagavan bhagavan  470000 2003-01-09 01:19 barracuda.trace
+-rw-r--r-- 1 bhagavan bhagavan    2898 2003-01-09 01:19 cheetah4LP.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan    4562 2003-01-09 01:19 cheetah4LP.model
+-rw-r--r-- 1 bhagavan bhagavan  262431 2014-11-12 10:15 cheetah4LP.outv
+-rw-r--r-- 1 bhagavan bhagavan    7832 2003-01-11 03:17 cheetah4LP.parv
+-rw-r--r-- 1 bhagavan bhagavan    1425 2003-01-09 01:19 cheetah4LP.seek
+-rw-r--r-- 1 bhagavan bhagavan  470000 2003-01-09 01:19 cheetah4LP.trace
+-rw-r--r-- 1 bhagavan bhagavan    2900 2003-01-09 01:19 cheetah9LP.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan   19564 2003-01-09 01:19 cheetah9LP.model
+-rw-r--r-- 1 bhagavan bhagavan  262437 2014-11-12 10:15 cheetah9LP.outv
+-rw-r--r-- 1 bhagavan bhagavan    7740 2003-01-11 03:17 cheetah9LP.parv
+-rw-r--r-- 1 bhagavan bhagavan    1439 2003-01-09 01:19 cheetah9LP.seek
+-rw-r--r-- 1 bhagavan bhagavan  470000 2003-01-09 01:19 cheetah9LP.trace
+-rw-r--r-- 1 bhagavan bhagavan    2887 2003-01-09 01:19 dec_rz26.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan  258657 2014-11-12 10:16 dec_rz26.outv
+-rw-r--r-- 1 bhagavan bhagavan    4950 2003-01-11 03:17 dec_rz26.parv
+-rw-r--r-- 1 bhagavan bhagavan  330797 2003-01-09 01:19 dec_rz26.trace
+-rw-r--r-- 1 bhagavan bhagavan    1539 2003-01-09 01:19 dec_rz26_validate.model
+-rw-r--r-- 1 bhagavan bhagavan    1329 2003-01-09 01:19 dec_rz26_validate.seek
+-rw-r--r-- 1 bhagavan bhagavan    2891 2003-01-09 01:19 hp_c2247a.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan  258665 2014-11-12 10:16 hp_c2247a.outv
+-rw-r--r-- 1 bhagavan bhagavan    4954 2003-01-11 03:17 hp_c2247a.parv
+-rw-r--r-- 1 bhagavan bhagavan  489951 2003-01-09 01:19 hp_c2247a.trace
+-rw-r--r-- 1 bhagavan bhagavan    5257 2003-01-09 01:19 hp_c2247a_validate.model
+-rw-r--r-- 1 bhagavan bhagavan    2864 2003-01-09 01:19 hp_c2249a.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan    4358 2003-01-09 01:19 hp_c2249a.model
+-rw-r--r-- 1 bhagavan bhagavan    2891 2003-01-09 01:19 hp_c2490a.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan  258649 2014-11-12 10:16 hp_c2490a.outv
+-rw-r--r-- 1 bhagavan bhagavan    4954 2003-01-11 03:17 hp_c2490a.parv
+-rw-r--r-- 1 bhagavan bhagavan  413366 2003-01-09 01:19 hp_c2490a.trace
+-rw-r--r-- 1 bhagavan bhagavan    6239 2003-01-09 01:19 hp_c2490a_validate.model
+-rw-r--r-- 1 bhagavan bhagavan    1325 2003-01-09 01:19 hp_c2490a_validate.seek
+-rw-r--r-- 1 bhagavan bhagavan    2864 2003-01-09 01:19 hp_c3323a.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan    4394 2003-01-09 01:19 hp_c3323a.model
+-rw-r--r-- 1 bhagavan bhagavan  258660 2014-11-12 10:16 hp_c3323a.outv
+-rw-r--r-- 1 bhagavan bhagavan    4964 2003-01-11 03:17 hp_c3323a.parv
+-rw-r--r-- 1 bhagavan bhagavan    1388 2003-01-09 01:19 hp_c3323a.seek
+-rw-r--r-- 1 bhagavan bhagavan  375612 2003-01-09 01:19 hp_c3323a.trace
+-rw-r--r-- 1 bhagavan bhagavan    2894 2003-01-09 01:19 hp_c3323a_validate.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan    4414 2003-01-09 01:19 hp_c3323a_validate.model
+-rw-r--r-- 1 bhagavan bhagavan    1388 2003-01-09 01:19 hp_c3323a_validate.seek
+-rw-r--r-- 1 bhagavan bhagavan  347828 2014-11-12 10:16 hplajw.outv
+-rw-r--r-- 1 bhagavan bhagavan    5289 2003-01-09 01:19 hplajw.parv
+-rw-r--r-- 1 bhagavan bhagavan    2896 2003-01-09 01:19 ibm18es.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan   27726 2003-01-09 01:19 ibm18es.model
+-rw-r--r-- 1 bhagavan bhagavan  262430 2014-11-12 10:16 ibm18es.outv
+-rw-r--r-- 1 bhagavan bhagavan    7736 2003-01-11 03:17 ibm18es.parv
+-rw-r--r-- 1 bhagavan bhagavan    2120 2003-01-09 01:19 ibm18es.seek
+-rw-r--r-- 1 bhagavan bhagavan  470000 2003-01-09 01:19 ibm18es.trace
+-rw-r--r-- 1 bhagavan bhagavan    2999 2008-05-12 03:00 Makefile
+-rw-r--r-- 1 bhagavan bhagavan    4491 2005-03-25 01:12 memsdevices.specs
+-rw-r--r-- 1 bhagavan bhagavan    5085 2005-03-25 01:12 mems.g1.parv
+-rw-r--r-- 1 bhagavan bhagavan    5084 2005-03-25 01:12 mems.g2.parv
+-rw-r--r-- 1 bhagavan bhagavan    5085 2005-03-25 01:12 mems.g3.parv
+-rwxr-xr-x 1 bhagavan bhagavan    1940 2007-03-06 22:23 [0m[01;32mmemsvalid[0m
+-rwxr-xr-x 1 bhagavan bhagavan    5967 2008-06-24 01:50 [01;32mrunvalid[0m
+-rw-r--r-- 1 bhagavan bhagavan    2905 2003-01-09 01:19 st41601n.diskspecs
+-rw-r--r-- 1 bhagavan bhagavan    5012 2003-01-11 03:17 st41601n.parv
+-rw-r--r-- 1 bhagavan bhagavan  414719 2003-01-09 01:19 st41601n.trace
+-rw-r--r-- 1 bhagavan bhagavan    7507 2003-01-09 01:19 st41601n_validate.model
+-rw-r--r-- 1 bhagavan bhagavan    1205 2003-01-09 01:19 st41601n_validate.seek
+-rw-r--r-- 1 bhagavan bhagavan       0 2014-11-12 10:16 stamps
+-rw-r--r-- 1 bhagavan bhagavan    3100 2003-03-18 13:01 statdefs
+-rw-r--r-- 1 bhagavan bhagavan    4517 2003-03-18 13:01 statdefs.mems
+-rw-r--r-- 1 bhagavan bhagavan 2931875 2014-11-12 10:16 syntharrays.outv
+-rw-r--r-- 1 bhagavan bhagavan    8907 2003-01-09 01:19 syntharrays.parv
+-rw-r--r-- 1 bhagavan bhagavan  871587 2014-11-12 10:16 synthcachedev.outv
+-rw-r--r-- 1 bhagavan bhagavan    8938 2003-01-09 01:19 synthcachedev.parv
+-rw-r--r-- 1 bhagavan bhagavan  455662 2014-11-12 10:16 synthcachemem.outv
+-rw-r--r-- 1 bhagavan bhagavan    9007 2003-01-09 01:19 synthcachemem.parv
+-rw-r--r-- 1 bhagavan bhagavan  208016 2014-11-12 10:16 synthclosed.outv
+-rw-r--r-- 1 bhagavan bhagavan    7882 2003-01-09 01:19 synthclosed.parv
+-rw-r--r-- 1 bhagavan bhagavan  356933 2014-11-12 10:16 synthmixed.outv
+-rw-r--r-- 1 bhagavan bhagavan    7906 2003-01-09 01:19 synthmixed.parv
+-rw-r--r-- 1 bhagavan bhagavan  287710 2014-11-12 10:16 synthopen.outv
+-rw-r--r-- 1 bhagavan bhagavan    7785 2003-01-09 01:19 synthopen.parv
+-rw-r--r-- 1 bhagavan bhagavan 1850264 2014-11-12 10:16 synthraid5.outv
+-rw-r--r-- 1 bhagavan bhagavan   10184 2003-01-09 01:19 synthraid5.parv
+-rw-r--r-- 1 bhagavan bhagavan  501378 2014-11-12 10:16 synthsimpledisk.outv
+-rw-r--r-- 1 bhagavan bhagavan    8612 2003-01-09 01:19 synthsimpledisk.parv
+-rw-r--r-- 1 bhagavan bhagavan  182412 2014-11-12 10:16 syssim.outv
+-rw-r--r-- 1 bhagavan bhagavan       0 2014-11-12 10:15 typescript
+[m]0;bhagavan@aura-sys5: ~/disksim-4.0/validbhagavan@aura-sys5:~/disksim-4.0/valid$ exit
+exit
+
+Script done on Wed 12 Nov 2014 10:16:40 AM IST

@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include <stdlib.h>
+struct node
+{
+	int val;
+	struct node *link;
+};
+struct node *new;
+struct node *h=NULL;
+int node_add(int val)
+{
+	struct node *t;
+	new=malloc(sizeof(struct node));
+	new->val=val;
+	new->link=NULL;
+	if(h==NULL)
+	{
+		h=new;
+		return(0);
+	}
+	for(t=h;t->link!=NULL;t=t->link);
+	t->link=new;
+}
+display()
+{
+	struct node *t;
+	for(t=h;t!=NULL; t=t -> link)
+	{
+		printf("%d\n",t->val);
+	}
+
+}
+int addafter(int data,int item)
+{
+	struct node *p,*tmp;
+	p=h;
+	while(p!=NULL)
+	{
+		if(p->val==item)
+		{
+			tmp=(struct node*)malloc(sizeof(struct node));
+			tmp->val=data;
+			tmp->link=p->link;
+			p->link=tmp;
+			return(h);
+		}
+		p=p->link;
+     	}
+	return(h);
+	}
+	main()
+	{ 
+		node_add(20);
+		node_add(30);
+		node_add(40);
+		node_add(50);
+		addafter(10,40);
+		display();
+	}
+

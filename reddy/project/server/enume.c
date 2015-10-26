@@ -1,0 +1,10 @@
+enum
+{
+	open_req=1,
+	read_req,
+	write_req,
+	add_req,
+	fact_req,
+	addafter_req,
+	close_req
+};

@@ -1,0 +1,49 @@
+#include<stdio.h>
+main()
+{
+	int i,j,n=3,k;
+	int a[3][3]={{0,0,0},
+		{0,0,0},
+		{0,0,0}};
+	i=2;
+	j=1;
+	for(k=1;k<=9;k++)
+	{
+		if(a[i][j]==0)
+		{
+			a[i][j]=k;
+		}
+		else
+		{
+			i=i-2;
+			j=j+1;
+			if(i<0)
+			{
+				i=1;
+			}
+			if(j>=n)
+			{
+				j=0;
+			}
+			a[i][j]=k;
+		}
+		i++;
+		if(i>=n)
+		{
+			i=i-n;
+		}
+		j=j+(n-1);
+		if(j>=n)
+		{
+			j=j-n;
+		}
+	}
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			printf("%d\t",a[i][j]);
+		}
+		printf("\n");
+	}
+}

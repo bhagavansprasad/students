@@ -1,0 +1,11 @@
+char* astrcpy(char *, const char *);
+char* astrncpy(char *, const char *,int);
+int astrcmp(char *,char *);
+int astrncmp(char *,char *,int );
+int astrlen(char *);
+int astrcasecmp(char *,char *);
+int astrncasecmp(char *,char *,int );
+char* astrcat (char *,char *);
+char* astrncat (char *,char *,int );
+void astrlwr(char *);
+void astrupr(char *);

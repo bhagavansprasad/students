@@ -1,0 +1,10 @@
+	keyword is static.
+	used with int , float ,double ,array ,pointer ,structure ,functions.
+	it is not default storage class of global var.
+	default value is zero for all integral values otherwise null.
+	A same static var can be declared many times but we can init at only one
+		time.
+	we cant write assignment stmt globally.
+	multiple initialization leads to error.
+	if we declare static var locally then its visibility will within a blk where it
+		has declared.

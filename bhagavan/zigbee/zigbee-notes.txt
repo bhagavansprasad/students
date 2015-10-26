@@ -1,0 +1,22 @@
+http://www.researchgate.net/post/I_want_to_do_implementation_of_a_MAC_layer_of_802154_Can_anyone_give_me_the_initial_guidelines_on_how_to_approach
+
+tinyos-main - TinyOS operating system for embedded, wireless devices 
+http://code.google.com/p/tinyos-main/source/browse/trunk/tos/lib/mac/tkn154
+
+http://www.freaklabs.org/index.php/FreakZ-Open-Source-Zigbee-Stack.html
+
+Compiled path in sys3 - 192.168.1.35
+/home/bhagavan/bak-sources/lwmesh_sim/LwMesh_Sim/apps/PingPong/make
+
+
+/home/bhagavan/bak-sources/lwmesh_sim/LwMesh_Sim - simulator
+/home/bhagavan/sources/zigbee/LwMesh_1_2_1 - actual code
+
+printf("-->%d. %s, %s\n", __LINE__, __FUNCTION__, __FILE__);
+
+avr simulators
+--------------
+http://www.nongnu.org/simulavr/usage.html
+http://reprap.org/wiki/SimulAVR
+http://www.edaboard.com/thread12590.html
+http://www.avrfreaks.net/forum/avra-and-simulavr-help

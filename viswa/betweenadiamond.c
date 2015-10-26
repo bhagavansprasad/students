@@ -1,0 +1,61 @@
+#include<stdio.h>
+main()
+{
+	int n=67,i=1,c=-1,k,l,m,j,s;
+	for(n=67;n>64;n--)
+	{
+		for(j=65;j<=n;j++)
+		{
+			printf("%c",j);
+		}
+		c++;
+		if(n<67)
+		{
+			for(k=1;k<=c;k++)
+			{
+				printf(" ");
+			}
+			printf("%c",n);
+		}
+		for(l=(n-i);l>64;l--)
+		{
+			printf("%c",l);
+		}
+		printf("\n");
+		if(n<67)
+		{
+			c++;
+		}
+	}
+	n+=2;
+	for(;n<=67;n++)
+	{
+		for(m=65;m<=n;m++)
+		{
+			printf("%c",m);
+		}
+		c-=2;
+		for(k=1;k<=c;k++)
+		{
+			printf(" ");
+		}
+		if(n==67)
+		{
+			n--;
+			for(s=n;s>0;s--)
+			{
+				printf("%c",s);
+			}
+			n++;
+		}
+		else
+		{
+			for(s=n;s>0;s--)
+			{
+				printf("%c",s);
+			}
+		}
+		printf("\n");
+	}
+}
+

@@ -1,0 +1,46 @@
+signature :FLV
+version   :1
+flags     :5
+offset    :9
+
+
+-->previoustag        :0
+-->type               :18
+-->dataSize           :843
+-->offset             :0
+-->time_stamp         :0
+
+
+-->flvScrGetString
+-->MV_getFileDuration
+-->str 	:onMetaData
+
+
+
+prev_tagsize 854
+
+  <tag type="video" timestamp="0" dataSize="43" offset="871">
+    <videoData codecID="AVC" frameType="keyframe"/>
+  </tag>
+
+
+prev_tagsize 54
+
+  <tag type="audio" timestamp="0" dataSize="4" offset="929">
+    <audioData type="stereo" size="16" rate="44" format="AAC"/>
+  </tag>
+
+
+prev_tagsize 15
+
+  <tag type="audio" timestamp="0" dataSize="11" offset="948">
+    <audioData type="stereo" size="16" rate="44" format="AAC"/>
+  </tag>
+
+
+prev_tagsize 22
+
+  <tag type="video" timestamp="0" dataSize="71" offset="974">
+    <videoData codecID="AVC" frameType="keyframe"/>
+  </tag>
+the loop finishes

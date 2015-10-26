@@ -1,0 +1,62 @@
+#include "struct_req.h"
+#include "struct_rply.h"
+#include"rpcc_send_req.h"
+#include <sys/types.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <string.h>
+#include <unistd.h>
+
+/*open funtion*/
+int rpc_open(char *fn,int flag,int mode)
+{
+	struct final c_req;
+	struct S_final s_rply;
+	strcpy(c_req.uni.a_open.fn,fn);
+	c_req.uni.a_open.flags = flag;
+	c_req.uni.a_open.mode = mode;
+	c_req.op = 1;
+	rpcs_send_req(&c_req,&s_rply);
+	int rval =s_rply.s_uni.s_open.fd;
+	if (rval == -1)
+		printf("in rpcc error is : %d\n",s_rply.s_uni.s_open.err_no);
+	return rval;
+}
+
+/*read funtion*/
+int rpc_read(int fd,char *buff,int len)
+{
+	struct final c_req;
+	struct S_final s_rply;
+	c_req.uni.a_read.fd = fd;
+	strcpy(c_req.uni.a_read.buff,buff);
+	c_req.uni.a_read.len = len;
+	c_req.op = 2;
+	rpcs_send_req(&c_req,&s_rply);
+	strcpy(buff,c_req.uni.a_read.buff);
+	return (s_rply.s_uni.s_open.fd);
+}
+
+/*write funtion*/
+int rpc_write(int fd,char *buff,int rval)
+{
+	struct final c_req;
+	struct S_final s_rply;
+	c_req.uni.a_write.fd = fd;
+	strcpy(c_req.uni.a_write.buff,buff);
+	c_req.uni.a_write.rval =rval;
+	c_req.op = 3;
+	rpcs_send_req(&c_req,&s_rply);
+	return (s_rply.s_uni.s_write.rval);
+}
+
+/*close funtion*/
+int rpc_close(int fd)
+{
+	struct final c_req;
+	struct S_final s_rply;
+	c_req.uni.a_close.fd = fd;
+	c_req.op = 4;
+	rpcs_send_req(&c_req,&s_rply);
+	return (s_rply.s_uni.s_close.rval);
+}

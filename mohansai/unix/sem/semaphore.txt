@@ -1,0 +1,233 @@
+Semaphores:- Semaphores are devices used to help with synchronization. If multiple processes share a common resource, they need a way to be able to use that resource without disrupting each other. You want each process to be able to read from and write to that resource uninterrupted.
+
+A semaphore will either allow or disallow access to the resource, depending on how it is set up. One example setup would be a semaphore which allowed any number of processes to read from the resource, but only one could ever be in the process of writing to that resource at a time.
+
+ex: -
+server:- 
+
+#include "stdio.h"
+#include "stdlib.h"
+#include "sys/ipc.h"
+#include "sys/sem.h"
+#include "sys/types.h"
+main()
+{
+	int semid, i, set_semctl, get_semctl;
+	int retval;
+	
+	semid = semget((key_t)0x25, 1, IPC_CREAT | 0666);
+
+	set_semctl = semctl(semid,0 , SETVAL,1);
+
+	while(1)
+	{
+		printf("P1 : Checking Resouce availability\r\n" );
+		retval = semctl(semid, 0, GETVAL, 0);
+		printf("P1 : Resource avialability value :%d\r\n", retval);
+		if(retval==1)
+		{
+			printf("P1 : resource is available\r\n");
+			printf("P1 : Locking the resouce\r\n");
+			set_semctl = semctl(semid,0 , SETVAL,0);	
+			printf("P1 : Locking success\r\n");
+			printf("P1 : Entering into critical section\r\n");
+			for(i = 0; i < 10; i++)
+			{
+				printf("P1: In critical section\r\n");
+				sleep(1);
+			}
+			printf("P1 : Out of critical section\r\n");
+			printf("P1 : Releasing resource\r\n");
+			set_semctl = semctl(semid,0,SETVAL,1);	
+			printf("P1 : Released resource\r\n");
+		}
+		printf("P1: Going for sleep for 1 sec\r\n");
+		sleep(1);
+	}
+
+}
+explination :- in the server first we are checking the semid if the semid is
+lessthan 0 means the semget is failed and flashes the error message. when the
+semget is sucess  we are creating the semctl and setting the value using
+SETVAL and argument to set as 0 or 1 
+	
+	[val = 0 or 1 ]
+	syntax:- retval= semctl(semid, 0, SETVAL, val);
+
+if the 	retval=0 it is sucess, if the val = 1 me the semaphore is free
+we can use the semaphore of the val = 0 means the semaphore is used by someother
+process . 
+
+
+
+ex:-  suppose there is a toilet without lock but we need to use the toilet
+in these case we are using towel  if the towel is on the top of the doar means
+somebody is usin the toilet if the towel is removed  means the person is not
+there in the toilet we can use that toilet with another  towel .
+
+like these  we need to access the procee means we need to set the val = 0
+means theprocess is somebody using we cannot use the file  if the val = 1
+means the process is free we can use the file .
+
+ex:- 	set_semctl = semctl(semid,0 , SETVAL,0);
+	
+		for(i = 0; i < 10; i++)
+		{
+			printf("P1: In critical section\r\n");
+			sleep(1);
+		}
+		
+		set_semctl = semctl(semid,0,SETVAL,1);
+
+
+client :- 
+#include "stdio.h"
+#include "stdlib.h"
+#include "sys/ipc.h"
+#include "sys/sem.h"
+#include "sys/types.h"
+main()
+{
+	int semid, i, set_semctl, get_semctl;
+	int retval;
+	
+	semid = semget((key_t)0x25, 1, IPC_CREAT | 0666);
+
+	while(1)
+	{
+		printf("P2 : Checking Resouce availability\r\n" );
+		retval = semctl(semid, 0, GETVAL, 0);
+		printf("P2 : Resource avialability value :%d\r\n", retval);
+		if(retval==1)
+		{
+			printf("P2 : resource is available\r\n");
+			printf("P2 : Locking the resouce\r\n");
+			set_semctl = semctl(semid,0 , SETVAL,0);	
+			printf("P2 : Locking success\r\n");
+			printf("P2 : Entering into critical section\r\n");
+			for(i = 0; i < 10; i++)
+			{
+				printf("P2: In critical section\r\n");
+				sleep(1);
+			}
+			printf("P2 : Out of critical section\r\n");
+			printf("P2 : Releasing resource\r\n");
+			set_semctl = semctl(semid,0,SETVAL,1);	
+			printf("P2 : Released resource\r\n");
+		}
+		printf("P2: Going for sleep for 1 sec\r\n");
+		sleep(1);
+	}
+
+}
+run the both programs indivisually and we can see the difference 
+
+deadlock :- a resource can be released only voluntarily by the process holding it, after that process has completed its task.      deadlock exists among a set of processes if every process is
+waiting for an event that can be caused only by another process in the
+set.
+                
+				 deadlock exists among a set of processes if every process is
+                 waiting for an event that can be caused only by another process in the
+                 set.
+               
+			   Example: two processes share 2 resources that they must request
+                 (before using) and release (after using). Request either gives access
+                 or causes the proc. to block until the resource is available.
+Emin Gun Sirer
+                           Proc1:                            Proc2:
+                           request tape                      request printer
+                           request printer                   request tape
+                           ... <use them>                      ... <use them>
+                           release printer                   release tape
+                           release tape                      release printer
+server:- 
+
+#include "stdio.h"
+#include "stdlib.h"
+#include "sys/ipc.h"
+#include "sys/sem.h"
+#include "sys/types.h"
+main()
+{
+	int semid, i, set_semctl, get_semctl;
+	int retval;
+	
+	semid = semget((key_t)0x25, 1, IPC_CREAT | 0666);
+
+	set_semctl = semctl(semid,0 , SETVAL,1);
+
+	while(1)
+	{
+		printf("P1 : Checking Resouce availability\r\n" );
+		retval = semctl(semid, 0, GETVAL, 0);
+		printf("P1 : Resource avialability value :%d\r\n", retval);
+		if(retval==1)
+		{
+			printf("P1 : resource is available\r\n");
+			printf("P1 : Locking the resouce\r\n");
+			set_semctl = semctl(semid,0 , SETVAL,0);	
+			printf("P1 : Locking success\r\n");
+			printf("P1 : Entering into critical section\r\n");
+			for(i = 0; i < 10; i++)
+			{
+				printf("P1: In critical section\r\n");
+				sleep(1);
+			}
+			printf("P1 : Out of critical section\r\n");
+			printf("P1 : Releasing resource\r\n");
+	//set_semctl = semctl(semid,0,SETVAL,1);	
+			printf("P1 : Released resource\r\n");
+		}
+		printf("P1: Going for sleep for 1 sec\r\n");
+		sleep(1);
+	}
+
+}
+
+
+client :-
+#include "stdio.h"
+#include "stdlib.h"
+#include "sys/ipc.h"
+#include "sys/sem.h"
+#include "sys/types.h"
+main()
+{
+	int semid, i, set_semctl, get_semctl;
+	int retval;
+	
+	semid = semget((key_t)0x25, 1, IPC_CREAT | 0666);
+
+	while(1)
+	{
+		printf("P2 : Checking Resouce availability\r\n" );
+		retval = semctl(semid, 0, GETVAL, 0);
+		printf("P2 : Resource avialability value :%d\r\n", retval);
+		if(retval==1)
+		{
+			printf("P2 : resource is available\r\n");
+			printf("P2 : Locking the resouce\r\n");
+			set_semctl = semctl(semid,0 , SETVAL,0);	
+			printf("P2 : Locking success\r\n");
+			printf("P2 : Entering into critical section\r\n");
+			for(i = 0; i < 10; i++)
+			{
+				printf("P2: In critical section\r\n");
+				sleep(1);
+			}
+			printf("P2 : Out of critical section\r\n");
+			printf("P2 : Releasing resource\r\n");
+			set_semctl = semctl(semid,0,SETVAL,1);	
+			printf("P2 : Released resource\r\n");
+		}
+		printf("P2: Going for sleep for 1 sec\r\n");
+		sleep(1);
+	}
+
+}
+
+expl:- in these deadlock situation the server will be blocked until the server
+releases the clild wont get a chance to execute   the procee 
+
+
+

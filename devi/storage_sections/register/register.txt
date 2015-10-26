@@ -1,0 +1,9 @@
+A register storage class is very similar to auto storage class except one most
+	imp property. All reg var in c Stored in CPU not in m/m.
+reg var executes faster than others
+we cant dereference reg vaar bcoz since it dont have any m/m address
+default value of reg var is garbage
+scope and visibility of reg is within blk
+we are requesting to store the reg var in CPU, but we are not forcing to store
+reg var in CPU.
+

@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<string.h>
+main()
+{
+char str[5]="angel";
+/*str[4]='d';
+printf("%s\n",str);
+printf("%c\n",str[0]);
+printf("%c\n",str[1]);
+printf("%c\n",str[2]);
+printf("%c\n",str[3]);
+printf("%c\n",str[4]);
+printf("%c\n",str[5]);
+printf("icecream""choclolate\n");
+printf("%s\n",&str);
+*/
+/*
+printf("%s\n",str);
+printf("%d\n",sizeof(str));
+printf("%d\n",strlen(str));
+*/
+printf("%s",str);
+printf("%d%d%d",sizeof(int),sizeof(3.14f),sizeof(char));
+}

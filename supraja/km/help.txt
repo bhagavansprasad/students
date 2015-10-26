@@ -1,0 +1,64 @@
+make -C /usr/src/linux-headers-`uname -r` SUBDIRS=$PWD modules
+
+- Every device has its own read, write, ioctl, open, release operations
+- New device should be listed in /dev directory - Not happening
+
+User mode
+---------
+- open the device by "name" to read or write operations
+
+
+Questions
+=========
+Questions on 'char driver' given in "http://tldp.org/LDP/lkmpg/2.6/html/x569.html"
+
+Q. What is the mandatory structure to fill when any device is created?
+A. Clue: linux/fs.h
+
+Q. What is the mandatory data to fill the above structure?
+
+Q. In Kernel Module (KM) what fuction gets invoked when we write data from user
+   program (through ioctl) to KM?
+
+Q. The buffer pointer used in ioctl while writing data to KM, and buffer pointer
+  that KM reads are they both same?
+
+Q. What does the Major number signifies?
+
+Q. How can we choose a unique major number for our new driver?
+
+Q. What does it signifies when the major number is passed as '0' to
+   'register_chrdev' function?
+
+Q. From shell how do we know if the device is registred properly or not?
+A. Clue: Reffer /proc/devices
+
+Q. How do we know how many process are reffering the current KM?
+A. Clue: Reffer /proc/modules
+
+Q. What happens when the KM is rmmod'ed when it is reffering by a user program?
+
+Q. What does below functions do?  What is the use?
+   try_module_get(THIS_MODULE)
+   module_put(THIS_MODULE)
+
+Q. Why do you need to create 'device file'?
+
+Q. What is the right path to create a 'device file'?
+
+# insmod hello.ko
+# modprob hello.ko
+# rmmod hello.ko
+# dmesg
+# cat /var/log/syslog
+
+In printk, apart from 'KERN_INFO' flag, what are all other flags available?
+Where does the printk prints the message
+what is dmesg
+what is /var/log/syslog file
+
+Block device
+------------
+http://blog.superpat.com/tag/driver/
+http://www.makelinux.net/ldd3/chp-16-sect-1
+http://surfer.nmr.mgh.harvard.edu/partition/ramdisk.html

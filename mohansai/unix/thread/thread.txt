@@ -1,0 +1,37 @@
+What is?
+- Thread is a single sequence stream within the process
+- Thread is sometime called lightweight process. 
+- Single thread alows a OS to perform singler task at a time
+- Each thread belongs to one process
+- Threads has unique ID which can get by calling pthread_self();
+- Each thread requires Program Counter (PC), Stack Pointer (SP), and data Regiters
+
+Memory
+- Threads share the address space of the process that created it.
+- Threads have direct access to the data segment of its process.
+-Threads share (heap) memory with other threads running in the same application. 
+- Threads executes in the same memory that is allocated to the process
+
+Communication
+- Threads can directly communicate with other threads of its process without any IPC channel
+- Threads can exercise considerable control over threads of the same process;
+
+Advantages over processes
+- Threads have almost no overhead 
+- New threads are easily created
+- Threads are considered lightweight because they use far less resources than processes.
+- thread requires minimal amount of data
+- Context switch biween threads is much faster than processes because of lightweight
+- Kernel switching bitween threads doesn't cause context switch
+- Threads shares Page tables, Per-Process Region tables, Region tables of the process
+
+Property changes
+- Changes to the main thread (cancellation, priority change, etc.) may affect the behavior of the other threads 
+	of the process;
+ 
+Pitfalls
+- Multi threading requires  careful programing since thread  share date structure . 
+	that should only be modified by one thread at a time 
+- Thread with in the  same process can communicate using shared memory  must be done carefully
+
+

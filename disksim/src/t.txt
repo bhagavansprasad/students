@@ -1,0 +1,500 @@
+   44  ./a.out
+   45  gcc order_insert.c -g
+   46  ./a.out
+   47  gcc order_insert.c -g
+   48  ./a.out
+   49  gcc order_insert.c -g
+   50  gdb ./a.out
+   51  gcc order_insert.c -g
+   52  ./a.out
+   53  gcc order_insert.c -g
+   54  ./a.out
+   55  gcc order_insert.c -g
+   56  ./a.out
+   57  exit
+   58  cd students/vinod/linkedlist/
+   59  ls
+   60  g order_insert.c 
+   61  gcc order_insert.c 
+   62  ./a.out
+   63  gcc order_insert.c 
+   64  ./a.out
+   65  gcc order_insert.c 
+   66  c
+   67  ./a.out
+   68  gcc order_insert.c -g
+   69  gdb ./a.out
+   70  gcc order_insert.c -g
+   71  ./a.out
+   72  gcc order_insert.c -g
+   73  gdb ./a.out
+   74  c
+   75  gcc order_insert.c -g
+   76  ./a.out
+   77  gdb ./a.out
+   78  gcc order_insert.c -g
+   79  ./a.out
+   80  gdb ./a.out
+   81  c
+   82  gcc order_insert.c -g
+   83  ./a.out
+   84  gdb ./a.out
+   85  c
+   86  gcc order_insert.c -g
+   87  ./a.out
+   88  gdb ./a.out
+   89  c
+   90  gcc order_insert.c -g
+   91  ./a.out
+   92  gcc order_insert.c -g
+   93  ./a.out
+   94  gcc order_insert.c
+   95  ./a.out
+   96  gcc order_insert.c
+   97  ./a.out
+   98  gcc order_insert.c
+   99  ./a.out
+  100  gcc order_insert.c
+  101  ./a.out
+  102  gcc order_insert.c
+  103  ./a.out
+  104  gcc order_insert.c -g
+  105  gdb ./a.out
+  106  c
+  107  gcc order_insert.c -g
+  108  ./a.out
+  109  gcc order_insert.c -g
+  110  ./a.out
+  111  gcc order_insert.c -g
+  112  ./a.out
+  113  gcc order_insert.c -g
+  114  ./a.out
+  115  exit
+  116  cd students/vinod/linkedlist/
+  117  ls
+  118  g order_insert.c 
+  119  g double_list.c
+  120  gcc double_list.c
+  121  c
+  122  gcc double_list.c
+  123  c
+  124  ./a.out
+  125  gcc double_list.c
+  126  ./a.out
+  127  gcc double_list.c
+  128  ./a.out
+  129  gcc double_list.c -g
+  130  gdb ./a.out
+  131  c
+  132  gcc double_list.c
+  133  ./a.out
+  134  gcc double_list.c
+  135  ./a.out
+  136  gcc double_list.c
+  137  ./a.out
+  138  gcc double_list.c
+  139  ./a.out
+  140  gcc double_list.c
+  141  ./a.out
+  142  gcc double_list.c
+  143  c
+  144  gcc double_list.c
+  145  ./a.out
+  146  gcc double_list.c
+  147  ./a.out
+  148  gcc double_list.c
+  149  ./a.out
+  150  gcc double_list.c
+  151  ./a.out
+  152  gcc double_list.c
+  153  ./a.out
+  154  gcc double_list.c -g
+  155  gdb ./a.out
+  156  gcc double_list.c -g
+  157  ./a.out
+  158  gdb ./a.out
+  159  exit
+  160  ssh -x 192.168.1.30
+  161  logout
+  162  exit
+  163  apt-get source utorrent
+  164  uname -r
+  165  ll
+  166  cd sources/
+  167  ll
+  168  mkdir bittorrent
+  169  cd bittorrent/
+  170  ll
+  171  mv /home/bhagavan/Downloads/bittorrent.tar.gz ./
+  172  ll
+  173  tar -zxvf bittorrent.tar.gz 
+  174  ll
+  175  cd bittorrent/
+  176  ll
+  177  cd BitTorrent/
+  178  ll
+  179  ls
+  180  re README.txt 
+  181  vi README.txt 
+  182  apt-cache search torrent
+  183  apt-cache search torrent | grep lit
+  184  apt-cache search torrent | grep lite
+  185  c
+  186  apt-cache search torrent | grep lite
+  187  apt-cache search torrent | grep server
+  188  apt-cache search torrent | grep -i server
+  189  apt-cache search torrent | grep sync
+  190  sudo add-apt-repository ppa:tuxpoldo/btsync
+  191  mkdir sources/
+  192  cd sources/
+  193  ll
+  194  mkdir utorrent
+  195  cd utorrent/
+  196  ll
+  197  mv /home/bhagavan/Downloads/utserver.tar.gz ./
+  198  ll
+  199  tar -zxvf utserver.tar.gz 
+  200  llll
+  201  ll
+  202  cd utorrent-server-alpha-v3_3/
+  203  ll
+  204  ./utserver 
+  205  file utserver 
+  206  ls
+  207  cd students-bak/
+  208  ls
+  209  cd vinod
+  210  ls
+  211  cd
+  212  c
+  213  cd students/vinod/linkedlist/
+  214  ls
+  215  g double_list.c 
+  216  g order_insert.c 
+  217  gcc order_insert.c 
+  218  ./a.out
+  219  gcc double_list.c 
+  220  ./a.out
+  221  gcc double_list.c 
+  222  ./a.out
+  223  gcc double_list.c 
+  224  ./a.out
+  225  gcc double_list.c 
+  226  ./a.out
+  227  gcc double_list.c 
+  228  ./a.out
+  229  gcc double_list.c 
+  230  ./a.out
+  231  gcc double_list.c 
+  232  ./a.out
+  233  c
+  234  ls
+  235  cp double_list.c double_linkedlist.txt
+  236  cp order_insert.c single_linkedlist.txt
+  237  ls
+  238  cd students/vinod/ovdc/cpu/
+  239  ls
+  240  cd
+  241  ssh -x 192.168.1.35
+  242  exit
+  243  ssh -x 192.168.1.35
+  244  exit
+  245  cd students/vinod/ovdc/cpu/
+  246  ls
+  247  g cpu.c
+  248  gcc cpu.c
+  249  ls
+  250  g test.c
+  251  ls
+  252  gcc test.c -o tst
+  253  ls
+  254  c
+  255  ls
+  256  ./tst
+  257  c
+  258  ls
+  259  ./tst &
+  260  ./a.out 1805 1806 1807 1808
+  261  c
+  262  ./a.out 1805 1806 1807 1808
+  263  gcc cpu.c
+  264  ./a.out 1805 1806 1807 1808
+  265  ps
+  266  kill -9 1802
+  267  ps
+  268  ./a.out 1805 1806 1807 1808
+  269  ps
+  270  c
+  271  gcc cpu.c
+  272  ./tst &
+  273  ./a.out 1872 1873 1874 1875
+  274  gcc cpu.c
+  275  ./a.out 1872 1873 1874 1875
+  276  ps
+  277  gcc cpu.c
+  278  ./tst &
+  279  ./a.out 1906 1907 1908 1909
+  280  ps
+  281  kill -9 1907
+  282  kill -9 1908
+  283  kill -9 1909
+  284  ps
+  285  gcc cpu.c
+  286  ./tst &
+  287  ./a.out 2460 2461 2462 2463
+  288  ps
+  289  kill -9 2461
+  290  kill -9 2462
+  291  kill -9 2463
+  292  ps
+  293  gcc cpu.c
+  294  ./tst &
+  295  ./a.out 2475 2476 2477 2478
+  296  ps
+  297  kill -9 2476
+  298  kill -9 2477
+  299  kill -9 2478
+  300  gcc cpu.c
+  301  ./tst &
+  302  ps
+  303  ./a.out 2491 2492 2493 2494
+  304  ps
+  305  kill -9 2492
+  306  kill -9 2493
+  307  kill -9 2494
+  308  gcc cpu.c 
+  309  ./tst &
+  310  ./a.out 2548 2549 2550 2551
+  311  ps
+  312  kill -9 2549
+  313  kill -9 2550
+  314  kill -9 2551
+  315  gcc cpu.c 
+  316  ./tst &
+  317  ./a.out 2560 2561 2562 2563
+  318  ./a.out 2561 2562 2563
+  319  c
+  320  ls
+  321  cp cpu.c cpu_killpid.c
+  322  ls
+  323  g cpu_killpid.c 
+  324  gcc cpu_killpid.c 
+  325  ps
+  326  kill -9 2562
+  327  kill -9 2563
+  328  ps
+  329  .tst &
+  330  ./tst &
+  331  ./a.out 2613 2614 2615 2616
+  332  ./tst &
+  333  ./a.out 2619 2620 2621 2622
+  334  gcc cpu_killpid.c 
+  335  ./a.out 2619 2620 2621 2622
+  336  gcc cpu_killpid.c 
+  337  ./tst &
+  338  ./a.out 2637 2638 2639 2640
+  339  gcc cpu_killpid.c 
+  340  ./tst &
+  341  ./a.out 2648 2649 2650 2651
+  342  gcc cpu_killpid.c 
+  343  c
+  344  ./tst &
+  345  ./a.out 2681 2682 2683 2684
+  346  cvs up
+  347  rm .cpu_killpid.c.swp
+  348  cvs up
+  349  cvs add cpu_killpid.c
+  350  cvs commit cpu_killpid.c
+  351  cvs up
+  352  cd
+  353  exit
+  354  cd
+  355  top
+  356  exit
+  357  ps
+  358  ps -e
+  359  kill -9 1805
+  360  kill -9 1806
+  361  kill -9 1807
+  362  kill -9 1808
+  363  ps -e
+  364  ps -es
+  365  ps -el
+  366  ps -e
+  367  kill -9 1872 
+  368  kill -9 1873
+  369  kill -9 1874
+  370  kill -9 1875
+  371  kill -9 1906
+  372  kill -9 2460
+  373  kill -9 2475
+  374  kill -9 2491
+  375  kill -9 2548
+  376  kill -9 2560
+  377  kill -9 2561
+  378  kill -9 2613
+  379  kill -9 2614
+  380  kill -9 2615
+  381  kill -9 2616
+  382  kill -9 2619
+  383  kill -9 2620
+  384  kill -9 2621
+  385  kill -9 2622
+  386  kill -9 2637
+  387  kill -9 2638
+  388  kill -9 2639
+  389  kill -9 2640
+  390  kill -9 2648
+  391  kill -9 2649
+  392  kill -9 2650
+  393  kill -9 2651
+  394  kill -9 2681
+  395  kill -9 2682
+  396  kill -9 2683
+  397  kill -9 2684
+  398  exit
+  399  cvs co students/sudhu
+  400  cd students/sudhu/ll
+  401  ll
+  402  g s.c
+  403  rm s.c
+  404  cp sl.c dl.c
+  405  g dl.c 
+  406  gcc dl.c
+  407  ./a.out
+  408  gcc dl.c
+  409  ./a.out
+  410  gcc dl.c
+  411  ./a.out
+  412  cd students/vinod/linkedlist/
+  413  ls
+  414  cvs up
+  415  cvs add order_insert.c double_list.c
+  416  cvs commit order_insert.c double_list.c
+  417  cd
+  418  c
+  419  tar xvf iozone3_394.tar
+  420  c
+  421  cd iozone3_394/src/current
+  422  c
+  423  # wget http://www.iozone.org/src/current/iozone-3-398.i386.rpm
+  424  wget http://www.iozone.org/src/current/iozone3_394.tar
+  425  tar xvf iozone3_394.tar 
+  426  cd iozone3_394/src/current
+  427  make
+  428  make linux
+  429  c
+  430  ls
+  431  g pit_server.c
+  432  g libasync.c
+  433  gcc g libasync.c
+  434  c
+  435  ls
+  436  g Changes.txt 
+  437  c
+  438  ls
+  439  cd
+  440  ./iozone -a -i 0 -r 32
+  441  c
+  442  cd students
+  443  ls 
+  444  cd balu
+  445  ls
+  446  cd 
+  447  cd students
+  448  ls
+  449  cd mahesh
+  450  ls
+  451  cd files
+  452  ls
+  453  c
+  454  ls
+  455  g  filecpy.c
+  456  cd
+  457  ./iozone -a -i 0 -r 32 filecpy.c
+  458  c
+  459  cd iozone3_394/src/current
+  460  ./iozone -a -i 0 -r 32 filecpy.c
+  461  ./c
+  462  c
+  463  ./iozonec
+  464  c
+  465  ./iozone -a -i 0 -s 1024 -r 32
+  466  c
+  467  ./iozone -a -i o -s 1024 -r 32 filecpy.c
+  468  c
+  469  cd
+  470  ./iozone -i 0 -r 32 -s 1024 filecpy.c
+  471  c
+  472  cd iozone3_394/src/current
+  473  ./iozone -a -i 0 -r 32 -s 1024 -+u
+  474  c
+  475  ./iozone -a -i 0 -r 32 -s 1024 filecpy.c
+  476  ./iozone -a -b output.xls
+  477  c
+  478  ./iozone -i 0 -b output.xls
+  479  ./iozone -i 0 -b
+  480  c
+  481  ./iozone -a -i 0 -b output.xls
+  482  c
+  483   g oupput.xls
+  484  c
+  485  ./iozone -tm test.txt
+  486  c
+  487  ./iozone -+u
+  488  c
+  489  ./iozone -a -i 0 -b
+  490  c
+  491  ./iozone -i 0 -b
+  492  c
+  493  ./iozone -i 0 -b output.xls
+  494  c
+  495  cd
+  496  iozon
+  497  iozona
+  498  iozone
+  499  sudo apt-get install iozone3
+  500  c
+  501  ll
+  502  tail -f typescript 
+  503  ll
+  504  tail -f typescript 
+  505  g typescript 
+  506  ipconfig
+  507  ifconfig
+  508  cd ..
+  509  ls
+  510  cd src/
+  511  ls
+  512  c
+  513  cd ..
+  514  cd valid/
+  515  ls
+  516  c
+  517  cd ..
+  518  cd src/
+  519  disksim 3disks.parv 3disks.outv ascii 0 1
+  520  cd ..
+  521  cd doc/
+  522  ls
+  523  cd ..
+  524  cd
+  525  cvs add disksim-4.0/
+  526  cvs co
+  527  cvs co disksim-4.0/
+  528  cvs add disksim-4.0/
+  529  cd disksim-4.0/
+  530  ls
+  531  cd doc/
+  532  ls
+  533  cd ..
+  534  c
+  535  ls
+  536  cd
+  537  ls
+  538  cvs add disksim-4.0/
+  539  cd disksim-4.0/src/
+  540  ./disksim 3disks.parv 3disks.outv ascii 0 1
+  541  ./disksim atlas10k.parv.parv 3disks.outv ascii 0 1
+  542  ./disksim atlas10k.parv. atlas10k.outv ascii 0 1
+  543  history >t.txt
