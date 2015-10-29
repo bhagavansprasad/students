@@ -1,0 +1,50 @@
+- Fill 'value' and 'types' columns for each notation
+  NOTE: Assume adress of variables a, pa, ppa, ppa are 500, 600, 700 and 800
+  respctively
+
+  int a = 10;
+  int *pa = &a;
+  int **pa = &pa;
+  int ***pppa = &ppa;
+
+   Notation  Value    Type
+  .--------.-------.---------.
+  |a       |       |         |
+  |&a      |       |         |
+  |pa      |       |         |
+  |&pa     |       |         |
+  |*pa     |       |         |
+  |&*pa    |       |         |
+  |ppa     |       |         |
+  |*ppa    |       |         |
+  |&*ppa   |       |         |
+  |**ppa   |       |         |
+  |&**ppa  |       |         |
+  |***pppa |       |         |
+  |&***pppa|       |         |
+  |&pppa   |       |         |
+  |*pppa   |       |         |
+  |&*pppa  |       |         |
+  |&**pppa |       |         |
+  '--------'-------'---------'
+ 
+ - Print each byte value of 4 bytes for variable 'a', if 
+   int a = 300;
+
+ - What is the output of the below program?
+   address of a is 500
+
+   int a = 10;
+   int *p = &a; 
+
+   *p
+   (char *)p
+   p + 1
+   ((char *)p) + 1
+   (*(char *)p) + 1
+   *((char *)p + 1)
+
+- Is there a quick way to determine Endianness of your machine?
+  'Little Endian or Big Endian'
+
+- Write a program to reverse the Endianness
