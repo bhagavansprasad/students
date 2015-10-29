@@ -11,6 +11,15 @@ struct s1
 	int class;
 };
 
+struct s1
+{
+	char name[124];
+	int age;
+	int class;
+	int grade;
+	int marks;
+};
+
 main()
 {
 	typedef struct s1 student;
