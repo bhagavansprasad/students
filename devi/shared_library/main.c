@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "foo.h"
+void fun(void);
 int main()
 {
 	printf("I am main\n");
