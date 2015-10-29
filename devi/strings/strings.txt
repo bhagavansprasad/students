@@ -1,0 +1,54 @@
+- What is the ouput of below statements?
+  incase of address of both the strings are 500 and 700 
+
+  char name[100] = "Aura Networks";
+  char *ptr = "Aura Networks"
+
+  * What is the difference between 'name' and 'ptr'
+  * What are the values in 'name' and 'ptr'
+  * What is the ouput
+  sizeof(name)
+  sizeof(ptr)
+
+  * Which of below statements valid/Invalid and Why?
+  name[3] = 'A'
+  ptr[3] = 'A'
+
+  * What is the storage section of 'name'
+  * What is the storage section of 'ptr'
+  * What is the storage section of string "Aura Networks"
+
+- What is the output of below statements?
+  char name1[] = "Aura Networks"
+  char name2[] = "Embedded Training"
+
+  char *ptr1 = "Aura Networks"
+  char *ptr2 = "Embedded Training"
+  char *temp;
+
+  * Which of below statements valid/Invalid, Why and what is the output?
+  temp = ptr1;
+  ptr1 = ptr2;
+  ptr2 = temp;
+
+  printf("%s :", ptr1);
+  printf("%s :", ptr2);
+
+  temp = name1;
+  name1 = name2;
+  name2 = temp;
+
+  printf("%s :", name1);
+  printf("%s :", name2);
+
+- What is the output of below statements, incase
+  of base of address of array is 500?
+
+						Value	Type
+  "Aura Networks"[4]	
+  5["Aura Networks"]
+  "Aura Networks"
+
+- What is the difference between
+  pointer to an array?
+  array of pointers?
