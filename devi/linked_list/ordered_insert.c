@@ -17,8 +17,8 @@ main()
 	order_add_node(5);
 	order_add_node(1);
 	order_add_node(15);
-	//add_node(30);
-	//add_node(40);
+	order_add_node(30);
+	order_add_node(25);
 	//add_node(50);
 	display();
 }
