@@ -1,6 +1,7 @@
-#include <iostream.h>
+#include "iostream"
+using namespace std;
 
-main()
+int main()
 {
 int a, b, sum;
      
@@ -9,4 +10,5 @@ cin >> b;
              
 sum = a + b;
 cout << sum << endl;
+return 0;
 }
