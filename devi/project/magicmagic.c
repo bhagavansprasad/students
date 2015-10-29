@@ -1,0 +1,29 @@
+#include <stdio.h>
+main()
+{
+int i,j,num=1,n=5,a[5][5];
+i=n-1;
+j=(n-1)/2;
+a[i][j]=num;
+printf("a[%d][%d]=%d\n",i,j,num);
+i=0;
+j=j-1;
+while(num<=25)
+{
+a[i][j]=num++;
+printf("a[%d][%d]=%d\n",i,j,num);
+if(num==25)
+break;
+if((num%5)==0)
+{
+a[i--][j]=num++;
+printf("a[%d][%d]=%d\n",i,j,num);
+}
+if(j==0)
+j=n;
+if(i==(n-1))
+i=-1;
+i++;
+j--;
+}
+}
