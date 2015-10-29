@@ -2,14 +2,14 @@
 main()
 {
 	char const *str="bcd";
-	const char *str1="abcd";
+	char *str1="abcd";
 
 	char* const p = 'a';
 	char ch = 'i';
 	//p = &ch;
-	printf("str1++ = %c\n", p);
-	p++;
-    printf("str1++ = %c\n", p);
+	//printf("str1++ = %c\n", p);
+	//p++;
+    //printf("str1++ = %c\n", p);
 
 	printf("str1 = %u\n", str1);
 	str1++;
