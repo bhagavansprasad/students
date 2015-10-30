@@ -18,16 +18,17 @@ struct flv_file_header
 	bool is_audio;
 	unsigned int offset;
 };
-
-struct flv_tag_header
-{
-	unsigned int prev_tag_size:32;
-	enum tag_type
+enum tagtype
 	{
 	audio=8,
 	video=9,
 	script=19
 	};
+
+struct flv_tag
+{
+	unsigned int prev_tag_size:32;
+	enum tagtype t;
 	unsigned int data_size:24;
 	unsigned int time_stamp:24;
 	unsigned int time_stamp_extended:8;
@@ -37,5 +38,5 @@ struct flv_tag_header
 int read_flv_header(int, char *, int);
 void parse_flv_header(char *, int, struct flv_file_header *);
 void dump_flv_header(struct flv_file_header *);
-void parse_flv_tag_header(char *, int, struct flv_tag_header *);
-void dump_flv_tag_header(struct flv_tag_header *);
+void parse_flv_tag(char *, int, struct flv_tag *);
+void dump_flv_tag(struct flv_tag *);
