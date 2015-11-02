@@ -18,9 +18,8 @@ int main()
 	r = read_flv_header(rfd, buff, len);
 	parse_flv_header(buff, len, &fhead);
 	dump_flv_header(&fhead);
-	
-
-	r = read_flv_header(rfd, buff, 8);
-	parse_flv_tag(buff, 8, &thead);
+	//lseek(rfd,9,1);
+	r = read_flv_header(rfd,buff, 12);
+	parse_flv_tag(buff , 12, &thead);
 	dump_flv_tag(&thead);
 }

@@ -1,3 +1,5 @@
+#include "flv.h"
+int power=1;
 int offset_value(int n)
 {
 	int b = 0, d = 0;
@@ -29,4 +31,32 @@ int binarytodecimal(int n)
 		dec+=d;
 	}
 	return dec;
+}
+
+int convert_hex_to_bin(char c)
+{
+	int mask=1,n,i,sum=0;
+	printf("c -- %d\n", c);
+	for(i=0;i<=7;i++)
+	{
+		n = c&(mask<<i);
+		if(n>0)
+		{
+			if(power == 1)
+			{
+				printf("power is 1");
+				sum = sum +1;
+			}
+			else
+			{
+				sum = sum+power;
+			}
+		}
+		power=power*2;
+
+		printf("n--%d\n",n);
+		printf("sum--%d\n", sum);
+		//printf("sum--%d\n",mask<<i);
+	}
+	return sum;
 }

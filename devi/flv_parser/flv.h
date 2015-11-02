@@ -8,7 +8,6 @@
 #include <stdlib.h>
 
 #define SIGNATURE_LEN 3
-
 #pragma pack(1)
 struct flv_file_header
 {
@@ -27,9 +26,9 @@ enum tagtype
 
 struct flv_tag
 {
-	unsigned int prev_tag_size:32;
+	unsigned int prev_tag_size;
 	enum tagtype t;
-	unsigned int data_size:24;
+	unsigned int data_size;
 	unsigned int time_stamp:24;
 	unsigned int time_stamp_extended:8;
 };
