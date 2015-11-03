@@ -23,17 +23,57 @@ main()
 	ptr6=(char *)shmat(shmid6,0,0);
 	ptr7=(char *)shmat(shmid7,0,0);
 
-    printf("shmid1 is %d ptr1 :%u\n",shmid1,ptr);
+    printf("shmid1 is %d ptr1 :%u\n",shmid1,ptr1);
 	for(i=0;i<10;i++)
 	{
-		ptr1[i]=A;
+		ptr1[i]='A';
 
 	}
 	printf("read from ptr1%s\n",ptr1);
-	printf("shmid2 %d ptr2%s\n",ptr2);
+
+	printf("shmid2 :%d ptr2:%u\n",shmid2,ptr2);
 	for(i=0;i<10;i++)
 	{
-		ptr2[i]=B;
+		ptr2[i]='B';
 	}
 	printf("read from ptr2%s\n",ptr2);
+	
+	printf("shmid3:%d ptr3:%u\n",shmid3,ptr3);
+	for(i=0;i<10;i++)
+	{
+		ptr3[i]='C';
+	}
+	printf("read from ptr3 %s\n",ptr3);
+
+	printf("shmid4:%d ptr4 :%u\n",shmid4,ptr4);
+	for(i=0;i<10;i++)
+	{
+
+		ptr4[i]='D';
+
+	}
+	printf("read from ptr4 is %s\n",ptr4);
+
+	printf("shmid5 :%d ptr5 :%u\n",shmid5,ptr5);
+	for(i=0;i<10;i++)
+	{
+		ptr5[i]='E';
+	}
+	printf("read from ptr5 is %s\n",ptr5);
+
+	printf("shmid6 :%d ptr6:%u\n",shmid6,ptr6);
+	for(i=0;i<10;i++)
+	{
+		ptr6[i]='F';
+	}
+	printf("read from ptr6 is %s\n",ptr6);
+
+	printf("shmid7:%d ptr7 :%u\n",shmid7,ptr7);
+	for(i=0;i<10;i++)
+	{
+		ptr7[i]='G';
+	}
+	printf("read from ptr7  is %s\n",ptr7);
+
+
 }
