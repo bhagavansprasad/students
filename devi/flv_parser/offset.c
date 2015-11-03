@@ -56,7 +56,6 @@ int convert_hex_to_bin(char c)
 
 		printf("n--%d\n",n);
 		printf("sum--%d\n", sum);
-		//printf("sum--%d\n",mask<<i);
 	}
 	return sum;
 }

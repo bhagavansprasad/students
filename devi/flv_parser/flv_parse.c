@@ -64,35 +64,7 @@ void dump_flv_header(struct flv_file_header *phead)
 
 void parse_flv_tag(char *buff, int len, struct flv_tag *thead)
 {
-	/*unsigned char flags = 0;
-	
-	bzero(thead, sizeof(struct flv_tag));
-	dump_flv_tag(thead);
-	for(i = 0; i <12; i++)
-	{	
-		n = buff[i];
-		//printf("n -- %d\n",n);
-		converted_val+= n;
-	}
-	thead->prev_tag_size = converted_val;
-	n= buff[4];
-	printf("n -- %d\n",n);
-	if(n == audio)
-	thead->t = audio;
-	else if(n == video)
-	thead->t = video;
-	else if(n == script)
-	thead->t = script;
 
-	converted_val = 0;
-
-	for(j=8;j>=6;j--)
-	{
-		n = buff[j];
-		printf("%d\n",n);
-		converted_val+= n;//offset_value(n);
-	}
-	thead->data_size = converted_val;*/
 	int i=0;
 	unsigned int n=0,res=0;
 	printf("buff[0]-->%c\n",buff[0]);
@@ -107,7 +79,7 @@ void parse_flv_tag(char *buff, int len, struct flv_tag *thead)
 	printf("buff[0]-->%c\n",buff[9]);
 	printf("buff[0]-->%c\n",buff[10]);
 	printf("buff[0]-->%c\n",buff[11]);
-	
+
 	n=buff[0]+buff[1]+buff[2]+buff[3];
 	printf("n--%d\n",n);
 	thead->prev_tag_size = n;
@@ -118,16 +90,16 @@ void parse_flv_tag(char *buff, int len, struct flv_tag *thead)
 	printf("n--%X\n",n);
 	for(i=7;i>=5;i--)
 	{
-	res = res+convert_hex_to_bin(buff[i]);
-	printf("res-- %d\n",res);
+		res = res+convert_hex_to_bin(buff[i]);
+		printf("res-- %d\n",res);
 	}
 	thead->data_size=res;
-	
+
 	n=buff[8]+buff[9]+buff[10];
 	printf("n--%d\n",n);
 	thead->time_stamp = n;
 
-	
+
 	n=buff[11];
 	printf("n--%d\n",n);
 	thead->time_stamp_extended = n;
