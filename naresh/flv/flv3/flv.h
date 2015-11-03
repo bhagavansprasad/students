@@ -22,22 +22,3 @@ struct flv_tag
 	unsigned int tsExtended;
 	unsigned int streamid;
 };
-struct audio_tags
-{
-	enum sound_format{
-	uncompressed = 0;
-	ADPCM = 1;
-	MP3 = 2;
-	nellymoser_mono = 5;
-	nelllymoser = 6
-	}sound_form;
-	
-
-
-
-
-
-	
-
-	<F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11><F11>
-}
