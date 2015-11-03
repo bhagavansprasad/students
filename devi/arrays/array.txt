@@ -1,0 +1,23 @@
+- What is the output of below statments?
+
+  int arr[5] = {10, 20, 30};
+
+  arr[2]
+  arr[3]
+  arr[1]
+  *(arr + 1)
+  *(1 + arr)
+  1[arr]
+
+  * In case of array base address is 500
+
+  				Type	Value
+  arr + 1
+  1 + arr
+  &arr
+  &arr + 1
+
+- Find the size of the array if the input is
+  'name of the array' and the 'data type'
+
+  
