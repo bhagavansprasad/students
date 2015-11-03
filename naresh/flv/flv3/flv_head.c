@@ -1,3 +1,6 @@
+
+#include "stdio.h"
+#include "string.h"
 #include "flv.h"
 
 int read_flv_header(int fd, char *buff, int len)
@@ -24,8 +27,8 @@ void parse_flv_header(char *buff, int len,struct header *phead)
 }
 void dump_flv_header(struct header *phead)
 {
-	printf("SIG :%s\n",phead->signature);
-	printf("VER :%d\n",phead->version);
+	printf("signature         :%s\n",phead->signature);
+	printf("version           :%d\n",phead->version);
 	if(phead->is_video = 1)
 		printf("video is present\n");
 	else
@@ -34,21 +37,21 @@ void dump_flv_header(struct header *phead)
 		printf("audio is present\n");
 	else
 		printf("audio is not present\n");
-	printf("offset :%d\n",phead->offset);
+	printf("offset            :%d\n",phead->offset);
 }
 
 int read_flv_tag(int fd, char *buff, int len)
 {
 	int r1 = 0;
-	r1 = read(fd, buff, 12);
+	r1 = read(fd, buff, 15);
 	return 0;
 }
 
-void parse_flv_tag(char *buff, int len, struct tag *btag)
+void parse_flv_tag(char *buff, int len, struct flv_tag *btag)
 {
-	int bits = 0, i = 0, j = 0, t = 0, d = 0, b = 0;
+	int bits = 0, i = 0, j = 0, t = 0, d = 0, b = 0, s = 0;
 
-	bzero(btag, sizeof(struct tag));
+	bzero(btag, sizeof(struct flv_tag));
 	for(bits = 24, i = 0; i < 4; i++, bits-= 8)
 	{
 		b+= (buff[i] << bits);
@@ -68,23 +71,29 @@ void parse_flv_tag(char *buff, int len, struct tag *btag)
 	btag->timestamp = t;
 
 	btag->tsExtended = buff[11];
+	for(bits = 16,i = 12; i < 15; i++, bits-= 8)
+	{
+		s+= (buff[i] << bits);
+	}
+	btag->streamid = s;
 }
-void dump_flv_tag(struct tag *btag)
+void dump_flv_tag(struct flv_tag *btag)
 {
-	printf("prev tag %d\n",n->previous_tags);
-	if(btag->previous_tags == 8)
+	printf("prev tag           : %d\n", btag->previous_tags);
+	if(btag->Ttype == 8)
 	{
-		printf("tag type is audio\n");
+		printf("tag type is    : audio(8)\n");
 	}
-	else if(btag->previous_tags == 9)
+	else if(btag->Ttype == 9)
 	{
-		printf("tag type is video\n");
+		printf("tag type is    : video(9)\n");
 	}
-	else if(btag->previous_tags == 18)
+	else if(btag->Ttype == 18)
 	{
-		printf("tag tpye is scriptdata\n");
+		printf("tag tpye is      : scriptdata(18)\n");
 	}
-	printf("data size :%d\n",btag->datasize);
-	printf("time stamp :%d\n",btag->timestamp);
+	printf("data size          :%d\n",btag->datasize);
+	printf("time stamp         :%d\n",btag->timestamp);
 	printf("timestamp entended :%d\n",btag->tsExtended);
+	printf("stream ID          :%d\n",btag->streamid);
 }
