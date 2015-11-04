@@ -6,7 +6,7 @@ int main()
 	struct flv_file_header fhead;
 	struct flv_tag thead;
 	int rfd = 0, len = 9, r, i;
-	char buff[100],ruff[100];
+	char buff[100];
 	rfd = open("sixth.flv",O_RDONLY,0777);
 
 	if(rfd <0)
@@ -18,9 +18,15 @@ int main()
 	r = read_flv_header(rfd, buff, len);
 	parse_flv_header(buff, len, &fhead);
 	dump_flv_header(&fhead);
-	
 
-	r = read_flv_header(rfd, buff, 8);
-	parse_flv_tag(buff, 8, &thead);
-	dump_flv_tag(&thead);
+	for(i=0;i<=2;i++)
+	{
+		r = read_flv_header(rfd,buff, 16);
+		//if(r<15)
+		//break;
+		parse_flv_tag(buff , 16, &thead);
+		dump_flv_tag(&thead);
+		lseek(rfd,(thead.data_size)-1,1);
+	}
+
 }
