@@ -4,6 +4,7 @@ int read_flv_header(int fd, char *buff, int len)
 {
 	int r = 0;
 	r = read(fd,buff,len);
+	printf("%s\n",buff);
 	return r;
 }
 
@@ -19,7 +20,6 @@ void parse_flv_header(char *buff, int len, struct flv_file_header *phead)
 	flags = buff[4];
 
 	phead->is_video = ((flags&(mask<<0))?1:0);
-//	mask = 1;
 	phead->is_audio = ((flags&(mask<<2))?1:0);
 	for(i = 5; i <= 8; i++)
 	{
@@ -27,6 +27,19 @@ void parse_flv_header(char *buff, int len, struct flv_file_header *phead)
 		offset+= offset_value(n);
 	}
 	phead->offset = offset;
+
+	printf("buff[0]-->%c\n",buff[0]);
+
+	printf("buff[0]-->%c\n",buff[1]);
+	printf("buff[0]-->%c\n",buff[2]);
+	printf("buff[0]-->%c\n",buff[3]);
+	printf("buff[0]-->%c\n",buff[4]);
+	printf("buff[0]-->%c\n",buff[5]);
+	printf("buff[0]-->%c\n",buff[6]);
+	printf("buff[0]-->%c\n",buff[7]);
+	printf("buff[0]-->%c\n",buff[8]);
+
+
 }
 
 void dump_flv_header(struct flv_file_header *phead)
@@ -51,41 +64,52 @@ void dump_flv_header(struct flv_file_header *phead)
 
 void parse_flv_tag(char *buff, int len, struct flv_tag *thead)
 {
-	unsigned char flags = 0;
-	
-	unsigned int mask = 1,n, offset = 0;
 
-	unsigned int i,converted_val=0,j; 
+	int i=0;
+	unsigned int n=0,res=0;
+	printf("buff[0]-->%c\n",buff[0]);
+	printf("buff[0]-->%c\n",buff[1]);
+	printf("buff[0]-->%c\n",buff[2]);
+	printf("buff[0]-->%c\n",buff[3]);
+	printf("buff[0]-->%c\n",buff[4]);
+	printf("buff[0]-->%c\n",buff[5]);
+	printf("buff[0]-->%c\n",buff[6]);
+	printf("buff[0]-->%c\n",buff[7]);
+	printf("buff[0]-->%c\n",buff[8]);
+	printf("buff[0]-->%c\n",buff[9]);
+	printf("buff[0]-->%c\n",buff[10]);
+	printf("buff[0]-->%c\n",buff[11]);
 
-	bzero(thead, sizeof(struct flv_tag_header));
-	dump_flv_tag(thead);
-	for(i = 0; i < 4; i++)
+	n=buff[0]+buff[1]+buff[2]+buff[3];
+	printf("n--%d\n",n);
+	thead->prev_tag_size = n;
+	n=buff[4];
+	printf("n--%d\n",n);
+	thead->t=n;
+	n=buff[5]+buff[6]+buff[7];
+	printf("n--%X\n",n);
+	for(i=7;i>=5;i--)
 	{
-		n = buff[i];
-		converted_val+= offset_value(n);
+		res = res+convert_hex_to_bin(buff[i]);
+		printf("res-- %d\n",res);
 	}
-	thead.prev_tag_size = converted_val;
-	converted_val = 0;
-	n=buff[i];
-	converted_val = offset_value(n);
-	if(converted_val == 8)
-	thead.tag_size.audio = converted_val;
+	thead->data_size=res;
 
-	for(j=0;j<3;j++)
-	{
-		n = buff[i++];
-		converted_val = offset_value(n);
-	}
-	thead.data_size = converted_val;
+	n=buff[8]+buff[9]+buff[10];
+	printf("n--%d\n",n);
+	thead->time_stamp = n;
 
 
+	n=buff[11];
+	printf("n--%d\n",n);
+	thead->time_stamp_extended = n;
 }
 
 void dump_flv_tag(struct flv_tag *thead)
 {
 
 	printf("Prev_tag_size         ----- %d\n",thead->prev_tag_size);
-	printf("Tag_type              ----- %d\n",thead->tag_type);
+	printf("Tag_type              ----- %d\n",thead->t);
 	printf("Data_size             ----- %d\n",thead->data_size);
 	printf("Time_stamp            ----- %d\n",thead->time_stamp);
 	printf("Time_stamp_extended   ----- %d\n",thead->time_stamp_extended);

@@ -10,7 +10,7 @@ main()
  struct
  {
   long mtype;
-  char mtext[35];
+  char mtext[100];
  }send,receive;
 
 qid = msgget((key_t)10,IPC_CREAT|0666);
