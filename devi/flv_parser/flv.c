@@ -19,11 +19,9 @@ int main()
 	parse_flv_header(buff, len, &fhead);
 	dump_flv_header(&fhead);
 
-	for(i=0;i<=2;i++)
+	for(i=0;i<=9;i++)
 	{
 		r = read_flv_header(rfd,buff, 16);
-		//if(r<15)
-		//break;
 		parse_flv_tag(buff , 16, &thead);
 		dump_flv_tag(&thead);
 		lseek(rfd,(thead.data_size)-1,1);

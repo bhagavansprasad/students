@@ -54,7 +54,7 @@ void parse_flv_tag(char *buff, int len, struct flv_tag *thead)
 	int i=0,j;
 	unsigned int n=0,res=0;
 	
-	//bzero(thead, sizeof(struct flv_tag));
+	bzero(thead, sizeof(struct flv_tag));
 	
 	for(i=3;i>=0;i--)
 	{
@@ -66,8 +66,14 @@ void parse_flv_tag(char *buff, int len, struct flv_tag *thead)
 	n=convert_hex_to_dec(buff[4]);
 	if(n == audio)
 	thead->t=n;
+
 	else if(n == video)
-	thead->t=n;
+	{
+		thead->t=n;
+		
+		thead->frametype = (buff[15]&0xf0)>>4;
+	}
+
 	else if(n == script)
 	thead->t=n;
 
@@ -104,6 +110,7 @@ void parse_flv_tag(char *buff, int len, struct flv_tag *thead)
 
 	thead->streamID = n;
 	set_power();
+
 }
 
 void dump_flv_tag(struct flv_tag *thead)
@@ -115,6 +122,7 @@ void dump_flv_tag(struct flv_tag *thead)
 	printf("Time_stamp            ----- %d\n",thead->time_stamp);
 	printf("Time_stamp_extended   ----- %d\n",thead->time_stamp_extended);
 	printf("stream ID             ----- %d\n",thead->streamID);
+	printf("frametype             ----- %d\n",thead->frametype);
 }
 
 
