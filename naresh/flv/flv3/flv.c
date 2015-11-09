@@ -1,3 +1,6 @@
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "stdio.h"
 #include "flv.h"
 
@@ -24,7 +27,7 @@ main()
 	dump_flv_header(&fhead);
 
 	lseek(fd, 0, SEEK_CUR);
-	r1 = read_flv_tag(fd, buff,12);
-	parse_flv_tag(buff, 12, &ftag);
+	r1 = read_flv_tag(fd, buff,15);
+	parse_flv_tag(buff, 15, &ftag);
 	dump_flv_tag(&ftag);
 }

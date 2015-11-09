@@ -33,9 +33,16 @@ int binarytodecimal(int n)
 	return dec;
 }
 
+<<<<<<< HEAD
 int convert_hex_to_dec(char c)
 {
 	int mask=1,n,i,sum=0;
+=======
+int convert_hex_to_bin(char c)
+{
+	int mask=1,n,i,sum=0;
+	printf("c -- %d\n", c);
+>>>>>>> ee28f26a5877c751c5d87beffc84e2d1012a4a0b
 	for(i=0;i<=7;i++)
 	{
 		n = c&(mask<<i);
@@ -43,6 +50,10 @@ int convert_hex_to_dec(char c)
 		{
 			if(power == 1)
 			{
+<<<<<<< HEAD
+=======
+				printf("power is 1");
+>>>>>>> ee28f26a5877c751c5d87beffc84e2d1012a4a0b
 				sum = sum +1;
 			}
 			else
@@ -51,6 +62,7 @@ int convert_hex_to_dec(char c)
 			}
 		}
 		power=power*2;
+<<<<<<< HEAD
 	}
 	return sum;
 }
@@ -60,3 +72,11 @@ void set_power(void)
 {
 	power = 1;
 }
+=======
+
+		printf("n--%d\n",n);
+		printf("sum--%d\n", sum);
+	}
+	return sum;
+}
+>>>>>>> ee28f26a5877c751c5d87beffc84e2d1012a4a0b

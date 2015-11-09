@@ -41,4 +41,7 @@ void parse_flv_header(char *, int, struct flv_file_header *);
 void dump_flv_header(struct flv_file_header *);
 void parse_flv_tag(char *, int, struct flv_tag *);
 void dump_flv_tag(struct flv_tag *);
+<<<<<<< HEAD
 void set_power(void);
+=======
+>>>>>>> ee28f26a5877c751c5d87beffc84e2d1012a4a0b

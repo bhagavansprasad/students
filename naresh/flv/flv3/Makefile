@@ -1,11 +1,14 @@
-a.out:flv.o flv_par.o
-	gcc flv.o flv_par.o
+a.out:flv.o flv_head.o
+	gcc flv.o flv_head.o
 
 flv.o:flv.c flv.h
 	gcc -c flv.c
 
-flv_par.o:flv_par.c flv.h
-	gcc -c flv_par.c
+flv_head.o:flv_head.c flv.h
+	gcc -c flv_head.c
+
+flv_tag.o:flv_tag.c flv.h
+	gcc -c flv_tag.c
 
 clean:
 	rm -rf *.o
