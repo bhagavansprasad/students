@@ -12,8 +12,9 @@ main()
 	int socketfd;
 	int connected;
 	struct sockaddr_in myclientaddr;
-	char buff1[3][20]={"hi","how are you","bye"};
-	char sbuff[1024];
+//	char buff1[3][20]={"hi","how are you","bye"};
+	char rbuff[1024];
+	char wbuff[1024];
 	int retval=0,i=0;
 
 	socketfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -24,8 +25,8 @@ main()
 	}
 
 	myclientaddr.sin_family = AF_INET;
-	myclientaddr.sin_addr.s_addr = inet_addr("192.168.1.54");
-	myclientaddr.sin_port = htons(8000);
+	myclientaddr.sin_addr.s_addr = inet_addr("192.168.1.36");
+	myclientaddr.sin_port = htons(9999);
 
 	printf("--->client: Connecting to the server\n");
 	connected = connect(socketfd, (struct sockaddr *)&myclientaddr, sizeof(myclientaddr));
@@ -35,23 +36,26 @@ main()
 		close(socketfd);
 		exit(1);
 	}
-	for(i=0;i<3;i++)
+	while(1)
 	{
 	    sleep(2);
-	    retval=write(socketfd, &buff1[i],20);
+		gets(wbuff);
+	    retval=write(socketfd,wbuff ,20);
 		if(retval < 0)
 	    {
 		   break;
 	    }
 		printf("--->client: write buff1 retval:      %d\n",retval);
 
-		retval=read(socketfd, sbuff, sizeof(sbuff));
+		retval=read(socketfd, rbuff, sizeof(rbuff));
 		if(retval < 0)
 	    {
 		   break;
 	    }
-		sbuff[retval]='\0';
-		printf("--->client: buffer read from server: %s\n",sbuff);
+		rbuff[retval]='\0';
+		printf("--->client: buffer read from server: %s\n",rbuff);
+		if(strcmp(rbuff, "bye") == 0)
+		break;
 	}
 	close(socketfd);
 	return 0;
