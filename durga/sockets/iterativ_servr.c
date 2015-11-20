@@ -11,11 +11,11 @@ int main()
 {
 	struct sockaddr_in mysockaddr;
 	int socketfd;
-//    char buff1[3][20]={"hellow","i am fine","bye"};
+	//    char buff1[3][20]={"hellow","i am fine","bye"};
 	char cbuff[100];
 	char buffer[100];
 	int newfd;
-    int retval = 0,i;
+	int retval = 0,i;
 	socketfd = socket(AF_INET, SOCK_STREAM,0);
 	if(socketfd == -1)
 	{
@@ -44,41 +44,44 @@ int main()
 	}
 
 	printf("--->server : Going for accepting connection \r\n");
-	newfd = accept(socketfd,NULL,NULL);
-	if(newfd == -1)
-	{
-		perror("accept system call failed\r\n");
-		close(socketfd);
-		exit(1);
-	}
-
-	printf("--->server : Got the connection request from client \r\n\n");
-	//for(i=0;i<3;i++)
-	printf("let's begin chat\n");
 	while(1)
 	{
+		newfd = accept(socketfd,NULL,NULL);
+		if(newfd == -1)
+		{
+			perror("accept system call failed\r\n");
+			close(socketfd);
+			exit(1);
+		}
+
+		printf("--->server : Got the connection request from client \r\n\n");
+		//for(i=0;i<3;i++)
+		printf("let's begin chat\n");
+		while(1)
+		{
 			sleep(2);
-	        retval = read(newfd, buffer, 30);
+			retval = read(newfd, buffer, 30);
 			if(retval < 0)
-	     	{
-			   break;
-	    	}
-            buffer[retval]='\0';
+			{
+				break;
+			}
+			buffer[retval]='\0';
 			printf("%s\n",buffer);
-	       // printf("--->server:  receive from client :%s\n",buffer);
-			
+			// printf("--->server:  receive from client :%s\n",buffer);
+
 			gets(cbuff);
-            retval=write(newfd, cbuff, 20);
+			retval=write(newfd, cbuff, 20);
 			if(retval < 0)
-		    {
-		      break;
-		    }
+			{
+				break;
+			}
 			//printf("--->server: buff1 write retval : %d\n",retval);
 			if(strcmp(cbuff,"bye")==0)
 				break;
 		}
-            close(socketfd);
-			return 0;
+	}
+	close(socketfd);
+	return 0;
 
 }
 
