@@ -21,7 +21,7 @@ enum tagtype
 	{
 	audio=8,
 	video=9,
-	script=19
+	script=18
 	};
 
 struct flv_tag
@@ -31,6 +31,8 @@ struct flv_tag
 	unsigned int data_size;
 	unsigned int time_stamp:24;
 	unsigned int time_stamp_extended:8;
+	unsigned int streamID:24;
+	bool frametype;
 };
 
 
@@ -39,3 +41,7 @@ void parse_flv_header(char *, int, struct flv_file_header *);
 void dump_flv_header(struct flv_file_header *);
 void parse_flv_tag(char *, int, struct flv_tag *);
 void dump_flv_tag(struct flv_tag *);
+<<<<<<< HEAD
+void set_power(void);
+=======
+>>>>>>> ee28f26a5877c751c5d87beffc84e2d1012a4a0b
