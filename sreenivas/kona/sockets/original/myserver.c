@@ -10,7 +10,6 @@ int main()
 {
 	struct sockaddr_in mysockaddr;
 	int socketfd;
-	int array[3];
 	char buff1[3][15]={"hello","mangalore","bye"};
 	char buff[100];
 	int newfd;
@@ -41,46 +40,36 @@ int main()
 	while(1)
 	{
 		printf("---->server:going for accepting connection\r\n");
-		for(i=0;i<3;i++)
+		newfd=accept(socketfd,NULL,NULL);
+		if(newfd==-1)
 		{
-			newfd=accept(socketfd,NULL,NULL);
-			printf("the new fd value is %d\n",newfd);
-			array[i]=newfd;
-			if(newfd==-1)
-			{
-				perror("accept system call falied\r\n");
-				close(socketfd);
-				exit(1);
-			}
+			perror("accept system call falied\r\n");
+			close(socketfd);
+			exit(1);
 		}
-
-			printf("--->server:Got the connection request from client\r\n\n");
-			while(1)
+		printf("--->server:Got the connection request from client\r\n\n");
+		while(1)
+		{
+			retval=read(newfd,buff,30);
+			if(retval<0)
 			{
-				retval=read(array[0], buff, 30);
-
-				if(retval<0)
-				{
-					break;
-				}
-				buff[retval]='\0';
-				printf("---->server:receive from client :%s\r\n",buff);
-				retval=write(array[0], buff1[i], 20);
-				if(retval<0)
-				{
-					break;
-				}
-				i++;
-				printf("--->server:buff1 write retval:%d\n",retval);
-				if(strcmp(buff,"bye")==0)
-					break;
-
-				sleep(2);
+				break;
 			}
+			buff[retval]='\0';
+			printf("---->server:receive from client :%s\r\n",buff);
+			retval=write(newfd,&buff1[i],20);
+			if(retval<0)
+			{
+				break;
+			}
+			i++;
+			printf("--->server:buff1 write retval:%d\n",retval);
+			if(strcmp(buff,"bye")==0)
+				break;
 		}
-	i=0;
-}
-close(socketfd);
-return 0;
+		i=0;
+	}
+	close(socketfd);
+	return 0;
 }
 

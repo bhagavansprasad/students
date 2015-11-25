@@ -7,18 +7,14 @@
 #include"string.h"
 #include"unistd.h"
 
-char buff1[3][20]={"hi","how are you","bye"};
-main(int argc, char *argv[])
+	char buff1[3][20]={"hi","how are you","bye"};
+main()
 {
 	int socketfd;
 	int connected;
 	struct sockaddr_in myclientaddr;
 	char sbuff[1024];
 	int retval=0,i=0;
-	char cbuff[100];
-	int duration = 0;
-
-	duration = atoi(argv[1]);
 
 	socketfd = socket(AF_INET, SOCK_STREAM, 0);
 	if(socketfd == -1)
@@ -39,33 +35,28 @@ main(int argc, char *argv[])
 		close(socketfd);
 		exit(1);
 	}
-	while(i < 3)
+	while(1)
 	{
-		//sprintf(buff1[i], "%d: Iam client", getpid());
-		sprintf(cbuff, "C:%d %s", getpid(), buff1[i]);
-		retval=write(socketfd, cbuff, strlen(cbuff));
+	    
+		sleep(2);
+	    retval=write(socketfd, &buff1[i],20);
 		if(retval < 0)
-		{
-			break;
-		}
+	    {
+		   break;
+	    }
 		i++;
 		printf("--->client: write buff1 retval:      %d\n",retval);
 
-		
-		printf("--->client: reading from server......\n");
 		retval=read(socketfd, sbuff, sizeof(sbuff));
 		if(retval < 0)
-		{
-			break;
-		}
+	    {
+		   break;
+	    }
 		sbuff[retval]='\0';
 		printf("--->client: buffer read from server: %s\n",sbuff);
 		if(strcmp(sbuff,"bye")==0)
-			break;
-
-		sleep(duration);
+		break;
 	}
-
 	close(socketfd);
 	return 0;
 
