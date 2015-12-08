@@ -6,38 +6,22 @@ int astrncasecmp(char *s1,char *s2,int len)
 {
 	int i;
 
-	for(i=0;i<len;i++)
+	//for(i=0;tolower(s1[i])==tolower(s2[i]);i++);
+
+	for (i = 0; s1[i] != '\0'; i++)
 	{
-		if(s1[i]>='A' && s1[i]<='Z')
-		{
-			s1[i]=s1[i]+32;
-		}
+		if (tolower(s1[i]) != tolower(s2[i]))
+			return 1;
 	}
 
-	for(i=0;i<len;i++)
-	{
-		if(s2[i]>='A' && s2[i]<='Z')
-		{
-			s2[i]=s2[i]+32;
-		}
-	}
-
-	for(i=0;s1[i]==s2[i];i++)
-	{
-		if(i==len-1)
-		{
-			return 0;
-		}
-	}
-
-	return 1;		
+	return 0;
 }	
 
 main()
 {
-	char s1[]="sRAvani";
-	char s2[]="SAVANI";
-	//char s2[]="sravani";
+	char s1[]="sravANi";
+	char s2[]="sRanvani";
+	//char s2[]="SAVANI";
 	int t, n=100;
 
 	printf("Before strcasecmp...\n");

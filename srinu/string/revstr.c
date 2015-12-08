@@ -10,11 +10,11 @@ int main(void)
 	puts(str);
 	return 0;
 }
-void reverse_words(char str[],int start,int end)
-{
-	reverse(str,start,end);
-	reverse_letters(str,start,end);
-}
+//void reverse_words(char str[],int start,int end)
+//{
+//	reverse(str,start,end);
+//	reverse_letters(str,start,end);
+//}
 void reverse_letters(char str[],int start,int end)
 {
 	int w_start,w_end;
