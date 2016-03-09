@@ -1,0 +1,6 @@
+int astrcmp(char str1[],char str2[]);
+char *astrcpy(char str1[],char str2[]);
+int astrcasecmp(char str1[],char str2[]);
+char *astrcat(char str1[],char str2[]);
+int astrncmp(char str1[],char str2[],int n);
+
