@@ -1,5 +1,13 @@
 #include<stdio.h>
 int aatoi(char a)
+main()
+{
+char d='34';
+int r=0;
+r=aatoi(d);
+printf("%d\n",r);
+}
+int aatoi(char a)
 {
 	//char a='2';
 	int i=0,A=48,k;

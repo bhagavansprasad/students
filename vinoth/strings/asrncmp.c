@@ -3,7 +3,7 @@ main ()
 {
 	char s1[100] = "I NEED JOB ONLY";
 	char s2[100] = "I NEED JOB";
-	int n = 11, t;
+	int n = 8, t;
 	t = astrncmp (s1, s2, n);
 	if (t == 0)
 	{

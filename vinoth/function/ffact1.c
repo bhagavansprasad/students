@@ -18,8 +18,8 @@ int fact=1,i;
 	for(i=1; i<=x; i++)
 	{
 		fact = fact * i;
-		//printf("%d\n", fact);
 	}
+		//printf("%d\n--------", fact);
 	return fact;
 }
 

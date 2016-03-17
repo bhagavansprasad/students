@@ -12,14 +12,13 @@ main(int argc, char argv[])
 	int socketfd;
 	int connected;
 	struct sockaddr_in myclientaddr;
-	char cbuff[1024];
 	//char buff1[3][20]={"hi","how are you","bye"};
 	char sbuff[1024];
 	char buff1[20];
 	int retval=0,i=0;
 
 	socketfd = socket(AF_INET, SOCK_STREAM, 0);
-
+	
 	if(socketfd == -1)
 	{
 		perror("--->client: Failed to create a socket \n");
@@ -28,7 +27,7 @@ main(int argc, char argv[])
 
 	myclientaddr.sin_family = AF_INET;
 	myclientaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
-	myclientaddr.sin_port = htons(6666);
+	myclientaddr.sin_port = htons(4444);
 
 	printf("--->client: Connecting to the server\n");
 	connected = connect(socketfd, (struct sockaddr *)&myclientaddr, sizeof(myclientaddr));
@@ -42,31 +41,25 @@ main(int argc, char argv[])
 	printf("begin chat\n");
 	while(1)
 	{
-		sleep(2);
-		printf("lets start chating\n");
-		gets(cbuff);
-		retval=write(socketfd, cbuff,sizeof(cbuff));
-	//	gets(buff1);
-		retval=write(socketfd, buff1, 20);
+	    sleep(2);
+		gets(buff1);
+	    retval=write(socketfd, buff1, 20);
 		if(retval < 0)
-		{
-			break;
-		}
+	    {
+		   break;
+	    }
 
 		//printf("--->client: write buff1 retval:      %d\n",retval);
 
 		retval = read(socketfd, sbuff, sizeof(sbuff));
 		if(retval < 0)
-		{
-			break;
-		}
+	    {
+		   break;
+	    }
 		sbuff[retval]='\0';
-		printf("--->client: buffer read from server: %s\n",sbuff);
-		if(strcmp(cbuff,"bye") == 0)
-			break;
 		printf("%s\n",sbuff);
-	//	if(strcmp(buff1,"bye")==0)
-		//	break;
+		if(strcmp(buff1,"bye")==0)
+			break;
 		//printf("--->client: buffer read from server: %s\n",sbuff);
 	}
 	close(socketfd);
