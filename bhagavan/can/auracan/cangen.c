@@ -1,46 +1,3 @@
-/*
- * cangen.c - CAN frames generator for testing purposes
- *
- * Copyright (c) 2002-2007 Volkswagen Group Electronic Research
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 3. Neither the name of Volkswagen nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * Alternatively, provided that this notice is retained in full, this
- * software may be distributed under the terms of the GNU General
- * Public License ("GPL") version 2, in which case the provisions of the
- * GPL apply INSTEAD OF those given above.
- *
- * The provided data structures and external interfaces from this code
- * are not restricted to be used by modules with a GPL compatible license.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * Send feedback to <linux-can@vger.kernel.org>
- *
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -143,7 +100,7 @@ int main(int argc, char **argv)
 	unsigned char id_mode = MODE_RANDOM;
 	unsigned char data_mode = MODE_RANDOM;
 	unsigned char dlc_mode = MODE_RANDOM;
-	unsigned char loopback_disable = 0;
+	unsigned char loopback = 0;
 	unsigned char verbose = 0;
 	unsigned char rtr_frame = 0;
 	int count = 0;
@@ -153,7 +110,7 @@ int main(int argc, char **argv)
 	unsigned char fixdata[CANFD_MAX_DLEN];
 
 	int opt;
-	int s; /* socket */
+	int sockfd; /* socket */
 	struct pollfd fds;
 
 	struct sockaddr_can addr;
@@ -173,123 +130,7 @@ int main(int argc, char **argv)
 	signal(SIGHUP, sigterm);
 	signal(SIGINT, sigterm);
 
-	while ((opt = getopt(argc, argv, "ig:ebfmI:L:D:xp:n:vRh?")) != -1) 
-	{
-		switch (opt) 
-		{
-			case 'i':
-				ignore_enobufs = 1;
-				break;
-
-			case 'g':
-				gap = strtod(optarg, NULL);
-				break;
-
-			case 'e':
-				extended = 1;
-				break;
-
-			case 'f':
-				canfd = 1;
-				break;
-
-			case 'b':
-				brs = 1; /* bitrate switch implies CAN FD */
-				canfd = 1;
-				break;
-
-			case 'm':
-				mix = 1;
-				canfd = 1; /* to switch the socket into CAN FD mode */
-				break;
-
-			case 'I':
-				if (optarg[0] == 'r') 
-				{
-					id_mode = MODE_RANDOM;
-				} 
-				else if (optarg[0] == 'i') 
-				{
-					id_mode = MODE_INCREMENT;
-				} 
-				else 
-				{
-					id_mode = MODE_FIX;
-					frame.can_id = strtoul(optarg, NULL, 16);
-				}
-				break;
-
-			case 'L':
-				if (optarg[0] == 'r') 
-				{
-					dlc_mode = MODE_RANDOM;
-				} 
-				else if (optarg[0] == 'i') 
-				{
-					dlc_mode = MODE_INCREMENT;
-				} 
-				else 
-				{
-					dlc_mode = MODE_FIX;
-					frame.len = atoi(optarg) & 0xFF; /* is cut to 8 / 64 later */
-				}
-				break;
-
-			case 'D':
-				if (optarg[0] == 'r') 
-				{
-					data_mode = MODE_RANDOM;
-				} 
-				else if (optarg[0] == 'i') 
-				{
-					data_mode = MODE_INCREMENT;
-				} 
-				else 
-				{
-					data_mode = MODE_FIX;
-					if (hexstring2data(optarg, fixdata, CANFD_MAX_DLEN)) 
-					{
-						printf ("wrong fix data definition\n");
-						return 1;
-					}
-				}
-				break;
-
-			case 'v':
-				verbose++;
-				break;
-
-			case 'x':
-				loopback_disable = 1;
-				break;
-
-			case 'R':
-				rtr_frame = 1;
-				break;
-
-			case 'p':
-				polltimeout = strtoul(optarg, NULL, 10);
-				break;
-
-			case 'n':
-				count = atoi(optarg);
-				if (count < 1) 
-				{
-					print_usage(basename(argv[0]));
-					return 1;
-				}
-				break;
-
-			case '?':
-			case 'h':
-			default:
-				print_usage(basename(argv[0]));
-				return 1;
-				break;
-		}
-	}
-
-	if (optind == argc) 
+	if (argc < 2) 
 	{
 		print_usage(basename(argv[0]));
 		return 1;
@@ -298,54 +139,28 @@ int main(int argc, char **argv)
 	ts.tv_sec = gap / 1000;
 	ts.tv_nsec = (long)(((long long)(gap * 1000000)) % 1000000000ll);
 
-	/* recognize obviously missing commandline option */
-	if (id_mode == MODE_FIX && frame.can_id > 0x7FF && !extended) 
-	{
-		printf("The given CAN-ID is greater than 0x7FF and " "the '-e' option is not set.\n");
-		return 1;
-	}
 
-	if (strlen(argv[optind]) >= IFNAMSIZ) 
-	{
-		printf("Name of CAN device '%s' is too long!\n\n", argv[optind]);
-		return 1;
-	}
-
-	if ((s = socket(PF_CAN, SOCK_RAW, CAN_RAW)) < 0) 
-	{
-		perror("socket");
-		return 1;
-	}
+	sockfd = socket(PF_CAN, SOCK_RAW, CAN_RAW);
 
 	addr.can_family = AF_CAN;
 
 	strcpy(ifr.ifr_name, argv[optind]);
-	if (ioctl(s, SIOCGIFINDEX, &ifr) < 0) 
-	{
-		perror("SIOCGIFINDEX");
-		return 1;
-	}
+
+	ioctl(sockfd, SIOCGIFINDEX, &ifr);
+
 	addr.can_ifindex = ifr.ifr_ifindex;
 
-	/* disable default receive filter on this RAW socket */
-	/* This is obsolete as we do not read from the socket at all, but for */
-	/* this reason we can remove the receive list in the Kernel to save a */
-	/* little (really a very little!) CPU usage.                          */
-	setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, NULL, 0);
+	setsockopt(sockfd, SOL_CAN_RAW, CAN_RAW_FILTER, NULL, 0);
 
-	if (loopback_disable) 
-	{
-		int loopback = 0;
-
-		setsockopt(s, SOL_CAN_RAW, CAN_RAW_LOOPBACK, &loopback, sizeof(loopback));
-	}
+	//disable loopback
+	setsockopt(sockfd, SOL_CAN_RAW, CAN_RAW_LOOPBACK, &loopback, sizeof(loopback));
 
 	if (canfd) 
 	{
 		int enable_canfd = 1;
 
 		/* check if the frame fits into the CAN netdevice */
-		if (ioctl(s, SIOCGIFMTU, &ifr) < 0) 
+		if (ioctl(sockfd, SIOCGIFMTU, &ifr) < 0) 
 		{
 			perror("SIOCGIFMTU");
 			return 1;
@@ -358,7 +173,7 @@ int main(int argc, char **argv)
 		}
 
 		/* interface is ok - try to switch the socket into CAN FD mode */
-		if (setsockopt(s, SOL_CAN_RAW, CAN_RAW_FD_FRAMES, &enable_canfd, sizeof(enable_canfd)))
+		if (setsockopt(sockfd, SOL_CAN_RAW, CAN_RAW_FD_FRAMES, &enable_canfd, sizeof(enable_canfd)))
 		{
 			printf("error when enabling CAN FD support\n");
 			return 1;
@@ -374,7 +189,7 @@ int main(int argc, char **argv)
 			frame.len = 8;
 	}
 
-	if (bind(s, (struct sockaddr *)&addr, sizeof(addr)) < 0) 
+	if (bind(sockfd, (struct sockaddr *)&addr, sizeof(addr)) < 0) 
 	{
 		perror("bind");
 		return 1;
@@ -382,7 +197,7 @@ int main(int argc, char **argv)
 
 	if (polltimeout) 
 	{
-		fds.fd = s;
+		fds.fd = sockfd;
 		fds.events = POLLOUT;
 	}
 
@@ -468,7 +283,7 @@ int main(int argc, char **argv)
 		}
 
 resend:
-		nbytes = write(s, &frame, mtu);
+		nbytes = write(sockfd, &frame, mtu);
 		if (nbytes < 0) 
 		{
 			if (errno != ENOBUFS) 
@@ -549,7 +364,7 @@ resend:
 		printf("\nCounted %llu ENOBUFS return values on write().\n\n",
 				enobufs_count);
 
-	close(s);
+	close(sockfd);
 
 	return 0;
 }
