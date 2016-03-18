@@ -1,7 +1,8 @@
 #include"stdio.h"
 #include"stdlib.h"
 
-static int count=0;
+//static int count=0;
+int count = 0;
 
 struct node
 {
@@ -43,7 +44,8 @@ int addnode(int pos,int val)
 	    }
 	}
     }
-    printf("unable to insert this node %d becoz position is outof range");
+//	else
+    printf("unable to insert this node %d becoz position is outof range\n",pos);
     count--;
     return 0;
 }
@@ -62,9 +64,12 @@ int  main()
     addnode(3,30);
     addnode(4,40);
     addnode(5,50);
-    addnode(2,70);
-    addnode(3,90);
+  	addnode(2,70);
+ 	 addnode(3,90);
+//	display();
+
     addnode(8,70);
     addnode(9,3);
-    display();
+    
+	display();
 }

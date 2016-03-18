@@ -7,6 +7,8 @@ main()
 	display();
 	insert_pos("sury",987,1);
 	display();
+
+
 //	printf("deleting front node\n\n");
 //	delete_front();
 //	display();	

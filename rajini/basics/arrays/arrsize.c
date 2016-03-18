@@ -10,6 +10,8 @@ k=(&arr+1);
 printf("*k------=%u\n",*k);
 q= k-p;
 printf("*q------=%d\n",q);
+
 }
+
 
 

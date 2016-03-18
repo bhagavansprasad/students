@@ -13,7 +13,7 @@ int i = 0;
 }
 int gen_key(char *s)
 {
-	int i = 0,j = 0, c = 0, d = 0,k = 65, l =97;
+	int i = 0,j = 0, c = 1, d = 1,k = 65, l =97;
 	for(i = 65;i <= 90;i++)
 	{
 		if(k != i)

@@ -39,7 +39,7 @@ int evoluate_string(char *str)
 		int (*p)(int ,int);
 	};
 
-	struct cmds commands[10]={
+	struct cmds commands[10]={add_at_pos.c 
 		{"add",add},{"mul",mul},{"sub",sub},{"div",div},{"mod",mod}};
 
 
@@ -90,7 +90,7 @@ void parse_command(char *s, char *tcmd, char *val1, char *val2)
 }
 
 int add (int x,int y)
-{
+{add_at_pos.c 
 	int z;
 	z = x+y;
 	return z;
@@ -108,7 +108,7 @@ int sub (int x, int y)
 	int z;
 	z = x-y;
 	return z;
-}
+}add_at_pos.c 
 
 int div (int x, int y)
 {
@@ -123,5 +123,5 @@ int mod (int x, int y)
 	z = x%y;
 	return z;
 }
-
+add_at_pos.c 
 

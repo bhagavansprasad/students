@@ -5,7 +5,9 @@ struct node
 	int val;
 	struct node *link;
 };
+
 struct node *h=NULL;
+
 int node_add(int val)
 {
 	struct node *t,*new;
@@ -20,6 +22,7 @@ int node_add(int val)
 	for(t=h;t->link!=NULL;t=t->link);
 	t->link=new;
 }
+
 display()
 {
 	struct node *t;
@@ -44,15 +47,16 @@ struct node *addbefore(struct node *h,int data,int item)
 			return (h);
 		}
 		p=p->link;
-     	}
 	}
-	main()
-	{ 
-		node_add(20);
-		node_add(30);
-		node_add(40);
-		node_add(50);
-		addbefore(h,10,30);
-		display();
-	}
+}
+
+main()
+{ 
+	node_add(20);
+	node_add(30);
+	node_add(40);
+	node_add(50);
+	addbefore(h,10,30);
+	display();
+}
 

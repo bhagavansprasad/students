@@ -7,7 +7,7 @@ main()
 		t=firstprimeno(i);
 		if (t==1)
 		{
-			printf("%d\n", i);
+			printf("%d----\n", i);
 			s = s+i;
 			x++;
 		}

@@ -3,7 +3,7 @@
 main()
 {
 	int t = 0;
-	char s[100] = " IAM VINOTH ";
+	char s[100] = " iam         312344 vinoth";
 	t = wordcount (s);
 	printf ("%d\n", t);
 }

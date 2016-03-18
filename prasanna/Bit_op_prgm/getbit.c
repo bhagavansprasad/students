@@ -6,6 +6,6 @@ unsigned int getbits(unsigned int x,int p,int n)
 }
 main()
 {
-	printf("%d  \n",getbits(10,4,3));
+	printf("%d  \n",getbits(215,4,3));
 }
 

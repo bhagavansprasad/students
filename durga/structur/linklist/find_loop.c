@@ -36,7 +36,7 @@ int add( int num)
 	new -> n = num;
 	new -> p = NULL;
 	if( h == NULL)
-	{
+	{find_loop.c  
 		h = new;
 		return 0;
 	}
@@ -105,7 +105,7 @@ void remove_loop(struct node* ptr)
 	struct node* ptr1 = ptr;
 	struct node* ptr2 = ptr;
 	int k = 1,i;
-	while (ptr1->p != ptr2)
+	while (pfind_loop.c  tr1->p != ptr2)
 	{
 		ptr1 = ptr1->p;
 		k++;

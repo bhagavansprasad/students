@@ -1,8 +1,8 @@
 #include <stdio.h>
-/*main()
+main()
 {
 	char s1[] = "IAM COMING FROM TAMILNADU";
-	char s2[] = "IAM COMING FROm TAMILNADU";
+	char s2[] = "IAM COMING FROM TAMILNADU";
 	int t;
 	t = astrcmp (s1,s2);
 	if (t == 0)
@@ -13,7 +13,7 @@
 	{
 		printf ("STRINGS ARE NOT EQUAL\n");
 	}
-}*/
+}
 
 int astrcmp (char *s1,char *s2)
 {
@@ -25,5 +25,5 @@ int astrcmp (char *s1,char *s2)
 			return 0;
 		}
 	}
-	return 1;
+	return s1[i]-s2[i];
 }
