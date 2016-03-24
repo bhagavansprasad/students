@@ -1,11 +1,11 @@
 #include <stdio.h>
-/*main ()
+main ()
 {
 	char s1[100] = "iam coming from bangalore";
 	char s2[100];
 	astrcpy(s1,s2);
 	printf("%s\n",s2); 
-}*/
+}
 
 int astrcpy(char *s1, char*s2)
 {

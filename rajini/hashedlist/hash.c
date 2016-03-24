@@ -9,7 +9,7 @@ struct node
 };
 struct node *head[26]={NULL};
 char
-buff[18][100]={{"apple"},{"ball"},{"cat"},{"dog"},{"elephant"},{"Fox"},{"bat"},{"COW"},{"ANT"},{"zoo"},{"abc"},{"aaP"}};
+buff[18][100]={{"apple"},{"ball"},{"cat"},{"dog"},{"elephant"},{"owl"},{"york"},{"Fox"},{"bat"},{"COW"},{"ANT"},{"zoo"},{"abc"},{"aaP"}};
 main()
 {
 	int i=0;

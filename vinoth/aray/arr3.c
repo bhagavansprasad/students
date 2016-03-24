@@ -7,7 +7,7 @@ main()
 	{
 		for (j=i+1; j<=n-1; j++)
 		{
-			if (a[i] < a[j])
+			if (a[i] > a[j])
 			{
 				c = a[i];
 				a[i] = a[j];

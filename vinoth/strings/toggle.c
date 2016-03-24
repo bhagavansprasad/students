@@ -12,7 +12,7 @@ int main()
 			s[i] = s[i] - 32;
 	}
 
-	printf("String in toggle case is: %s\n",s);
+	printf("after toggle case is: %s\n",s);
 
 	return 0;
 }

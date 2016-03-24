@@ -9,8 +9,8 @@ main()
 		for (j=i-1; j>=0 && c<a[j]; j--)
 		{
 			a[j+1] = a[j];
-			a[j+1] = c;
 		}
+			a[j+1] = c;
 	}
 	for (i=0; i<n; i++)
 	{
