@@ -92,13 +92,15 @@ int main(int argc, char **argv)
 		printf("    |determining host\n");
 		fflush(stdout);
 
+#if 0
 		printf("    |    hostp->h_name:");
 		fflush(stdout);
 
 		hostp = gethostbyaddr((const char *)&clientaddr.sin_addr.s_addr, sizeof(clientaddr.sin_addr.s_addr), AF_INET);
 		if (hostp == NULL)
 			error("ERROR on gethostbyaddr");
-		printf("%s\n", hostp->h_name);
+		printf("%s\n", (const char *)&clientaddr.sin_addr.s_addr);
+#endif
 
 		printf("    |    hostaddrp=");
 		fflush(stdout);
@@ -109,13 +111,14 @@ int main(int argc, char **argv)
 
 		printf("    |reading\n");
 		bzero(buf, BUFSIZE);
-		printf("    |    [");
-		fflush(stdout);
 		n = read(childfd, buf, BUFSIZE);
 		if (n < 0)
 			error("ERROR reading from socket");
 
-		printf("%s]\n", buf);
+		buf[n-2] = '\0';
+
+		printf("    |    [%s]\n", buf);
+		fflush(stdout);
 
 		printf("    |writing\n");
 		printf("    |    [");
