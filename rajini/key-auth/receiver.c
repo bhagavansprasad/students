@@ -57,66 +57,67 @@ void sigterm(int signo)
 {
 	running = 0;
 }
-int idx2dindex(int ifidx, int socket) {
 
+int idx2dindex(int ifidx, int socket) 
+{
 	int i;
 	struct ifreq ifr;
-	for (i=0; i < MAXIFNAMES; i++) {
+
+	for (i=0; i < MAXIFNAMES; i++) 
+	{
 		if (dindex[i] == ifidx)
 			return i;
 	}
-	for (i=0; i < MAXIFNAMES; i++) {
-		if (dindex[i]) {
+
+	for (i=0; i < MAXIFNAMES; i++) 
+	{
+		if (dindex[i]) 
+		{
 			ifr.ifr_ifindex = dindex[i];
 			if (ioctl(socket, SIOCGIFNAME, &ifr) < 0)
 				dindex[i] = 0;
 		}
 	}
+
 	for (i=0; i < MAXIFNAMES; i++)
+	{
 		if (!dindex[i]) /* free entry */
 			break;
-	if (i == MAXIFNAMES) {
+	}
+	if (i == MAXIFNAMES) 
+	{
 		fprintf(stderr, "Interface index cache only supports %d interfaces.\n",
 				MAXIFNAMES);
 		exit(1);
 	}
+
+	return 0;
 }
 int main(int argc, char **argv)
 {
-	fd_set rdfs;
-	int s[MAXSOCK];
-	unsigned char silent = SILENT_INI;
+	int s = -1;
 	unsigned char color = 0;
 	unsigned char view = 0;
-	int currmax;
 	struct sockaddr_can addr;
 	char ctrlmsg[CMSG_SPACE(sizeof(struct timeval)) + CMSG_SPACE(sizeof(__u32))];
 	struct iovec iov;
 	struct msghdr msg;
 	struct canfd_frame frame;
-	int nbytes, i, maxdlen;
+	int nbytes;
 	struct ifreq ifr;
-	struct timeval tv, last_tv;
-	last_tv.tv_sec  = 0;
-	last_tv.tv_usec = 0;
 
-	silent = SILENT_OFF; /* default output */
-	currmax = argc - optind; /* find real number of CAN devices */
-	for (i=0; i < currmax; i++) 
+	s = socket(PF_CAN, SOCK_RAW, CAN_RAW);
+	addr.can_family = AF_CAN;
+	memset(&ifr.ifr_name, 0, sizeof(ifr.ifr_name));
+	strncpy(ifr.ifr_name, "vcan0", 5);
+
+	addr.can_ifindex = ifr.ifr_ifindex;
+	setsockopt(s, SOL_CAN_RAW, CAN_RAW_FD_FRAMES, &canfd_on, sizeof(canfd_on));
+
+	if (bind(s, (struct sockaddr *)&addr, sizeof(addr)) < 0) 
 	{
-		s[i] = socket(PF_CAN, SOCK_RAW, CAN_RAW);
-		addr.can_family = AF_CAN;
-		memset(&ifr.ifr_name, 0, sizeof(ifr.ifr_name));
-		strncpy(ifr.ifr_name, "vcan0", 5);
-
-		addr.can_ifindex = ifr.ifr_ifindex;
-		setsockopt(s[i], SOL_CAN_RAW, CAN_RAW_FD_FRAMES, &canfd_on, sizeof(canfd_on));
-
-		if (bind(s[i], (struct sockaddr *)&addr, sizeof(addr)) < 0) 
-		{
-			perror("bind");
-			return 1;
-		}
+		perror("bind");
+		return 1;
 	}
 	/* these settings are static and can be held out of the hot path */
 	iov.iov_base = &frame;
@@ -127,31 +128,21 @@ int main(int argc, char **argv)
 
 	while(1)
 	{
-		FD_ZERO(&rdfs);
-		FD_SET(s[0], &rdfs);
 		int idx = 0;
 		iov.iov_len = sizeof(frame);
 		msg.msg_namelen = sizeof(addr);
 		msg.msg_controllen = sizeof(ctrlmsg);  
 		msg.msg_flags = 0;
+		nbytes = recvmsg(s, &msg, 0);
 
-		nbytes = recvmsg(s[0], &msg, 0);
-
-		printf("nbytes :%d\n", nbytes);
-
+		printf("nbytes :%d-->", nbytes);
+  
 		if (frame.can_id & CAN_EFF_FLAG)
 			view |= CANLIB_VIEW_INDENT_SFF;
 
-		printf(" %s", (color>2)?col_on[idx%MAXCOL]:"");
+		fprint_long_canframe(stdout, &frame, NULL, view, nbytes);
 
-		printf(" %s", (color && (color<3))?col_on[idx%MAXCOL]:"");
-		printf("%*s", max_devname_len, devname[idx]);
-
-		printf("%s  ", (color==1)?col_off:"");
-		fprint_long_canframe(stdout, &frame, NULL, view, maxdlen);
-
-		printf("%s", (color>1)?col_off:"");
 		printf("\n");
-	}
+   } 
 	return 0;
 }
