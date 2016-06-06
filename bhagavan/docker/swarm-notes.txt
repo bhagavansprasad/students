@@ -1,0 +1,34 @@
+Build
+docker build -t tcp-echo ./
+
+consul IP : 172.17.0.2
+
+manager1: 192.168.1.2
+manager2: 192.168.1.3
+
+docker run -d -p 192.168.1.2:4000:4000 swarm manage -H :4000 --replication --advertise 192.168.1.2:4000 consul://192.168.0.2:8500
+docker run -d -p 192.168.1.3:4000:4000 swarm manage -H :4000 --replication --advertise 192.168.1.3:4000 consul://192.168.0.2:8500
+
+docker run -d -p 192.168.0.3:4000:4000 swarm manage -H :4000 --replication --advertise 192.168.0.3:4000 consul://192.168.0.2:8500
+docker run -d -p 192.168.0.4:4000:4000 swarm manage -H :4000 --replication --advertise 192.168.0.4:4000 consul://192.168.0.2:8500
+
+
+
+sudo service docker stop
+sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
+sudo docker info
+sudo netstat -alnp  | grep -i docker
+sudo docker  -H tcp://192.168.153.128:2375 run --rm swarm create
+	57f1901dba27750712a562cfd4552c58
+
+docker -H tcp://192.168.153.128:2375 run -d swarm join --addr=192.168.153.128:2375 token:57f1901dba27750712a562cfd4552c58
+
+docker tag tcp-echo auranetworks/tcp-echo
+docker tag -f 497f53829140 auranetworks/tcp-echo:latest
+docker ps
+docker commit -p  78727078a04b  container1
+docker login
+docker push container1
+docker save -o ~/container1.tar container1
+docker save -o ~/container-backup.tar container-backup
+
