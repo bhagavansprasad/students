@@ -1,3 +1,6 @@
+How to Setup and Configure Docker Swarm Cluster
+	http://devopscube.com/how-to-setup-and-configure-docker-swarm-cluster/
+
 Build
 docker build -t tcp-echo ./
 
@@ -15,13 +18,15 @@ docker run -d -p 192.168.0.4:4000:4000 swarm manage -H :4000 --replication --adv
 
 
 sudo service docker stop
-sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
+sudo docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
 sudo docker info
 sudo netstat -alnp  | grep -i docker
-sudo docker  -H tcp://192.168.153.128:2375 run --rm swarm create
-	57f1901dba27750712a562cfd4552c58
-
-docker -H tcp://192.168.153.128:2375 run -d swarm join --addr=192.168.153.128:2375 token:57f1901dba27750712a562cfd4552c58
+sudo docker  -H tcp://10.0.2.15:2375 run --rm swarm create --> 7c5f7b2c7f5a83dc9a9eae79298cc6bf
+docker -H tcp://10.0.2.15:2375 run -d swarm join --addr=10.0.2.15:2375 token:7c5f7b2c7f5a83dc9a9eae79298cc6bf
+sudo docker -H tcp://10.0.2.15:2375 ps
+sudo docker -H tcp://10.0.2.15:2375 run -d -p 5001:2375 swarm manage token://7c5f7b2c7f5a83dc9a9eae79298cc6bf
+sudo docker -H tcp://10.0.2.15:2375 run --rm swarm list \ token://7c5f7b2c7f5a83dc9a9eae79298cc6bf
+sudo docker -H tcp://10.0.2.15:5001 info
 
 docker tag tcp-echo auranetworks/tcp-echo
 docker tag -f 497f53829140 auranetworks/tcp-echo:latest

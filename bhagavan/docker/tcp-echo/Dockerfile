@@ -1,5 +1,6 @@
+FROM ubuntu
 FROM gcc:4.9
-MAINTAINER jim
+MAINTAINER mahesh
 
 COPY tcpechoserver.c /usr/src/tcpechoserver/tcpechoserver.c
 
