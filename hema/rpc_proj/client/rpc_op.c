@@ -1,7 +1,7 @@
-#include "fcntl.h"
-#include "stdio.h"
+#include <stdio.h>
+#include <unistd.h>
 #include "string.h"
-#include "rpc_op.h"
+#include "../inc/rpc_op.h"
 
 int fd,rval,wval,lval,t;
 int rpc_open(char *filename, int mode, int flags)
@@ -11,6 +11,7 @@ int rpc_open(char *filename, int mode, int flags)
 	fope_struct_reply reply;
 
 	fdata.operation = RPC_OPEN;
+	printf("-->C. RPC_OPEN: file:mode:flags: %s:%d:flags:%d\n", filename, mode, flags);
 	strcpy(fdata.udata.opdata.filename, filename);
 	fdata.udata.opdata.mode=mode;
 	fdata.udata.opdata.flags=flags;
@@ -18,8 +19,9 @@ int rpc_open(char *filename, int mode, int flags)
 	c_rpc_send_request(&fdata);
 	c_rpc_read_reply(&reply);
 
-	//fd=rpc_fop(&fdata, &reply);
-	return 0;
+	printf("-->C. RPC_OPEN: reply fd:%d\n", reply.udata.op_reply.fd);
+
+	return reply.udata.op_reply.fd;
 }
 
 int rpc_read(int fd,char *buff,int len)
@@ -29,16 +31,17 @@ int rpc_read(int fd,char *buff,int len)
 	fope_struct_reply reply;
 
 	fdata.operation = RPC_READ;
-	fdata.udata.rrdata.fd=fd;
-	fdata.udata.rrdata.len=len;
+	fdata.udata.rrdata.fd = fd;
+	fdata.udata.rrdata.len = len;
 	strcpy(buff,fdata.udata.rrdata.buff);
-
+    //buff[buff,reply.udata.rr_reply.rval]='\0';
+    //printf("--->c:buff:%s\n\n",buff);
 	c_rpc_send_request(&fdata);
 	c_rpc_read_reply(&reply);
 
-	//rval=rpc_fop(&fdata,&reply);
+	printf("-->C. RPC_READ: reply retval:%d\n", reply.udata.rr_reply.rval);
 
-	return 0;
+	return reply.udata.rr_reply.rval;
 }
 int rpc_write(int fd,char *buff,int rval)
 {
@@ -47,7 +50,6 @@ int rpc_write(int fd,char *buff,int rval)
 	fope_struct fdata;
 	fope_struct_reply reply;
 
-
 	fdata.operation = RPC_WRITE;
 	fdata.udata.wrdata.fd=fd;
 	fdata.udata.wrdata.rval=rval;
@@ -55,11 +57,11 @@ int rpc_write(int fd,char *buff,int rval)
 
 	c_rpc_send_request(&fdata);
 	c_rpc_read_reply(&reply);
+	printf("-->C. RPC_write: reply writeval:%d\n", reply.udata.wr_reply.wval);
 
-	//wval=rpc_fop(&fdata,&reply);
-	return 0;
+	return reply.udata.wr_reply.wval;
 }
-int rpc_lseek(int fd,off_t s,int whence)
+off_t rpc_lseek(int fd, off_t filename,int whence)
 {
 	int lval;
 	fope_struct fdata;
@@ -67,14 +69,17 @@ int rpc_lseek(int fd,off_t s,int whence)
 
 	fdata.operation = RPC_LSEEK;
 	fdata.udata.lsdata.fd=fd;
-	fdata.udata.lsdata.s=s;
+	fdata.udata.lsdata.filename=filename;
 	fdata.udata.lsdata.whence = whence;
 
 	c_rpc_send_request(&fdata);
 	c_rpc_read_reply(&reply);
+	printf("-->C. RPC_lseek: reply lval:%d\n", reply.udata.ls_reply.lval);
+
+	return reply.udata.ls_reply.lval;
 
 	//lval= rpc_fop(&fdata,&reply);
-	return 0;
+	
 }
 
 int rpc_close(int fd)
@@ -88,7 +93,10 @@ int rpc_close(int fd)
 
 	c_rpc_send_request(&fdata);
 	c_rpc_read_reply(&reply);
+	printf("-->C. RPC_close: reply fd:%d\n", reply.udata.cl_reply.fd);
+
+	return reply.udata.cl_reply.fd;
 
 	//t=rpc_fop(&fdata,&reply);
-	return 0;
+	
 }
