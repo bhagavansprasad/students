@@ -5,13 +5,15 @@
 #include"stdio.h"
 #include"stdlib.h"
 #include"unistd.h"
+#include"string.h"
 
 int main(void)
 {
 	int socketfd;
 	int connected;
 	struct sockaddr_in myclientaddr;
-	char buff[30]="hi server im fine";
+	char buff[]="Hi, I am client, how are you server";
+	int retval = 0;
 
 	socketfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if(socketfd == -1)
@@ -33,9 +35,10 @@ int main(void)
 	}
 
 	//read and write via sockfd
-	write(socketfd, buff, sizeof(buff));
-	read(socketfd, buff, sizeof(buff));
-	printf("string read from server:%s\r\n",buff);
+	write(socketfd, buff, strlen(buff));
+	retval = read(socketfd, buff, sizeof(buff));
+	buff[retval] = '\0';
+	printf("-->C: Got the reply from  .....:%s\n",buff);
 
 	close(socketfd);
 

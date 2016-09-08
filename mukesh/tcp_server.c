@@ -13,6 +13,8 @@ int main(void)
 	int socketfd;
 	char buffer[100];
 	int newfd;
+	char buff[]="Hi Client, I am fine...server";
+	int retval = 0;
 
 	socketfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if(socketfd == -1)
@@ -41,7 +43,7 @@ int main(void)
 		exit(1);
 	}
 
-	printf("--->server : Going for accepting connection \r\n");
+	printf("--->server : waiting from connection..\r\n");
 	newfd = accept(socketfd,NULL,NULL);
 	if(newfd == -1)
 	{
@@ -52,11 +54,12 @@ int main(void)
 
 	printf("--->server : Got the connection request from client \r\n");
 
-	read(newfd, buffer, 30);
+	retval = read(newfd, buffer, 30);
+	buffer[retval] = '\0';
 
-	printf("--->buff read from socket:%s\r\n",buffer);
+	printf("--->S. Got the message from client .... :%s\n",buffer);
 
-	write(newfd, "hi client hw r u ?", sizeof("hi client hw r u ?"));
+	write(newfd, buff, strlen(buff));
 
 	shutdown(socketfd, SHUT_RDWR);
 
