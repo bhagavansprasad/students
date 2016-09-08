@@ -1,0 +1,16 @@
+Opening files
+	gvim tcp_client.c
+	gvim tcp_server.c
+		or
+	kwrite tcp_client.c
+	kwrite tcp_server.c
+
+compile
+	gcc tcp_client.c -o c
+	gcc tcp_server.c -o s
+
+Running server from first terminal
+	$ ./s
+
+Running client from second terminal
+	$ ./c
