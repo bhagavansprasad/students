@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MSGSIZE 20
+
+main()
+{
+	char *msg1="hello,world";
+	char buff[MSGSIZE];
+    int p[2],pid;
+    
+	pipe(p);
+    pid=fork();
+    while(1)
+	{
+	if(pid>0)
+	{
+	write(p[1],msg1,MSGSIZE);
+	read(p[0],buff,MSGSIZE);
+	printf("%s\n",buff);
+	write(p[1],msg1,MSGSIZE);
+	}
+	if(pid==0)
+   {
+	sleep(1);
+	read(p[0],buff,MSGSIZE);
+	printf("%s\n",buff);
+	write(p[1],msg1,MSGSIZE);
+	read(p[0],buff,MSGSIZE);
+	printf("%s\n",buff);
+   }
+   }
+
+exit(0);
+}
+
