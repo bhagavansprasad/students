@@ -1,7 +1,7 @@
-int rpc_open(char *s,int mode,int flags);
+int rpc_open(char *filename,int mode,int flags);
 int rpc_read(int fd,char *buff,int len);
 int rpc_write(int fd,char *buff,int rval);
-int rpc_lseek(int fd,off_t s,int whence);
+off_t rpc_lseek(int fd,off_t filename,int whence);
 int rpc_close(int fd);
 
 #define RPC_OPEN 1
@@ -54,7 +54,7 @@ struct write_data_reply
 struct lseek_data
 {
 	int fd;
-	off_t s;
+	off_t filename;
 	int whence;
 };
 struct lseek_data_reply
@@ -99,6 +99,6 @@ typedef struct fope_struct_t
 typedef struct fope_str_reply
 {
 	int operation;
-	ufope udata;
+	ufope_reply udata;
 }fope_struct_reply;
 

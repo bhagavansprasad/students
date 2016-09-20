@@ -4,8 +4,8 @@ CFLAGS:= -c
 DEBUG_FLAGS := -g
 INC_PATH := -I/home/bhagavan/students/hema/rpc_proj/inc
 
-crpc:main.o aopen.o rpc_op.o client.o
-	gcc $(DEBUG_FLAGS) main.o aopen.o rpc_op.o client.o -o crpc
+c1rpc:main.o aopen.o rpc_op.o client.o
+	gcc $(DEBUG_FLAGS) main.o aopen.o rpc_op.o client.o -o c1rpc
 
 main.o :main.c
 	gcc $(CFLAGS) $(DEBUG_FLAGS) $(INC_PATH) main.c
@@ -20,6 +20,6 @@ client.o :client.c
 	gcc $(CFLAGS) $(DEBUG_FLAGS) $(INC_PATH) client.c
 
 clean:
-	rm -rf *.o crpc
+	rm -rf *.o c1rpc
 
 

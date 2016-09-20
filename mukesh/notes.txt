@@ -1,0 +1,41 @@
+Opening files
+	gvim tcp_client.c
+	gvim tcp_server.c
+		or
+	kwrite tcp_client.c
+	kwrite tcp_server.c
+
+compile
+	gcc tcp_client.c -o c
+	gcc tcp_server.c -o s
+
+Running server from first terminal
+	$ ./s
+
+Running client from second terminal
+	$ ./c
+
+Debugging
+=========
+compile for debugging
+	gcc tcp_client.c -o c -g
+	gcc tcp_server.c -o s -g
+
+Running server from first terminal
+	$ ddd ./s
+
+Running client from second terminal
+	$ ddd ./c
+
+Installing application
+=======================
+Searching package
+	sudo apt-cache search wireshark 
+
+Installing package
+	sudo apt-get install wireshark 
+
+Running wireshark
+=================
+sudo wireshark
+

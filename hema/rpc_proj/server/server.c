@@ -12,6 +12,7 @@ int newfd = -1;
 int s_read_request(fope_struct *prequest)
 {
 	int rretval = 0;
+	printf("-->S,%d,%s,%s\n", __LINE__, __FUNCTION__, __FILE__);
 
 	rretval = read(newfd, prequest, sizeof(fope_struct));
 
@@ -23,6 +24,7 @@ int s_read_request(fope_struct *prequest)
 int s_send_reply(fope_struct_reply *preply)
 {
 	int wretval = 0;
+	printf("-->S,%d,%s,%s\n", __LINE__, __FUNCTION__, __FILE__);
 
 	wretval = write(newfd, preply, sizeof(fope_struct_reply));
 
@@ -37,6 +39,7 @@ int init_rpc_server()
 	struct sockaddr_in mysockaddr;
 	char reply[] = "I am fine";
 	char request[100];
+	printf("-->S,%d,%s,%s\n", __LINE__, __FUNCTION__, __FILE__);
 
 	socketfd=socket(AF_INET,SOCK_STREAM,0);
 
@@ -73,9 +76,17 @@ int main()
 	fope_struct request;
 	fope_struct_reply reply;
 
+	printf("-->S,%d,%s,%s\n", __LINE__, __FUNCTION__, __FILE__);
+
 	init_rpc_server();
 
-	s_read_request(&request);
-	s_rpc_fop(&request, &reply);
-	s_send_reply(&reply);
+	while(1)
+	{
+		s_read_request(&request);
+		printf("\n");
+		s_rpc_fop(&request, &reply);
+		printf("\n");
+		s_send_reply(&reply);
+		printf("\n");
+	}
 }
