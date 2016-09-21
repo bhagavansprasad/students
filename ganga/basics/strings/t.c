@@ -3,22 +3,26 @@
 typedef struct test_strings_t
 {
 	int exp_result;
+	int exp_len;
+	int is_same;
 	char buff[100];
+	char buff2[100];
 }test_strings;
 
 test_strings strs[] = { 
-	{3, "       how           rr           u"},
-	{3, "how rrrrrrrr uu"},
-	{0, " "},
-	{3, "   dsfksjd kjkdsf kdshkk "}, 
-	{1, "a"},
-	{6, "a b c d e f"}
+	{3, 10, 1, "       how           rr           u", " how are you"},
+	{3, 20, "how rrrrrrrr uu"},
+	{0, 10, " "},
+	{3, 20, "   dsfksjd kjkdsf kdshkk "}, 
+	{1, 10, "a"},
+	{6, 20, "a b c d e f"}
 };
 
 main()
 {
 	int wc = 0, i = 0;
 
+#if 0
 	for ( i = 0; i < sizeof(strs)/sizeof(test_strings); i++)
 	{
 		wc = get_word_count(strs[i].buff);
@@ -32,23 +36,21 @@ main()
 			printf("FAILURE exp :%d, : wc :%d, for buff :%s\n", strs[i].exp_result, wc, strs[i].buff);
 		}
 	}
-
-}
-
-#if 0
-int get_word_count(const char *s)
-{
-	int i=0,wc;
-	if(s[i]==' ')
-	wc=0;
-	else
-	wc=1;
-	for(i=0;s[i]!='\0';i++)
-	{
-		if(s[i]==' ' && s[i+1]!=' '&& s[i+1]!='\0')
-			wc++;
-	}
-	return wc;
-}
 #endif
+	for ( i = 0; i < sizeof(strs)/sizeof(test_strings); i++)
+	{
+		len = astrlen(strs[i].buff);
+
+		if (len == strs[i].exp_len)
+		{
+			printf("SUCCES exp :%d, : wc :%d, for buff :%s\n", strs[i].exp_result, wc, strs[i].buff);
+		}
+		else
+		{
+			printf("FAILURE exp :%d, : wc :%d, for buff :%s\n", strs[i].exp_result, wc, strs[i].buff);
+		}
+	}
+
+
+}
 
