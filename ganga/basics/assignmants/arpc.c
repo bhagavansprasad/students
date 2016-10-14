@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include "crpc.h"
 
 int aopen(char *fname, int mode, int flags)
 {

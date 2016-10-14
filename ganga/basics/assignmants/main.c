@@ -3,8 +3,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include "arpc.h"
 
-main()
+int main()
 {
 	//open 1.txt in read mode
 	//open 2.txt in write mode
@@ -15,7 +16,7 @@ main()
 	//close 1.txt
 	//close 2.txt
 
-	int fd1 = 0,fd2 = 0, rd = 0, ld = 0, wd=0;
+	int fd1 = 0, fd2 = 0, rd = 0, ld = 0, wd = 0;
 	char buff[100];
 
 
@@ -29,12 +30,10 @@ main()
 	rd = aread(fd1, buff, 10);
 	printf("rd :%d\n", rd);
 	rd[buff]='\0';
-	//	printf("buff :%s\n",buff);
+	printf("buff :%s\n",buff);
 
 	wd = awrite(fd2, buff, 10);
 	printf("wd :%d\n", wd);
-	wd[buff]='\0';
-	//	printf("buff :%s\n",buff);
 
 	ld = lseek(fd1, -10, SEEK_END); 
 	printf("ld :%d\n", ld);
@@ -42,13 +41,13 @@ main()
 	rd = aread(fd1, buff, 10);
 	printf("rd :%d\n", rd);
 	rd[buff]='\0';
-	//	printf("buff :%s\n",buff);
+	printf("buff :%s\n",buff);
 
 	wd = awrite(fd2, buff, 10);
 	printf("wd :%d\n", wd);
-	wd[buff]='\0';
-	//printf("buff :%s\n",buff); 
 
 	aclose(fd1);
 	aclose(fd2);
+
+	return 0;
 }

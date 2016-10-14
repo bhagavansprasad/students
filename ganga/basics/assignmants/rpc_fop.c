@@ -3,37 +3,36 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-//#include "rpc_fop.h"
-#define OPEN  1
-#define READ  2
-#define WRITE 3
-#define LSEEK 4
-#define CLOSE 5
+#include "rpc_fop.h"
 
-
-int rpc_foperations(int fd, int retval, int new_offset, int cd)
+int rpc_foperations(int operation, char *fname, int mode, int flags, int fd, char *buff, int size, int whence)
 {
-	int i, fd1 = -1, fd2 = -1 ;
+	int retval = 0;
+	int new_offset = 0;
 
-	switch (i)
+	switch (operation)
 	{	
-		case OPEN:
-			//fd = open(fname, mode, flags);
+		case CRPC_OPEN_REQ:
+			fd = open(fname, mode, flags);
+
 			return fd;
 
-		case READ:
-			//retval = read(fd1, buff, 10);
+		case CRPC_READ_REQ:
+			retval = read(fd, buff, size);
+
 			return retval;
 
-		case WRITE:	
-			//retval = write(fd2, buff, 10);
+		case CRPC_WRITE_REQ:	
+			retval = write(fd, buff, size);
+
 			return retval;
 
-		case LSEEK:
-			//new_offset = lseek(fd, -10, SEEK_END);
+		case CRPC_LSEEK_REQ:
+			new_offset = lseek(fd, size, whence);
+
 			return new_offset;
 
-		case CLOSE:
+		case CRPC_CLOSE_REQ:
 			return close(fd);
 
 		default:
