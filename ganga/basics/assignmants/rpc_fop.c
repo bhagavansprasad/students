@@ -5,7 +5,9 @@
 #include <unistd.h>
 #include "rpc_fop.h"
 
-int rpc_foperations(int operation, char *fname, int mode, int flags, int fd, char *buff, int size, int whence)
+//int rpc_foperations(int operation, char *fname, int mode, int flags, int fd, char *buff, int size, int whence)
+
+int rpc_foperations(int operation, struct open_st *pop_data, struct read_st *prd_data, struct write_st *pwd_data, struct lseek_st *pld_data, struct close_st *pcl_data);
 {
 	int retval = 0;
 	int new_offset = 0;
