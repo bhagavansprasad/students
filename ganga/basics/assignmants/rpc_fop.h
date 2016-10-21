@@ -6,7 +6,9 @@
 
 //int rpc_foperations(int operation, char *fname, int mode, int flags, int fd, char *buff, int size, int whence);
 
-int rpc_foperations(int operation, struct open_st *pop_data, struct read_st *prd_data, struct write_st *pwd_data, struct lseek_st *pld_data, struct close_st *pcl_data);
+//int rpc_foperations(int operation, struct open_st *pop_data, struct rw_st *prd_data, struct rw_st *pwd_data, struct lseek_st *pld_data, struct close_st *pcl_data);
+
+int rpc_foperations(int operation, union rpcfop_un *pun_data );
 
 struct open_st
 {
@@ -15,14 +17,7 @@ struct open_st
 	int flags;
 };
 
-struct read_st
-{
-	int fd;
-	char buff[256];
-	int size;
-};
-
-struct write_st
+struct rw_st
 {
 	int fd;
 	char buff[256];
@@ -40,3 +35,23 @@ struct close_st
 {
 	int fd;
 };
+
+//int rpc_foperations(int operation , union rpc_fop_un *pun_data) ;
+
+union rpcfop_un
+{
+	struct open_st  odata;
+	struct read_st  rdata;
+	struct write_st wdata;
+	struct lseek_st sdata;
+	struct close_st cdata
+};
+
+struct rpc_fop_data
+{
+	//fd=rpc_foperations(CRPC_OPEN_REQ, &op_data, NULL, NULL, NULL, NULL);
+	int operation;
+	union rpcfop_un udata;
+};
+
+

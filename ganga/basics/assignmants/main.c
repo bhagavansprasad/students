@@ -30,21 +30,26 @@ int main()
 	rd = aread(fd1, buff, 10);
 	printf("rd :%d\n", rd);
 	rd[buff]='\0';
-	printf("buff :%s\n",buff);
+	printf("buff :%s\n ",buff);
 
 	wd = awrite(fd2, buff, 10);
 	printf("wd :%d\n", wd);
+	wd[buff]='\0';
+	printf("buff :%3s\n ", buff);
 
 	ld = lseek(fd1, -10, SEEK_END); 
-	printf("ld :%d\n", ld);
+	printf("ld :%d\n ", ld);
 
 	rd = aread(fd1, buff, 10);
 	printf("rd :%d\n", rd);
 	rd[buff]='\0';
-	printf("buff :%s\n",buff);
+	printf("buff :%s\n ",buff);
 
 	wd = awrite(fd2, buff, 10);
-	printf("wd :%d\n", wd);
+	printf("wd :%3d\n", wd);
+	wd[buff]='\0';
+
+	printf("buff :%s\n ", buff);
 
 	aclose(fd1);
 	aclose(fd2);
