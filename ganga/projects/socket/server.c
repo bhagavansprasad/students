@@ -7,73 +7,38 @@
 
 int main()
 {
-	int welcomeSocket, newSocket ;
-	
-	struct bufer
-	{
-	 int length = 10;
-	 char buff[50];
-	}b;
-	
-	//char buffer[256] ;
-	struct sockaddr_in serverAddr ;
-	struct sockaddr_storage serverStorage ;
-	socklen_t addr_size ;
+    int welcomeSocket, newSocket;
+    char buffer[256];
+    struct sockaddr_in serverAddr;
+    struct sockaddr_storage serverStorage;
+    socklen_t addr_size;
 
-	/*---- Create the socket. The three arguments are: ----*/
-	/* 1) Internet domain 2) Stream socket 3) Default protocol (TCP in this case) */
+    welcomeSocket = socket(PF_INET, SOCK_STREAM, 0);
 
-	welcomeSocket = socket(PF_INET, SOCK_STREAM, 0);
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(8080);
+    serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero); 
 
-	/*---- Configure settings of the server address struct ----*/
-	/* Address family = Internet */
+    bind(welcomeSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
 
-	serverAddr.sin_family = AF_INET;
+    if(listen(welcomeSocket, 5) == 0)
 
-	/* Set port number, using htons function to use proper byte order */
+        printf("Listening\n");
+    else
 
-	serverAddr.sin_port = htons(8080);
+        printf("Error\n");
 
-	/* Set IP address to localhost */
+    addr_size = sizeof serverStorage;
+    newSocket = accept(welcomeSocket, (struct sockaddr *) &serverStorage, &addr_size);
 
-	serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    recv(newSocket, buffer, 256, 0);
+    printf("Data received: %s",buffer);  
 
-	/* Set all bits of the padding field to 0 */
+    strcpy(buffer, "Hello, i am server \n");
+    send(newSocket, buffer, 100, 0);
 
-	memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);  
-
-	/*---- Bind the address struct to the socket ----*/
-
-	bind(welcomeSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
-
-	/*---- Listen on the socket, with 5 max connection requests queued ----*/
-
-	if(listen(welcomeSocket, 5) == 0)
-
-		printf("Listening\n");
-
-	else 
-		printf(" Error\n ");
-
-	/*---- Accept call creates a new socket for the incoming connection ----*/
-
-	addr_size = sizeof serverStorage;
-	newSocket = accept(welcomeSocket, (struct sockaddr *) &serverStorage, &addr_size);
-
-	/*---- Read the message from the server into the buffer ----*/
-      
-	  b.length = 20;
-	  strcpy(b.buff,"hai\n");
-
-	  recv(newSocket,b.length->20, b.buff->hai , 256, 0);
-	printf("data recived : %s\n", &b); 
-
-	/*---- Send message to the socket of the incoming connection ----*/
-
-//strcpy(bufer,"Hai\n");
-	//strcpy(buffer, "this is\n");
-
-	send(newSocket, &b, 13, 0) ;
-
-	return 0;
+    return 0;
 }
+
+
