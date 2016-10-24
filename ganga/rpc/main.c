@@ -5,17 +5,18 @@
 #include <unistd.h>
 #include "arpc.h"
 
+//open 1.txt in read mode
+//open 2.txt in write mode
+//read first 10 bytes from 1.txt
+//write 10 bytes to 2.txt
+//read last 10 bytes from 1.txt
+//write 10 bytes to 2.txt
+//close 1.txt
+//close 2.txt
+
+
 int main()
 {
-	//open 1.txt in read mode
-	//open 2.txt in write mode
-	//read first 10 bytes from 1.txt
-	//write 10 bytes to 2.txt
-	//read last 10 bytes from 1.txt
-	//write 10 bytes to 2.txt
-	//close 1.txt
-	//close 2.txt
-
 	int fd1 = 0, fd2 = 0, rd = 0, ld = 0, wd = 0;
 	char buff[100];
 

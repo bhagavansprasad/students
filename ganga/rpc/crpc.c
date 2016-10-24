@@ -24,8 +24,6 @@ int crpc_open(char *fname,int mode,int flags)
 int crpc_read(int fd, char *buff, int size)
 {
 	int retval = -1 ;
-	//struct rw_st un_data;
-
 	struct rpc_fop_data rpcdata;
 
 	rpcdata.operation = CRPC_READ_REQ;
@@ -36,26 +34,18 @@ int crpc_read(int fd, char *buff, int size)
 
 	strcpy(buff, rpcdata.udata.rdata.buff);
 
-	//retval = rpc_foperations(CRPC_READ_REQ, NULL, &rd_data, NULL, NULL, NULL);
-	//strcpy(buff, un_data.buff);
-
 	return retval ;
 }
 
 int crpc_write(int fd,char *buff,int size)
 {
 	int retval = -1 ;
-	//struct rw_st wd_data;
-
 	struct rpc_fop_data rpcdata;
 
 	rpcdata.operation = CRPC_WRITE_REQ;
 	rpcdata.udata.wdata.fd = fd;
 	strcpy(buff, rpcdata.udata.wdata.buff);
 	rpcdata.udata.wdata.size = size;
-
-	//retval = rpc_foperations(CRPC_WRITE_REQ, NULL, NULL, &wd_data, NULL, NULL);
-	//retval = rpc_foperations(CRPC_WRITE_REQ, &un_data);
 
 	retval = rpc_foperations(&rpcdata);
 
@@ -65,17 +55,12 @@ int crpc_write(int fd,char *buff,int size)
 int crpc_lseek(int fd, int off_set, int whence)
 {
 	int new_off_set = -1 ;
-	//struct lseek_st ld_data;
-
 	struct rpc_fop_data rpcdata;
 
 	rpcdata.operation = CRPC_LSEEK_REQ;
 	rpcdata.udata.sdata.fd = fd;
 	rpcdata.udata.sdata.off_set = off_set;
 	rpcdata.udata.sdata.whence = whence;
-
-	//new_off_set = rpc_foperations(CRPC_LSEEK_REQ, NULL, NULL, NULL, &ld_data, NULL);
-	//new_off_set = rpc_foperations(CRPC_LSEEK_REQ, &un_data);
 
 	new_off_set = rpc_foperations(&rpcdata);
 
@@ -85,14 +70,9 @@ int crpc_lseek(int fd, int off_set, int whence)
 int crpc_close(int fd)
 {
 	int cd = -1 ;
-	//struct close_st cl_data;
-
 	struct rpc_fop_data rpcdata;
 
 	rpcdata.udata.cdata.fd = fd;
-
-	//cd = rpc_foperations(CRPC_CLOSE_REQ, NULL, NULL, NULL, NULL, &cl_data);
-	//cd = rpc_foperations(CRPC_CLOSE_REQ, &un_data);
 
 	cd= rpc_foperations(&rpcdata);
 

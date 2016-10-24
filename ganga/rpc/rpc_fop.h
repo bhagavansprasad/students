@@ -55,4 +55,10 @@ struct rpc_fop_data
 	union rpcfop_un udata;
 };
 
+struct rpc_fop_data
+{
+	int operation;
+	union rpcfop_un udata;
+};
+
 int rpc_foperations(struct rpc_fop_data *prpcdata);
