@@ -1,21 +1,39 @@
 #include "stdio.h"
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/socket.h>
-#include "rpc_fop.h"
-#include "txrx_rpc_data.h"
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <errno.h>
+#include <string.h>
+#include "../defs/rpc_fop.h"
+#include "../defs/ctxrx_rpc_data.h"
 
 
 int client_sock_fd = -1;
 
 int send_rpcc_client_request(void *pdata, int len)
 {
-	int retval = 0;
+	int retval = -1;
 
-	retval = send(sock_fd, pdata, len);
+	retval = send(client_sock_fd, pdata, len, 0);
 
 	printf("send retval :%d\n", retval);
 }
- 
+
+int  recv_rpcc_client_reply(void *pdata, int len)
+{
+ 	int reply_retval = -1;
+
+	reply_retval = recv(client_sock_fd, pdata, len, 0);
+
+	printf("reply retval :%d\n", reply_retval);
+
+	return reply_retval;
+}
+
 int init_client_connection(char *srvr_addr, int port)
 {
 	struct sockaddr_in serverAddr;
