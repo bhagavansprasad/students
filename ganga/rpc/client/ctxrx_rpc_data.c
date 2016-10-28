@@ -11,7 +11,6 @@
 #include "../defs/rpc_fop.h"
 #include "../defs/ctxrx_rpc_data.h"
 
-
 int client_sock_fd = -1;
 
 int send_rpcc_client_request(void *pdata, int len)
@@ -20,16 +19,16 @@ int send_rpcc_client_request(void *pdata, int len)
 
 	retval = send(client_sock_fd, pdata, len, 0);
 
-	printf("send retval :%d\n", retval);
+	printf("-->C: send retval :%d\n", retval);
 }
 
 int  recv_rpcc_client_reply(void *pdata, int len)
 {
  	int reply_retval = -1;
 
-	reply_retval = recv(client_sock_fd, pdata, len, 0);
+	 reply_retval = recv(client_sock_fd, pdata, len, 0);
 
-	printf("reply retval :%d\n", reply_retval);
+	printf("-->C: recv retval :%d\n", reply_retval);
 
 	return reply_retval;
 }
