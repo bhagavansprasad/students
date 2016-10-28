@@ -38,9 +38,9 @@ int main()
 
 			send_rpcc_server_reply(newSocket, &reply, sizeof(reply));
 
-			sleep(3);
+			sleep(2);
 		}
-		sleep(3);
+		sleep(2);
 	}
 }
 
