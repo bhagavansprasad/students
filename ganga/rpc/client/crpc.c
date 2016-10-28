@@ -46,9 +46,9 @@ int crpc_read(int fd, char *buff, int size)
 
 	recv_rpcc_client_reply(&reply, sizeof(reply));
 
-	printf("-->C: byte_count recieved : %d \n", reply.ureply.rreply.byte_count); 
+	printf("-->C: retval recieved : %d \n", reply.ureply.rreply.retval); 
 	
-	return reply.ureply.rreply.byte_count;
+	return reply.ureply.rreply.retval;
 }
 
 int crpc_write(int fd,char *buff,int size)
@@ -68,9 +68,9 @@ int crpc_write(int fd,char *buff,int size)
 
 	recv_rpcc_client_reply(&reply, sizeof(reply));
 	
-	printf("-->C: byte_count recieved : %d \n", reply.ureply.wreply.byte_count); 
+	printf("-->C: retval recieved : %d \n", reply.ureply.wreply.retval); 
 	
-	return reply.ureply.wreply.byte_count ;
+	return reply.ureply.wreply.retval ;
 }
 
 int crpc_lseek(int fd, int off_set, int whence)
@@ -101,6 +101,7 @@ int crpc_close(int fd)
 	struct rpc_fop_data rpcdata;
 	struct rpc_fop_data_reply reply ;
 
+	rpcdata.operation = CRPC_CLOSE_REQ;
 	rpcdata.udata.cdata.fd = fd;
 
 	//cd= rpc_foperations(&rpcdata, sizeof(rpcdata));
@@ -109,7 +110,7 @@ int crpc_close(int fd)
 
 	recv_rpcc_client_reply(&reply, sizeof(reply));
 	
-	printf("-->C: retval recieved : %d \n", reply.ureply.creply.retval); 
+	printf("-->C: fd recieved : %d \n", reply.ureply.creply.fd); 
 	
-	return reply.ureply.creply.retval ;
+	return reply.ureply.creply.fd ;
 }
