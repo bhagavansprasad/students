@@ -16,7 +16,7 @@ main ()
 		
 		k = i-1;
 
-		for (  ; atolower(s[j]) == atolower(s[k]); j++, k--)
+		for (  ; s[j] == s[k]; j++, k--)
 		{
 			if (j >= k)
 			{
@@ -31,11 +31,11 @@ main ()
 
 
 
-char atolower (char a)
+/*char atolower (char a)
 {
 	if (a>='A' && a<='z')
 	{
 		a = a + 32;
 	}
 	return a;
-}
+}*/

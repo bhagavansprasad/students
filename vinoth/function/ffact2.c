@@ -1,11 +1,11 @@
 #include<stdio.h>
 main()
 {
-	int n=5, sum=0, a, b, c, x, y, i;	
-	for(i=0; i<=;; i++)
+	int n=5, sum=0, a, b, c, x=0, y=0, i;	
+	for(i=1; i<=n; i++)
 	{
-		a = factorial (x+1);
-		b = factorial (y+1);
+		a = factorial (i+1);
+		b = factorial (i);
 		c = a/b;
 		//printf("%d\n",c);
 		sum = sum + c;

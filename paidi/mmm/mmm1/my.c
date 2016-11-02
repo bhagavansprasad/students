@@ -67,7 +67,7 @@ int main()
 	//display_stats();
 
     char *p1 = amalloc(120);
-	printf("p1 -- %u\n",p1);
+	printf("p1 -- %p\n",p1);
 	p1[150] = 'x';
 	display_stats();
 	afree(p1);

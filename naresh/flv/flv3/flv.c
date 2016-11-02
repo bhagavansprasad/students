@@ -30,4 +30,15 @@ main()
 	r1 = read_flv_tag(fd, buff,15);
 	parse_flv_tag(buff, 15, &ftag);
 	dump_flv_tag(&ftag);
+	
+	/*int size = 9, i = 0, j = 0;
+	for(i = 0; i <10; i++)
+	{
+		size+= 15+ftag.datasize;
+		lseek(fd, size, SEEK_SET);
+		r1 = read_flv_tag(fd, buff,15);
+		parse_flv_tag(buff, 15, &ftag);
+		dump_flv_tag(&ftag);
+	}*/
+
 }

@@ -8,7 +8,7 @@ main()
 		{
 			printf ("%d", j);
 		}
-		//printf (" ");
+		printf (" ");
 		for (k=j-1; k>0; k--)
 		{
 			printf ("%d", k);

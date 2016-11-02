@@ -1,0 +1,35 @@
+Link
+	http://www.linuxjournal.com/content/concerning-containers-connections-docker-networking?page=0,1
+
+- db steps
+----------
+Create a Dockerfile in db directory
+Build image
+	sudo docker build -t worlddb .
+
+Load entries to db
+./loaddata.sh
+
+- web server
+------------
+Create a Dockerifle in websrvr directory
+Build image
+	sudo docker build -t worldweb .
+
+Docker -1
+$ sudo iptables -t nat -L -n
+
+Docker -2
+
+Scenario-2
+------------
+docker run --name busybox1 -p 8080:8080 -it busybox
+docker run --name busybox2 --link busybox1:busybox1 -it busybox
+
+In busybox 2
+	ping busybox1
+	cat /etc/hosts
+	printenv
+
+
+

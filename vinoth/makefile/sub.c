@@ -4,4 +4,3 @@ int sub (int c, int d)
 	e = c-d;
 	return e;
 }
-
