@@ -1,4 +1,5 @@
 #include "stdio.h"
+#include "stdlib.h"
 #include "unistd.h"
 #include "fcntl.h"
 #include "sys/types.h"
@@ -16,8 +17,6 @@ int crpc_open(char *fname,int mode,int flags)
 	strcpy(rpcdata.udata.odata.fname, fname);
 	rpcdata.udata.odata.mode = mode;
 	rpcdata.udata.odata.flags = flags;
-
-	//fd = rpc_foperations(&rpcdata);
 
 	send_rpcc_client_request(&rpcdata, sizeof(rpcdata));
 
@@ -38,16 +37,15 @@ int crpc_read(int fd, char *buff, int size)
 	rpcdata.udata.rdata.fd = fd;
 	rpcdata.udata.rdata.size = size;
 
-	//retval = rpc_foperations(&rpcdata);
-
 	send_rpcc_client_request(&rpcdata, sizeof(rpcdata));
-
-	strcpy(buff, rpcdata.udata.rdata.buff);
+	strcpy(rpcdata.udata.rdata.buff, buff);
 
 	recv_rpcc_client_reply(&reply, sizeof(reply));
 
 	printf("-->C: retval recieved : %d \n", reply.ureply.rreply.retval); 
+	printf("-->C: replied buffer  : %s \n", reply.ureply.rreply.buff); 
 	
+	strcpy(buff,reply.ureply.rreply.buff);
 	return reply.ureply.rreply.retval;
 }
 
@@ -59,10 +57,8 @@ int crpc_write(int fd,char *buff,int size)
 
 	rpcdata.operation = CRPC_WRITE_REQ;
 	rpcdata.udata.wdata.fd = fd;
-	strcpy(buff, rpcdata.udata.wdata.buff);
+	strcpy(rpcdata.udata.wdata.buff, buff);
 	rpcdata.udata.wdata.size = size;
-
-	//retval = rpc_foperations(&rpcdata, sizeof(rpcdata));
 
 	send_rpcc_client_request(&rpcdata, sizeof(rpcdata));
 
@@ -84,8 +80,6 @@ int crpc_lseek(int fd, int off_set, int whence)
 	rpcdata.udata.sdata.off_set = off_set;
 	rpcdata.udata.sdata.whence = whence;
 
-	//new_off_set = rpc_foperations(&rpcdata, sizeof(rpcdata));
-
 	send_rpcc_client_request(&rpcdata, sizeof(rpcdata));
 
 	recv_rpcc_client_reply(&reply, sizeof(reply));
@@ -103,8 +97,6 @@ int crpc_close(int fd)
 
 	rpcdata.operation = CRPC_CLOSE_REQ;
 	rpcdata.udata.cdata.fd = fd;
-
-	//cd= rpc_foperations(&rpcdata, sizeof(rpcdata));
 
 	send_rpcc_client_request(&rpcdata, sizeof(rpcdata));
 

@@ -24,9 +24,9 @@ int send_rpcc_client_request(void *pdata, int len)
 
 int  recv_rpcc_client_reply(void *pdata, int len)
 {
- 	int reply_retval = -1;
+	int reply_retval = -1;
 
-	 reply_retval = recv(client_sock_fd, pdata, len, 0);
+	reply_retval = recv(client_sock_fd, pdata, len, 0);
 
 	printf("-->C: recv retval :%d\n", reply_retval);
 
@@ -46,6 +46,7 @@ int init_client_connection(char *srvr_addr, int port)
 	memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero); 
 
 	addr_size = sizeof serverAddr;
+	printf("-->C. client: connecting to the server\n");
 	connect(client_sock_fd, (struct sockaddr *) &serverAddr, addr_size);
 
 	return 0;
