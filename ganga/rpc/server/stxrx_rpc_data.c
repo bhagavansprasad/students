@@ -15,10 +15,11 @@ int srvr_port = 9090;
 int main()
 {
 	int newSocket = -1;
+	int retval = 0;
+	int reply_retval = 0;
 	int server_sock_fd = -1;
 	struct rpc_fop_data rpcdata;
 	struct rpc_fop_data_reply reply;
-	int retval = 0;
 
 	printf("-->S. IN %s %s %d\n", __FILE__, __FUNCTION__, __LINE__); 
 
@@ -28,6 +29,15 @@ int main()
 	{
 		newSocket = accept_new_client_request(server_sock_fd);
 
+		if(newSocket == -1)
+		{
+
+			perror("accept system call failed\n");
+			close(server_sock_fd);
+
+			exit(1);
+		}
+
 		for ( ; ;)
 		{
 			recv_rpcc_server_request(newSocket, &rpcdata, sizeof(rpcdata));
@@ -36,11 +46,13 @@ int main()
 
 			printf("-->S. rpc_foperations retval :%d\n", retval); 
 
-			send_rpcc_server_reply(newSocket, &reply, sizeof(reply));
+			reply_retval =  send_rpcc_server_reply(newSocket, &reply, sizeof(reply));
+			
+			printf("-->S. rpc_foperations reply_retval :%d\n", reply_retval); 
 
-			sleep(2);
+			sleep(1);
 		}
-		sleep(2);
+		sleep(1);
 	}
 }
 
@@ -109,5 +121,6 @@ int init_server_connection(char *srvr_addr, int port)
 		printf("-->S. Error\n");
 
 	printf("-->S. before return from :%s socketfd :%d\n", __FUNCTION__, server_sock_fd);
+
 	return server_sock_fd;
 }

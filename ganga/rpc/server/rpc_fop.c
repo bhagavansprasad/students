@@ -2,6 +2,7 @@
 #include "stdlib.h"
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include "../defs/rpc_fop.h"
@@ -12,8 +13,9 @@ int rpc_foperations(struct rpc_fop_data *prpcdata, struct rpc_fop_data_reply *pr
 	int new_off_set = -1 ;
 	int fd = -1 ;
 	int byte_count = -1;
-	char *buff;
+	char buff[100];
 
+	printf("\n");
 	printf("-->S. %s %s %d\n", __FILE__, __FUNCTION__, __LINE__); 
 
 	printf("-->S. operation :%d\n", prpcdata->operation); 
@@ -24,6 +26,7 @@ int rpc_foperations(struct rpc_fop_data *prpcdata, struct rpc_fop_data_reply *pr
 			printf("-->S. fname :%s, mode :%d, flags :%d\n", prpcdata->udata.odata.fname, prpcdata->udata.odata.mode, prpcdata->udata.odata.flags);
 			fd = open(prpcdata->udata.odata.fname, prpcdata->udata.odata.mode, prpcdata->udata.odata.flags);
 			printf("-->S: open retval :%d\n", fd);
+			
 			preply->operation = CRPC_OPEN_REQ_REPLY;
 			preply->ureply.oreply.fd = fd;
 			printf("-->S. OPEN_REQ_REPLY--> %d\n", prpcdata->operation );
@@ -32,15 +35,18 @@ int rpc_foperations(struct rpc_fop_data *prpcdata, struct rpc_fop_data_reply *pr
 			return preply->ureply.oreply.fd;
 
 		case CRPC_READ_REQ:
-			printf("-->S. fd :%d, buff :%s, len :%d\n", prpcdata->udata.rdata.fd, prpcdata->udata.rdata.buff, prpcdata->udata.rdata.size);
+			printf("-->S. fd  :%d\n", prpcdata->udata.rdata.fd);
+			printf("-->S. len :%d\n", prpcdata->udata.rdata.size);
 			retval = read(prpcdata->udata.rdata.fd, prpcdata->udata.rdata.buff, prpcdata->udata.rdata.size);
-
-			printf("-->S: read retval :%d\n", retval);
 			prpcdata->udata.rdata.buff[retval] = '\0';
+			strcpy(buff, prpcdata->udata.rdata.buff);
+			printf("-->S: read buff :%s\n", prpcdata->udata.rdata.buff);
+
 			preply->operation = CRPC_READ_REQ_REPLY;
 			preply->ureply.rreply.retval = retval;
-			printf("-->S. READ_REQ_REPLY--> %d\n", preply->operation);
-			printf("-->S: read reply_retval :%d\n", retval);
+			printf("-->S: read reply retval :%d\n", retval);
+			strcpy(preply->ureply.rreply.buff, buff);
+			printf("-->S: read reply buff :%s\n", preply->ureply.rreply.buff);
 
 			return preply->ureply.rreply.retval;
 
@@ -49,10 +55,9 @@ int rpc_foperations(struct rpc_fop_data *prpcdata, struct rpc_fop_data_reply *pr
 			retval = write(prpcdata->udata.wdata.fd, prpcdata->udata.wdata.buff, prpcdata->udata.wdata.size);
 			printf("-->S: write retval :%d\n",retval);
 			
-			prpcdata->udata.wdata.buff[retval] = '\0';
 			preply->operation = CRPC_WRITE_REQ_REPLY;
-			preply->ureply.wreply.retval = retval;
 			printf("WRITE_REQ_REPLY--> %d\n", preply->operation);
+			preply->ureply.wreply.retval = retval;
 			printf("-->S: writereply_ retval :%d\n", retval);
 
 			return preply->ureply.wreply.retval;
@@ -85,4 +90,5 @@ int rpc_foperations(struct rpc_fop_data *prpcdata, struct rpc_fop_data_reply *pr
 			printf("there is no file:\n");
 			break;
 	}
+
 }
