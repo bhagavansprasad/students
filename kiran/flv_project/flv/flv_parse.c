@@ -1,5 +1,9 @@
 #include "flv.h"
 
+int read_flv_header(int, char *, int);
+void parse_flv_header(char *, int, struct flv_file_header *);
+void dump_flv_header(struct flv_file_header *);
+
 int read_flv_header(int fd, char *buff, int len)
 {
 	int r = 0;
@@ -10,40 +14,40 @@ int read_flv_header(int fd, char *buff, int len)
 void parse_flv_header(char *buff, int len, struct flv_file_header *phead)
 {
 	unsigned char flags = 0;
-	unsigned int mask = 1,i,n, offset = 0;
 
 	bzero(phead, sizeof(struct flv_file_header));
-	strncpy(phead->signature, buff, SIGNATURE_LEN);
-	phead->version = buff[3];
-	flags = buff[4];
 
-	phead->is_video = ((flags&(mask<<0))?1:0);
-	mask = 1;
-	phead->is_audio = ((flags&(mask<<2))?1:0);
-	for(i = 5; i <= len-1; i++)
-	{
-		n = buff[i];
-		offset+= offset_value(n);
-	}
-	phead->offset = offset;
+	strncpy(phead->signature, buff, SIGNATURE_LEN);
+	phead->version = atoi(buff[3]);
+
+	flags = buff[4];
+	
+	/*if (flags's six bit is 1 ) then
+		phead->is_video = 1;
+
+	if (flags's eighth bit is 1 ) then
+		phead->is_audio  = 1
+
+	phead->offset = offset;*/
 }
 
-void dump_flv_header(struct flv_file_header *phead)
-{
 
-	printf("SIGNATURE ----- %s\n",phead->signature);
-	printf("VERSION   ----- %d\n",phead->version);
-	if(1 == phead->is_audio)
+/*void dump_flv_header(struct flv_file_header *phead)
+{
+	
+	printf("SIGNATURE ----- %s\n",s->signature);
+	printf("VERSION   ----- %d\n",s->version);
+	if(1 == s->is_audio)
 	{
-		printf("AUDIO     ----- audio tags are present in flv file header\n");
+		printf("AUDIO ----- audio tags are present\n");
 	}
 	else 
-		printf("AUDIO     ----- audio tags are not present in flv file header \n");
-	if(1 == phead->is_video)
+		printf("AUDIO ----- audio tags are not present\n");
+	if(1 == s->is_video)
 	{
-		printf("VIDEO     ----- video tags are present in flv file header\n");
+		printf("VIDEO ----- video tags are present\n");
 	}
 	else
-		printf("VIDEO     ----- video tags are not present in flv file header\n");
-	printf("OFFSET    ----- %d\n",phead->offset);
-}
+		printf("VIDEO ----- video tags are not present\n");
+	printf("OFFSET ----- %d\n",s->offset);
+}*/

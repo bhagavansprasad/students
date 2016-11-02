@@ -1,14 +1,24 @@
-flv: flv.o flv_parse.o offset.o
-	gcc flv.o flv_parse.o offset.o -o flv
+a.out:flv.o flv_parse_header.o flv_parse_tag.o script_data.o video_data.o audio_data.o
+	gcc flv.o flv_parse_header.o flv_parse_tag.o script_data.o video_data.o audio_data.o
 
-flv.o: flv.c flv.h
-	gcc flv.c -c
+flv.o:flv.c flv.h fn_declaration.h
+	gcc flv.c flv.h fn_declaration.h -c
 
-flv_parse.o: flv_parse.c 
-	gcc flv_parse.c -c
+flv_parse_header.o:flv_parse_header.c
+	gcc flv_parse_header.c -c
 
-offset.o: offset.c
-	gcc offset.c -c
+flv_parse_tag.o:flv_parse_tag.c
+	gcc flv_parse_tag.c -c
+
+script_data.o:script_data.c
+	gcc script_data.c -c
+
+video_data.o: video_data.c
+	gcc video_data.c -c
+
+audio_data.o: audio_data.c
+	gcc audio_data.c -c
+
 clean:
 	rm *.o
-	rm flv
+	rm a.out

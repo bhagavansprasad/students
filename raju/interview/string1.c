@@ -8,7 +8,7 @@ main()
 
 //	a="WELCOME";
 
-//	strcpy(a,"WELCOME");
+//	strcpy(a,"idm");
 
 	strcpy(buff,"WELCOME");
 

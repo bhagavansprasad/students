@@ -11,8 +11,9 @@ int main()
 {
 	struct sockaddr_in mysockaddr;
 	int socketfd;
-	char buff1[3][20]={"hellow","i am fine","bye"};
-	char buffer[100];
+//	char buff1[3][20]={"hellow","i am fine","bye"};
+	char ruffer[100];
+	char wuffer[100];
 	int newfd;
     int retval = 0,i;
 	socketfd = socket(AF_INET, SOCK_STREAM,0);
@@ -25,7 +26,7 @@ int main()
 	memset(&mysockaddr, 0, sizeof(mysockaddr));
 
 	mysockaddr.sin_family = AF_INET;
-	mysockaddr.sin_port = htons(8000);
+	mysockaddr.sin_port = htons(9999);
 	mysockaddr.sin_addr.s_addr = INADDR_ANY;
 
 	if(bind(socketfd, (struct sockaddr *)&mysockaddr, sizeof(mysockaddr)) == -1)
@@ -52,23 +53,25 @@ int main()
 	}
 
 	printf("--->server : Got the connection request from client \r\n\n");
-	for(i=0;i<3;i++)
+	while(1)
 	{
 			sleep(2);
-	        retval = read(newfd, buffer, 30);
+	        retval = read(newfd, ruffer, 30);
 			if(retval < 0)
 	     	{
 			   break;
 	    	}
-            buffer[retval]='\0';
-	        printf("--->server:  receive from client :%s\r\n",buffer);
-
-            retval=write(newfd, &buff1[i], 20);
+            ruffer[retval]='\0';
+	        printf("--->server:  receive from client :%s\r\n",ruffer);
+                 gets(wuffer);
+            retval=write(newfd, wuffer, 20);
 			if(retval < 0)
 		    {
 		      break;
 		    }
 			printf("--->server: buff1 write retval : %d\n",retval);
+			if(strcmp(ruffer, "bye") == 0)
+			break;
 
 		}
             close(socketfd);

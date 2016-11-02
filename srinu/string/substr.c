@@ -61,7 +61,7 @@ int main()
 	printf("ret      :%p\n", ret);
 	printf("The substring is: %s\n\n", ret);
 
-//return 0;
+//return 0;substr.c
 	ret = astrstr(haystack, needle);
 	printf("haystack :%p\n", haystack);
 	printf("needle   :%p\n", needle);

@@ -1,29 +1,26 @@
 #include<stdio.h>
-main()
-{
-	int i,j,t,k=0;
-	int a[8]={2,6,4,6,8,4,8,10};
-	for(i=0;i<8;i++)
-	{
-	  for(j=i+1;j<8-k;j++) //if k is not there garbage values will compare
+int main() {
+   int arr[5]={1,3,1,3,4};
+   int i, j, k, size=5;
+   for (i = 0; i < size; i++) 
+   {
+      for (j = i + 1; j < size;) 
 	  {
-	    if(a[i]==a[j])
-		{
-		   k++;   // k helps in removing garbage values
-		   t=j;
-		   printf("k:%d\t  i:%d\t j:%d\t a[i]:%d\t a[j]:%d\n",k,i,j,a[i],a[j]);
-		   for( j=0;j<8;j++)
-		   {
-		     a[j]=a[j+1];
-		   }
-			j=t;
-		 }
-	   }
-	 }  
-	 printf("K:%d\n",k);
-	   for(i=0;i<=8-k;i++)   // if k is not there garbage values will print
-	   {
-	     printf("%d\n",a[i]);
-	    }	 
-	 
-}	 
+         if (arr[j] == arr[i]) 
+		 {
+            for (k = j; k < size; k++) 
+			{
+               arr[k] = arr[k + 1];
+            }
+            size--;
+         } 
+		 else
+            j++;
+      }
+   }
+   for (i = 0; i < size; i++)
+   {
+      printf("%d ", arr[i]);
+   }
+   return (0);
+} 

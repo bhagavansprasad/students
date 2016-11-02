@@ -20,6 +20,8 @@ main()
 	display();
 	printf("\n");
 	pop();
+	pop();
+	pop();
 	display();
 }
 

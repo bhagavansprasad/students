@@ -26,7 +26,7 @@ int main()
 	memset(&mysockaddr, 0, sizeof(mysockaddr));
 
 	mysockaddr.sin_family = AF_INET;
-	mysockaddr.sin_port = htons(6666);
+	mysockaddr.sin_port = htons(8888);
 	mysockaddr.sin_addr.s_addr = INADDR_ANY;
 
 	if(bind(socketfd, (struct sockaddr *)&mysockaddr, sizeof(mysockaddr)) == -1)

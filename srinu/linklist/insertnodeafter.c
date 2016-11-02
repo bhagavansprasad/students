@@ -18,7 +18,7 @@ main()
 	add_node(40);
 	printf("before inserted values \n");
 	display();
-	insert_node_after(25,3);
+	insert_node_after(11,3);
 	printf("after inserted values \n");
 	display();
 }

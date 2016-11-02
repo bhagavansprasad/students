@@ -68,5 +68,5 @@ int ispresent(struct node *h,int data)
 		return 1;
 		t=t->next;
 	}
-	return 0;
+	return 0;intersection.c
 }

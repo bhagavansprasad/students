@@ -2,8 +2,14 @@
 #include<string.h>
 main()
 {
-int i=0,j=0;
-char s[10]="sreenu";
-for(j=strlen(s)-1;i<=5;i++,j--)
-printf("%c\n",s[j]);
+	int i=0,j=0;
+	char s[100]="i have many books";
+	printf("%s\n",s);
+	for(j=strlen(s)-1;i>=0;i++,j--)
+	{
+		printf("%c",s[j]);
+		if(j == 0)
+			break;
+	}
+	printf("\n");
 }

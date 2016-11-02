@@ -19,7 +19,7 @@ char reve(char *str)
 }
 int main()
 {
-	char str[20] = "Prasanna";
+	char str[20] = "Prasanna kumar";
 	
 	printf("Before reverse: %s\n",str);
 	reve(str);

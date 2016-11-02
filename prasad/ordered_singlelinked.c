@@ -20,12 +20,12 @@ int addnode(int val)
 	h=new;
 	return 0;
     }
-    if(h->data>=val)
-    {
-	new->next=h;
-	h=new;
-	return 0;
-    }
+  //  if(h->data>=val)
+ //   {
+//	new->next=h;
+//	h=new;
+//	return 0;
+ //   }
     for(curr=h;curr->next!=NULL;curr=curr->next)
     {
 	if(curr->data<=val&&curr->next->data>=val)

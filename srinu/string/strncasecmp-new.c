@@ -18,6 +18,7 @@ int astrncasecmp(char *s1,char *s2,int len)
 }	
 
 main()
+
 {
 	char s1[]="sravANi";
 	char s2[]="sRanvani";

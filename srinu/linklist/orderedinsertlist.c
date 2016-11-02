@@ -14,50 +14,47 @@ main()
 	order_insert_node (5);
 	order_insert_node (1);
 	order_insert_node (13);
+	order_insert_node(50);
 	order_insert_node (12);
 	order_insert_node(15);
 	display();
 }
-int order_insert_node(int n)
+int order_insert_node(int val)
 {
-	struct node *new ;
+	struct node *new, *prev,*cur ;
 	new=malloc(sizeof(struct node));
-	new->no = n;
-	struct node *p,*c;
+	new->no = val;
 	if(h == NULL)
 	{
 		h=new;
 		new->next=NULL;
 		return 0;
 	}
-	else
+	cur=h;
+	for( ;cur!=NULL; )
 	{
-		p=c=h;
-		for( ;c!=NULL; )
+		if(val<(cur->no))
 		{
-			if(n<(c->no))
+			if(cur==h)
 			{
-				if(c==h)
-				{
-					new->next=h;
-					h = new;
-					return 0;
-				}
-				else
-				{
-					p->next=new;
-					new->next=c;
-					return 0;
-				}
+				new->next=h;
+				h = new;
+				return 0;
 			}
-			p=c;
-			c=c->next;
+			else
+			{
+				prev->next=new;
+				new->next=cur;
+				return 0;
+			}
 		}
-		if(c==NULL)
-		{
-		p->next=new;
+		prev=cur;
+		cur=cur->next;
+	}
+	if(cur==NULL)
+	{
+		prev->next=new;
 		return 0;
-		}
 	}
 }
 void display(void)
