@@ -3,7 +3,7 @@
 int main()
 {
 	int wc=0;
-	char buff[100]=" k. s r a v a n i s r i n u r e d d y ";
+	char buff[100]="   k. s r a v a n i s r i n u r e d d y ";
 	wc=get_word_count(buff);
 	printf("%d\n",wc);
 }

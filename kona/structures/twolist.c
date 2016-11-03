@@ -93,4 +93,4 @@ struct node *intersect(struct node *h1,struct node *h2)
 		}
 	}
 	return NULL;
-}*/
+}

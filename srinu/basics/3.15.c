@@ -9,14 +9,15 @@ int main()
 		for(l=1;l<=2*(n-i)-1;l++)
 			printf(" ");
 		for(k=i;k>0;k--)
-			printf("%d\n",k);
+			printf("%d",k);
 	}
 	for(i=1;i<=n;i++)
 	{
-		printf("%d\n",i);
+		printf("%d",i);
 		for(j=n-1;j>0;j--)
 		{
-			printf("%d\n",j);
+			printf("%d\t",j);
 		}
+		printf("\n");
 	}
 }

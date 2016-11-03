@@ -10,7 +10,7 @@ int main()
 {
 	struct sockaddr_in mysockaddr;
 	int socketfd;
-	char buff1[3][15]={"hello","mangalore","kadapa"};
+	char buff1[3][15]={"hello","mangalore","bye"};
 	char buff[100];
 	int newfd;
 	int retval=0,i;
@@ -37,6 +37,8 @@ int main()
 		close(socketfd);
 		exit(1);
 	}
+	while(1)
+	{
 	printf("---->server:going for accepting connection\r\n");
 	newfd=accept(socketfd,NULL,NULL);
 	if(newfd==-1)
@@ -61,6 +63,7 @@ int main()
 			break;
 		}
 		printf("--->server:buff1 write retval:%d\n",retval);
+	}
 	}
 	close(socketfd);
 	return 0;
