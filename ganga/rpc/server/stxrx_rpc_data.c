@@ -11,6 +11,7 @@
 
 char srvr_ip[] = "127.0.0.1";
 int srvr_port = 9090;
+int i;
 
 int main()
 {
@@ -38,7 +39,7 @@ int main()
 			exit(1);
 		}
 
-		for ( ; ;)
+		for (i = 0 ; i < 9  ; i++)
 		{
 			recv_rpcc_server_request(newSocket, &rpcdata, sizeof(rpcdata));
 
@@ -49,9 +50,10 @@ int main()
 			reply_retval =  send_rpcc_server_reply(newSocket, &reply, sizeof(reply));
 			
 			printf("-->S. rpc_foperations reply_retval :%d\n", reply_retval); 
-
+			
 			sleep(1);
 		}
+		exit(0);
 		sleep(1);
 	}
 }
@@ -86,6 +88,7 @@ int accept_new_client_request(int server_sock_fd)
 {
 	int newsockfd = -1;
 	struct sockaddr_in serverAddr;
+
 	printf("-->S. IN %s %s %d\n", __FILE__, __FUNCTION__, __LINE__); 
 
 	socklen_t addr_size = sizeof serverAddr;

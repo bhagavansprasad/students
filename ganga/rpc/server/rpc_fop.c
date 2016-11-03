@@ -80,9 +80,9 @@ int rpc_foperations(struct rpc_fop_data *prpcdata, struct rpc_fop_data_reply *pr
 			printf("-->S: close retval :%d\n",fd);
 			
 			preply->operation = CRPC_CLOSE_REQ_REPLY;
-			preply->ureply.creply.fd = fd;
 			printf("CLOSE_REQ_REPLY--> %d\n", preply->operation);
-			printf("-->S:  close reply_retval :%d\n", fd);
+			preply->ureply.creply.fd = fd;
+			printf("-->S: close reply_retval :%d\n", fd);
 			
 			return preply->ureply.creply.fd;
 
