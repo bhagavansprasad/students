@@ -24,7 +24,7 @@ int main()
 	}
 	str1[j]=NULL;
 
-	printf("Concatenated string is: %s",str1);
+	printf("Concatenated string is: %s",str1,str2);
 
 	return 0;
 }

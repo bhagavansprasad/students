@@ -8,7 +8,7 @@ int gen_key(char *s)
 	else if (s[0] >= 'A' && s[0] <= 'Z')
 		return s[0]-'A';
 	else
-		return 0;
+		return 30;
 
 #if 0
 

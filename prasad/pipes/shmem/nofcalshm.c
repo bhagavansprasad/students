@@ -13,13 +13,13 @@ perror("1st shmid failed:");
 else
 printf("success shmid is %d \n",shmid);
 
-shmid=shmget(key,110,IPC_CREAT|0666);
+shmid=shmget(key,10,IPC_CREAT|0666);
 if(shmid<0)
 perror("2nd shmid failed:");
 else  
 printf("success shmid is %d \n",shmid);
 
-shmid=shmget(key,90,IPC_CREAT|0666);
+shmid=shmget(key,99,IPC_CREAT|0666);
 if(shmid<0)
 perror("3rd shmid failed:");
 else  

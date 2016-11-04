@@ -28,7 +28,7 @@ main()
 	add_at_posi(70,4);
 	//delbegi(230);
 	delete_by_val(30);
-	index=display_index(1000);
+	index=display_index(38);
 	display();
 	if(index == 0)
 	{
