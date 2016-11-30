@@ -54,7 +54,6 @@ main()
 
 	frame.can_id |= CAN_RTR_FLAG;
 
-
 	*(unsigned long*)(&frame.data[0]) = random();
 	*(unsigned long*)(&frame.data[4]) = random();
 
