@@ -1,0 +1,19 @@
+Adding user
+- Add user 'auradev' and group 'auradev' password 'jnjnuh'
+
+Installing necessary packages
+- Install packages git, vim-gtk, ssh, telnetd, ftpd
+
+Setting the environment
+- Copy bashrc to home folder as .bashrc as auradev:auradev
+- Copy gvimrc to home folder as .gvimrc as auradev:auradev
+- Copy mkenv to home folder as mkenv as auradev:auradev
+- Copy mkenv to /usr/local/bin as root:root
+
+Building packages
+- Copy flvmeta-1.1-r235.tar.gz for /home/auradev/sources folder
+- Untar
+- cd /home/bhagavan/sources/flvmeta-1.1-r235
+- Run ./configure       (NOTE: Install packages if any missing)
+- make
+- sudo make install
