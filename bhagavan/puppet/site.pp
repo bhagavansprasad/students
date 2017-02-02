@@ -3,6 +3,5 @@ file { "/var/tmp/testfile":
         owner => "root",
         group => "root",
         mode => "664",
-        content => "This is a test file created using puppet.
-                    Puppet is really cool",
+        content => "This is a test file created using puppet.  Puppet is really cool",
 }

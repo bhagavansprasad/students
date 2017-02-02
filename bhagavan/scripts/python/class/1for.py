@@ -4,22 +4,32 @@ teststr = "How are you"
 print teststr[0]
 print teststr[1]
 
-print teststr
-for mychar in teststr:
-    print mychar, 
+i = 0
+while (i <= 10):
+    print  teststr[i],
+    i += 1
 
 print ""
+
+
+print teststr
+zzzchar = 't'
+for zzzchar in teststr:
+    print zzzchar 
+
 print ""
 
 mywords = ['hello', 'how', 'are', 'you']
 
-for word in mywords:
-	print word, 
-        print word[0], word[1], word[2]
+for tword in mywords:
+	print tword, 
+        print tword[0], tword[1], tword[2]
 
 print ""
+
 for word in mywords:
     print word, 
+    i = 0
     for mychar in word:
 	print i, ':', mychar, 
 	i = i + 1
