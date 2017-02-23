@@ -43,6 +43,20 @@ int string_toggle_case(char *s)
 {
 }
 
+//1 Yes
+//0 No
+int is_lower(char ch)
+{
+	//......
+}
+
+//1 Yes
+//0 No
+int is_upper(char ch)
+{
+	//......
+}
+
 main()
 {
 	char sname[100] = "Bhagavathi Tamilnadu";
@@ -51,6 +65,8 @@ main()
 	char s3[100] = "    ";
 	char s4[100] = "";
 	int len = 0;
+	char ch1 = 'x'
+	char ch2 = 'x'
 
 	len = astrlen(sname);
 	printf("The string '%s', length is :%d\n", sname, len);
@@ -61,6 +77,28 @@ main()
 	printf("'%s', length :%d\n", s2, astrlen(s2));
 	printf("'%s', length :%d\n", s3, astrlen(s3));
 	printf("'%s', length :%d\n", s4, astrlen(s4));
+
+	if (is_lower(ch1) == 1)
+		printf("%c is a lower\n");
+	else
+		printf("%c is a UPPER\n");
+
+	if (is_upper(ch2) == 1)
+		printf("%c is a UPPER\n");
+	else
+		printf("%c is a lower\n");
+
+	if (is_lower(ch2) == 1)
+		printf("%c is a lower\n");
+	else
+		printf("%c is a UPPER\n");
+
+	if (is_upper(ch1) == 1)
+		printf("%c is a UPPER\n");
+	else
+		printf("%c is a lower\n");
+
+
 }
 
 
