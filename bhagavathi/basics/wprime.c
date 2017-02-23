@@ -1,0 +1,22 @@
+#include<stdio.h>
+main()
+{
+	int count=0,n=0,i=1,j=1;
+	while(n<9)
+	{
+		j=1;
+		count=0;
+		while(j<=i)
+		{
+				if(i%j==0)
+				count++;
+				j++;
+		}
+		if(count==2)
+		{
+			printf("%d\n",i);
+			n++;
+		}
+		i++;
+	}
+}
