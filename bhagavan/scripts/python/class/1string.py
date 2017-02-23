@@ -7,7 +7,7 @@ print s1[0]
 print s1[-1]
 print s1[-2]
 print s1[6:10]
-print s1[11:20]+"Bangalore"
+print s1[11:30]+"Bangalore"
 
 name = "Saketh Ram"
 age = 13

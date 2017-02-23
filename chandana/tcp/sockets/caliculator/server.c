@@ -26,6 +26,7 @@ int convert_input(int arr[],char *buff)
 		a=a*10+(buff[i] - '0');
 	arr[k++] = a;
 	arr[k] = '\0';
+
 	if( strcasecmp(cmd,"add") ==0 )
 	{
 		for(i=0;arr[i] != '\0';i++)
