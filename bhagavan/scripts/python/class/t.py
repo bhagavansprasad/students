@@ -1,8 +1,2 @@
-laksjdflads
-asd
-f
-asd
-f
-asd
-f
-asdf
+i = 10
+print type(i)

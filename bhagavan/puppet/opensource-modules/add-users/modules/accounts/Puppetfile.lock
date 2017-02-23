@@ -1,0 +1,10 @@
+FORGE
+  remote: https://forgeapi.puppetlabs.com
+  specs:
+    deric-gpasswd (0.3.2)
+    puppetlabs-stdlib (4.13.1)
+
+DEPENDENCIES
+  deric-gpasswd (>= 0.2.2)
+  puppetlabs-stdlib (>= 4.6.0)
+

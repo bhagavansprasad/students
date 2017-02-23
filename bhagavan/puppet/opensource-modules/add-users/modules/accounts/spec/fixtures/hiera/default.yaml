@@ -1,0 +1,44 @@
+---
+accounts::users:
+  myuser:
+    uid: 1000
+    comment: 'My Awesome User'
+    shell: '/bin/bash'
+    pwhash: '$myawesomehash'
+    managehome: true
+    home_permissions: '0750'
+    purge_ssh_keys: true
+    ssh_keys:
+      'myawesomefirstkey':
+        type: 'ssh-rsa'
+        key: 'yay'
+      'myawesomesecondkey':
+        type: 'ssh-rsa'
+        key: 'hey'
+  root:
+    uid: 0
+    shell: '/bin/bash'
+    ssh_keys:
+      'root_key2':
+        type: 'ssh-rsa'
+        key: 'AAA_key2'
+  superman:
+    comment: 'Clark Kent'
+    groups: ['sudo']
+    ssh_keys:
+      'super_key':
+        type: 'ssh-dss'
+        key: 'AAABBB'
+        options:
+            - 'permitopen="10.0.0.1:3306"'
+  batman:
+    comment: 'Bruce Wayne'
+    groups: ['superheroes']
+    ssh_keys:
+      'bat_key':
+        type: 'ssh-dss'
+        key: 'AAABBBatman'
+  deadpool:
+    comment: 'Deadpool'
+    ensure: 'absent'
+    groups: ['superheroes']
