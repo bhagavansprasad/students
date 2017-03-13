@@ -7,6 +7,6 @@ int astrcmp(char *a,char *b)
 		if(a[i] != b[i])
 			return 0;
 	}
-			return 1;
+	return 1;
 }
 
