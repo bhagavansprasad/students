@@ -39,7 +39,10 @@ char s2[20][100] =
 main()
 {
 	int retval = 0, i = 0;
+	char s1[]="aura netWORKS kaadubeesnahalli";
+	char s2[]="aura networksKAADUBEESNAHALLI";
 
+#if 0
 	for (i = 0; i< 12; i++)
 	{
 		printf("s1:s2 --> %s:%s\n", s1[i], s2[i]);
@@ -50,6 +53,7 @@ main()
 		else
 			printf("NOT SAME :%s and %s\n", s1[i], s2[i]);
 	}
+#endif
 
 #if 0
 	m = astrncmp(s1,s2,l);
@@ -58,6 +62,15 @@ main()
 	else
 	 	printf("\nthe given str at nth  is diff :%s,%s,%d\n\n",s1,s2,l);
 #endif
+	for (i = 0; i< 12; i++)
+	{
+		printf("s1:s2 --> %s:%s\n", s1[i], s2[i]);
 
+		retval = astrcmp(s1[i], s2[i]);
+		if(retval == 1)
+			printf("SAME: %s and %s\n", s1[i], s2[i]);
+		else
+			printf("NOT SAME :%s and %s\n", s1[i], s2[i]);
+	}
 }
 
