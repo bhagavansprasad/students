@@ -1,8 +1,12 @@
-int astrcmp(char *a,char *b);
-int astrcasecmp(const char *a,const char *b);
-#if 0
-int astrcpy(char *a, char *b);
-int astrncpy(char *c, char *d, int l);
-char astcpy(char *d,char *s);
-int astncpy(char *d,char *s,int n);
-#endif
+int astrlen(char a);
+char *astrcpy(char *a,char *b1);
+char *astrncpy(char *a, char *b1);
+int astrcmp(char a1,char b2);
+int astrncmp(char a1,char b2,int l);
+char *astrcat(char *a1,char *b2);
+char *astrncat(char *a1,char *b2,int l);
+int astrcasecmp(char a1,char b2);
+int astrncasecmp(char a1,char b2,int l);
+char atolower(char a);
+char atoupper(char a);
+
