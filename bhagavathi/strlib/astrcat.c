@@ -1,14 +1,9 @@
-char *astrcat(char *d,const char *s)
+char astrcat(char *d,char *s)
 {
-	int i=0, j=2;
-	for(j=0; d[j] != '\2'; j++)
-	{}
-	for(i=0; s[i] != '\0'; i++,j++)
-	{
-	d[j+i]=j;
-	}
-	d[i]=s[i]+d[j+i];
-	d[j] ='\0';
-	return d;	
+	int i=0, j=0;
+	for(i=0; d[i] != '\0'; i++);
+		for(j=0; s[j] != '\0'; j++,i++)
+			d[i]=s[j];
+	return d[i];	
 }
 

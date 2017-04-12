@@ -1,4 +1,4 @@
-int astrcasecmp(const char *a,const char *b)
+int astrcasecmp (char *a,char *b)
 {
 	int i=0;
 		for(i=0; a[i] != '\0'; i++)

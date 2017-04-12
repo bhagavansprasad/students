@@ -1,4 +1,4 @@
-char atoupper(char a)
+int atoupper(int *a)
 {
 	if(a>='a' && a >='z')
 	{
