@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+main()
+{
+	int x = 8, y = 2, i , j;
+	for(i = 0; i < 8; i++)
+		x = 1 << i;
+	
+	for(j = 0 ; j < 8; j++)
+		y = 1 << j;
+	
+	if( i > j)
+		printf("x is greater than y);
+	
+	else
+		printf("x is less than y);
+}
