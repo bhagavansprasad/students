@@ -15,12 +15,12 @@ main()
 	char *p1 = arr1;
 	char *p2 = arr2;
 
-	print ("%s", p2);
-	print ("%s", p2);
+	print ("%s", arr1);
+	print ("%s", arr2);
 
 	swap(&p1, &p2);
 
 	//strings should be reversed
-	print ("%s", p1);
-	print ("%s", p2);
+	print ("%s", arr1);
+	print ("%s", arr2);
 }
