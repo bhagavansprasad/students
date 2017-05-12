@@ -1,0 +1,49 @@
+#include <stdio.h>
+int inst_ordr_arr (int *a, int num, int pos, int size);
+main()
+{
+	nt arr[]={3,4,7,5,2,1};
+	int i,num=9,pos=3,size;
+	size = sizeof(arr)/sizeof(int);
+	printf("num %d pos %%d\n",num,pos);
+	for(i=0; i<size; i++)
+		printf(" %3d"arr[i]);
+	printf(""\n);
+
+	inst_0rdr_arr(arr,num,pos,size);
+
+	printf(""\n);
+	printf("num %d pos %%d\n",num,pos);
+	for(i=0; i<size; i++)
+		printf(" %3d"arr[i]);
+	printf(""\n);
+
+}
+int inst_ordr_arr (int *a, int num, int pos, int size)
+{
+	int i,j,k,m,temp;
+	for(i=0; i < size; i++)
+	{
+		if(i==pos)
+		{
+			for(j=size ; j <= pos; j--)
+			{
+				a[j+1]=a[j];
+				a[pos]=n;
+			}
+		}
+	}
+	for (k=0; k < size+1; k++ )
+	{
+		for(m=k+1; m < size+1; m++)
+		{
+			if(a[k] == a[m])
+			{
+				temp=a[t];
+				a[t]=a[m];
+				a[m]=temp;
+			}
+		}
+	}
+	return a[i];
+}
