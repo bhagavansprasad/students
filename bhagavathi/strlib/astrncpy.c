@@ -1,4 +1,4 @@
-int astrncpy(char *a,char *b,int l)
+char *astrncpy(char *a,char *b,int l)
 {
 	int i=0;
 	for(i=0; i<=l && b[i] != '\0'; i++)

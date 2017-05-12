@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "defs.h"
+#include <mystr-bb.h>
 
 char s1[20][100] = 
 {

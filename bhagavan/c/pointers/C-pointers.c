@@ -1,0 +1,26 @@
+void swapping( /*??????? */)
+{
+#if 0
+	???????
+	???????
+	???????
+	???????
+#endif
+}
+
+main()
+{
+	char arr1[20] = "Aura Networks";
+	char arr2[20] = "Bangalore";
+	char *p1 = arr1;
+	char *p2 = arr2;
+
+	print ("%s", p2);
+	print ("%s", p2);
+
+	swap(&p1, &p2);
+
+	//strings should be reversed
+	print ("%s", p1);
+	print ("%s", p2);
+}

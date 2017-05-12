@@ -1,4 +1,4 @@
-char astrncat(char *d,char *s,int l)
+char *astrncat(char *d,char *s,int l)
 {
 	int i=0, j=0;
 	for(i=0; i<=l && d[i] != '\0'; i++)
