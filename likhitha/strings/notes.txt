@@ -2,11 +2,11 @@ stpcpy,  strcasecmp,  strcat, strchr, strcmp, strcoll, strcpy, strcspn, strdup, 
 cat, strncmp, strncpy, strncasecmp, strpbrk, strrchr, strsep, strspn, strstr, strtok, strxfrm, index,
 rindex - string operations
 
-= size_t strlen(const char *s);
-= char *stpcpy(char *dest, const char *src);
-= char *strncpy(char *dest, const char *src, size_t n);
-= int strcmp(const char *s1, const char *s2);
-= int strncmp(const char *s1, const char *s2, size_t n);
+size_t strlen(const char *s);
+char *stpcpy(char *dest, const char *src);
+char *strncpy(char *dest, const char *src, size_t n);
+int strcmp(const char *s1, const char *s2);
+int strncmp(const char *s1, const char *s2, size_t n);
 
 int strcasecmp(const char *s1, const char *s2);
 int strncasecmp(const char *s1, const char *s2, size_t n);

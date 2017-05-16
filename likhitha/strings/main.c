@@ -1,13 +1,11 @@
 #include <stdio.h>
+#include "defs.h"
+
 int main()
 {
 	int len=0, i, t, n ;
-
 	char name[100]="likhitha";
-
-
 	char rev[100]=" ";
-
 
 	char s1[10][100] = { 
 		"Aura net",
@@ -100,7 +98,6 @@ int main()
 	}
 
 	printf("*******\n");
-
 
 	printf("string reverse::");
 	astrrev(name,rev);
