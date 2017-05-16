@@ -1,5 +1,5 @@
 #include <stdio.h>
-char astrrev (char *s, char *r)
+int astrrev (char *s, char *r)
 {
 	int i,j,k;
 	for(i = 0; s[i] != '\0'; i++);
@@ -13,5 +13,21 @@ char astrrev (char *s, char *r)
 	}
 	return r[j];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

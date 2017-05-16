@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main()
 {
-	int n=11,r=0 , c=(n/2) , i ;
+	int n=5,r=0 , c=(n/2) , i ;
 	int a[11][11];
 	for(i=1 ; i<=n*n ; i++)
 	{
