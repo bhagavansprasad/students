@@ -1,11 +1,11 @@
 #include <stdio.h>
+#include "defs.h"
+
 int main()
 {
 	int len=0, i, t, n ;
-
 	char name[100]="likhitha";
 	char rev[100]=" ";
-
 
 	char s1[10][100] = { 
 		"Auranet",
@@ -108,7 +108,15 @@ int main()
 	}
 	printf("*******\n");
 
+<<<<<<< HEAD
 
+=======
+	printf("string reverse::");
+	astrrev(name,rev);
+	printf("%s\n",name);
+	printf("%s\n",rev);
+}
+>>>>>>> 7776f2d8a838e8801ed5e557dd171d38b20925e6
 
 	printf("string casecmp::\n");
 	for(i=0 ; i<10 ; i++)
