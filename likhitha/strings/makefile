@@ -1,5 +1,5 @@
-a.out :main.o astrlen.o astrcpy.o astrncpy.o astrcmp.o astrncmp.o astrrev.o
-	gcc main.o astrlen.o astrcpy.o astrncpy.o astrcmp.o astrncmp.o astrrev.o -o a.out
+a.out :main.o astrlen.o astrcpy.o astrncpy.o astrcmp.o astrncmp.o astrrev.o astrcat.o astrcasecmp.o
+	gcc main.o astrlen.o astrcpy.o astrncpy.o astrcmp.o astrncmp.o astrrev.o astrcat.o astrcasecmp.o -o a.out
 
 main.o : main.c 
 	gcc main.c -c
@@ -23,6 +23,12 @@ astrncmp.o : astrncmp.c
 
 astrrev.o : astrrev.c
 	gcc astrrev.c -c
+
+astrcat.o : astrcat.c
+	gcc astrcat.c -c
+
+astrcasecmp.o : astrcasecmp.c
+	gcc astrcasecmp.c -c
 
 clean :
 	rm -rf *.o
