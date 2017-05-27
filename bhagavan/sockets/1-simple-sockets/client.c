@@ -4,34 +4,28 @@
 #include"arpa/inet.h"
 #include"stdio.h"
 #include"stdlib.h"
+#include"string.h"
 #include"unistd.h"
 
-int main(void)
+main(int argc, char argv[])
 {
 	int socketfd;
-	int retval = 0;
 	struct sockaddr_in myclientaddr;
-	char buffer[]="This is my first program for TCP/IP";
+	char buff1[]="This is my first class for TCP/IP";
 
-	socketfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-
-	printf ("C: Opening socket SUCCESS:%d\n", socketfd);
-
+	socketfd = socket(AF_INET, SOCK_STREAM, 0);
+	
 	myclientaddr.sin_family = AF_INET;
 	myclientaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	myclientaddr.sin_port = htons(9999);
 
-	printf("C: Connecting to the server\n");
-	connected = connect(socketfd, (struct sockaddr *)&myclientaddr, sizeof(myclientaddr));
-	printf ("C: Connect success retval :%d\n", connected);
+	printf("--->client: Connecting to the server\n");
+	connect(socketfd, (struct sockaddr *)&myclientaddr, sizeof(myclientaddr));
 
-	printf("Begin chat\n");
-	printf ("C: Writing '%s' to server\n", buffer);
+	printf("begin chat\n");
 
-	retval = write(socketfd, buffer, strlen(buffer));
-	printf ("C: Write retval '%d'\n", retval);
+	write(socketfd, buff1, 10);
 
-	printf ("C: Closing the socket\n");
 	close(socketfd);
 
 	return 0;

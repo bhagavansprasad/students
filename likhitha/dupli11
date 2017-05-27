@@ -1,0 +1,38 @@
+#include<stdio.h>
+main()
+{
+	int i;
+	char s1[100]= "aura net";
+	char s1[100]= "AURA NET";
+	t=astrcasecmp(s1,s2);
+	if(t == 0)
+		printf("both strings are equal\n");
+	else
+		printf("both strings are not equal\n");
+}
+
+int astrcasecmp(char *s1,char *s2)
+{
+	int i=0,flag=0;
+	for(s1[i]!='\0' && s2[i]!='\0')
+	{
+		if(s1[i]!=s2[i])
+		{
+			flag=1;
+			break;
+		}
+		i++;
+	}
+	if(s1[i]='\0' && s2[i]='\0')
+		return 0;
+	else 
+		return 1;
+}
+
+
+
+
+
+
+
+
