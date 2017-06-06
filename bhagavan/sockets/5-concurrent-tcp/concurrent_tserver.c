@@ -7,36 +7,12 @@
 #include"string.h"
 #include"unistd.h"
 
-int toggle_case(char ch)
-{
-	if (ch >= 'A' && ch  <= 'Z')
-		return (ch + ('a' - 'A'));
-	else if (ch >= 'a' && ch  <= 'z')
-		return (ch - ('a' - 'A'));
-	else
-		return ch;
-}
-
-int convert_case(char *dst, char *src)
-{
-	int i = 0;
-
-	for (i = 0; (dst[i] = toggle_case(src[i])); i++);
-
-	return i;
-}
-
-int main()
+int main(void)
 {
 	struct sockaddr_in mysockaddr;
 	int socketfd;
 	char buffer[100];
-	char sresponse[100];
-	char rbuffer[100];
-	int newfd;
-    int retval = 0;
-	int i;
-	int pid = 0;
+	int newfd,pid,n;
 
 	socketfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if(socketfd == -1)
@@ -45,78 +21,57 @@ int main()
 		exit(1);
 	}
 
-	printf ("S: Opening socket :%d\n", socketfd);
-
 	memset(&mysockaddr, 0, sizeof(mysockaddr));
+
 	mysockaddr.sin_family = AF_INET;
-	mysockaddr.sin_port = htons(9999);
+	mysockaddr.sin_port = htons(8888);
 	mysockaddr.sin_addr.s_addr = INADDR_ANY;
 
-	retval = bind(socketfd, (struct sockaddr *)&mysockaddr, sizeof(mysockaddr));
-	if(retval == -1)
+	if(bind(socketfd, (struct sockaddr *)&mysockaddr, sizeof(mysockaddr)) == -1)
 	{
-		perror("bind system call failed\n");
+		perror("bind system call failed\r\n");
 		close(socketfd);
 		exit(1);
 	}
-	printf ("S: bind retval :%d\n", retval);
 
-	retval = listen(socketfd, 5);
-	if(retval == -1)
+	if(listen(socketfd, 5) == -1)
 	{
-		perror("listen system call failed\n");
+		perror("listen system call failed\r\n");
 		close(socketfd);
 		exit(1);
 	}
-	printf ("S: listen retval :%d\n", retval);
 
+	printf("--->server : Going for accepting connection \r\n");
 	for(;;)
 	{
-		printf("S : Going for accepting connection \n");
-
-		newfd = accept(socketfd, NULL, NULL);
+		printf("the server is waiting for new client to serve\r\n");
+		newfd = accept(socketfd,NULL,NULL);
 		if(newfd == -1)
 		{
 			perror("accept system call failed\r\n");
 			close(socketfd);
 			exit(1);
 		}
-		printf ("S: Accept newfd :%d\n", newfd);
-
-		printf("S : Got the connection request from client\n");
 
 		pid = fork();
 		if(pid == 0)
 		{
+			printf("--->server : Got the connection request from client \r\n");
 			for(;;)
 			{
-				sleep(2);
-
-				retval = read(newfd, buffer, 100);
-				printf ("S. read retval :%d\n", retval);
-				if(retval < 0)
+				sleep(1);
+				if(read(newfd, buffer, 30) == -1)
 				{
 					perror("the client is closed :");
 					exit(1);
 				}
-				buffer[retval]='\0';
-				printf("S. Received data from client :'%s'\n", buffer);
-				convert_case(sresponse, buffer);
-
-				retval = write(newfd, sresponse, strlen(sresponse));
-				printf ("S. write retval :%d\n", retval);
-				if(retval < 0)
+				printf("--->buff read from socket:%s\r\n",buffer);
+				n=sizeof("hi im server");
+				if((write(newfd, "hi im server", sizeof("hi im server"))) != n)
 				{
 					perror("write system call failed in serever:");
 					exit(1);
 				}
-				printf("S. Wrote %d, bytes to client response :'%s'\n", retval, sresponse);
-				if(strcmp(buffer, "bye") == 0)
-				{
-					close(newfd);
-					break;
-				}
-
 			}
 
 			close(newfd);
@@ -128,6 +83,14 @@ int main()
 		}
 	}
 	shutdown(socketfd, SHUT_RDWR);
+
 	close(socketfd);
+
 	return 0;
+
 }
+
+
+
+
+

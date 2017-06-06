@@ -13,34 +13,27 @@ int main()
 	int socketfd;
 	char buffer[100];
 	int newfd;
-    int retval = 0;
+    int retval = 0,i;
 
-	socketfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	printf ("S: Opening socket :%d\n", socketfd);
+	socketfd = socket(AF_INET, SOCK_STREAM, 0);
 
-	memset(&mysockaddr, 0, sizeof(mysockaddr));
 	mysockaddr.sin_family = AF_INET;
 	mysockaddr.sin_port = htons(9999);
 	mysockaddr.sin_addr.s_addr = INADDR_ANY;
 
-	retval = bind(socketfd, (struct sockaddr *)&mysockaddr, sizeof(mysockaddr));
-	printf ("S: bind retval :%d\n", retval);
+	bind(socketfd, (struct sockaddr *)&mysockaddr, sizeof(mysockaddr));
 
-	retval = listen(socketfd, 5);
-	printf ("S: listen retval :%d\n", retval);
+	listen(socketfd, 5);
 
-	printf("S : Going for accepting connection \r\n");
+	printf("--->server : Going for accepting connection \r\n");
 	newfd = accept(socketfd, NULL, NULL);
-	printf ("S: Accept newfd :%d\n", newfd);
 
-	printf("--->server : Got the connection request from client \r\n");
-
-	retval = read(newfd, buffer, 100);
+	printf("--->server : Got the connection request from client \r\n\n");
+	retval = read(newfd, buffer, 50);
 	buffer[retval]='\0';
-	printf("S. Received data from client :'%s'\n", buffer);
-	printf ("S: Closing socket\n");
-	close(newfd);
+	printf("S. data from client :%s\n", buffer);
 	close(socketfd);
 	return 0;
 }
+
 
