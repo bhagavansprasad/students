@@ -7,46 +7,6 @@ int get_giffs(char *pbuff)
 	{
 	}
 }
-#if 0
-		if( buff[i] == ' ' && buff[i +1] != ' ' && buff[i + 1] != '\0')
-		{
-			count = count + 1;
-			//printf("count : %d\t", count);
-		}
-
-		if( count == 13)
-		{
-			for( ; buff[i] = ' ' && buff[i] != '\0'; i++);
-
-			for ( ; buff[i] != ' ' && buff[i] != '\0'; i++, j++)
-			{
-				val13[j] = buff[i];
-				val13[j] = '\0';
-			}
-			v13 = (int)atoi(val13);
-			printf(" 13 word is %d\n", v13 );
-			//printf(" i --> %d %c\n", i, buff[i]);
-
-			for( ; buff[i] == ' ' && buff[i] != '\0'; i++);
-			//printf(" i --> %d %c\n", i, buff[i]);
-			//printf("entering\n");
-
-			for (j = 0 ; buff[i] != ' ' && buff[i] != '\0'; i++, j++)
-			{
-				printf(" i --> %d %c-->\n", i, buff[i]);
-				printf("entering\n");
-				printf(" 14 word is %s:\n", val14);
-			}
-			val14[j] = buff[i];
-			val14[j] = '\0';
-
-			for( ; buff[i] = ' ' && buff[i] != '\0'; i++);
-
-		}
-	}
-
-}
-#endif
 
 main()
 {
