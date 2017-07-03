@@ -1,25 +1,46 @@
 #include <stdio.h>
 #include<fcntl.h>
 #include"string.h"
+#include"ovdc.h"
+ 
+pid_giffs_db data[10] = {0, 0};
 
-typedef struct ovdc_giffs
+int pid_count = 0;
+
+int store_n_get_cpu_occpancy(int pid, int giffs)
 {
-	int pid;
-	int giffs;
-}ovdc_data;
+	for(i = 0; i < pid_count; i++)
+	{
+		if (pid_giffs_db[i].pid == pid)
+		{
+			//TODO:
+			//take the diff between old and new value
+			//replace old giffs with current giffs
+			//return diff
+		}
+	}
 
+	//TODO
+	//Its a new pid
+	//Make a new entry in db
+	//increment pid_count
+	//return cpu occpance as 0
+}
 
-main()
+main(int argc, char *argv[])
 {
-	int pid[100]={1637,1685,1730,1775,1820};
-	int giffs ,i , n=5 ,retval;
-	printf(" ovd pid==%d\n",getpid());
+	int giffs ,i , proc_count = 5 ,retval;
 	ovdc_data data;
+	//TODO: Store pids that are pass as command line arguments
+	int pid[100]= {1637, 1685, 1730, 1775, 1820};
+
+	printf(" ovd pid==%d\n",getpid());
+
 	while(1)
 	{
-		for(i=0 ; i<n ;i++)
+		for(i=0; i < proc_count; i++)
 		{
-			giffs=get_giffs_pid(pid[i]);
+			giffs = get_giffs_by_pid(pid[i]);
 			if(giffs!=-1)
 				send_giffs(pid[i],giffs);
 		}
@@ -29,6 +50,7 @@ main()
 	}
 	sleep(1);
 }
+
 int send_giffs(int pid, int giffs)
 {
 	int retval,i;
@@ -45,27 +67,30 @@ int send_giffs(int pid, int giffs)
 
 }
 
-int get_giffs_pid(int pid)
+int get_giffs_by_pid(int pid)
 {
-	int fd , words = 0, retval=0 , x, i = 0, j = 0, value = 0, sum = 0 , p=0, q=0, diff=0,len=1024;
-	char buff[1024];
+	int fd , words = 0, retval=0 , x, i = 0, j = 0, value = 0, sum = 0 , p=0, q=0, diff=0,len=2048;
+	char buff[4*1024];
 	char temp[100] = "";
 
-	sprintf(temp,"/proc/%d/stat",pid);
-	fd = open(temp,O_RDONLY);
+	sprintf(temp, "/proc/%d/stat", pid);
 
+	fd = open(temp, O_RDONLY);
 	if( fd < 0)
 	{
 		printf( "open failure\n");
-		return;
+		return -1;
 	}
 
-	retval = read(fd , buff, len);
+	retval = read(fd, buff, len);
 	retval[buff] = '\0';
+
 	printf("%s", buff);
 	words = 0;
 	//printf("%s\n", pbuff); 
 
+	//TODO:
+	//giffs_count = get_cpu_giffs_sum(buff);
 	for( ; words != 13 && buff[i] != '\0'; i++) //getting 14th word
 	{
 		if (buff[i] == ' ')
@@ -91,6 +116,7 @@ int get_giffs_pid(int pid)
 	}
 	printf("sum=%d\n",sum);
 
+	store_n_get_cpu_occpancy(pid, sum);
 	p=sum;
 	diff=p-q;
 	printf("diff=%d\n\n",diff);
@@ -100,9 +126,4 @@ int get_giffs_pid(int pid)
 	return sum;
 	close(fd);
 }
-
-/*main()
-  {
-  get_giffs(data);
-  }*/
 
