@@ -2,7 +2,7 @@
 
 int main()
 {
-	int num=7,a , b = 2;
+	int num=15,a , b = 2;
 
 	a = isPrime(num, b);
 

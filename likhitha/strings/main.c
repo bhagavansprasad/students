@@ -4,7 +4,7 @@
 int main()
 {
 	int len=0, i, t, n ;
-	char name[100]="likhitha";
+	char name[100]="i am likhitha";
 	char rev[100]=" ";
 
 	char s1[10][100] = { 
