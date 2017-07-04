@@ -6,7 +6,6 @@ int giffs;
 struct pid_giffs_db
 {
 	int pid;
-	int giffs;
-	int cpu_occ;
+	int curr_giffs;
 };
 
