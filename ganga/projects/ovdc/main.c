@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include "string.h"
+#include "unistd.h"
 #include "stdlib.h"
 #include "ovdc.h"
 
@@ -86,22 +87,6 @@ int get_giffs_by_pid(int pid)
 
 	giffs_count = get_cpu_giffs_sum(buff);
 	return giffs_count;
-}
-
-int send_giffs(int pid, int giffs)
-{
-	int retval;
-	struct ovdc_data data;
-	data.pid = pid;
-	data.giffs = giffs;
-	retval = write(&data, sizeof(data));
-
-	if(retval < 0)
-	{
-		printf("writing file is failed");
-		return -1;
-	} 
-	return 0;
 }
 
 int get_pids_from_args(int *pids, int argc, char *argv[])
