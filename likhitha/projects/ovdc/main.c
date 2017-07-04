@@ -21,27 +21,29 @@ int store_n_get_cpu_occ(int pid, int giffs)
 			//take the diff between old and new value
 			//replace old giffs with current giffs
 			//return diff
-			{
-				cpu_occ  = giffs - giffs_data [i].giffs;
-				giffs_data[i].giffs = giffs;
-				giffs_data[i].cpu_occ= cpu_occ;
+			giffs_data[i].curr_giffs = giffs;
+			cpu_occ  = giffs - prev_giffs;
+			prev_giffs = giffs;
+			//giffs_data[i].cpu_occ= cpu_occ;
+			return cpu_occ;
 
-				return cpu_occ;
-			}
 		}
+		//TODO
+		//Its a new pid
+		//Make a new entry in db
+		//increment pid_count
+		//return cpu occpance as 0
+
+		else
+		{
+			giffs_data[i].pid = pid;
+			pid_count++;
+			//	giffs_data[i].giffs = giffs;
+			//	giffs_data[i].cpu_occ = cpu_occ;
+			return 0;
+		}
+
 	}
-
-	//TODO
-	//Its a new pid
-	//Make a new entry in db
-	//increment pid_count
-	//return cpu occpance as 0
-	giffs_data[i].pid = pid;
-	giffs_data[i].giffs = giffs;
-	giffs_data[i].cpu_occ = cpu_occ;
-
-	pid_count++;
-	return 0;
 
 }
 
@@ -65,12 +67,11 @@ int get_giffs_by_pid(int pid)
 	close(fd);
 
 	printf("%s", buff);
-	words = 0;
 	//printf("%s\n", pbuff); 
 
 	//TODO:
 	giffs_count = get_cpu_giffs_sum(buff);
-	return 0;
+	return giffs_count;
 }
 
 int get_cpu_giffs_sum(char *buff)
@@ -99,7 +100,7 @@ int get_cpu_giffs_sum(char *buff)
 		j = 0;
 
 	}
-	printf("sum=%d\n",sum);
+	//printf("sum=%d\n",sum);
 
 	return sum;
 }
@@ -112,23 +113,22 @@ int send_giffs(int pid, int giffs)
 	data.giffs = giffs;
 	retval = write(&data, sizeof(data));
 
-	if(retval >= 0)
+	if(retval < 0)
 	{
 		printf("writing file is failed");
 		return -1;
 	} 
-
 }
 
 main(int argc, char *argv[])
 {
-	int giffs=0 ,i , proc_count = 2 ,retval , pid[5] ;
+	int giffs=0 ,j, i , proc_count = 2 ,retval , pid[5] ;
 	int cpu_occ=-1 ,  prev_giffs=0;
 	struct ovdc_data data;
 	//TODO: Store pids that are pass as command line arguments
 	//int pid[100]= {  };
 
-	while(1)
+	for( j = 0; j< 3; j++)
 	{
 		for(i=1; i <= proc_count; i++)
 		{
@@ -137,12 +137,12 @@ main(int argc, char *argv[])
 			if(giffs!=-1)
 				send_giffs(pid[i],giffs);
 		}
-		data.pid=-1;
-		data.giffs=-1;
-		retval = write(&data, sizeof(data));
+		//data.pid=-1;
+		//data.giffs=-1;
+		//retval = write(&data, sizeof(data));
 	}
-	cpu_occ=store_n_get_cpu_occ(pid[i], giffs);
-	printf("difference %d\n",cpu_occ);
+	cpu_occ = store_n_get_cpu_occ(pid[i], giffs);
+	printf("\n cpu occupancy %d\n",cpu_occ);
 	sleep(5);
 }
 
