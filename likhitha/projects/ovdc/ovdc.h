@@ -1,12 +1,12 @@
-typedef struct ovdc_giffs
-{
-	int pid;
-	int giffs;
-}ovdc_data;
+struct ovdc_data {
+int pid;
+int giffs;
+};
 
-typedef struct pid_gifss_db_t
+struct pid_giffs_db
 {
 	int pid;
 	int giffs;
-}pid_giffs_db;
+	int cpu_occ;
+};
 
