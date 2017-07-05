@@ -35,6 +35,7 @@ int get_cpu_giffs_sum(char *buff)
 {
 	int words=0 , sum=0 , i=0, value=0, j=0;
 	char temp[100]= " ";
+
 	for( ; words != 13 && buff[i] != '\0'; i++) //getting 14th word
 	{
 		if (buff[i] == ' ')
@@ -45,6 +46,7 @@ int get_cpu_giffs_sum(char *buff)
 	//printf("%s\n", &pbuff[i]); 
 
 	sum = 0;
+
 	for(words = 0 ; words < 4; words++)
 	{
 		for( ; buff[i] != ' '; i++, j++)
@@ -56,7 +58,6 @@ int get_cpu_giffs_sum(char *buff)
 		sum = sum + value;
 		//	i++;	
 		j = 0;
-
 	}
 	//printf("sum=%d\n",sum);
 
@@ -72,6 +73,7 @@ int get_giffs_by_pid(int pid)
 	sprintf(temp, "/proc/%d/stat", pid);
 
 	fd = open(temp, O_RDONLY);
+
 	if(fd < 0)
 	{
 		printf( "open failure\n");
@@ -121,4 +123,5 @@ int main(int argc, char *argv[])
 			sleep(1);
 		}
 	}
+	return 0;
 }
