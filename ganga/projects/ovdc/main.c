@@ -8,11 +8,10 @@
 struct ovdc_data data[100];
 
 int pid_count = 0;
-int i = 0 ;
 
 int store_n_get_cpu_occ(int pid, int giffs)
 {
-	int cpu_occ = 0;
+	int i, cpu_occ = 0;
 
 	for(i = 0; i < pid_count; i++)
 	{
@@ -28,7 +27,7 @@ int store_n_get_cpu_occ(int pid, int giffs)
 	data[i].giffs = giffs;
 	pid_count++;
 
-	return cpu_occ;
+	return 0;
 }
 
 int get_cpu_giffs_sum(char *buff)
@@ -90,6 +89,7 @@ int get_giffs_by_pid(int pid)
 
 int get_pids_from_args(int *ppids, int argc, char *argv[])
 {
+	int i = 0;
 	for(i = 0; i < argc - 1; i++)
 		ppids[i] = atoi(argv[i+1]);
 
@@ -98,7 +98,7 @@ int get_pids_from_args(int *ppids, int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-	int giffs = 0, j, i, proc_count;
+	int giffs = 0, i, proc_count;
 	int cpu_occ = -1;
 	int pids[100];
 
@@ -109,15 +109,19 @@ int main(int argc, char *argv[])
 		printf ("-->%d. %d\n", i+1, pids[i]);
 	}
 
-	for(j = 0; j < 5; j++)
+	while(1)
 	{
 		for (i = 0; i < proc_count; i++)
 		{
 			giffs = get_giffs_by_pid(pids[i]);
-			printf("--> giffs : %d\n", giffs);
-
+			//printf("--> giffs : %d\n", giffs);
+			
 			cpu_occ = store_n_get_cpu_occ(pids[i], giffs);
-			printf("-->cpu occupancy : %d\n", cpu_occ);
+			
+			if(cpu_occ > 0)
+			{
+				printf("-->%d : %d\n", pids[i], cpu_occ);
+			}
 		}
 		sleep(2);
 	}
