@@ -2,12 +2,13 @@
 #include <fcntl.h>
 #include "string.h"
 #include "stdlib.h"
+#include "unistd.h"
 #include "ovdc.h"
 
 struct ovdc_data data[100];
 
 int pid_count = 0;
-int i=0 ;
+int i = 0 ;
 
 int store_n_get_cpu_occ(int pid, int giffs)
 {
@@ -51,7 +52,7 @@ int get_cpu_giffs_sum(char *buff)
 		temp[j] = '\0';
 		i++;
 		value = (int)atoi(temp); //converting ascii to integer
-		printf("value :%d\n", value);
+		//printf("value :%d\n", value);
 		sum = sum + value;
 		//	i++;	
 		j = 0;
@@ -64,7 +65,7 @@ int get_cpu_giffs_sum(char *buff)
 
 int get_giffs_by_pid(int pid)
 {
-	int fd=-1 , words = 0, retval=0 ,len=2048 , giffs_count;
+	int fd=-1 , retval=0 ,len=2048 , giffs_count;
 	char buff[4*1024];
 	char temp[100] = "" ;
 
@@ -81,26 +82,11 @@ int get_giffs_by_pid(int pid)
 	retval[buff] = '\0';
 	close(fd);
 
-	printf("%s", buff);
+	//printf("%s", buff);
 	//printf("%s\n", pbuff); 
 
 	giffs_count = get_cpu_giffs_sum(buff);
 	return giffs_count;
-}
-
-int send_giffs(int pid, int giffs)
-{
-	int retval,i;
-	struct ovdc_data data;		
-	data.pid = pid;
-	data.giffs = giffs;
-	retval = write(&data, sizeof(data));
-
-	if(retval < 0)
-	{
-		printf("writing file is failed");
-		return -1;
-	} 
 }
 
 int get_pids_from_args(int *pids, int argc, char *argv[])
@@ -111,26 +97,29 @@ int get_pids_from_args(int *pids, int argc, char *argv[])
 	return argc-1;
 }
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	int giffs=0 ,j, i , proc_count, retval;
-	int cpu_occ=-1, prev_giffs=0;
+	int giffs=0 , j , proc_count ;
+	int cpu_occ ;
 	int pids[100];
 
 	proc_count = get_pids_from_args(pids, argc, argv);
-	
+
 	for (i = 0; i < proc_count; i++)
 	{
 		printf ("-->%d. %d\n", i+1, pids[i]);
 	}
 
-	for (i = 0; i < proc_count; i++)
+	for( j = 0; j < 5; j++)
 	{
-		giffs = get_giffs_by_pid(pids[i]);
-		cpu_occ = store_n_get_cpu_occ(pids[i], giffs);
+		for (i = 0; i < proc_count; i++)
+		{
+			giffs = get_giffs_by_pid(pids[i]);
+			printf("--> giffs : %d\n", giffs);
+			cpu_occ = store_n_get_cpu_occ(pids[i], giffs);
+			printf("-->cpu occupancy %d\n", cpu_occ);
+			sleep(1);
+		}
 	}
-
-	printf("-->cpu occupancy %d\n", cpu_occ);
-	sleep(5);
+	return 0;
 }
-
