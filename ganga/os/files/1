@@ -1,0 +1,8 @@
+#include <stdio.h>
+	main()
+	{
+		write(0, "\nAura Networks\n", 12);
+		write(1, "\nAura Networks\n", 12);
+		write(2, "\nAura Networks\n", 12);
+	}
+
