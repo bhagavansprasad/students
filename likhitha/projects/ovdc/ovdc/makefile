@@ -7,5 +7,5 @@ ovd.o :ovd.c
 ovc.o :ovc.c
 	gcc ovc.c -c
 clean:
-rm -rf *.o
-rm -rf a.out
+	rm -rf *.o
+	rm -rf a.out

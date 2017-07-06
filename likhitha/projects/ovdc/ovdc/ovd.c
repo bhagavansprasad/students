@@ -1,13 +1,14 @@
 #include <stdio.h>
 
-ovd(wfd)
+int ovd(int wfd)
 {
+	int pid , giffs;
 	for( ; ; )
 	{
-	open();
-	read();
-	send(pid,giffs);
-	sleep();
-	return 0;
+		open();
+		read();
+		send(pid,giffs);
+		sleep();
+		return 0;
 	}
 }

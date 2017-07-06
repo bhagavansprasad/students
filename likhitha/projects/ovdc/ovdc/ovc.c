@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-ovc(rfd)
+int ovc(int rfd)
 {
+int pid , giffs ;
 	for( ; ; )
 	{
 		read(pid,giffs);
-		store in db();
-		cal cpu_occ();
+		store_in_db();
+		calculate_cpu_occ();
 		action();
-		printf();
 	}
 }
