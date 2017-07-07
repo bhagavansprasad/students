@@ -27,14 +27,14 @@ int get_cpu_giffs_sum(char *buff)
 		temp[j] = '\0';
 		i++;
 		value =(int) atoi(temp); //converting ascii to integer
-		printf("value :%d\n", value);
+//		printf("value :%d\n", value);
 		sum = sum + value;
 		//    i++; 
 		j = 0;
 
 	}
 	printf("sum=%d\n",sum);
-	sleep(2);
+//	sleep(2);
 	return sum;
 }
 
@@ -72,7 +72,7 @@ int ovd(int wfd, int *pids, int proc_count)
 		for (i = 0; i < proc_count; i++)
 
 		{
-			giffs=get_giff(pid[i]);
+			giffs=get_giff(pids[i]);
 			arr1[i].pid = pids[i];
 			arr1[i].giffs = giffs;
 
@@ -83,7 +83,7 @@ int ovd(int wfd, int *pids, int proc_count)
 
 				//write on to pipe
 		}
-		sleep(1);
+		sleep(5);
 }
 	  
 } 
