@@ -1,7 +1,28 @@
 #include <stdio.h>
 
-struct ovdc_data data[100];
+struct ovdc_db data[100];
 int pid_count = 0;
+
+int store_n_get_cpu_occ(int pid, int giffs)
+{
+	int cpu_occ= 0;
+	int i;
+
+	for(i = 0; i < pid_count; i++)
+	{
+		if (data[i].pid == pid)
+		{
+			cpu_occ  = giffs - data[i].giffs;
+			data[i].giffs = giffs;
+
+			return cpu_occ;
+		}
+	}
+	data[i].pid = pid;
+	data[i].giffs = giffs;
+	pid_count++;
+	return 0;
+}
 
 int ovc(int rfd)
 {
@@ -12,10 +33,10 @@ int ovc(int rfd)
 	{
 		//TODO:
 		//read structure with pid and giffs from pipe
-		//
+		
 		read(rfd, &data, sizeof(data));
 		cpu_occ = store_n_get_cpu_occ(data.pid, data.giffs);
-		printf("%d:%d\n", pids[i], cpu_occ);/
+		printf("%d:%d\n", pids[i], cpu_occ);
 
 #if 0
 		read(pid,giffs);

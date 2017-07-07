@@ -1,15 +1,15 @@
-ovdc : m.o ovd.o ovc.o
-	gcc m.o ovd.o ovc.o -o ovdc
+a.out : m.o ovd.o ovc.o
+	gcc m.o ovd.o ovc.o -o a.out
 
-m.o : m.c
-	gcc -g m.c -c
+m.o :m.c
+	gcc m.c -c
 
-ovd.o : ovd.c
-	gcc -g ovd.c - c
+ovd.o :ovd.c
+	gcc ovd.c -c
 
-ovc.o : ovc.c
-	gcc -g ovc.c - c
+ovc.o :ovc.c
+	gcc ovc.c -c
 
-clean :
-	rm -rf  *.o
-	rm -rf ovdc
+clean:
+	rm -rf *.o
+	rm -rf a.out
