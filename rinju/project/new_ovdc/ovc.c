@@ -37,7 +37,7 @@ int store_n_get_cpu_occpancy(int pid, int new_giffs)
 
 int ovc(int rfd)
 { 
-    int giffs, i,proc_count,cpu_occ;
+    int giffs, i,cpu_occ;
     int pid[5]; 
     while(1)
     {

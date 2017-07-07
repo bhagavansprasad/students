@@ -1,4 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include<fcntl.h>
+#include"ovdc.h"
+
 
 int get_pids_from_args(int *pids, int argc, char *argv[])
 {
@@ -13,8 +18,8 @@ int get_pids_from_args(int *pids, int argc, char *argv[])
 int main(int argc, char *argv[])
 {
 	int pipe_descriptors[2];
-	int pid, retval ,i;
-	int giffs=0, proc_count ;
+	int pid ,retval,i;
+	int proc_count ;
 	int pids[100];
 
 	proc_count = get_pids_from_args(pids, argc, argv);
@@ -25,6 +30,10 @@ int main(int argc, char *argv[])
 	}
 
 	retval = pipe(pipe_descriptors);
+	if(retval == 0)
+	{
+	printf("pipe not open");
+	}
 	pid = fork();
 	if(pid == 0)
 	{

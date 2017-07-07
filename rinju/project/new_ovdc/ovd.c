@@ -41,7 +41,7 @@ int get_cpu_giffs_sum(char *buff)
 
 int get_giff(int pid)
 {
-	int fd , x, retval=0,len=2000  ,giffs;
+	int fd ,  retval=0,len=2000  ,giffs;
 	char buff[1024];
 	char temp1[1000] = "";
 	sprintf(temp1,"/proc/%d/stat",pid);
@@ -63,7 +63,7 @@ int get_giff(int pid)
 int ovd(int wfd, int *pids, int proc_count)
 
 { 
-	int giffs, i,cpu_occ;
+	int giffs, i;
 	int pid[5]; 
 	while(1)
 	{
