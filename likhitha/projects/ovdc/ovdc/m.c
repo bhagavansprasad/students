@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 int get_pids_from_args(int *pids, int argc, char *argv[])
 {
@@ -13,8 +16,8 @@ int get_pids_from_args(int *pids, int argc, char *argv[])
 int main(int argc, char *argv[])
 {
 	int pipe_descriptors[2];
-	int pid, retval ;
-	int giffs=0, proc_count ;
+	int pid , retval ;
+	int proc_count ;
 	int pids[100] , i=0;
 
 	proc_count = get_pids_from_args(pids, argc, argv);
@@ -36,6 +39,5 @@ int main(int argc, char *argv[])
 		close(pipe_descriptors[1]);
 		ovc(pipe_descriptors[0]);
 	}
-
+return 0;
 }
-

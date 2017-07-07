@@ -30,7 +30,7 @@ int store_n_get_cpu_occ(int pid, int giffs)
 
 int ovc(int rfd)
 {
-	int pid, giffs , i;
+	int i;
 	int pids[100];
 	int cpu_occ = 0;
 	struct ovdc_db data;

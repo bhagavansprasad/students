@@ -4,7 +4,7 @@
 #include <fcntl.h>
 #include "defs.h"
 
-	struct ovdc_db data;
+struct ovdc_db data;
 
 int get_cpu_giffs_sum(char *buff)
 {
@@ -68,7 +68,7 @@ int get_giffs_by_pid(int pid)
 
 int ovd(int wfd, int *pids, int proc_count)
 {
-	int pid, giffs;
+	int  giffs;
 	int i = 0;
 
 	while(1)
@@ -91,12 +91,12 @@ int ovd(int wfd, int *pids, int proc_count)
 	}
 }
 #if 0
-	for( ; ; )
-	{
-		open();
-		read();
-		send(pid,giffs);
-		sleep();
-		return 0;
-	}
+for( ; ; )
+{
+	open();
+	read();
+	send(pid,giffs);
+	sleep();
+	return 0;
+}
 #endif
