@@ -11,9 +11,6 @@ int get_cpu_giffs_sum(char *buff)
 		if (buff[i] == ' ')
 			words++;
 	}				
-	//printf("i     :%d\n", i); 
-	//printf("words :%d\n", words); 
-	//printf("%s\n", &pbuff[i]); 
 
 	sum = 0;
 	for(words = 0 ; words < 4; words++)
@@ -23,12 +20,10 @@ int get_cpu_giffs_sum(char *buff)
 		temp[j] = '\0';
 		i++;
 		value = (int)atoi(temp); //converting ascii to integer
-		//printf("value :%d\n", value);
 		sum = sum + value;
 		//i++;	
 		j = 0;
 	}
-	//printf("sum=%d\n",sum);
 
 	return sum;
 }
@@ -53,9 +48,6 @@ int get_giffs_by_pid(int pid)
 	retval[buff] = '\0';
 	close(fd);
 
-	//printf("%s", buff);
-	//printf("%s\n", pbuff); 
-
 	giffs_count = get_cpu_giffs_sum(buff);
 	return giffs_count;
 }
@@ -63,29 +55,33 @@ int get_giffs_by_pid(int pid)
 int ovd(int wfd, int *pids, int proc_count)
 {
 	int pid, giffs;
-	int i = 0;
+	int j, i = 0;
 	struct ovdc_db data;
+	int db[100][3];
 
-	while(1)
-	{
+	//while(1)
+	//{
 		for (i = 0; i < proc_count; i++)
 		{
 			printf("-->%d. %d\n", i+1, pids[i]);
 			giffs = get_giffs_by_pid(pids[i]);
 				
-			data.pid = pids[i];
-			data.giffs = giffs;
-
-			write(wfd, &data, sizeof(data));
+			//data.pid = pids[i];
+			//data.giffs = giffs;
 
 			//TODO:
 			//Fill the sturcture with pid and giffs
 			//write on to pipe
-
+			
+			db[i][0] = pids[i];
+			db[i][1] = giffs;
 		}
+		printf("%s %s %d \n", __FILE__, __FUNCTION__, __LINE__);
+		write(wfd, db, sizeof(db));
 		sleep(1);
-	}
-
+	//}
+	printf("%s %s %d \n", __FILE__, __FUNCTION__, __LINE__);
+}
 
 #if 0
 	for( ; ; )
@@ -97,4 +93,3 @@ int ovd(int wfd, int *pids, int proc_count)
 		return 0;
 	}
 #endif
-}
