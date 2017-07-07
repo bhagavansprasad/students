@@ -1,4 +1,4 @@
-struct store_index_db
+struct ovdc_db
 {
 	int pid;
 	int giffs;
