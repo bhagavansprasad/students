@@ -33,7 +33,7 @@ int get_cpu_giffs_sum(char *buff)
 		j = 0;
 
 	}
-	printf("sum=%d\n",sum);
+//	printf("sum=%d\n",sum);
 //	sleep(2);
 	return sum;
 }
@@ -46,7 +46,6 @@ int get_giff(int pid)
 	char temp1[1000] = "";
 	sprintf(temp1,"/proc/%d/stat",pid);
 	fd=open(temp1,O_RDONLY);
-
 
 	if( fd < 0)
 		printf( "open failure\n");
@@ -67,10 +66,7 @@ int ovd(int wfd, int *pids, int proc_count)
 	int pid[5]; 
 	while(1)
 	{
-
-
 		for (i = 0; i < proc_count; i++)
-
 		{
 			giffs=get_giff(pids[i]);
 			arr1[i].pid = pids[i];
@@ -78,12 +74,9 @@ int ovd(int wfd, int *pids, int proc_count)
 
 			write(wfd, &arr1, sizeof(arr1));
 
-
-
-
-				//write on to pipe
+			//write on to pipe
 		}
-		sleep(5);
+	sleep(1);
 }
 	  
 } 
