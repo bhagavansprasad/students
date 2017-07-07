@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 		printf("-->%d. %d\n", i+1, pids[i]);
 	}
 
-	retval = pipe(pipe_descritors);
+	retval = pipe(pipe_descriptors);
 	pid = fork();
 	if(pid == 0)
 	{
