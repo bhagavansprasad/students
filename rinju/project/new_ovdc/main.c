@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	retval = pipe(pipe_descriptors);
 	if(retval == 0)
 	{
-	printf("pipe  open");
+		printf("pipe  open");
 	}
 	pid = fork();
 	if(pid == 0)
