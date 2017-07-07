@@ -21,6 +21,7 @@ int store_n_get_cpu_occpancy(int pid, int new_giffs)
 		{
 			diff = new_giffs -ar[i].giffs;
 			ar[i].giffs = new_giffs;
+			
 			return diff;
 		}
 	}
@@ -30,7 +31,7 @@ int store_n_get_cpu_occpancy(int pid, int new_giffs)
 		ar[i].pid = pid;
 		ar[i].giffs = new_giffs;
 		pid_count++;
-		printf("cpu occupancy =0");
+		//printf("cpu occupancy =0");
 		return 0;
 	}
 }
@@ -52,7 +53,7 @@ int ovc(int rfd)
 			cpu_occ=store_n_get_cpu_occpancy( arr.pid ,  arr.giffs);
 
 			if(cpu_occ > 0)
-				printf("cpu_occ= %d ",cpu_occ);
+				printf("cpu_occ= %d \n ",cpu_occ);
 
 		}
 
