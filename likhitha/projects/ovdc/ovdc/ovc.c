@@ -1,7 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include "defs.h"
 
-struct ovdc_db data[100];
 int pid_count = 0;
+struct ovdc_db data[100];
 
 int store_n_get_cpu_occ(int pid, int giffs)
 {
@@ -26,8 +30,10 @@ int store_n_get_cpu_occ(int pid, int giffs)
 
 int ovc(int rfd)
 {
-	int pid, giffs ;
-	ovdc_db data;
+	int pid, giffs , i;
+	int pids[100];
+	int cpu_occ = 0;
+	struct ovdc_db data;
 
 	for( ; ; )
 	{
