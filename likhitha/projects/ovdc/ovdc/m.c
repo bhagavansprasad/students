@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	int pipe_descriptors[2];
 	int pid, retval ;
 	int giffs=0, proc_count ;
-	int pids[100];
+	int pids[100] , i=0;
 
 	proc_count = get_pids_from_args(pids, argc, argv);
 
@@ -28,12 +28,12 @@ int main(int argc, char *argv[])
 	pid = fork();
 	if(pid == 0)
 	{
-		close(pipe_descriptors[0];
+		close(pipe_descriptors[0]);
 		ovd(pipe_descriptors[1], pids, proc_count);
 	}
 	else
 	{
-		close(pipe_descriptors[1];
+		close(pipe_descriptors[1]);
 		ovc(pipe_descriptors[0]);
 	}
 
