@@ -1,15 +1,17 @@
-#include<stdio.h>
+#include <stdio.h>
 main()
 {
-	int c=0,i,n;
-	char arr[] = "rinju 10 20 30";
-	for(i=0;i < sizeof(arr);i++)
+	int p[2] ,retval , pid;
+	retval = pipe(p);
+	pid = fork();
+	if(pid == 0)
 	{
-			n = sizeof(arr)/sizeof(arr[i]);
-		c++;
+		ovd(p[0]);
 	}
-	
-	printf("c=%d",c);
+	else
+	{
+		ovc(p[1]);
+	}
+
+
 }
-
-
