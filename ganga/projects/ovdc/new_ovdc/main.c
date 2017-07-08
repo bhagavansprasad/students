@@ -13,6 +13,7 @@ int get_pids_from_args(int *pids, int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
+	printf("%u\n" , getpid());
 	int pipe_descriptors[2];
 	int i, pid, retval, ovdc, ovcd ;
 	int giffs = 0, proc_count ;
