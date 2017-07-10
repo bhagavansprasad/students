@@ -41,8 +41,8 @@ int get_cpu_giffs_sum(char *buff)
 
 int get_giff(int pid)
 {
-	int fd ,  retval=0,len=2000  ,giffs;
-	char buff[1024];
+	int fd ,  retval=0,len=1024  ,giffs;
+	char buff[2*1024];
 	char temp1[1000] = "";
 	sprintf(temp1,"/proc/%d/stat",pid);
 	fd=open(temp1,O_RDONLY);
