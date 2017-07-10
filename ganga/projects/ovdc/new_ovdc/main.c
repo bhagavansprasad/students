@@ -1,9 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include<fcntl.h>
-#include"ovdc.h"
-
+#include "defs.h"
 
 int get_pids_from_args(int *pids, int argc, char *argv[])
 {
@@ -12,14 +8,15 @@ int get_pids_from_args(int *pids, int argc, char *argv[])
 	for(i = 1; i < argc; i++)
 		pids[i-1] = atoi(argv[i]);
 
-	return argc-1;
+	return argc - 1;
 }
 
 int main(int argc, char *argv[])
 {
+	printf("%u\n" , getpid());
 	int pipe_descriptors[2];
-	int pid ,retval,i;
-	int proc_count ;
+	int i, pid, retval, ovdc, ovcd ;
+	int giffs = 0, proc_count ;
 	int pids[100];
 
 	proc_count = get_pids_from_args(pids, argc, argv);
@@ -30,21 +27,17 @@ int main(int argc, char *argv[])
 	}
 
 	retval = pipe(pipe_descriptors);
-	if(retval == 0)
-	{
-		printf("pipe  open");
-	}
 	pid = fork();
+
 	if(pid == 0)
 	{
 		close(pipe_descriptors[0]);
-		ovd(pipe_descriptors[1], pids, proc_count);
+		ovdc = ovd(pipe_descriptors[1], pids, proc_count);
 	}
 	else
 	{
 		close(pipe_descriptors[1]);
-		ovc(pipe_descriptors[0]);
+		ovcd = ovc(pipe_descriptors[0]);
 	}
-
 }
 
