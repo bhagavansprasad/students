@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include "defs.h"
 
 int get_pids_from_args(int *pids, int argc, char *argv[])
 {
@@ -39,5 +40,5 @@ int main(int argc, char *argv[])
 		close(pipe_descriptors[1]);
 		ovc(pipe_descriptors[0]);
 	}
-return 0;
+	return 0;
 }
