@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int delay = 0;
 	int i = 0;
