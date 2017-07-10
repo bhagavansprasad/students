@@ -69,6 +69,10 @@ int ovd(int wfd, int *pids, int proc_count)
 		for (i = 0; i < proc_count; i++)
 		{
 			giffs=get_giff(pids[i]);
+
+			printf("pid = %d\n",pids[i]);
+			printf("giffs = %d\n",giffs);
+
 			arr1[i].pid = pids[i];
 			arr1[i].giffs = giffs;
 

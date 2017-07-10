@@ -49,7 +49,6 @@ int ovc(int rfd)
 
 		{
 			read(rfd, &arr, sizeof(arr));
-
 			cpu_occ=store_n_get_cpu_occpancy( arr.pid ,  arr.giffs);
 
 			if(cpu_occ > 0)
