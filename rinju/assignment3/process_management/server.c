@@ -6,15 +6,16 @@
 
 main()
 {
+    char buf [30]="hiiii";
 	char buff[50];
 	int fd1,fd2 ,retval;
-	char *fifo1 = "temp/fifo1";
-	char *fifo2 = "temp/fifo2";
+	char *fifo1 = "fifo1";
+	char *fifo2 = "fifo2";
 	mkfifo (fifo1,0666);
 	mkfifo (fifo2,0666);
 //	fd1 = open(fifo1,O_RDONLY);
 //	fd2 = open(fifo2,O_WRONLY);
-	while (1)
+//	while (1)
 	{
 	fd1 = open(fifo1,O_RDONLY);
 	fd2 = open(fifo2,O_WRONLY);
@@ -24,11 +25,11 @@ main()
 		{
 			printf("Received: %s\n", buff);
 			printf("Sending back...\n");
-			write(fd2,buff,50);
+			write(fd2,buf,50);
 		}
 
 		/* clean buf from any data */
-		memset(buff, 0, sizeof(buff));
+//		memset(buff, 0, sizeof(buff));
 	}
 
 	close(fd1);
