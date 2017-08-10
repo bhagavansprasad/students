@@ -1,0 +1,22 @@
+#include "stdio.h"
+int astrcasecmp(char *src, char *dest, case)
+{
+ int i, d=0;
+ for(i=0; src[i]!='\0' && dest[i]!='\0'; i++)
+ {
+  if(src[i]<dest[i])
+  {
+   src[i]-dest[i];
+  }
+   elseif(src[i]>=dest[i])
+   {
+    d=src[i]-dest[i];
+   }
+    if(d==32||d==0)
+	{
+	 printf("two strings are equal");
+	}
+	else
+	{
+	 printf("two strings are not equal");
+	}
