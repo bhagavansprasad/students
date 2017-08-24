@@ -3,7 +3,7 @@ i = 0
 j = n / 2
 a=[[0 for i in range(n)] for j in range(n)]
 for k in range(1,n*n + 1):
-	a[i][j]=k
+	a[i][j]=k,
 	i=i-1
 	j=j+1
 	if(k%n==0):
