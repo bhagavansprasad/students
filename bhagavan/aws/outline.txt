@@ -1,0 +1,298 @@
+Certified Solutions Architect - Associate 2017
+CHAPTER 1
+Introduction to the Course 28:46
+
+18:21
+Introduction & Overview
+06:56
+What You'll Need Getting Started
+03:29
+Exam Blue Print
+CHAPTER 2
+AWS - 10,000 Feet Overview 01:17:16
+
+11:04
+The History So Far
+19:45
+10,000 Foot Overview - Part 1
+18:19
+10,000 Foot Overview - Part 2
+20:37
+10,000 Foot Overview - Part 3
+07:31
+10,000 Foot Overview - Part 4
+10,000 Foot Quiz
+CHAPTER 3
+Identity Access Management (IAM) 31:05
+
+03:32
+IAM 101
+18:22
+IAM Lab
+04:15
+Create A Billing Alarm - Lab
+04:56
+IAM Summary
+IAM Quiz
+CHAPTER 4
+AWS Object Storage and CDN - S3, Glacier and CloudFront 02:51:19
+
+21:45
+S3 101
+11:29
+Lab: Create an S3 Bucket
+13:10
+Lab: S3 Version Control
+14:13
+Cross Region Replication
+14:18
+Lab: S3 Life Cycle Management & Glacier
+09:12
+CloudFront CDN Overview
+20:18
+Create a CloudFront CDN
+05:39
+S3 Security and Encryption
+16:01
+Storage Gateway
+08:42
+Snowball
+08:46
+Snowball Lab
+04:14
+S3 Transfer Acceleration
+06:02
+Create A Static Website Using S3
+17:30
+Summary
+S3 Quiz
+CHAPTER 5
+EC2 - The Backbone of AWS 05:48:41
+
+20:12
+EC2 101 - Part 1
+13:39
+EC2 101 - Part 2
+20:23
+Let's Get Our Hands Dirty! Launch an EC2 Instance - Part 1
+11:43
+Let's get our hands dirty! Launch an EC2 instance Part 2
+06:31
+How to use Putty (Windows Users Only)
+16:07
+Security Groups Basics
+14:15
+Upgrading EBS Volume Types - Lab - Part 1
+06:36
+Upgrading EBS Volume Types - Lab - Part 2
+15:19
+Creating a Windows EC2 Instance and RAID Group
+08:22
+Encrypt Root Device Volume and Create an AMI - Lab
+07:44
+AMI's - EBS Root Device Volumes vs Instance Store
+19:53
+Load Balancers and Health Checks
+14:20
+Cloud Watch EC2
+11:33
+The AWS Command Line and EC2
+09:11
+Using IAM Roles with EC2
+09:28
+S3 CLI & Regions
+14:37
+Using Bootstrap Scripts
+04:37
+EC2 Instance Metadata
+17:06
+Autoscaling Groups Lab
+03:15
+EC2 Placement Groups
+15:04
+Elastic File System Lab
+11:17
+Lambda - Concepts
+15:24
+Build A Serverless Webpage
+19:55
+Using Polly To Help You Pass Your Exam - A Serverless Approach - Part 1
+06:21
+Using Polly To Help You Pass Your Exam - A Serverless Approach - Part 2
+17:10
+Build An Alexa Skill
+18:39
+EC2 Summary
+EC2 Quiz
+CHAPTER 6
+Route53 01:06:33
+
+17:03
+DNS 101
+04:37
+Route 53 Register A Domain Name Lab
+10:28
+Setup Our EC2 Instances Lab
+05:55
+Simple Routing Policy Lab
+06:02
+Weighted Routing Policy Lab
+04:52
+Latency Routing Policy Lab
+09:31
+Failover Routing Policy Lab
+04:24
+Geolocation Routing Policy Lab
+03:41
+DNS Exam Tips
+Route53 Quiz
+CHAPTER 7
+Databases on AWS 01:30:44
+
+13:30
+Databases 101
+13:26
+Lab: Create our first RDS Instance
+17:47
+RDS - Back Ups, Multi-AZ & Read Replicas
+12:26
+DynamoDB
+08:37
+RedShift
+03:46
+Elasticache
+14:27
+Aurora
+06:45
+Databases Summary
+Databases Quiz
+CHAPTER 8
+VPC 01:47:42
+
+16:10
+Introduction and Overview
+19:53
+Build Your Own Custom VPC
+08:45
+Build A Custom VPC - Part 2
+18:18
+Network Address Translation (NAT)
+17:18
+Access Control Lists (ACLs)
+02:30
+Custom VPC's and ELBs
+03:57
+NAT's vs Bastions
+04:35
+VPC Flow Logs
+05:11
+VPC Clean Up
+11:05
+Summary
+VPC Quiz
+CHAPTER 9
+Application Services 01:01:36
+
+12:45
+SQS
+06:42
+SWF
+08:13
+SNS
+02:01
+Elastic Transcoder
+06:34
+API Gateway
+09:25
+Kinesis 101
+05:54
+Kinesis Lab
+10:02
+Application Services Summary
+Application Services Quiz
+CHAPTER 10
+The Real World - Creating a fault tolerant Word Press Site 01:44:25
+
+12:52
+Getting Setup
+19:42
+Setting Up EC2
+20:01
+Adding Resilience And CloudFront
+22:31
+Setting Up Our AMI's
+16:30
+AutoScaling & Load Testing
+10:51
+CloudFormation!
+01:58
+Want To Be A Real Solutions Architect? You Need To Know CloudFormation!
+CHAPTER 11
+Preparing for the Exam - White Paper Reviews 54:36
+
+05:56
+Overview of Amazon Web Services
+13:44
+Overview of Security Processes - Part 1
+07:33
+Overview of Security Processes - Part 2
+05:20
+AWS Risk and Compliance
+07:36
+Storage Options in the Cloud
+11:51
+Architecting for the AWS Cloud: Best Practices
+02:36
+Exam Practicalities
+Mega Quiz 1
+CHAPTER 12
+Well Architected Framework 01:31:35
+
+06:21
+Intro
+18:14
+Security
+10:50
+Reliability
+18:38
+Performance Efficiency
+14:36
+Cost Optimization
+14:01
+Operational Excellence
+08:55
+Summary
+CHAPTER 13
+Additional Exam Tips 01:11:02
+
+10:50
+Exam Tips Based On Student Feedback
+07:53
+Consolidated Billing
+06:13
+AWS Organizations Lab
+14:19
+Cross Account Access
+07:54
+Resource Groups & Tagging
+04:23
+VPC Peering
+05:01
+Direct Connect
+08:07
+Security Token Service
+03:15
+Active Directory Integration
+03:07
+Workspaces
+ECS - Part 1 - What is Docker
+ECS - Part 2 - What is ECS?
+CHAPTER 14
+Thank You, Good Luck & Coming Soon 04:28
+
+02:53
+Thank You To All My Students
+Mega Quiz 2
+Scenario Quiz
+Mini Exam
+Final Practice Exam
