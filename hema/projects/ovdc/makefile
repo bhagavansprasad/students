@@ -28,8 +28,3 @@ store.o : store.c defs.h
 clean:
 	rm -rf *.o 
 	rm -rf ovdc
-
-
-
-
-

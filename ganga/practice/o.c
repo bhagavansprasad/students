@@ -2,6 +2,6 @@
 
 int main()
 {
-    printf("%c\n", 7["IndiaBIX"]);
+    printf("%d\n", "IndiaBIX");
     return 0;
 }

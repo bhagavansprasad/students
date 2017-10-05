@@ -18,7 +18,7 @@ void main()
 			else
 				printf(" ");
 		}
-		//printf("\n");
+		printf("\n");
 	}
 	for(k=66;k<=67;k++)
 	{
@@ -37,5 +37,5 @@ void main()
 				printf(" ");
 		}
 	}
-	//printf("\n");
+	printf("\n");
 }

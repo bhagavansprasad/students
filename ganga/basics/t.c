@@ -51,4 +51,3 @@ int get_word_count(const char *s)
 	return wc;
 }
 #endif
-

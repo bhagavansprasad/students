@@ -4,7 +4,7 @@ void main()
 {
 	int flag;
 	char buff1[100] = "AURA NET";
-	char buff2[100] = "aura Net";
+	char buff2[100] = "aura net";
 
 	flag= astrcmp(buff1, buff2);
 
@@ -33,7 +33,7 @@ int astrcmp(char *p1, char *p2)
 			printf("d2 is:%d\n", d);
 		}
 
-		if(d != 32  && d != '\0')
+		if(d == 32  && d != '\0')
 		{
 			flag = 1;
 			break;

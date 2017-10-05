@@ -18,7 +18,7 @@ int main()
 	addnode(90);
 	addnode(20);
 	display();
-	count(90);
+	count(10);
 
 
 }

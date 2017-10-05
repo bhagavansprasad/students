@@ -103,7 +103,6 @@ int main(int argc,char *argv[])
 		}
 
 		for (i = 0; i < proc_count; i++)
-
 		{
 			pid[i]=atoi(argv[i+1]);
 			//printf(" pid=%d ",pid[i]);

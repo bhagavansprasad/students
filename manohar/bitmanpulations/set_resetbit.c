@@ -1,7 +1,11 @@
 #include <stdio.h>
 int main()
 {
-	int n=30;
+	//int n=300;
+	float n=10.0;
+
+	showbits((unsigned int *)&n, 31);
+#if 0
 	showbits(n,31);
 	n = set_bit(n,7);
 	showbits(n,31);
@@ -10,6 +14,7 @@ int main()
 	n = toggle_bit(n,13);
 	showbits(n,31);
 	return 0;
+#endif
 
 }
 int set_bit(int n,int pos)
@@ -30,15 +35,24 @@ int toggle_bit(int n,int pos)
 	k = n ^ ((1<<pos));
 	return k;
 }
-int showbits(int n,int p)
+int showbits(unsigned int *p, int size)
 {
 	int i;
-	for(i=p;i>=0;i--)
+	for(i=size;i>=0;i--)
 	{
-		if(n & (1<<i))
+		if((*p) & (1<<i))
 			printf("1 ");
 		else
 			printf("0 ");
 	}
 	printf("\n");
+	for(i=0;i<=size;i++)
+	{
+		if((*p) & (1<<i))
+			printf("1 ");
+		else
+			printf("0 ");
+	}
+	printf("\n");
+
 }

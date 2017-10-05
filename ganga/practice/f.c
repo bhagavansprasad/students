@@ -2,7 +2,8 @@
 
 int main()
 {
-    float fval=7.29;
-    printf("%d\n", (int)fval);
-    return 0;
+	float fval=7.29;
+	if(fval == 7.29)
+		printf("%f\n", fval);
+	return 0;
 }

@@ -3,12 +3,14 @@
 int addnonde(int n);
 void display();
 int delete(int n);
+
 struct node
 {
 	struct node *prev;
 	int val;
 	struct node *next;
 };
+
 struct node *head=NULL;
 int addnode(int n)
 {
@@ -31,6 +33,7 @@ int addnode(int n)
 	new -> prev=temp;
 	temp -> next=new;
 }
+
 void display()
 {
 	struct node *temp=NULL;
@@ -44,15 +47,18 @@ void display()
 		temp=temp->next;
 	}
 }
+
 int delete(int n)
 {
 	printf("After deletion of %d ",n);
 	struct node *temp = NULL;
+	
 	if(head == NULL)
 	{
-		printf(" No Node in the List\n");
+		printf("No Node in the List\n");
 		return 0;
 	}
+	
 	if(head->val == n)
 	{
 		temp = head;
@@ -61,6 +67,7 @@ int delete(int n)
 		free(temp);
 		return ;
 	}
+	
 	for(temp = head ; temp != NULL ; temp = temp->next)
 	{
 		if( temp -> val == n)
@@ -72,6 +79,7 @@ int delete(int n)
 		}
 	}
 }
+
 void main()
 {
 	addnode(10);

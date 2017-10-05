@@ -2,7 +2,6 @@
 
 main()
 {
-
 	int result, n = 10,temp[6] = {0}, pos = 0;
 	while(n > 0)
 	{
@@ -11,6 +10,6 @@ main()
 		pos++;
 	}
 
-	for(pos = 3; pos >= 0; pos--)
+	for(pos = 0; pos <= 3; pos++)
 		printf("%d\n", temp[pos]);
 }
