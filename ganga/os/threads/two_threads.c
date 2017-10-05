@@ -4,7 +4,7 @@
 
 int c = 10;
 
-void * thread1()
+void *thread1()
 {
 	while(1)
 	{
@@ -15,7 +15,7 @@ void * thread1()
 	}
 }
 
-void * thread2()
+void *thread2()
 {
 	while(1)
 	{
@@ -33,6 +33,7 @@ int main()
 
 	pthread_create(&tid1,NULL,thread1,NULL);
 	pthread_create(&tid2,NULL,thread2,NULL);
+	printf("the value of c in proces : %d\n", c);
 	pthread_join(tid1,NULL);
 	pthread_join(tid2,NULL);
 	return 0;
