@@ -13,7 +13,7 @@ int main()
 
 	str1 = strtok(str, ":. ");
 
-	printf("i=%d and str1=%s\r\n",x,str1);
+	printf("x=%d and str1=%s\r\n", x, str1);
 
 	while(1)
 	{
@@ -25,7 +25,7 @@ int main()
 			exit(0);
 		}
 
-		printf("i=%d and str1=%s\r\n",x,str1);
+		printf("x=%d and str1=%s\r\n", x, str1);
 		x++;
 	}
 	return 0;
