@@ -18,8 +18,9 @@ main()
 	addnode("bharathi");
 	addnode("zeeee");
 	display();
+	printf("---------------->\n");
 	insby("bhuvana");
-    display();
+	display();
 }
 int addnode(char *p)
 {	
@@ -44,42 +45,41 @@ int gen_hash_key(char *p)
 	int i=0;
 	i=p[0];
 	if((i>=65)&&(i<90))
-	i=i-65;
+		i=i-65;
 	else
-	i=i-97;
+		i=i-97;
 	return i;
 }
 int display()
 {
-struct node *temp=NULL;
+	struct node *temp=NULL;
 	int i=0;
 	for(i=0;i<26;i++)
 	{
-				//printf("%p",h[i]);
+		//printf("%p",h[i]);
 		for(temp=h[i];temp!=NULL;temp=temp->next)
 		{
-	//	if(h[i]!=NULL)
-	//	{
+			//	if(h[i]!=NULL)
+			//	{
 
-	       printf("name=%s\t,add=%p",temp->name,temp);
-		   printf("temp->next=%p\n",temp->next);
-	//	}
-	//	else
-	//	break;
-	printf("\n");
-	}
-      
+			printf("name=%s\t,add=%p",temp->name,temp);
+			printf("temp->next=%p\n",temp->next);
+			//	}
+			//	else
+			//	break;
+			printf("\n");
+		}
+
 	}
 	return 0;
 }
 int insby(char *p)
 {
-    int  a,hkey;
+	int  a,hkey;
 	struct node *temp=NULL;
 	struct node *ptr=NULL;
 	ptr=malloc(sizeof(struct node));
 	hkey=gen_hash_key(p);
-	c=
 	for(temp=h[hkey];temp!=NULL;temp=temp->next)
 	{
 		a=strcmp(temp->name,p);
@@ -95,8 +95,8 @@ int insby(char *p)
 				ptr->next=temp->next;
 				return 0;
 			}
-	   	}
-			ptr=temp;
+		}
+		ptr=temp;
 	}
 	return 0;
 }

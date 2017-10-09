@@ -116,8 +116,8 @@ int parse_arguments(char *src, char *pcmd, int *pa, int *pb)
 	{
 		s[j] = src[i];
 	}
-	pa = (int)atoi(s);
-	printf("--> pa :%d\n", pa);
+	*pa = (int)atoi(s);
+	printf("--> pa :%d\n", *pa);
 
 	for(; src[i] == ' ' && src[i] != '\0'; i++);
 
@@ -125,8 +125,8 @@ int parse_arguments(char *src, char *pcmd, int *pa, int *pb)
 	{
 		s[j] = src[i];
 	}
-	pb = (int)atoi(s);
-	printf("--> pb :%d\n", pb);
+	*pb = (int)atoi(s);
+	printf("--> pb :%d\n", *pb);
 }
 
 int perform_operation(char *pcmd, int a, int b)
@@ -157,6 +157,8 @@ main()
 	for (i = 0; i < sizeof(test_strs)/sizeof(test_strs[i]); i++)
 	{
 		parse_arguments(test_strs[i], cmd, &a, &b);
+		printf("--> a : %d\n", a);
+		printf("--> b : %d\n", b);
 		result = perform_operation(cmd, a, b);
 		printf("%d and %d = %d\n\n", a, b, result);
 	}

@@ -29,5 +29,3 @@ int main()
     printf("Data received: %s",buffer);
     return 0;
 }
-
-

@@ -7,5 +7,5 @@ main()
 	c=c>>1;
 	d=d<<1;
 	n=c|d;
-	printf("%d",n);
+	printf(" %d",n);
 }

@@ -10,7 +10,10 @@ main()
 		float c;
 	}
 	Union;
-	Union x,y = {100};
+	Union x = {100}, y = {100};
+
+	printf("Union x : %d %s %f \n",x.a, x.b, x.c);
+
 	x.a = 50;
 	strcpy(x.b,"hello");
 	x.c = 21.50;

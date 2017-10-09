@@ -33,13 +33,13 @@ int main()
 	addr_size = sizeof serverStorage;
 	newSocket = accept(welcomeSocket, (struct sockaddr *) &serverStorage, &addr_size);
 
-	recv(newSocket, &bdata, 100, 0);
+	recv(newSocket, &bdata, sizeof(bdata), 0);
 	printf("Data received: %d \n", bdata.length);
 	printf("Data received: %s \n", bdata.buff);
 
 	strcpy(bdata.buff, "Hello, i am server");
 	bdata.length = 10;
-	send(newSocket, &bdata,100,0);
+	send(newSocket, &bdata, sizeof(bdata), 0);
 
 	return 0;
 }                                          

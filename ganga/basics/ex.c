@@ -2,7 +2,9 @@
 
 void main()
 {
-	int *p, b;
-	b = sizeof(p);
-	printf("b is :%d\n", b);
+//	float f = 10;
+//	printf("%d\n", f);
+	char a = -1;
+	printf("%d\n", a);
+	printf("%c\n", a);
 }

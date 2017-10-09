@@ -1,4 +1,4 @@
-#include<stdio.h>
+# include<stdio.h>
 
 void main()
 {
@@ -15,7 +15,7 @@ void main()
 		}
 		printf("\n");
 	}
-	
+
 	for(i=1;i>=0;i--)
 	{
 		for(j=3;j>i;j--)

@@ -2,7 +2,7 @@
 #include <string.h>
 
 char str[10][20] = {
-	"add 10 20",
+	"     add   10    20",
 	"mul 10 20",
 	"sub 20 10",
 	"div 20 10"
@@ -12,7 +12,10 @@ int parse_calc_cmd(char *str, char *cmd, int *pa, int *pb)
 {
 	int i, j = 0;
 	char s[20];
-	printf("Str: %s\n", str);
+	
+	for (i = 0; str[i] == ' ' && str[i] != '\0'; i++);
+
+	return 0;
 	for( i = 0; i < 3; i++)
 	{
 		cmd[i] = str[i];

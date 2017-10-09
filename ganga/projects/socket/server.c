@@ -10,7 +10,6 @@ int main()
     int welcomeSocket, newSocket;
     char buffer[256];
     struct sockaddr_in serverAddr;
-    struct sockaddr_storage serverStorage;
     socklen_t addr_size;
 
     welcomeSocket = socket(PF_INET, SOCK_STREAM, 0);
@@ -23,14 +22,12 @@ int main()
     bind(welcomeSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
 
     if(listen(welcomeSocket, 5) == 0)
-
         printf("Listening\n");
     else
-
         printf("Error\n");
 
-    addr_size = sizeof serverStorage;
-    newSocket = accept(welcomeSocket, (struct sockaddr *) &serverStorage, &addr_size);
+    addr_size = sizeof serverAddr;
+    newSocket = accept(welcomeSocket, (struct sockaddr *) &serverAddr, &addr_size);
 
     recv(newSocket, buffer, 256, 0);
     printf("Data received: %s",buffer);  
@@ -40,5 +37,3 @@ int main()
 
     return 0;
 }
-
-

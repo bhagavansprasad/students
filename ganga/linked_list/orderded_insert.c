@@ -28,7 +28,6 @@ int addnode(int n)
 	if(header == NULL)
 	{
 		header = new;
-		temp = header;
 		return 0;
 	}
 
@@ -37,11 +36,8 @@ int addnode(int n)
 		new -> next = header;
 		header = new;
 	}
-
-	temp = header;
-	c = header -> next;
-
-	while(temp -> next != NULL)
+	
+	for( temp = header, c = header -> next; temp -> next != NULL; temp = c, c = temp -> next)
 	{
 		if(new -> num < c -> num)
 		{ 
@@ -49,8 +45,6 @@ int addnode(int n)
 			new -> next = c;
 			return 0;
 		}
-		temp = c;
-		c = temp -> next;
 	}
 
 	if(new -> num >= temp -> num)

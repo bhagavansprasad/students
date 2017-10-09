@@ -2,7 +2,7 @@
 #include <stdlib.h>
 int addnode(int);
 int display(void);
-int del_pos(int);
+//int del_pos(int);
 struct node
 {
 	int value;
@@ -18,7 +18,7 @@ int main()
 	addnode(40);
 	addnode(60);
  	display();
-//:wqdisplay();
+//qdisplay();
 //	del_pos(6);
 //	del_pos(1);
 //	display();

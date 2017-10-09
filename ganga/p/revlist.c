@@ -72,6 +72,3 @@ int revlist(void)
 	}
 	return 0;
 }
-
-
-

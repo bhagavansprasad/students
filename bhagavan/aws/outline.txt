@@ -1,5 +1,5 @@
 Certified Solutions Architect - Associate 2017
-CHAPTER 1
+CHAPTER 1 
 Introduction to the Course 28:46
 
 18:21
@@ -27,7 +27,7 @@ Identity Access Management (IAM) 31:05
 
 03:32
 IAM 101
-18:22
+18:2
 IAM Lab
 04:15
 Create A Billing Alarm - Lab
@@ -285,7 +285,9 @@ Security Token Service
 Active Directory Integration
 03:07
 Workspaces
+00:00
 ECS - Part 1 - What is Docker
+00:00
 ECS - Part 2 - What is ECS?
 CHAPTER 14
 Thank You, Good Luck & Coming Soon 04:28
@@ -294,5 +296,7 @@ Thank You, Good Luck & Coming Soon 04:28
 Thank You To All My Students
 Mega Quiz 2
 Scenario Quiz
+00:00
 Mini Exam
+00:00
 Final Practice Exam

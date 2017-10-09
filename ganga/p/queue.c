@@ -43,8 +43,6 @@ int addnode(int n)
 }
 int apop()
 {
-	struct node *temp=NULL;
-	struct node *ptr=NULL;
 	h=h->next;
 }
 int display(void)

@@ -11,7 +11,7 @@ int prime_bw_two_num(int i, int j)
 
 	for(i ; i <= j; i++)
 	{
-	c = 0;
+		c = 0;
 		for(k = 1; k <= i; k++)
 		{
 			if(i % k == 0)
