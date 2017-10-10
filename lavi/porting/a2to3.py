@@ -8,9 +8,6 @@ def python_port2x_to_3x(line):
 
 test_strings = [
 	"print'Aura Networks'",
-	"print'VR Chambers'",
-	"print'Kadubisanahalli'",
-	"print'Bangalore'",
 	"print'560103'",
 	'print "560103"',
 	'print ("560103")',
@@ -22,7 +19,8 @@ test_strings = [
 	'	myprint                                 ("560103")',
 	'print("560103")',
 	'printing my line',
-	'Hi I am printing my documet',
+	'#print "temp line"',
+	'Hi I am printing my document',
 	"print '560103'",
 	"def print_all_files_recursively(path):"
 	]
