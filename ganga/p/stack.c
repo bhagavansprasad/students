@@ -8,7 +8,6 @@ struct node
 	struct node *next;
 };
 struct node *h=NULL;
-int j;
 int main()
 {
 	addnode(10);

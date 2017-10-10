@@ -17,7 +17,6 @@ int main()
 			printf(" %d",(a/(b*c)));
 		}
 
-
 		printf("\n");
 	}
 }

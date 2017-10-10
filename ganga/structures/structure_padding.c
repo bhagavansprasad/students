@@ -1,18 +1,19 @@
 #include "stdio.h"
 #include "string.h"
-#pragma pack (1)
+#pragma pack (2)
 
 struct book
 {
-	int pages;
-	char author;
-	int edition;
 	char type;
+	char author;
+	int pages;
+	int edition;
 //	strcpy(author, "aura");
-}; struct book b;
+};
 
 main()
 {
-	printf("%d\n",sizeof(b));
+	//printf("%ld\n",sizeof(b));
+	printf("%ld\n",sizeof(struct book));
 }
 

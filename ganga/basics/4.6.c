@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 # define size 5
+
 void main()
 {
 	int n=size;
@@ -28,7 +29,6 @@ void main()
 				i=i+n;
 		}
 	}
-	
 	for(i=0;i<n;i++)
 	{
 		for(j=0;j<n;j++)
@@ -37,5 +37,4 @@ void main()
 		}
 		printf("\n\n");
 	}
-	
 }

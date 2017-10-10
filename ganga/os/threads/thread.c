@@ -2,12 +2,22 @@
 #include <stdlib.h>
 #include "pthread.h"
 
-void *myThreadFun(void *vargp)
+void *thread()
 {
 	sleep(1);
+	printf("--> Aura Networks\n");
+}
+
+void *myThreadFun(void *vargp)
+{
+	pthread_t tid;
+	sleep(1);
 	printf("Printing Aura Networks from Thread \n");
+	pthread_create(&tid, NULL, thread, NULL);
+	pthread_join(tid, NULL);
 	return NULL;
 }
+
 
 int main()
 {

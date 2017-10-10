@@ -2,7 +2,7 @@
 
 main()
 {
-	int i = 0, result, n = 5;
+	int i = 10, result, n = 5;
 
 	while(n > 0)
 	{

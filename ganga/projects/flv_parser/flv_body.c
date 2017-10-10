@@ -6,7 +6,7 @@
 
 int read_flv_tags(int fd)
 {
-	static temp=0;
+	static temp = 0;
 	int a = 0, c = 0, i = 0, n = 0, wval = 0, wretval = 0, retval = 0, mask = 0x1F; 
 	char buff[100000]=" ";
 	char b[10]=" ";

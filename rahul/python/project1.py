@@ -1,11 +1,12 @@
-import pdb
-pdb.set_trace()
+#import pdb
+#pdb.set_trace()
 student = ["bhagavan", "Bhagavan Prasad", "1000", "1001", "9902096750", " ", "Bommanahalli", "  ", "enabled", ""]
 
 for details in student:
         print details, " ", 
 
 temp_list = []
+
 
 students = [
     ["bhagavan", "Bhagavan Prasad", "1000", "1001", "9902096750", "", "Bommanahalli", "", "enabled"],
@@ -17,7 +18,6 @@ students = [
 	["rahul", "Rahul Rohit", "1504", "1002", "9199976255","","Bellandur","","disabled"],
 	["rohit", "Rohit Kumar", "1505", "1003", "9199976255","","Bellandur","","disabled"],
 ]
-
 print ""
 
 for student in students:

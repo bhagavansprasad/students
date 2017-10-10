@@ -2,12 +2,10 @@
 
 main()
 {
-	int c, i = 1;
 	int f = fib(5);
-	for(c = 1; c <= 5; c++)
+	for(f = 0; f <= 5; f++)
 	{
-		printf("%d\n", fib(i));
-		i++;
+		printf("%d\n", fib(f));
 	}
 }
 
@@ -15,7 +13,8 @@ int fib(int n)
 {
 	if(n == 0)
 		return 0;
-	if( n == 1)
+	else if( n == 1)
 		return 1;
-	return (fib(n-1) + fib(n-2));
+	else
+		return (fib(n-1) + fib(n-2));
 }

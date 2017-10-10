@@ -2,9 +2,10 @@
 
 main()
 {
-	int g = gcd(0,1);
+	int g = gcd(12,20);
 	printf("%d\n", g);
 }
+
 int gcd(int a, int b)
 {
 	if(b == 0)

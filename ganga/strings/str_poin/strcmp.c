@@ -13,7 +13,6 @@ void main()
 		printf("same\n");
 
 	else
-
 		printf("not same\n");
 }
 
@@ -45,4 +44,3 @@ int astrcmp(char *p1, char *p2)
 	}
 	return (flag);
 }
-

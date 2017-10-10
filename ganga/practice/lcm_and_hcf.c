@@ -19,7 +19,7 @@ void main()
 		}
 	}
 
-	printf("lcm of %d and %d is %d\n", x, y, a);
+	printf("lcm of %d and %d is %d\n", x, y, b);
 	a = x;
 	b = y;	
 
@@ -36,5 +36,5 @@ void main()
 		}
 	}
 
-	printf("hcf of %d and %d is %d\n", x, y, a);
+	printf("hcf of %d and %d is %d\n", x, y, b);
 }
