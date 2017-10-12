@@ -1,10 +1,26 @@
+import re
 porting_strins = ["print", "print ("]
 
 def python_port2x_to_3x(line):
+	regex = r"[^#]print*[^(]"
+
+	match = re.findall(regex, line.strip())
+	if match:
+		print ("-" * 10, line)
+	else:
+		print (line)
+
+
+
+'''
+def python_port2x_to_3x(line):
+	regex = r"[^#]print*[^(]"
 	new_string = line.replace(porting_strins[0], porting_strins[1])
 	new_string = new_string  + ")" 
 
 	return new_string
+'''
+
 
 test_strings = [
 	"print'Aura Networks'",
@@ -26,4 +42,5 @@ test_strings = [
 	]
 
 for nstr in test_strings:
-	print (python_port2x_to_3x(nstr))
+	#print (python_port2x_to_3x(nstr))
+	python_port2x_to_3x(nstr)
