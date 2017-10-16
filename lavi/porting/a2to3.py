@@ -1,4 +1,4 @@
-porting_strins = ["print", "print ("]
+     porting_strins = ["print", "print ("]
 
 def python_port2x_to_3x(line):
 	new_string = line.replace(porting_strins[0], porting_strins[1])
