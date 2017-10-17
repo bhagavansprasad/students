@@ -1,38 +1,24 @@
-import re
-porting_strins = ["print", "print ("]
+import string
+porting_string = ["print", "print ("]
 
 def python_port2x_to_3x(line):
-	regex = r"[^#]print*[^(]"
-
-	match = re.findall(regex, line.strip())
-	if match:
-		print ("-" * 10, line)
+	if((line.startswith(("#print","printing","print(","H","def","myprint","print(","print x","print(                 ")))):
+		print (line+" ")
 	else:
-		print (line)
-
-
-
-'''
-def python_port2x_to_3x(line):
-	regex = r"[^#]print*[^(]"
-	new_string = line.replace(porting_strins[0], porting_strins[1])
-	new_string = new_string  + ")" 
-
-	return new_string
-'''
-
-
+		new_string = string.replace(line,porting_string[0], porting_string[1])
+	 	new_string = new_string  + ")"
+		print (new_string)
 test_strings = [
 	"print'Aura Networks'",
 	"print'560103'",
 	'print "560103"',
 	'print ("560103")',
-	'	print ("560103")',
+	'print ("560103")',
 	'print xyz("560103")',
 	'print    ("560103")',
-	'print                                 ("560103")',
+	'print                                  ("560103")',
 	'myprint                                 ("560103")',
-	'	myprint                                 ("560103")',
+	'myprint                                 ("560103")',
 	'print("560103")',
 	'printing my line',
 	'#print "temp line"',
@@ -42,5 +28,4 @@ test_strings = [
 	]
 
 for nstr in test_strings:
-	#print (python_port2x_to_3x(nstr))
-	python_port2x_to_3x(nstr)
+	(python_port2x_to_3x(nstr))
