@@ -1,4 +1,4 @@
-porting_strins = ["print", "print ("]
+porting_strins = ["print'", "print ('"]
 
 def python_port2x_to_3x(str):
 	new_string = str.replace(porting_strins[0], porting_strins[1])
@@ -25,4 +25,4 @@ test_strings = [
 	]
 
 for nstr in test_strings:
-	print (python_port2x_to_3x(nstr))
+	print((python_port2x_to_3x(nstr)))
