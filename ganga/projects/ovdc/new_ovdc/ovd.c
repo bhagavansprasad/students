@@ -48,6 +48,7 @@ int get_giffs_by_pid(int pid)
 	retval[buff] = '\0';
 
 	giffs_count = get_cpu_giffs_sum(buff);
+	close (fd);
 	return giffs_count;
 }
 
