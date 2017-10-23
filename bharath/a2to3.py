@@ -3,13 +3,8 @@ porting_string = ["print", "print ("]
 
 ignore_list = [
 	"#",
-	"/",
-	"/",
-	"/",
-	"/",
-	"/",
-	"/",
-	"'"
+	"'",
+	'"'
 ]
 
 #012345
@@ -31,23 +26,24 @@ test_strings = [
 	' #    print "temp line"',
 	'Hi I am printing my document',
 	"B ", 
-	"print", 
-
 	"print '560103'",
 	"def print_all_files_recursively(path):"
+	"print", 
+	""
 	]
 
 
 def python_port2x_to_3x(line):
+	prefix = "print"
 	line = line.strip()
 
 	for byte in ignore_list:
 		if (line == byte):
 			return False
 
-	if(line.startswith("print") == True):
-		j = len("print")
-		if (line[len("print")] == "'"):
+	if(line.startswith(prefix) == True):
+		j = len(prefix)
+		if (line[len(prefix)] == "'"):
 			while (line[j] == " "):
 				j = j + 1
 			if (line[j] == "'" or line[j] == '"'):
