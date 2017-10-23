@@ -3,52 +3,53 @@ porting_string = ["print", "print ("]
 
 ignore_list = [
 	"#",
-	"/",
-	"/",
-	"/",
-	"/",
-	"/",
-	"/",
-	"'"
+	"'",
+	'"'
 ]
 
 #012345
 #print    ("560103")
 
 test_strings = [
-	"print'Aura Networks'",
-	"print'560103'",
-	'print "560103"',
-	'print ("560103")',
-	'print xyz("560103")',
-	'print    ("560103")',
-	'print                                  ("560103")',
-	'myprint                                 ("560103")',
-	'print("560103")',
-	'printing my line',
-	'#print "temp line"',
-	'#print "temp line"',
-	'# print "temp line"',
-	'Hi I am printing my document',
-	"B ", 
-	"print", 
-
-	"print '560103'",
-	"def print_all_files_recursively(path):"
+	
+	[False, "print"], 
+	[True, 'print "560103"'],
+	[True, "print '560103'"],
+	[True, "print'Aura Networks'"],
+	[True, "print'560103'"],
+	[False, 'print ("560103")'],
+	[False, 'print xyz("560103")'],
+	[False, 'print    ("560103")'],
+	[False, 'print                                  ("560103")'],
+	[False, 'myprint                                 ("560103")'],
+	[False, 'print("560103")'],
+	[False, 'printing my line'],
+	[False, '#print "temp line"'],
+	[False, '#    print "temp line"'],
+	[False, ' #    print "temp line"'],
+	[False, 'Hi I am printing my document'],
+	[False, "B "], 
+	[False, "def print_all_files_recursively(path):"],
+	[False, ""]
 	]
 
 
 def python_port2x_to_3x(line):
+	prefix = "print"
 	line = line.strip()
 
 	for byte in ignore_list:
-		if (line[0] == byte):
+		if (line == byte):
 			return False
 
-	if(line.startswith("print") == True):
-		j = len("print")
-		if (line[len("print")] == ' '):
-			while (line[j] == ' '):
+	if(line.startswith(prefix) == True):
+		j = len(prefix)
+
+		if (len(prefix) == len(line)):
+			return False
+
+		if (line[len(prefix)] == " "):
+			while (line[j] == " "):
 				j = j + 1
 			if (line[j] == "'" or line[j] == '"'):
 				return True
@@ -61,18 +62,19 @@ def python_port2x_to_3x(line):
 
 i = 1
 for nstr in test_strings:
-	print (i, ":", python_port2x_to_3x(nstr), ":", nstr)
-	i = i + 1
 
-
-	'''
-
-	if((line.startswith((" #print","printing","print(","H","def","myprint","print(","print x","print(                 ")))):
-		print (line+" ")
+	try:
+		result = python_port2x_to_3x(nstr[1])
+		#print (i, ":", result, ":", nstr[1])
+		assert(result == nstr[0])
+	except:
+		print (i, ":", "FAIL ---", result, ":", nstr[1])
 	else:
-		new_string = string.replace(line,porting_string[0], porting_string[1])
-	 	new_string = new_string  + ")"
-		print (new_string)
-	'''
+		print (i, ":", "PASS ---", result, ":", nstr[1])
+	if result==True:
 
+
+	
+	
+	i = i + 1
 
