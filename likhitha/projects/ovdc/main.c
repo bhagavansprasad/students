@@ -120,7 +120,8 @@ int main(int argc, char *argv[])
 			giffs = get_giffs_by_pid(pids[i]);
 			//printf("-->giffs : %d\n", giffs);
 			cpu_occ = store_n_get_cpu_occ(pids[i], giffs);
-			printf("%d:%d\n", pids[i], cpu_occ);
+			if( cpu_occ > 0)
+				printf("%d:%d\n", pids[i], cpu_occ);
 			sleep(1);
 		}
 	}

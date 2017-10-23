@@ -1,3 +1,0 @@
-package { 'telnetd':
-  ensure => 'present',
-}

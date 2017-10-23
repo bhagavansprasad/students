@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define prod(a,b) a*b
+#define prod(a,b) (a*b)
 main()
 {
 	int x=3,y=4;

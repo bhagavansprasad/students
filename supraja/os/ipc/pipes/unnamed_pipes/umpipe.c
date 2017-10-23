@@ -12,10 +12,13 @@ main()
 	char inbuff[SIZE];
 	int p1[2];
 	int p2[2];
+
 	pipe(p1);
 	pipe(p2);
 	//fd = open("testfile2",O_RDWR);
+
 	pid = fork();
+
 	if(pid > 0)
 	{
 		close(p1[0]);
@@ -24,18 +27,12 @@ main()
 		{
 			write(p1[1],msg1[i],SIZE);
 			//sleep(1);
-	
-             
 		}
+
 		for(i=0;i<5;i++)
 		{
 			read(p2[0],inbuff,SIZE);
 			printf("from the parent---->%s\n",inbuff);
-
-
-			
-
-
 		}
 
 	}
@@ -53,14 +50,11 @@ main()
 			//}
 
 			//write(fd,msg2[j],SIZE);
-		
 	}
 	for(i=0;i<5;i++)
 	{
-	    printf("%d\n",i);
+		printf("%d\n",i);
 		write(p2[1],msg2[i],SIZE);
-		
 	}
-	//sleep(2);
 }
 }

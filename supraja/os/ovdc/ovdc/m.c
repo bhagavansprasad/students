@@ -17,5 +17,4 @@ main()
 		close(p[1]);
 		ovc(p[0]);
 	}
-
 }

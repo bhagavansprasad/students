@@ -1,7 +1,0 @@
-# This is a comment
-FROM ubuntu
-MAINTAINER Bhagavan <bhagavan@auranetworks.in>
-ENV HOME_DIR /home/bhagavan
-ADD a.out $HOME_DIR
-WORKDIR $HOME_DIR
-CMD ["./a.out"]
