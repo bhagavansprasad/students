@@ -1,23 +1,24 @@
-myfile= open("1log.txt", "rt")
-data = myfile.read().replace("\n",'')
+fd1 = open("1log.txt", "rt")
+data = fd1.read().replace("\n", '')
 newdata="warning"
 print("Warning:",data.count(newdata))
-a=data.count(newdata)
-myfile.close()
+old_warn_count = data.count(newdata)
+fd1.close()
 
-myfile= open("2log.txt", "rt")
-data = myfile.read().replace("\n",'')
+fd2 = open("2log.txt", "rt")
+data = fd2.read().replace("\n",'')
 newdata="warning"
 print("Warning:",data.count(newdata))
-b=data.count(newdata)
-myfile.close()
+new_warn_count=data.count(newdata)
+fd2.close()
 
-if(b<=a):
-	print("promoted no of warnings in previous build is",a)
-	print("no of warnings in previous build is",b)
+if(new_warn_count <= old_warn_count):
+	print("*** Build promoted ***")
 else:
-	print("not promoted no of warnings in previous build is",a)
-	print("no of warnings in previous build is",b)
+	print("*** Build NOT promoted ***")
+
+print("   Old warning count :%d" % old_warn_count)
+print("   New warning count :%d" % new_warn_count)
 
 
 
