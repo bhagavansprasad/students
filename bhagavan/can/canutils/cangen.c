@@ -172,7 +172,7 @@ int main(int argc, char **argv)
 	signal(SIGTERM, sigterm);
 	signal(SIGHUP, sigterm);
 	signal(SIGINT, sigterm);
-
+#if 0
 	while ((opt = getopt(argc, argv, "ig:ebfmI:L:D:xp:n:vRh?")) != -1) {
 		switch (opt) {
 
@@ -270,6 +270,9 @@ int main(int argc, char **argv)
 			break;
 		}
 	}
+	#endif
+
+	printf("optind:%d\n",optind);
 
 	if (optind == argc) {
 		print_usage(basename(argv[0]));

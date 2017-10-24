@@ -8,7 +8,7 @@ struct ovd_struct
 }ovd;
 int read_list_of_processes(int *p)
 {
-	printf("----> size of p : %d\n",sizeof(p));
+	//printf("----> size of p : %u\n",sizeof(p));
 	return (sizeof(p)/sizeof(int));
 }
 int get_giffs_by_pid(int pid)

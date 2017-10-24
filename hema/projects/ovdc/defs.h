@@ -15,5 +15,3 @@ struct giffs_db
 	int cpu_occ;
 	int fd;
 };
-
-

@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-	int n=30;
+	int n=30,num;
 	if(n%2==0)
 		printf("number is even\n");
 	else

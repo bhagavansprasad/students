@@ -35,10 +35,10 @@ main()
 		close(socketfd);
 		exit(1);
 	}
-	for(i=0;i<3;i++)
+	while(1)
 	{
 	    sleep(2);
-	    retval=write(socketfd, &buff1[i],20);
+	    retval=write(socketfd, &buff1[i++],20);
 		if(retval < 0)
 	    {
 		   break;

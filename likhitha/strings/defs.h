@@ -1,0 +1,1 @@
+int astrlen(char *pname);

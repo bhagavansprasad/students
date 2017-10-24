@@ -1,6 +1,11 @@
 #include<stdio.h>
 #include <signal.h>
-void abc();
+
+void abc(void)
+{
+	printf("you have pressed the DEL key.\n");
+}
+
 main()
 {
 	printf("press the DEL key.\n");
@@ -8,7 +13,3 @@ main()
 	for( ; ;);
 }
 
-void abc(void)
-{
-	printf("you have pressed the DEL key.\n");
-}

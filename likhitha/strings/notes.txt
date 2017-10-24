@@ -1,0 +1,29 @@
+stpcpy,  strcasecmp,  strcat, strchr, strcmp, strcoll, strcpy, strcspn, strdup, strfry, strlen, strn‐
+cat, strncmp, strncpy, strncasecmp, strpbrk, strrchr, strsep, strspn, strstr, strtok, strxfrm, index,
+rindex - string operations
+
+size_t strlen(const char *s);
+char *stpcpy(char *dest, const char *src);
+char *strncpy(char *dest, const char *src, size_t n);
+int strcmp(const char *s1, const char *s2);
+int strncmp(const char *s1, const char *s2, size_t n);
+
+int strcasecmp(const char *s1, const char *s2);
+int strncasecmp(const char *s1, const char *s2, size_t n);
+char *index(const char *s, int c);
+char *rindex(const char *s, int c);
+char *strcat(char *dest, const char *src);
+char *strchr(const char *s, int c);
+char *strncat(char *dest, const char *src, size_t n);
+char *strrchr(const char *s, int c);
+
+int strcoll(const char *s1, const char *s2);
+size_t strcspn(const char *s, const char *reject);
+char *strdup(const char *s);
+char *strfry(char *string);
+char *strpbrk(const char *s, const char *accept);
+char *strsep(char **stringp, const char *delim);
+size_t strspn(const char *s, const char *accept);
+char *strstr(const char *haystack, const char *needle);
+char *strtok(char *s, const char *delim);
+size_t strxfrm(char *dest, const char *src, size_t n);

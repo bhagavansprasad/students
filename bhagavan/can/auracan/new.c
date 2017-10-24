@@ -54,11 +54,11 @@ main()
 
 	frame.can_id |= CAN_RTR_FLAG;
 
-
 	*(unsigned long*)(&frame.data[0]) = random();
 	*(unsigned long*)(&frame.data[4]) = random();
 
 	printf("mtu :%d\n", mtu);
 	nbytes = write(sockfd, &frame, mtu);
 	printf("-->write retval :%d\n", nbytes);
+
 }
