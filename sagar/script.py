@@ -1,14 +1,14 @@
 fd1 = open("1log.txt", "rt")
 data = fd1.read().replace("\n", '')
-newdata="warning"
-print("Warning:",data.count(newdata))
+newdata=" warning "
+
 old_warn_count = data.count(newdata)
 fd1.close()
 
 fd2 = open("2log.txt", "rt")
 data = fd2.read().replace("\n",'')
-newdata="warning"
-print("Warning:",data.count(newdata))
+newdata=" warning "
+
 new_warn_count=data.count(newdata)
 fd2.close()
 
