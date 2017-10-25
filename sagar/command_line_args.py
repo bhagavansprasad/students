@@ -1,33 +1,34 @@
 import sys
 
+
+print("\n")
 print (sys.argv)
 print (sys.argv[0])
 print (sys.argv[1])
 print (sys.argv[2])
 
+
+print("\n")
+print("Length of Arguments")
 print (len(sys.argv))
 
+
+print("\n")
 for args in sys.argv:
     print (args)
 
-
-#ofd = open(sys.argv[1], "r")
-#nfd = open(sys.argv[2], "r")
-
-
-#fd1 = open("sys.argv[1]", "rt")
+print("\n")
+print("************************")
 fd1= open(sys.argv[1], "rt")
 data = fd1.read().replace("\n", '')
 newdata="warning:"
-
 old_warn_count = data.count(newdata)
 fd1.close()
 
-#fd2 = open("argv[2]", "rt")
+
 fd2= open(sys.argv[2], "rt")
 data = fd2.read().replace("\n",'')
 newdata="warning:"
-
 new_warn_count=data.count(newdata)
 fd2.close()
 
