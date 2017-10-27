@@ -11,6 +11,7 @@ ignore_list = [
 #print    ("560103")
 
 test_strings = [
+	
 	[False, "print"], 
 	[True, 'print "560103"'],
 	[True, "print '560103'"],
@@ -39,38 +40,52 @@ def python_port2x_to_3x(line):
 
 	for byte in ignore_list:
 		if (line == byte):
-			return False
+			return (False, -1)
 
 	if(line.startswith(prefix) == True):
 		j = len(prefix)
 
 		if (len(prefix) == len(line)):
-			return False
+			return (False, -1)
 
 		if (line[len(prefix)] == " "):
 			while (line[j] == " "):
 				j = j + 1
 			if (line[j] == "'" or line[j] == '"'):
-				return True
+				return (True, j)
 		else:
 			if (line[j] == "'" or line[j] == '"'):
-				return True
+				return (True, j)
 
-	return False
+	return (False, -1)
 
+
+''' 
+i = 1
+for nstr in test_strings:
+	try:
+		result = python_port2x_to_3x(nstr[1])
+		assert(result == nstr[0])
+	except:
+		#print (i, ":", "FAIL ---", result, ":", nstr[1])
+		print (i, ":", "FAIL ---", result, ":", nstr[1])
+	else:
+		#print (i, ":", "PASS ---", result, ":", nstr[1])
+		print (i, ":", "PASS ---", result, ":", nstr[1])
+	if result==True:
+
+
+	
+	
+	i = i + 1
+''' 
 
 i = 1
 for nstr in test_strings:
-
-	try:
-		result = python_port2x_to_3x(nstr[1])
-		#print (i, ":", result, ":", nstr[1])
-		assert(result == nstr[0])
-	except:
-		print (i, ":", "FAIL ---", result, ":", nstr[1])
-	else:
-		print (i, ":", "PASS ---", result, ":", nstr[1])
-
-		
+	(result, pos) = python_port2x_to_3x(nstr[1])
+	if (result == True):
+		print ("-->%d:%s, pos :%d" % (i,  nstr[1], pos))
+		ts = nstr[1][:pos] + '(' + nstr[1][pos:] + ')'
+		print ("     %s" % (ts))
 	i = i + 1
-
+	
