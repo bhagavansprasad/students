@@ -3,9 +3,9 @@
 int pstrlen(char *s)
 {
 	int i;
-	for(i=0;*s;i++)
+	for(i=0;*s;i++,s++);
 	{
-		s++;
+		//s++;
 	}
 	return i;
 }

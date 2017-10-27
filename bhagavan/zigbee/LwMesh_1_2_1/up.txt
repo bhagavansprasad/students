@@ -1,7 +1,0 @@
-apps/PingPong/PingPong.c
-hal/simulator/inc/simulator.h
-hal/simulator/src/hal.c
-hal/simulator/src/halTimer.c
-hal/simulator/src/startup.c
-nwk/src/nwk.c
-phy/simulator/src/phy.c

@@ -14,6 +14,7 @@ main()
 	add(30);
 	add(40);	
 	display();
+	printf("\n");
 	revers_link();
 	display();
 }

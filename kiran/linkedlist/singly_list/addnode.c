@@ -1,8 +1,6 @@
 #include "structure.h"
 #include "declaration.h"
-
 struct node *start = NULL;
-
 int main()
 {
 	addnode(10);
@@ -14,7 +12,6 @@ int main()
 	display();
 	return 0;
 }
-
 int addnode(int value)
 {
 	struct node *new, *temp;
@@ -36,7 +33,6 @@ int addnode(int value)
 	temp-> link = new;
 	return 0;
 }
-
 void display(void)
 {
 	struct node *temp = start;

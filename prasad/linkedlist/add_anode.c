@@ -67,4 +67,34 @@ int main()
   display();
 return 0;
 }
+int del_by_val(int val)
+{
+	struct node *prev =  NULL, *curr = h;
 
+	if(h->no == val)
+	{
+		h = curr->N;
+		free(curr);
+		return 0;
+	}
+
+	while(curr != NULL)
+	{	
+		if(curr->no == val)
+		{
+			prev->N = curr->N;
+			free(curr);
+
+			return 0;
+		}
+		prev = curr;
+		curr = curr->N;
+	}
+	if(curr == NULL)
+	{
+		prev = NULL;
+		free(curr);
+		return 0;
+	}
+	return 0;
+}
