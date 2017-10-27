@@ -1,11 +1,21 @@
 import openpyxl
-from openpyxl import load_workbook
-from openpyxl.styles import Font, Fill, colors, PatternFill
+print (openpyxl.__release__)
+print (dir(openpyxl))
 
+print(openpyxl.__major__)
+print(openpyxl.__minor__)
+print(openpyxl.__name__)
+print(openpyxl.__package__)
+print(openpyxl.__path__)
+
+from openpyxl import load_workbook
+#from openpyxl.style import Font, Fill, colors, PatternFill
+from openpyxl.style import Font, Fill, Color, Fill
+print (dir(openpyxl.style))
 
 #import dump_cell
 
-wb = load_workbook('/home/bhagavan/ramu/python/revenue.xlsx')
+wb = load_workbook('/home/bhagavan/Downloads/revenue.xlsx')
 
 #print worksheet names
 print(wb.get_sheet_names())
@@ -35,8 +45,8 @@ for row in range(1, rcount):
     flag = 1
     for col in range (0, ccount):
         if (wsheet[row][col].value != None):
-            print (str(wsheet[row][col].value))
-            #print((wsheet[row][col].value),)
+            #print (str(wsheet[row][col].value)),
+            print((wsheet[row][col].value), end == ' ')
             flag = 0
 
     print("")
@@ -53,7 +63,7 @@ for row in range(1, rcount):
 
     for col in range (0, ccount):
         if (wsheet[row][col].value != None):
-            print(str(wsheet[row][col].value))
+            print((str(wsheet[row][col].value)), end==' ')
 
     print("")
 
@@ -63,7 +73,7 @@ print("")
 for row in range(1, rcount):
     for col in range (0, ccount):
         if (wsheet[row][col].value != None):
-            print((str(wsheet[row][col].value)))
+            print((str(wsheet[row][col].value)), end==' ')
     print("")
 
 print("")
@@ -78,7 +88,7 @@ for row in range(1, rcount+1):
     for col in range (0, ccount):
         if (wsheet[row][col].value != None and wsheet[row][col].value == "Vinay" ):
             print((wsheet[row][col].font))
-            wsheet[row][col].font = Font(size=12, bold=True, color=colors.RED)
+            wsheet[row][col].font = Font(size=12, bold=True, color=Color.RED)
             print("")
 
 #Highlight row if the cell value is Ashish
@@ -91,7 +101,7 @@ for row in range(1, rcount):
     for col in range (0, ccount):
         if (wsheet[row][col].value != None and wsheet[row][col].value == "Ashish" ):
             for cell in wsheet[row:row]:
-                cell.font = Font(size=12, bold=True, color=colors.GREEN)
+                cell.font = Font(size=12, bold=True, color=Color.GREEN)
 
 #Highlight row background if the cell value is Kavitha
 #Change row background to yellow
@@ -105,19 +115,19 @@ for row in range(1, rcount):
             print((wsheet[row][col].fill))
             print((str(wsheet[row][col].value)))
             for cell in wsheet[row:row]:
-                cell.fill = PatternFill(fill_type="solid", start_color=colors.YELLOW)
+                cell.fill = Fill(fill_type="solid", start_color=Color.YELLOW)
 
 #Highlight column background in case cell value is > 70000
 for row in range(1, rcount):
-    if(float(wsheet[row][4].value) != None and float(wsheet[row][4].value) >float(70000) ):
+    if (wsheet[row][4].value != None and int(wsheet[row][4].value) > int(70000) ):
         print((str(wsheet[row][4].value)))
         cell = wsheet[row][4]
-        cell.fill = PatternFill(fill_type="solid", start_color=colors.GREEN)
+        cell.fill = Fill(fill_type="solid", start_color=Color.GREEN)
 
 for word in dir(wsheet['C3']):
     print("print \"%-20s :\", cell.%s" %  (word, word))
 
-wb.save('/home/bhagavan/ramu/python/revenue.xlsx')
+wb.save('shared/revenue.xlsx')
 #dump_cell.dump_cell_properties(wsheet[1][0])
 
 exit(1)
