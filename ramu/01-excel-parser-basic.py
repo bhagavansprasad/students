@@ -1,17 +1,17 @@
 import openpyxl
-print (openpyxl.__release__)
 print (dir(openpyxl))
 
-print(openpyxl.__major__)
-print(openpyxl.__minor__)
-print(openpyxl.__name__)
-print(openpyxl.__package__)
-print(openpyxl.__path__)
+#print (dir(openpyxl))
+
+#print(openpyxl.__major__)
+#print(openpyxl.__minor__)
+#print(openpyxl.__name__)
+#print(openpyxl.__package__)
+#print(openpyxl.__path__)
 
 from openpyxl import load_workbook
-#from openpyxl.style import Font, Fill, colors, PatternFill
-from openpyxl.style import Font, Fill, Color, Fill
-print (dir(openpyxl.style))
+from openpyxl.styles import Font, Fill, colors, PatternFill
+#from openpyxl.style import Font, Fill, Color, Fill
 
 #import dump_cell
 
@@ -46,7 +46,7 @@ for row in range(1, rcount):
     for col in range (0, ccount):
         if (wsheet[row][col].value != None):
             #print (str(wsheet[row][col].value)),
-            print((wsheet[row][col].value), end == ' ')
+            print((wsheet[row][col].value), end == " ")
             flag = 0
 
     print("")
@@ -63,7 +63,7 @@ for row in range(1, rcount):
 
     for col in range (0, ccount):
         if (wsheet[row][col].value != None):
-            print((str(wsheet[row][col].value)), end==' ')
+            print((str(wsheet[row][col].value)), end==" ")
 
     print("")
 
@@ -73,7 +73,7 @@ print("")
 for row in range(1, rcount):
     for col in range (0, ccount):
         if (wsheet[row][col].value != None):
-            print((str(wsheet[row][col].value)), end==' ')
+            print((str(wsheet[row][col].value)), end==" ")
     print("")
 
 print("")
