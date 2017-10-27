@@ -11,9 +11,9 @@ reader = csv.reader(fd)
 
 #connecting to database
 conn = None
-conn = psycopg2.connect( database="auradb", user="postgres", host="127.0.0.1", password="jnjnuh")
+conn = psycopg2.connect(database="postgres", user="postgres", host="127.0.0.1", password="jnjnuh")
 cur = conn.cursor()
-cur.execute("create table student(name varchar(20) not null,dob date,doj date,gender char)")
+#cur.execute("create table student(name varchar(20) not null,dob date,doj date,gender char)")
 a=cur.execute("select * from student")
 print(a)
 exit(1)

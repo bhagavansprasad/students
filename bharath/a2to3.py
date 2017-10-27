@@ -11,6 +11,7 @@ ignore_list = [
 #print    ("560103")
 
 test_strings = [
+	
 	[False, "print"], 
 	[True, 'print "560103"'],
 	[True, "print '560103'"],
@@ -71,8 +72,11 @@ for nstr in test_strings:
 	else:
 		#print (i, ":", "PASS ---", result, ":", nstr[1])
 		print (i, ":", "PASS ---", result, ":", nstr[1])
+	if result==True:
 
-		
+
+	
+	
 	i = i + 1
 ''' 
 
