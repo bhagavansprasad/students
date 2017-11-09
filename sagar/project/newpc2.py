@@ -68,3 +68,39 @@ with open("fixed-ip-list.csv") as fd:
 	
                                                                      
 
+ip_data_config_file = "ip-list.csv"
+dhcpd_conf_file = "dhcpd.conf"
+def add_rule_to_conf(sys_name, sys_mac, next_ip):
+	#add logic to append new rule to conf file
+
+def get_next_sequence_ip(dhcpd_conf_file):
+	ip_addr = get_last_ip_configured(dhcpd_conf_file)
+
+	next_ip = genarate_next_sequence_ip(ip_addr)
+
+	return (next_ip)
+
+def add_rule_by_system(sys_config):
+	next_ip = get_next_sequence_ip(dhcpd_conf_file)
+	add_rule_to_conf(sys_name, sys_mac, next_ip)
+
+
+def get_configuration_data(ip_data):
+	with open("ip-list.csv") as fd:
+		data=[list(line) for line in csv.reader(fd)]
+		return (data, len(data))
+
+def main():
+	print ("I am in main")
+
+	(data, dlen) = get_configuration_data(ip_data_config_file)
+
+	for line in data:
+		add_rule_by_system(line)
+
+
+
+	
+if (__name__ == '__main__'):
+	main()
+
