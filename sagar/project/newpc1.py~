@@ -8,7 +8,7 @@ with open("fixed-ip-list.csv") as fd:			#opens the -csv- file as fd:file descrip
     z=0
 
 #----------comparing duplicate names in the csv file----------------------
-for i in range(0,l1):					
+#    for i in range(0,l1):					
 	for j in range(i,l1):
 		if(data[i]==data[j]):
 			i=i+1
