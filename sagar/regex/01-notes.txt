@@ -1,0 +1,86 @@
+Basic Regular expressions
+. (dot) - a single character.
+^ - matches the beginning of the line
+$ - matches the end of the line.
+* - the preceding character matches 0 or more times.
+\	Represent special characters
+() - allows us to group several characters to behave as one.
+? - the preceding character matches 0 or 1 times only.
+
+Interval Regular expressions
+{n}   - the preceding character matches exactly n times.
+{n,m} - the preceding character matches at least n times and not more than m times.
+{n, } -  Matches the preceding character only when it appears 'n' times or more
+
+Extended regular expressions
+\+ - Matches one or more occurrence of the previous character
+\? - Matches zero or one occurrence of the previous character
+
+[agd] - the character is one of those included within the square brackets.
+[^agd] - the character is not one of those included within the square brackets.
+[c-f] - the dash within the square brackets operates as a range. In this case it means either the letters c, d, e or f.
+| (pipe symbol) - the logical OR operation.
+
+
+cd /usr/share/common-licenses
+grep "GNU" GPL-3
+
+- Ignore case
+grep -i "license" GPL-3
+
+- Invert match, print all lines which does not have "the"
+grep -v "the" BSD
+
+- Invert match with line numbers
+grep -vn "the" BSD
+
+Anchor Matches
+This string example will only mach "GNU" if it occurs at the very beginning of a line.
+	grep "^GNU" GPL-3
+
+Match every line ending with the word "and" in the following regular expression:
+	grep "and$" GPL-3
+
+Matching Any Character
+grep "..cept" GPL-3
+grep -w "..cept" GPL-3
+
+Bracket Expressions
+Find the lines that contain "too" or "two",
+grep "t[wo]o" GPL-3
+
+Find pattern ".ode", but will not match the pattern "code":
+grep "[^c]ode" GPL-3
+
+Find every line that begins with a capital letter
+grep "^[A-Z]" GPL-3
+
+"[:upper:]" character class within a bracket selector:
+grep "^[[:upper:]]" GPL-3
+
+
+Repeat Pattern Zero or More Times
+Find each line that contained an opening and closing parenthesis, with only letters and single spaces in between
+grep "([A-Za-z ]*)" GPL-3
+
+Escaping Meta-Characters
+Find any line that begins with a capital letter and ends with a period. 
+grep "^[A-Z].*\.$" GPL-3
+
+Alternation
+grep -E "(GPL|General Public License)" GPL-3
+
+Quantifiers
+Matches "copyright" and "right" by putting "copy" in an optional group:
+grep -E "(copy)?right" GPL-3
+
+Matches the string "free" plus one or more characters that are not whitespace:
+grep -E "free[^[:space:]]+" GPL-3
+
+Specifying Match Repetition
+Find all of the lines that contain triple-vowels
+grep -E "[AEIOUaeiou]{3}" GPL-3
+
+Match any words that have between 16 and 20 characters
+grep -E "[[:alpha:]]{16,20}" GPL-3
+

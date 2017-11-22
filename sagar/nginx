@@ -1,0 +1,48 @@
+Steps to write in Dockerfile
+- Pull nginx
+- Modify file "/etc/nginx/sites-enabled/default", such that It contains below content
+     location /cgi-bin/ {
+     gzip off;
+     root  /usr/share/nginx/html/;
+     fastcgi_pass  unix:/var/run/fcgiwrap.socket;
+     include /etc/nginx/fastcgi_params;
+     fastcgi_param SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+   }
+- Create a folder "cgi-bin" in  "/usr/share/nginx/html/"
+- Create list of files in "cgi-bin" folder
+  env.cgi - To print Docker environment
+
+- Content of env.cgi is like below
+	#!/usr/bin/python 
+
+	with open("/proc/self/cgroup", 'r') as descriptor:
+    	file_content = descriptor.readlines()
+
+	#print file_content
+	#print file_content[0]
+	print file_content[0].split('/')[-1]
+
+- From the browser request for GET with below url
+  http://127.0.0.1/cgi-bin/env.cgi
+ 
+- From shell 
+  curl http://127.0.0.1/cgi-bin/env.cgi
+
+
+Create folder /etc/nginx/sites-available
+Create folder /etc/nginx/sites-enabled
+Copy sources/default to  /etc/nginx/sites-available
+Create soft link to /etc/nginx/sites-available/default in /etc/nginx/sites-enabled
+Create /usr/share/nginx/html/cgi-bin folder
+Copy env.cgi file to /usr/share/nginx/html/cgi-bin folder
+
+
+-Setting-up nginx server to call a python script, as native application
+- Copy default file to  /etc/nginx/sites-available/
+cp source-files/sites-available/default /etc/nginx/sites-available/default
+
+- Create a folder "cgi-bin" in  "/usr/share/nginx/html/"
+mkdir -p /usr/share/nginx/html/cgi-bin
+
+- Copy env.cgi to "cgi-bin"
+cp source-files/cgi-bin/env.cgi /usr/share/nginx/html/cgi-bin

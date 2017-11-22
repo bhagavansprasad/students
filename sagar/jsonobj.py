@@ -1,18 +1,3 @@
-#import sys
-
-fd1= open(sys.argv[1], "rt")
-data = fd1.read().replace("\n", '')
-
-s={data}
-
-print(type(s))
-print(s)
-print("s",s("Id"))
-fd1.close()
-
-
-
-
 myobject = [
     {
         "Id": "0b8dccc201b0be71d47ede92cb9e1801069f9e0b39505a7c6a32cabf7ada633a",
@@ -33,7 +18,7 @@ myobject = [
             "ExitCode": 0,
             "Error": "",
             "StartedAt": "2016-12-29T10:30:07.306439621Z",
-            "FinishedAt": "2016-12-29T11:29:11.656689425Z"
+            "FinishedAt": "2016-12-29T11:29:11.656689419Z"
         },
         "Image": "sha256:bbea2fdd9bd70486473de13686f0e4ef767a54e27f2bb88c2b1b603f27e989d5",
         "ResolvConfPath": "/var/lib/docker/containers/0b8dccc201b0be71d47ede92cb9e1801069f9e0b39505a7c6a32cabf7ada633a/resolv.conf",
@@ -201,9 +186,5 @@ myobject = [
 #print (myobject)
 #print (myobject[0])
 
-print("Container Id:",myobject[0]['Id'][0:12])
-print("Status:",myobject[0]['State']['Status'])
-print("Image:",myobject[0]['Name'])
-print("Command",myobject[0]['Args'])
-print("Created",myobject[0]['Created'])
-print("Names:",myobject[0]['Name'])
+print (myobject[0]['Id'])
+print (myobject[0]['Id'][0:12])
