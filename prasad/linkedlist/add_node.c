@@ -3,60 +3,45 @@
 
 struct node
 {
-  int data;
-  struct node *next;
+	int val;
+	struct node *next;
 };
-
 struct node *h=NULL;
-
-
-
-
 int add_anode(int val)
 {
-  struct node *new,*temp;
-  new=malloc(sizeof(struct node));
-  new->data=val;
-  new->next=NULL;
-  if(h==NULL)
-  {
-    h=new;
-    return 0;
-  }
-  for(temp=h;temp->next!=NULL;temp=temp->next);
-  
-  temp->next=new;
-  
-  return 0;
+	struct node *ptr,*temp;
+	ptr=malloc(sizeof(struct node));
+	ptr->val=val;
+	ptr->next=NULL;
+	if(h==NULL)
+	{
+		h=ptr;
+		return 0;
+	}
+	for(temp=h;temp->next!=NULL;temp=temp->next);
+	{
+	}
+	temp->next=ptr;
+
+	return 0;
 }
-
-
-
-
-
-
 void display()
 {
-  struct node *temp;
-  for(temp=h;temp!=NULL;temp=temp->next)
-  {
-    printf("%d",temp->data);
-  }
+	struct node *temp;
+	for(temp=h;temp!=NULL;temp=temp->next)
+	{
+		printf("%d\n",temp->val);
+	}
 }
-
-
-
-
-
-
 int main()
 {
-  add_anode(10);
-  add_anode(20);
-  //add_anode(30);
-  display();
-  return 0;
+	add_anode(10);
+	add_anode(20);
+	add_anode(30);
+	display();
+	return 0;
 }
+
 
 
 

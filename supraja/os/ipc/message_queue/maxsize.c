@@ -4,13 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-main()
-{
-	int qid,len,i;
 	struct{
 		long mytype;
 		char mtext[15];
 	}message;
+main()
+{
+	int qid,len,i;
 	qid=msgget((key_t)10,IPC_CREAT|0666);
 	if(qid==-1)
 	{

@@ -9,20 +9,18 @@ int main()
 		r--;
 		c++;
 
-
-
-		if(i%n==0 )
+	if(i%n == 0 )
 		{
 			r=r+2;
 			c--;
 		} 
 
-		if(r<0)
+		else if(r<0)
 		{
 			r=n-1;
 		}
 
-		if(c>(n-1))
+		else if(c>(n-1))
 		{
 			c=0;
 		}

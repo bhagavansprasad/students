@@ -4,28 +4,32 @@
 #include "struct.h"
 
 
-int dump_records(struct student *p)
+int dump_records(struct employee *p)
 {
-	printf("No : Name --> %d, %s\n", p->num, p->name);
+	printf("id : %d Name -->  %s\n", p->id, p->name);
 
 	return 0;
 }
 
 int main()
 {
-	int fd, retval = 1;
+	int fd, n,retval = 1;
 	char buff[100];
-	struct student sdata;
+		struct employee sdata;
 
 	fd = open("c.txt", O_RDONLY, 0644);
-
-	while(retval > 0)
+	retval=read(fd,&n,sizeof(int));
+	if(n==2)
 	{
-		retval = read(fd, &sdata, sizeof(struct student));
+	while(1)
+	{
+		retval = read(fd, &sdata, sizeof(struct employee));
 		printf("read retval :%d\n", retval);
+		if(retval!=sizeof(struct employee))
+		break;
+		else
 		dump_records(&sdata);
 	}
-
-
+	}
 	return 0;
 }

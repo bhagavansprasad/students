@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 int read_list_of_processes(int p[])
 {

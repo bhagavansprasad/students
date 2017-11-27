@@ -15,6 +15,6 @@ void get_bit_count(int a)
 }
 main()
 {
-	int a=10;
+	int a=15;
 	get_bit_count(a);
 }

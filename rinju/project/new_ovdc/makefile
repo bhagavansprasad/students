@@ -1,4 +1,4 @@
-a.out : main.o ovd.o ovc.o
+.out : main.o ovd.o ovc.o
 	gcc main.o ovd.o ovc.o -o a.out
 
 main.o : main.c

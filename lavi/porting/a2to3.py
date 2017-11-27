@@ -1,5 +1,9 @@
+<<<<<<< HEAD
+     porting_strins = ["print", "print ("]
+=======
 import re
 porting_strins = ["print", "print ("]
+>>>>>>> d68dca1db041b84c6c8a2484e59d2a552d29ec6b
 
 def python_port2x_to_3x(line):
 	regex = r"[^#]print*[^(]"

@@ -1,5 +1,0 @@
-- 1Example
-Adding users, one after another
-
-- 2Example
-Adding users via a base class.  (Writing a function to add users)
