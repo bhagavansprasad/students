@@ -66,7 +66,7 @@ with open("fixed-ip-list.csv") as fd:
 			#	with open('eggs.csv', 'wb') as csvfile:
     		#		 writer.writerow((sn),(mc))
 	
-                                                                     
+'''                                                                     
 
 ip_data_config_file = "ip-list.csv"
 dhcpd_conf_file = "dhcpd.conf"
@@ -103,4 +103,4 @@ def main():
 	
 if (__name__ == '__main__'):
 	main()
-
+'''
