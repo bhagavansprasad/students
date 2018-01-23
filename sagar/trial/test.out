@@ -1,0 +1,4 @@
+host_ sagarkpatil {
+hardware element 11111113335
+ fixedaddress 192.168.2.3
+}

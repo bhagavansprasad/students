@@ -1,0 +1,167 @@
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04
+https://www.postgresql.org/docs/9.2/static/functions-info.html
+
+- Setting initial password
+	sudo -u postgres psql
+	ALTER  USER postgress  WITH PASSWORD 'jnjnuh';
+
+Connecting to db
+  psql -h <localhost> -U <username> <database>
+$ psql -h localhost -U postgres postgres
+psql -h localhost -U bhagavan gcontacts
+
+\l - list all databases
+\conninfo - To print details of database connected presentely
+\dt - List of tables
+\du - List of users available
+\c gcontacts; -- Changing the database
+\d+ playground -- Printing schema of the table
+Change password of the user
+CREATE USER gerrit2  WITH PASSWORD 'jnjnuh';
+ALTER  USER gerrit2  WITH PASSWORD 'jnjnuh';
+GRANT ALL PRIVILEGES ON DATABASE "reviewdb" to gerrit2;
+
+Database operations
+--------------------
+CREATE DATABASE gcontacts;
+CREATE DATABASE auradb;
+DROP DATABASE gcontacts;
+GRANT ALL PRIVILEGES ON DATABASE gcontacts to bhagavan;
+
+Listing schema
+	postgres=# \d+ playground
+
+Printing
+	select * from pg_tables where schemaname='public';
+
+Deleting rows
+	delete from playground where equip_id > 10;
+
+CREATE DATABASE gcontacts;
+
+create user
+	CREATE USER bhagavan  WITH PASSWORD 'jnjnuh';
+
+GRANT ALL PRIVILEGES ON DATABASE gcontacts to bhagavan;
+ \c gcontacts; -- Changing the database
+ \dt - Listing all tables
+ CREATE TABLE leads (id INTEGER PRIMARY KEY, name VARCHAR);
+ select * from leads;
+ SELECT current_database();
+\conninfo
+
+SELECT current_user, user, session_user, current_database(), current_catalog, version();
+
+Name	Return Type	Description
+current_catalog	name	name of current database (called "catalog" in the SQL standard)
+current_database()	name	name of current database
+current_query()	text	text of the currently executing query, as submitted by the client (might contain more than one statement)
+current_schema[()]	name	name of current schema
+current_schemas(boolean)	name[]	names of schemas in search path, optionally including implicit schemas
+current_user	name	user name of current execution context
+inet_client_addr()	inet	address of the remote connection
+inet_client_port()	int	port of the remote connection
+inet_server_addr()	inet	address of the local connection
+inet_server_port()	int	port of the local connection
+pg_backend_pid()	int	Process ID of the server process attached to the current session
+pg_conf_load_time()	timestamp with time zone	configuration load time
+pg_is_other_temp_schema(oid)	boolean	is schema another session's temporary schema?
+pg_listening_channels()	setof text	channel names that the session is currently listening on
+pg_my_temp_schema()	oid	OID of session's temporary schema, or 0 if none
+pg_postmaster_start_time()	timestamp with time zone	server start time
+pg_trigger_depth()	int	current nesting level of PostgreSQL triggers (0 if not called, directly or indirectly, from inside a trigger)
+session_user	name	session user name
+user	name	equivalent to current_user
+version()	text	PostgreSQL version information
+
+CREATE TABLE table_name (
+    column_name1 col_type (field_length) column_constraints,
+    column_name2 col_type (field_length),
+    column_name3 col_type (field_length)
+);
+
+
+CREATE TABLE playground (
+    equip_id serial PRIMARY KEY,
+    type varchar (50) NOT NULL,
+    color varchar (25) NOT NULL,
+    location varchar(25) check (location in ('north', 'south', 'west', 'east', 'northeast', 'southeast', 'southwest', 'northwest')),
+    install_date date
+);
+\d+ playground
+
+
+INSERT INTO playground (type, color, location, install_date) VALUES ('slide', 'blue', 'south', '2014-04-28');
+INSERT INTO playground (type, color, location, install_date) VALUES ('jumping', 'red', 'north', '2016-06-28');
+
+Output JSON object
+select array_to_json(array_agg(playground)) FROM playground;
+
+select * from playground order by type;
+
+COPY (SELECT * from playground) To '/tmp/output.csv' With CSV;
+
+
+ [{"equip_id":1,"type":"slide","color":"blue","location":"south","install_date":"2014-04-28"},{"equip_id":2,"type":"jumping","color":"red","location":"north","install_date":"2016-06-28"},{"equip_id":9,"type":"foodball","color":"white","location":"south","install_date":"2017-01-20"},{"equip_id":10,"type":"cricket","color":"white","location":"north","install_date":"2016-01-20"},{"equip_id":11,"type":"tennis","color":"red","location":"west","install_date":"2016-08-10"},{"equip_id":12,"type":"xball","color":"white","location":"south","install_date":"2020-01-20"},{"equip_id":13,"type":"ycricket","color":"white","location":"north","install_date":"2020-01-20"},{"equip_id":14,"type":"ztennis","color":"red","location":"west","install_date":"2020-08-10"},{"equip_id":15,"type":"xball","color":"white","location":"south","install_date":"2020-01-20"},{"equip_id":16,"type":"ycricket","color":"white","location":"north","install_date":"2020-01-20"},{"equip_id":17,"type":"ztennis","color":"red","location":"west","install_date":"2020-08-10"}]
+
+
+ CREATE TABLE students (rno INTEGER PRIMARY KEY, name VARCHAR, phno VARCHAR);
+ select * from students;
+
+
+CREATE TABLE contacts (
+    id serial PRIMARY KEY,
+    name VARCHAR (50) NOT NULL,
+    phone INTEGER,
+    address varchar (25),
+    gender varchar(1) check (gender in ('m', 'f', 'M', 'F', 'o', 'O')),
+    dob date
+);
+
+INSERT INTO  my_contacts (name, phone, address, gender, dob) VALUES ('Aura Networks', 966, 'Bangalore', 'M',  '2017-05-11');
+INSERT INTO playground (type, color, location, install_date) VALUES ('slide', 'blue', 'south', '2014-04-28');
+
+CREATE TABLE students_list (
+    id serial PRIMARY KEY,
+    name VARCHAR (50) NOT NULL,
+    fullname VARCHAR (50) NOT NULL,
+    uid INTEGER,
+    gid INTEGER,
+    phone VARCHAR,
+    hphone VARCHAR,
+    address VARCHAR (25),
+    email VARCHAR (56),
+	status BOOLEAN
+);
+
+ id       | integer               | not null default nextval('students_list_id_seq'::regclass) | plain    |              | 
+ name     | character varying(50) | not null                                                   | extended |              | 
+ fullname | character varying(50) | not null                                                   | extended |              | 
+ uid      | integer               |                                                            | plain    |              | 
+ gid      | integer               |                                                            | plain    |              | 
+ phone    | character varying     |                                                            | extended |              | 
+ hphone   | character varying     |                                                            | extended |              | 
+ address  | character varying(25) |                                                            | extended |              | 
+ email    | character varying(56) |                                                            | extended |              | 
+ status   | boolean               |                                                            | plain    |              | 
+
+psql -h 127.0.0.1 -U bhagavan gcontacts
+select * from students_list;
+select * from students_list WHERE id > 50;
+INSERT INTO  students_list (name, fullname, uid, gid, phone, hphone, address, email, status) VALUES ('Manesh', 'Manesh Reddy', 1000, 1001, '7799899974', '', 'Hyderabad', 'manesh.reddy@gmail.com', 'T');
+delete from students_list WHERE id > 60;
+
+INSERT INTO  students_list (name, fullname, uid, gid, phone, hphone, address, email, status) VALUES ('Manesh', 'Manesh Reddy', 1000, 1001, '7799899974', '', 'Hyderabad', 'manesh.reddy@gmail.com', 'T');
+
+
+CREATE TABLE nbrs (
+    equip_id serial PRIMARY KEY,
+    source INTEGER,
+    target INTEGER,
+    cellname VARCHAR (50) NOT NULL
+);
+INSERT INTO nbrs (source, target, cellname) VALUES (15, 60, 'Aura1');
+
+CREATE TABLE student ( id serial PRIMARY KEY, rollno INTEGER, name VARCHAR (50) NOT NULL);
+INSERT INTO student (id, rollno, name) VALUES (1, 50, 'Ramesh');
+
