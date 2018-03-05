@@ -1,14 +1,22 @@
 
-a = [
+b = [
 	[1,   2,  3,  4],
     [12, 13, 14,  5],
     [11, 16, 15,  6],
     [10,  9,  8,  7]
 	]
+a = [
+	[  1,   2,   3,   4 ],
+	[  7,   8,   9,  10 ],
+	[ 13,  14,  15,  16 ],
+	[ 19,  20,  21,  22 ],
+	[ 25,  26,  27,  28 ]
+	]
 
 def dump_matrix(sr, sc, er, ec):
-	for i in range (sr, er+1):
-		for j in range (sc, ec+1):
+	print("(%d, %d), (%d, %d)" % (sr, sc, er, ec))
+	for i in range (sr, er):
+		for j in range (sc, ec):
 			print("%3d" % (a[i][j]), end='')
 		print ("")
 	print ("")
@@ -98,24 +106,33 @@ def rotate_matrix(k, m, n):
 		if (next_rct == False):
 			break
 
-def rotate_matrix_by_90_degrees(m, n):
-	rotate_matrix(n-1, m, n)
+'''
 
-def main():
-	#print (a)
-	dump_matrix(0, 0, 3, 3)
-	rotate_matrix_by_90_degrees(4, 4)
-	dump_matrix(0, 0, 3, 3)
-	return
+def test_1():
 	dump_matrix(0, 0, 3, 3)
 	rotate_matrix(2, 4, 4)
 	dump_matrix(0, 0, 3, 3)
 
-	return
 	rotate_matrix(1, 4, 2)
 	rotate_matrix(1, 4, 3)
 	rotate_matrix(1, 3, 4)
 	rotate_matrix(1, 2, 2)
+
+def test_a_matrix():
+	dump_matrix(0, 0, 3, 3)
+	dump_matrix(0, 0, 3, 3)
+
+def test_b_matrix():
+	dump_matrix(0, 0, 3, 3)
+	dump_matrix(0, 0, 3, 3)
+'''
+
+
+def main():
+	dump_matrix(0, 0, 5, 4)
+	rotate_matrix(7, 5, 4)
+	dump_matrix(0, 0, 5, 4)
+	return
 
 if (__name__ == "__main__"):
 	main()
