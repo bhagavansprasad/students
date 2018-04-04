@@ -1,1 +1,12 @@
 https://www.hackerrank.com/challenges/crush/problem
+
+As i have understood 
+(5 , 3) 0 0 0 0 0 
+(1 , 2) 100 100 0 0 0 -> first and second places i.e a=1, b=2 , k=100, 
+now a+k = 0+100 = 100, b+K = 0+100 = 100. (2 , 5) now from 2 to 5 i.e 2,3,4,5 are added with K i.e 100. already 2=100 now 2 becomes 100+100 =200, simialrly 3 = 0+100=100,4=0+100=100,5=0+100=100. (3 , 4) now 3 and 4 are added with 100. ie 3 value is 100 it becomes 100+100=200, 4 becomes 100+100=200.
+
+
+Input 1 2 100 --> list-a[100, 100,   0,   0,   0]	sloap-list-b[100,   0, -100, 0,   0] 
+Input 2 5 100 --> list-a[100, 200, 100, 100, 100]	sloap-list-b[100, 100, -100, 0,	  0]
+Input 3 4 100 --> list-a[100, 200, 200, 200, 100] 	sloap-list-b[100, 100,    0, 0,	-100]
+
