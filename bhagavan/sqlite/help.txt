@@ -1,0 +1,8 @@
+$sqlite3 test.db
+
+sqlite> .mode column
+sqlite> .headers on
+sqlite> .databases
+sqlite> .tables
+sqlite> SELECT * from cars;
+
