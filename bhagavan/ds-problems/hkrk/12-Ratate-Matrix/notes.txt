@@ -1,5 +1,4 @@
-Inplace rotate square matrix by 90 degrees | Set 1
-3.5
+- Inplace rotate square matrix by 90 degrees 
 Given an square matrix, turn it by 90 degrees in anti-clockwise direction without using any extra space.
 
 Examples:
