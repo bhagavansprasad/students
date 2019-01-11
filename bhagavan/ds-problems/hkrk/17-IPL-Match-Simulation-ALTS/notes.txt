@@ -1,23 +1,13 @@
-- Teams can be named T1, T2, ..., T8.
+Simulation of IPL tournament matches (1 hour to 1:30 min)
+- Currently, with 8 teams,
+- League phase is a round-robin format. Each team plays with others twice
+- At the conclusion of the league stage, top four teams qualify to play playoffs
+- Playoff-1 - The top two teams from league phase
+- Winner of Playoff-1, goes straight to the IPL final (Finalist-1)
+- Looser of Playoff-1, gets chance to play with Playoff-2's winner
+- Playoff-2 - Played between, top 3rd and 4th teams from league phase
+- Winner of Playoff-2, plays with Looser of Playoff-1 (Finalist-2)
+- Looser gets eliminated from tournament
+- Final - Finalist-1 and Finalist-2
+- Winner is crowned the Indian Premier League champions
 
-Here it the description of the Tournament Format for reference:
-
-- Currently, with eight teams, 
-
-- each team plays each other twice in a home-and-away round-robin format in the league phase. 
-At the conclusion of the league stage, the top four teams will qualify for the playoffs. 
-The top two teams from the league phase will play against each other in the first Qualifying match, 
-
-- with the winner going straight to the IPL final and 
-  the loser getting another chance to qualify for the IPL final by playing the second Qualifying match. 
-
-- Meanwhile, the third and fourth place teams from league phase play against each other in an eliminator match 
-  winner from that match will play the loser from the first Qualifying match. 
-
-- The winner of the second Qualifying match will move onto the final to play the winner of the 
-  first Qualifying match in the IPL Final match, 
-- where the winner will be crowned the Indian Premier League champions."
-
-
-- 8 Teams
-- 
