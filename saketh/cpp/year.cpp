@@ -9,15 +9,15 @@ int main()
 	cin>>y;
 	if(y%4==0 && y!=0 or y%400==0)
 	{
-	   cout<<"leap year";
+		cout << y << "is a leap year";
 	}
 	else
 	{	
-		cout<<"nt_a_leap_year";
+		cout<<y<<"not a leap year";
 
 	}
 	if(y==0)
 	{
-		cout<<"not an year";
+		cout<<y<<"is not an year";
 	}	
 }	
