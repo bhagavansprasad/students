@@ -8,7 +8,7 @@ int main()
 		sum= a%10+sum;
 		a=a/10;
 	}
-	cout <<sum<<" is The sum of digits";
+	cout <<sum<<" is The sum of digits"<<endl;
 
 }	
 

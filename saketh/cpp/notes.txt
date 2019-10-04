@@ -1,0 +1,12 @@
+Compile
+	g++ a.cpp
+
+Run
+	./a.out
+
+Compile to a different output
+	g++ a.cpp -o my.out
+
+Run
+	./my.out
+
