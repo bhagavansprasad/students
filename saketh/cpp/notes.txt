@@ -10,3 +10,29 @@ Compile to a different output
 Run
 	./my.out
 
+int strlen(const char s[]) : 
+	Return the length of the string s.
+
+int strcmp(const char s1[], const char s2[]);
+	Compare the strings s1 with s2.
+
+int strncmp(const char s1[], const char s2[], int n);
+	Compare at most n bytes of the strings s1 and s2.
+
+int strcasecmp(const char s1[], const char s2[]);
+	Compare the strings s1 and s2 ignoring case.
+
+int strncasecmp(const char s1[], const char s2[], int n);
+       Compare the first n characters of the strings s1 and s2 ignoring case.
+
+int strcat(char dest[], const char src[]);
+       Append the string src to the string dest, returning a pointer dest.
+
+int strncat(char dest[], const char src[], int n);
+       Append at most n characters from the string src to the string dest, returning a pointer to dest.
+
+int strcpy(char dest[], const char src[]);
+       Copy the string src to dest, returning a pointer to the start of dest.
+
+int strncpy(char dest[], const char src[], int n);
+       Copy at most n bytes from string src to dest, returning a pointer to the start of dest.
