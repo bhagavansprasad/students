@@ -2,10 +2,10 @@
 #include<cstdlib>
 using namespace std;
 
-#define M 6
-#define N 6
+#define M 8
+#define N 8
 
-int populate_array(int pa[][M], int row, int col)
+int populate_array(int pa[][N], int row, int col)
 {
 	int k = 1, r, c;
     for(r=0; r <= row-1 ; r++)
@@ -15,7 +15,7 @@ int populate_array(int pa[][M], int row, int col)
 	return 0;
 }
 
-int dump_array(int pa[][M], int row, int col)
+int dump_array(int pa[][N], int row, int col)
 {
 	int r, c;
     for(r=0; r <= row-1; r++)
@@ -27,7 +27,7 @@ int dump_array(int pa[][M], int row, int col)
 	return 0;
 }
 
-int strip_matrix_new(int pa[][M],int sr,int sc, int row, int col)
+int strip_matrix_new(int pa[][N],int sr,int sc, int row, int col)
 {
 	int r, c;
 	cout<<endl;
