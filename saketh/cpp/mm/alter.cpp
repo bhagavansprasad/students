@@ -42,21 +42,3 @@ int main()
 }
 
 
-
-
-
-
-
-
-#if 0
-int main()
-{
-	int print_alternate(int a[13]={ 1,0,2,0,3,0,4,5,0,6,0,7 },int i=0 ,int n=1,int size=12)
-	{
-		for(i=0;i<=size;i++)
-		{
-			if(a[i]==0)
-			{
-				cout<<a[i]<<",";
-				i=i+(n+1
-#endif
