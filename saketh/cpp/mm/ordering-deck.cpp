@@ -1,3 +1,8 @@
+/*
+ * GPL: Free to use
+ * Saketh Ram
+ * sakethramsettipalli@gmail.com
+ */
 #include<iostream>
 using namespace std;
 int print_nth_empty_element(int *p, int size, int n)
