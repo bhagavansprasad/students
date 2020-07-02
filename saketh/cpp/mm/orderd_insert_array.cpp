@@ -79,7 +79,7 @@ int dump_array(void)
 
 int main()
 {
-	int test_data[50]={0, 0, 9, 100, 100, 6, -2, 1, 6, -3, 9};
+	int test_data[50]={ 0, 5, 4, 3, 2, 1, 0, -1, -2, -3, -4};
 	int i;
 	dump_array();
 
