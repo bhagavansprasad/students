@@ -1,0 +1,15 @@
+git clone https://github.com/karthikraman/panchangam.git
+cd panchangam/bin/
+sudo pip3 install git+https://github.com/sanskrit-coders/jyotisha@master -U
+./gen_daily_cal.sh Chennai 13:05:24 80:16:12 'Asia/Calcutta' 2017 devanagari lagna
+
+DEBUG: 2021-01-23 08:32:51,304 {common.py:898}: {'DataSource': <class 'sanskrit_data.schema.common.DataSource'>, 'JsonObject': <class 'sanskrit_data.schema.common.JsonObject'>, 'JsonObjectNode': <class 'sanskrit_data.schema.common.JsonObjectNode'>, 'NamedEntity': <class 'sanskrit_data.schema.common.NamedEntity'>, 'SchemaError': <class 'jsonschema.exceptions.SchemaError'>, 'ScriptRendering': <class 'sanskrit_data.schema.common.ScriptRendering'>, 'Target': <class 'sanskrit_data.schema.common.Target'>, 'TargetValidationError': <class 'sanskrit_data.schema.common.TargetValidationError'>, 'Text': <class 'sanskrit_data.schema.common.Text'>, 'UllekhanamJsonObject': <class 'sanskrit_data.schema.common.UllekhanamJsonObject'>, 'ValidationError': <class 'jsonschema.exceptions.ValidationError'>} 
+/usr/bin/python3: No module named jyotisha.panchaanga.writer.tex.write_daily_panchaanga_tex
+error!
+
+
+python setup.py install
+pip install sanskrit_data
+python3 -m pip install --upgrade google-api-python-client
+python setup.py install
+
