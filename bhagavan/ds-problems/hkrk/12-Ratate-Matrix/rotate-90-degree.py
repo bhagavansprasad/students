@@ -78,9 +78,10 @@ def is_concentric_rectangle(m, n):
 
 def rotate_matrix_by_90_degrees(m, n):
     if (is_concentric_rectangle(m, n) == False):
-        #print ("Matrix (%d, %d) NOT a Concentric Rectangle, Rotation is not possible" % (m, n))
+        print ("Matrix (%d, %d) NOT a Concentric Rectangle, Rotation is not possible" % (m, n))
         return
 
+    return
     sr = 0; sc = 0; er = m-1; ec = n-1
 
     while(1):
@@ -97,6 +98,13 @@ def rotate_matrix_by_90_degrees(m, n):
             break
 
 def main():
+    for i in range(0, 20):
+        for j in range(0, 20):
+            rotate_matrix_by_90_degrees(i, j)
+
+    return
+
+    rotate_matrix_by_90_degrees(4, 4)
     dump_matrix(0, 0, 3, 3)
     rotate_matrix_by_90_degrees(4, 4)
     dump_matrix(0, 0, 3, 3)
