@@ -10,8 +10,8 @@ int init_module(void);
 void cleanup_module(void);
 static int device_open(struct inode *, struct file *);
 static int device_release(struct inode *, struct file *);
-static ssize_t device_read(struct file *, char *, size_t, off_t *);
-static ssize_t device_write(struct file *, const char *, size_t, off_t *);
+static ssize_t device_read(struct file *, char *, long unsigned int, long long *);
+static ssize_t device_write(struct file *, const char *, long unsigned int, long long *);
 
 static int Major;		
 static int Device_Open = 0;	  
@@ -82,7 +82,8 @@ static int device_release(struct inode *inode, struct file *file)
 	return 0;
 }
 
-static ssize_t device_read(struct file *filp, char *buffer, size_t length,off_t * offset)
+//static ssize_t device_read(struct file *, char *, long unsigned int, off_t *);
+static ssize_t device_read(struct file *filp, char *buffer, long unsigned int length, long long * offset)
 {
 	int bytes_read = 0;
 
@@ -101,7 +102,7 @@ static ssize_t device_read(struct file *filp, char *buffer, size_t length,off_t 
 	return bytes_read;
 }
 
-static ssize_t device_write(struct file *filp, const char *buff, size_t len, off_t * off)
+static ssize_t device_write(struct file *filp, const char *buff, long unsigned int len, long long * off)
 {
 	printk(KERN_INFO "Sorry, this operation isn't supported.\n");
 

@@ -14,8 +14,6 @@ int main()
 		sleep(10);
 		read(p[0],inbuff,MSGSIZE);
 		printf("parent:%s\n",inbuff);
-
-
 	}
 	else
 	{

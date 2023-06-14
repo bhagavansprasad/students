@@ -1,0 +1,1 @@
+cmd_/home/bhagavan/students/supraja/km/device_/chardevm.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/bhagavan/students/supraja/km/device_/chardevm.ko /home/bhagavan/students/supraja/km/device_/chardevm.o /home/bhagavan/students/supraja/km/device_/chardevm.mod.o;  true
