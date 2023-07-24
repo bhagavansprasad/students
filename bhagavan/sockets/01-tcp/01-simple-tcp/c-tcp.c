@@ -2,27 +2,31 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
 
-int main(int argc, char *argv[])
+
+int main()
 {
 	int sockfd = 0;
+	char sendBuff[1024] = "hello world";
 	char recvBuff[1024];
-	char sendBuff[1024] = "Hello world";
 	struct sockaddr_in serv_addr;
 	int retval = 0;
 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
 	serv_addr.sin_family = AF_INET;
+    serv_addr.sin_addr.s_addr = inet_addr("192.168.3.6");
 	serv_addr.sin_port = htons(5000);
 
-	connect (sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
+	connect(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
 	retval = send(sockfd, sendBuff, strlen(sendBuff), 0);
 	retval = recv(sockfd, recvBuff, sizeof(recvBuff), 0);
 	printf("C: recv retval :%d\n", retval);
 	recvBuff[retval] = '\0';
 
-	printf("Server response :%s\n", recvBuff);
+	printf("C: Server response :%s\n", recvBuff);
 
 	close(sockfd);
 
